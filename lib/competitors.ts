@@ -1,0 +1,133 @@
+export type Competitor = {
+  name: string;
+  url: string;
+  focus: string;
+  segment: "Mechanical" | "Electrical" | "Plumbing" | "Multi-trade" | "MEP";
+  yearsInBusiness: number;
+  hasCalculator: boolean;
+  has247: boolean;
+  hasRebates: boolean;
+  hasCityPages: boolean;
+  notes: string;
+  weakSpots: string[];
+};
+
+export const competitors: Competitor[] = [
+  {
+    name: "Proline Mechanical",
+    url: "https://prolinemechanical.ca",
+    focus: "Commercial & industrial HVAC, refrigeration",
+    segment: "Mechanical",
+    yearsInBusiness: 25,
+    hasCalculator: false,
+    has247: true,
+    hasRebates: false,
+    hasCityPages: false,
+    notes: "Strong industrial refrigeration credentials. No customer-facing tools and limited residential coverage.",
+    weakSpots: ["No estimator", "No rebate guidance", "Thin online presence"],
+  },
+  {
+    name: "TDR Electric",
+    url: "https://tdrelectric.ca",
+    focus: "Commercial & multifamily electrical, EV",
+    segment: "Electrical",
+    yearsInBusiness: 10,
+    hasCalculator: false,
+    has247: false,
+    hasRebates: true,
+    hasCityPages: false,
+    notes: "Excellent EV-ready credentials, deep multifamily relationships. Electrical only — no mechanical pairing.",
+    weakSpots: ["Electrical only", "No mechanical coordination", "No estimator"],
+  },
+  {
+    name: "Haakon HVAC",
+    url: "https://haakonhvac.com",
+    focus: "HVAC, plumbing, electrical, refrigeration",
+    segment: "Multi-trade",
+    yearsInBusiness: 40,
+    hasCalculator: false,
+    has247: true,
+    hasRebates: false,
+    hasCityPages: false,
+    notes: "Established multi-trade. Strong 1StepAhead property-management program. Site lacks self-serve tools.",
+    weakSpots: ["No estimator", "No published rebate flows", "Older brand presentation"],
+  },
+  {
+    name: "Milani",
+    url: "https://www.milani.ca",
+    focus: "Plumbing, heating, AC, drainage",
+    segment: "Plumbing",
+    yearsInBusiness: 65,
+    hasCalculator: false,
+    has247: true,
+    hasRebates: true,
+    hasCityPages: true,
+    notes: "Largest residential brand in BC. Strong financing, fleet, and reviews. Less specialized in strata and commercial.",
+    weakSpots: ["Residential-first", "Higher-volume, less specialist", "No generator or EV depth"],
+  },
+  {
+    name: "Ashton Mechanical",
+    url: "https://www.ashtonmechanical.ca",
+    focus: "Commercial HVAC, plumbing, construction",
+    segment: "Mechanical",
+    yearsInBusiness: 35,
+    hasCalculator: false,
+    has247: true,
+    hasRebates: false,
+    hasCityPages: false,
+    notes: "Family-owned commercial mechanical. Limited customer-facing tools. No electrical division.",
+    weakSpots: ["No estimator", "Mechanical only", "No EV or generator services"],
+  },
+  {
+    name: "Somatic MEP",
+    url: "https://www.somaticmep.com",
+    focus: "MEP — mechanical, electrical, plumbing, controls",
+    segment: "MEP",
+    yearsInBusiness: 15,
+    hasCalculator: false,
+    has247: false,
+    hasRebates: false,
+    hasCityPages: false,
+    notes: "Strong DDC controls and pre-construction MEP. Pure commercial — no strata maintenance model.",
+    weakSpots: ["No strata service model", "No estimator", "No residential"],
+  },
+  {
+    name: "C&C Mechanical",
+    url: "https://www.ccelectricalmechanical.com",
+    focus: "HVAC, plumbing, electrical, drainage",
+    segment: "Multi-trade",
+    yearsInBusiness: 20,
+    hasCalculator: false,
+    has247: true,
+    hasRebates: false,
+    hasCityPages: false,
+    notes: "Comparable multi-trade scope. Brand and digital presence are lighter than the work suggests.",
+    weakSpots: ["Limited online tooling", "No rebate guidance", "No service-area pages"],
+  },
+  {
+    name: "Allied Plumbing",
+    url: "https://www.allied-plumbing.ca",
+    focus: "Commercial mechanical & plumbing",
+    segment: "Plumbing",
+    yearsInBusiness: 30,
+    hasCalculator: false,
+    has247: true,
+    hasRebates: false,
+    hasCityPages: false,
+    notes: "Strong commercial preventative maintenance. Plumbing-led, narrower scope outside that.",
+    weakSpots: ["Plumbing-led", "No EV or generators", "No estimator"],
+  },
+  {
+    name: "First District Mechanical",
+    url: "https://firstdistrict.ca",
+    focus: "Commercial HVAC project management",
+    segment: "Mechanical",
+    yearsInBusiness: 12,
+    hasCalculator: false,
+    has247: true,
+    hasRebates: false,
+    hasCityPages: false,
+    notes: "Project-management oriented mechanical. Strong on retrofit installs. Lighter on day-to-day strata service.",
+    weakSpots: ["Project-first, not service-first", "No customer tools", "No electrical"],
+  },
+];

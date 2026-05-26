@@ -1,0 +1,576 @@
+import Link from "next/link";
+import Image from "next/image";
+import { notFound } from "next/navigation";
+import { divisions, getDivision } from "@/lib/divisions";
+import { Section, SectionHead } from "@/components/Section";
+import { CTABanner } from "@/components/CTABanner";
+import { DivisionFAQ } from "@/components/DivisionFAQ";
+import {
+  ArrowRight,
+  Phone,
+  Mail,
+  Check,
+  Quote,
+  Wrench,
+  ShieldCheck,
+  CalendarClock,
+  Sparkles,
+  Building2,
+  Clock,
+  MapPin,
+} from "lucide-react";
+import { cities } from "@/lib/cities";
+import type { Metadata } from "next";
+
+type Params = { division: string };
+
+const logoBySlug: Record<string, string> = {
+  mechanical: "/brand/woola-mechanical-black.png",
+  power: "/brand/woola-power-black.png",
+  build: "/brand/woola-build-black.png",
+};
+
+export async function generateStaticParams() {
+  return divisions.map((d) => ({ division: d.slug }));
+}
+
+export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
+  const d = getDivision(params.division);
+  if (!d) return {};
+  return {
+    title: `${d.name} — ${d.subtitle}`,
+    description: d.description,
+  };
+}
+
+export default function DivisionPage({ params }: { params: Params }) {
+  const division = getDivision(params.division);
+  if (!division) return notFound();
+
+  const featuredCities = cities.slice(0, 16);
+
+  return (
+    <>
+      {/* Sub-nav */}
+      <div className="sticky top-16 z-40 bg-cream-50/90 backdrop-blur border-b hairline">
+        <div className="container-x flex items-center justify-between h-14 gap-4">
+          <div className="flex items-center gap-3 min-w-0">
+            <Image
+              src={logoBySlug[division.slug]}
+              alt={division.name}
+              width={120}
+              height={58}
+              className="h-7 w-auto"
+            />
+            <span className="hidden sm:inline text-sm text-ink-500 truncate">
+              {division.subtitle}
+            </span>
+          </div>
+          <nav className="hidden md:flex items-center gap-1 text-sm">
+            {[
+              ["Services", "#services"],
+              ["Featured work", "#featured"],
+              ["Brands", "#brands"],
+              ["Process", "#process"],
+              ["FAQ", "#faq"],
+            ].map(([label, href]) => (
+              <a
+                key={href}
+                href={href}
+                className="px-3 py-1.5 text-ink-700 hover:text-brand-500 transition"
+              >
+                {label}
+              </a>
+            ))}
+            <a href="#contact" className="ml-2 btn btn-primary text-xs px-4 py-2">
+              <Phone className="w-3.5 h-3.5" /> {division.contactPhone}
+            </a>
+          </nav>
+        </div>
+      </div>
+
+      {/* Hero */}
+      <section className="relative overflow-hidden bg-cream-50">
+        <div
+          aria-hidden
+          className={`absolute inset-0 -z-0 bg-gradient-to-br ${division.accent}`}
+        />
+        <div
+          aria-hidden
+          className="absolute -top-32 -right-32 w-[520px] h-[520px] rounded-full opacity-[0.07] -z-0"
+          style={{
+            background:
+              "radial-gradient(closest-side, rgba(15,110,102,0.7), transparent 70%)",
+          }}
+        />
+        <div className="container-x pt-16 pb-20 md:pt-24 md:pb-24 relative">
+          <div className="grid lg:grid-cols-12 gap-12 items-end">
+            <div className="lg:col-span-7">
+              <Link href="/" className="text-sm text-ink-400 hover:text-ink-700">
+                ← Woola Services Group
+              </Link>
+              <div className="eyebrow mt-5">Division · {division.subtitle}</div>
+              <div className="mt-5">
+                <Image
+                  src={logoBySlug[division.slug]}
+                  alt={division.name}
+                  width={584}
+                  height={278}
+                  priority
+                  className="w-[260px] md:w-[340px] lg:w-[420px] h-auto"
+                />
+              </div>
+              <p className="mt-6 script text-brand-500 text-4xl md:text-5xl leading-none">
+                {division.tagline}
+              </p>
+              <p className="mt-7 text-lg text-ink-500 max-w-2xl leading-relaxed">
+                {division.intro}
+              </p>
+              <div className="mt-7 flex flex-wrap gap-2">
+                {division.heroKeywords.map((k) => (
+                  <span
+                    key={k}
+                    className="text-xs px-3 py-1.5 rounded-full bg-white border hairline text-ink-700"
+                  >
+                    {k}
+                  </span>
+                ))}
+              </div>
+              <div className="mt-9 flex flex-wrap gap-3">
+                <a href={`tel:${division.contactPhone}`} className="btn btn-primary text-base">
+                  <Phone className="w-4 h-4" /> {division.contactPhone}
+                </a>
+                <Link href="/contact" className="btn btn-brand text-base">
+                  Book a property assessment <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+            </div>
+
+            <div className="lg:col-span-5">
+              <div className="relative overflow-hidden rounded-md mb-4 aspect-[4/3] bg-ink-100">
+                <Image
+                  src={division.heroImage}
+                  alt={division.heroImageAlt}
+                  fill
+                  sizes="(min-width: 1024px) 40vw, 100vw"
+                  priority
+                  className="object-cover"
+                />
+                <div
+                  aria-hidden
+                  className="absolute inset-0 bg-gradient-to-t from-ink-800/60 via-transparent to-transparent"
+                />
+                <div className="absolute bottom-0 left-0 right-0 p-5 text-cream-50">
+                  <div className="eyebrow !text-brand-400">In the field</div>
+                  <div className="mt-1 text-sm text-cream-100 max-w-sm">
+                    {division.heroImageAlt}.
+                  </div>
+                </div>
+              </div>
+
+              <div className="card p-7 bg-white">
+                <div className="flex items-center gap-2 text-brand-500">
+                  <Sparkles className="w-4 h-4" />
+                  <div className="eyebrow !text-brand-500">Direct dispatch</div>
+                </div>
+                <div
+                  className="mt-3 text-3xl font-bold tracking-tight text-ink-800"
+                >
+                  {division.contactPhone}
+                </div>
+                <a
+                  href={`mailto:${division.contactEmail}`}
+                  className="mt-1 inline-flex items-center gap-1.5 text-sm text-ink-500 hover:text-ink-700"
+                >
+                  <Mail className="w-3.5 h-3.5" /> {division.contactEmail}
+                </a>
+                <div className="mt-5 grid grid-cols-2 gap-3">
+                  <a
+                    href={`tel:${division.contactPhone}`}
+                    className="btn btn-primary justify-center"
+                  >
+                    <Phone className="w-4 h-4" /> Call now
+                  </a>
+                  <a
+                    href={`mailto:${division.contactEmail}`}
+                    className="btn btn-ghost justify-center"
+                  >
+                    <Mail className="w-4 h-4" /> Email
+                  </a>
+                </div>
+                <div className="mt-6 pt-6 border-t hairline grid grid-cols-2 gap-4 text-sm">
+                  <div className="flex items-start gap-2">
+                    <Clock className="w-4 h-4 mt-0.5 text-brand-500" />
+                    <div>
+                      <div className="font-medium text-ink-800">Mon–Fri</div>
+                      <div className="text-ink-500 text-xs">7:00 AM – 5:00 PM</div>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <ShieldCheck className="w-4 h-4 mt-0.5 text-brand-500" />
+                    <div>
+                      <div className="font-medium text-ink-800">24/7 emergency</div>
+                      <div className="text-ink-500 text-xs">Contracted clients</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* mini featured chip */}
+              <div className="mt-4 card p-5 bg-ink-800 text-cream-50 relative overflow-hidden">
+                <div className="grain" />
+                <div className="relative flex items-start gap-3">
+                  <CalendarClock className="w-5 h-5 mt-0.5 text-brand-400 shrink-0" />
+                  <div>
+                    <div className="eyebrow !text-brand-400">This quarter</div>
+                    <div className="text-sm text-cream-100 mt-1.5">
+                      Now accepting Q3 maintenance contracts. Lock in pricing before September renewal.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats band */}
+      <section className="bg-ink-800 text-cream-50 relative overflow-hidden">
+        <div className="grain" />
+        <div className="container-x py-14 md:py-16 relative">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
+            {division.stats.map((s) => (
+              <div key={s.label}>
+                <div className="text-4xl md:text-5xl font-bold tracking-tight text-cream-50">
+                  {s.value}
+                </div>
+                <div className="mt-2 text-sm font-medium text-cream-100">{s.label}</div>
+                {s.sub && (
+                  <div className="mt-1 text-xs text-cream-100/60">{s.sub}</div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Services */}
+      <Section>
+        <div id="services" />
+        <SectionHead
+          eyebrow="What we do"
+          title={`Every ${division.name.split(" ").slice(1).join(" ").toLowerCase()} service, one dispatcher.`}
+          description="Each service ships with its own scope, certifications and reporting — but is coordinated and invoiced under a single PO."
+        />
+        <div className="mt-12 grid md:grid-cols-2 gap-6">
+          {division.services.map((s, idx) => {
+            const Icon = s.icon;
+            return (
+              <Link
+                key={s.slug}
+                href={`/${division.slug}/${s.slug}`}
+                className="card p-8 flex flex-col group relative overflow-hidden"
+              >
+                <div
+                  aria-hidden
+                  className="absolute -top-12 -right-12 w-40 h-40 rounded-full bg-brand-50 opacity-0 group-hover:opacity-100 transition-opacity"
+                />
+                <div className="relative">
+                  <div className="flex items-start justify-between">
+                    <div className="w-14 h-14 rounded-md bg-ink-800 text-cream-50 flex items-center justify-center group-hover:bg-brand-500 transition">
+                      <Icon className="w-7 h-7" strokeWidth={1.5} />
+                    </div>
+                    <span className="text-xs font-mono text-ink-400">
+                      0{idx + 1}
+                    </span>
+                  </div>
+                  <h3 className="text-2xl md:text-3xl font-bold mt-6 text-ink-800 tracking-tight">
+                    {s.name}
+                  </h3>
+                  <p className="mt-2 text-sm text-ink-500 leading-relaxed">
+                    {s.description}
+                  </p>
+                  <ul className="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2">
+                    {s.highlights.map((h) => (
+                      <li key={h} className="flex items-start gap-2 text-sm text-ink-700">
+                        <Check className="w-4 h-4 mt-0.5 text-brand-500 shrink-0" strokeWidth={2} />
+                        <span>{h}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="mt-6 pt-6 border-t hairline flex items-center justify-between text-sm">
+                    <span className="text-ink-500">Read the {s.name.toLowerCase()} brief</span>
+                    <ArrowRight className="w-4 h-4 text-ink-400 group-hover:text-brand-500 group-hover:translate-x-0.5 transition" />
+                  </div>
+                </div>
+              </Link>
+            );
+          })}
+        </div>
+      </Section>
+
+      {/* Featured work */}
+      <section className="bg-cream-100 border-y hairline">
+        <div className="container-x section">
+          <div id="featured" />
+          <div className="flex items-end justify-between flex-wrap gap-6">
+            <SectionHead
+              eyebrow="Recent work"
+              title="Signature projects."
+              description={`A snapshot of ${division.name.split(" ").slice(1).join(" ").toLowerCase()} jobs we've shipped in the past 18 months.`}
+            />
+            <Link
+              href="/contact"
+              className="text-sm font-medium text-ink-800 hover:text-brand-500"
+            >
+              Request a full portfolio →
+            </Link>
+          </div>
+          <div className="mt-12 grid md:grid-cols-3 gap-6">
+            {division.featured.map((p) => (
+              <article
+                key={p.title}
+                className="card flex flex-col h-full bg-white overflow-hidden group"
+              >
+                <div className="aspect-[16/10] relative overflow-hidden bg-ink-100">
+                  <Image
+                    src={p.image}
+                    alt={p.alt}
+                    fill
+                    sizes="(min-width: 1024px) 30vw, (min-width: 768px) 45vw, 100vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                  />
+                  <div
+                    aria-hidden
+                    className="absolute inset-0 bg-gradient-to-t from-ink-800/40 via-transparent to-transparent"
+                  />
+                  <div className="absolute top-4 right-4">
+                    <span className="text-[10px] font-semibold tracking-widest uppercase bg-ink-800/80 text-cream-50 px-2 py-1 rounded backdrop-blur">
+                      Case study
+                    </span>
+                  </div>
+                </div>
+                <div className="p-7 flex flex-col flex-1">
+                  <div className="eyebrow">{p.tag}</div>
+                  <h3 className="text-xl font-bold text-ink-800 mt-3 tracking-tight">
+                    {p.title}
+                  </h3>
+                  <p className="mt-3 text-sm text-ink-500 leading-relaxed flex-1">
+                    {p.summary}
+                  </p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Brands & equipment */}
+      <Section>
+        <div id="brands" />
+        <div className="grid lg:grid-cols-12 gap-12 items-start">
+          <div className="lg:col-span-5">
+            <SectionHead
+              eyebrow="Equipment we service"
+              title="Brands & systems."
+              description="Our techs carry factory training and diagnostic software for the equipment that actually shows up in BC buildings."
+            />
+            <div className="mt-8 flex items-center gap-3 text-sm text-ink-500">
+              <Wrench className="w-4 h-4 text-brand-500" />
+              <span>Factory-trained on the brands below. Don't see yours? Just ask.</span>
+            </div>
+          </div>
+          <div className="lg:col-span-7">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+              {division.brands.map((b) => (
+                <div
+                  key={b}
+                  className="card p-4 text-center text-sm font-medium text-ink-800 hover:bg-cream-100 transition"
+                >
+                  {b}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </Section>
+
+      {/* Process */}
+      <section className="bg-ink-800 text-cream-50 relative overflow-hidden">
+        <div className="grain" />
+        <div className="container-x section relative">
+          <div id="process" />
+          <div className="grid lg:grid-cols-12 gap-12 items-start">
+            <div className="lg:col-span-4">
+              <SectionHead
+                eyebrow="How we run it"
+                title={`The ${division.name.split(" ").slice(1).join(" ")} delivery model.`}
+                dark
+              />
+              <p className="mt-6 text-ink-200 text-sm leading-relaxed">
+                Every contract follows the same four-step rhythm so property managers know
+                what to expect — and so our techs don't waste a truck-roll.
+              </p>
+            </div>
+            <div className="lg:col-span-8">
+              <ol className="grid sm:grid-cols-2 gap-5">
+                {[
+                  {
+                    t: "Walk-through & condition report",
+                    b: "We document the existing systems, capture asset photos and tag risks. A condition report lands in your inbox within 48 hours.",
+                  },
+                  {
+                    t: "Scoped proposal — fixed-price where we can",
+                    b: "Where the work is well-defined, we hold a fixed price. Where it isn't, we publish unit rates so there's no end-of-job surprise.",
+                  },
+                  {
+                    t: "Scheduled work with one coordinator",
+                    b: "Your dispatcher handles permits, parts, sub-trades and timing. You get a single text thread, not five.",
+                  },
+                  {
+                    t: "Photo-documented close-out",
+                    b: "Every job closes with before/after photos, equipment serial numbers, and renewal dates — all stored in the asset registry.",
+                  },
+                ].map((step, i) => (
+                  <li
+                    key={step.t}
+                    className="rounded-md border border-ink-600 p-6 bg-ink-700/40 hover:border-brand-400 transition"
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className="w-9 h-9 rounded-full bg-brand-500 text-cream-50 flex items-center justify-center text-sm font-bold">
+                        {String(i + 1).padStart(2, "0")}
+                      </div>
+                      <div className="text-base font-semibold text-cream-50">
+                        {step.t}
+                      </div>
+                    </div>
+                    <p className="mt-3 text-sm text-ink-200 leading-relaxed">{step.b}</p>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Certifications */}
+      <Section>
+        <div className="flex items-end justify-between flex-wrap gap-6">
+          <SectionHead
+            eyebrow="Credentials"
+            title="Audited, ticketed, and on the list."
+            description={`The ${division.name.split(" ").slice(1).join(" ")} team carries the certifications property managers, strata councils and insurers look for.`}
+          />
+        </div>
+        <div className="mt-12 grid grid-cols-3 md:grid-cols-6 gap-4">
+          {division.certLogos.map((c) => (
+            <div
+              key={c}
+              className="card p-5 flex items-center justify-center bg-white aspect-[3/2]"
+            >
+              <Image
+                src={`/brand/${c}.png`}
+                alt={c.replace("logo-", "").replace(/-/g, " ")}
+                width={180}
+                height={120}
+                className="max-h-16 w-auto opacity-80 hover:opacity-100 transition"
+              />
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      {/* Testimonial */}
+      <section className="bg-cream-100 border-y hairline">
+        <div className="container-x section">
+          <div className="max-w-4xl mx-auto text-center">
+            <Quote className="w-10 h-10 text-brand-500 mx-auto" strokeWidth={1.5} />
+            <p className="mt-6 text-2xl md:text-3xl lg:text-4xl font-medium text-ink-800 leading-snug tracking-tight">
+              &ldquo;{division.testimonial.quote}&rdquo;
+            </p>
+            <div className="mt-8 inline-flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-ink-800 text-cream-50 flex items-center justify-center font-semibold text-sm">
+                {division.testimonial.author
+                  .split(" ")
+                  .map((n) => n[0])
+                  .join("")}
+              </div>
+              <div className="text-left">
+                <div className="text-sm font-semibold text-ink-800">
+                  {division.testimonial.author}
+                </div>
+                <div className="text-xs text-ink-500">
+                  {division.testimonial.role} · {division.testimonial.org}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <Section>
+        <div id="faq" />
+        <div className="grid lg:grid-cols-12 gap-12 items-start">
+          <div className="lg:col-span-4 lg:sticky lg:top-32 self-start">
+            <SectionHead
+              eyebrow="Frequently asked"
+              title={`Quick answers about ${division.name.split(" ").slice(1).join(" ").toLowerCase()}.`}
+              description="Don't see your question? Email us — we'll get you a real answer, not a sales reply."
+            />
+            <a
+              href={`mailto:${division.contactEmail}`}
+              className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-brand-500 hover:underline"
+            >
+              <Mail className="w-4 h-4" /> {division.contactEmail}
+            </a>
+          </div>
+          <div className="lg:col-span-8">
+            <DivisionFAQ items={division.faqs} />
+          </div>
+        </div>
+      </Section>
+
+      {/* Coverage strip */}
+      <section className="bg-ink-800 text-cream-50 relative overflow-hidden border-t hairline">
+        <div className="container-x py-14 relative">
+          <div className="flex items-end justify-between flex-wrap gap-6 mb-8">
+            <div>
+              <div className="eyebrow !text-brand-400">Coverage</div>
+              <h3 className="mt-3 text-2xl md:text-3xl font-bold tracking-tight text-cream-50">
+                Dispatched daily across {cities.length}+ municipalities.
+              </h3>
+            </div>
+            <Link
+              href="/service-areas"
+              className="text-sm font-medium text-cream-100 hover:text-brand-400 inline-flex items-center gap-1.5"
+            >
+              <MapPin className="w-4 h-4" /> See coverage map →
+            </Link>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {featuredCities.map((c) => (
+              <Link
+                key={c.slug}
+                href={`/service-areas/${c.slug}`}
+                className="text-xs px-3 py-1.5 rounded-full border border-ink-600 text-cream-100 hover:border-brand-400 hover:text-brand-400 transition"
+              >
+                {c.name}
+              </Link>
+            ))}
+            <span className="text-xs px-3 py-1.5 text-cream-100/60">
+              + {cities.length - featuredCities.length} more
+            </span>
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <div id="contact" />
+      <CTABanner
+        title={`Talk to ${division.name}.`}
+        description="Send us your building list and we'll come back with a coverage plan, response times, and a proposed maintenance scope."
+      />
+    </>
+  );
+}

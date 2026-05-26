@@ -1,0 +1,201 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600&family=Sacramento&display=swap');
+
+:root {
+  --ink-900: #040404;
+  --ink-800: #0A0A09;
+  --ink-700: #141413;
+  --ink-600: #1F1F1D;
+  --ink-500: #3A3A38;
+  --ink-400: #6F6F6B;
+  --ink-300: #A8A8A4;
+  --cream-50: #FFFFFF;
+  --cream-100: #FAFAF7;
+  --cream-200: #F2F2EE;
+  --brand-400: #2D8079;
+  --brand-500: #0F6E66;
+  --brand-600: #0B5B54;
+}
+
+html, body {
+  background-color: var(--cream-50);
+  color: var(--ink-800);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: 'Poppins', system-ui, sans-serif;
+  font-weight: 400;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Poppins', system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.script {
+  font-family: 'Sacramento', 'Brush Script MT', cursive;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.eyebrow {
+  font-family: 'Poppins', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--brand-500);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.5rem;
+  font-weight: 500;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+
+.btn-primary {
+  background: var(--ink-800);
+  color: var(--cream-50);
+  border: 1px solid var(--ink-800);
+}
+.btn-primary:hover { background: var(--brand-500); border-color: var(--brand-500); transform: translateY(-1px); }
+
+.btn-brand {
+  background: var(--brand-500);
+  color: var(--cream-50);
+  border: 1px solid var(--brand-500);
+}
+.btn-brand:hover { background: var(--brand-600); border-color: var(--brand-600); transform: translateY(-1px); }
+
+.btn-outline {
+  background: transparent;
+  color: var(--ink-800);
+  border: 1px solid var(--ink-800);
+}
+.btn-outline:hover { background: var(--ink-800); color: var(--cream-50); }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--ink-800);
+  border: 1px solid rgba(15,15,15,0.16);
+}
+.btn-ghost:hover { background: rgba(15,15,15,0.04); }
+
+.container-x {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.section {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+@media (max-width: 768px) {
+  .section { padding-top: 4rem; padding-bottom: 4rem; }
+}
+
+.hairline {
+  border-color: rgba(15,15,15,0.08);
+}
+
+.card {
+  background: white;
+  border: 1px solid rgba(15,15,15,0.08);
+  border-radius: 6px;
+  transition: all 0.25s ease;
+}
+.card:hover {
+  border-color: var(--brand-500);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(15,110,102,0.10);
+}
+
+.dark-section {
+  background: var(--ink-800);
+  color: var(--cream-100);
+}
+.dark-section h1, .dark-section h2, .dark-section h3 { color: var(--cream-50); }
+
+.grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 3px 3px;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+
+input, select, textarea {
+  font-family: inherit;
+}
+
+.field {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  border-radius: 4px;
+  border: 1px solid rgba(15,15,15,0.18);
+  background: white;
+  font-size: 0.95rem;
+  color: var(--ink-800);
+  transition: all 0.15s ease;
+}
+.field:focus {
+  outline: none;
+  border-color: var(--brand-500);
+  box-shadow: 0 0 0 4px rgba(15,110,102,0.10);
+}
+
+.mega-link {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.875rem;
+  padding: 0.875rem 1rem;
+  border-radius: 6px;
+  transition: background 0.15s ease;
+}
+.mega-link:hover { background: rgba(15,15,15,0.04); }
+
+.divider-line {
+  width: 28px;
+  height: 1px;
+  background: var(--brand-500);
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 12px;
+}
+
+.logo-mark {
+  height: 44px;
+  width: auto;
+  display: block;
+}
+.logo-mark--invert {
+  filter: brightness(0);
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fadeUp 0.5s ease forwards; }
+
+::selection { background: var(--brand-500); color: var(--cream-50); }
