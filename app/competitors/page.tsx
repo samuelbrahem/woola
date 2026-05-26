@@ -25,13 +25,14 @@ export default function CompetitorsPage() {
       <section className="bg-cream-50 border-b hairline">
         <div className="container-x pt-24 pb-12">
           <div className="max-w-3xl">
-            <div className="eyebrow">Honest comparison</div>
+            <div className="eyebrow">Comparison</div>
             <h1 className="mt-3 text-5xl md:text-6xl font-semibold text-ink-800 leading-[0.98]">
-              We respect the competition. <span className="italic text-ink-600">And we still think we win.</span>
+              How Woola compares to the firms property managers actually shortlist.
             </h1>
             <p className="mt-5 text-lg text-ink-500">
-              These are the firms property managers in the Lower Mainland actually evaluate against us.
-              Here's what each is good at — and where Woola's coordinated three-division model wins.
+              Each provider below is a strong operator in their lane. The table and per-provider
+              notes call out the coverage gaps that Woola&apos;s coordinated mechanical, electrical
+              and building model closes.
             </p>
           </div>
         </div>
@@ -86,8 +87,8 @@ export default function CompetitorsPage() {
         <div className="container-x section">
           <SectionHead
             eyebrow="Provider by provider"
-            title="What each competitor is genuinely good at."
-            description="No trash talk. Here's the honest read on each firm — and where Woola's model differs."
+            title="Per-provider breakdown."
+            description="Where each competitor is strong, and the coverage gap Woola closes against them."
           />
           <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {competitors.map((c) => (

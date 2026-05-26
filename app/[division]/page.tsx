@@ -516,7 +516,7 @@ export default function DivisionPage({ params }: { params: Params }) {
             <SectionHead
               eyebrow="Frequently asked"
               title={`Quick answers about ${division.name.split(" ").slice(1).join(" ").toLowerCase()}.`}
-              description="Don't see your question? Email us — we'll get you a real answer, not a sales reply."
+              description="Don't see your question? Email the division directly."
             />
             <a
               href={`mailto:${division.contactEmail}`}
