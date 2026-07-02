@@ -16,7 +16,7 @@ export const site = {
   emergency: "24/7 emergency dispatch for contracted clients",
   stats: [
     { value: "20+", label: "Municipalities served" },
-    { value: "3", label: "Divisions, one PO" },
+    { value: "4", label: "Divisions, one PO" },
     { value: "24/7", label: "Emergency response" },
     { value: "60+", label: "Certified technicians" },
   ],

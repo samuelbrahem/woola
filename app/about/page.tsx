@@ -8,7 +8,7 @@ import { Award, Users, Layers, Activity } from "lucide-react";
 
 export const metadata = {
   title: "About Woola",
-  description: "Three divisions. One operations spine. Built for property managers, owners, and developers across BC.",
+  description: "Four divisions. One operations spine. Built for property managers, owners, and developers across BC.",
 };
 
 export default function AboutPage() {
@@ -30,8 +30,8 @@ export default function AboutPage() {
                 around the property manager's problem, not the trade union's.
               </p>
               <p className="mt-4 text-lg text-ink-500 leading-relaxed">
-                The result is three sister divisions — Mechanical, Power, and Build — sharing one
-                operations spine, one dispatcher, and one accountable PO across every job.
+                The result is four sister divisions — Mechanical, Power, Electrical, and Build —
+                sharing one operations spine, one dispatcher, and one accountable PO across every job.
               </p>
             </div>
           </div>
@@ -46,10 +46,10 @@ export default function AboutPage() {
         <div className="container-x section">
           <SectionHead
             eyebrow="The model"
-            title="One company. Three divisions. Built around the property."
+            title="One company. Four divisions. Built around the property."
             description="Each division has a dedicated phone number, dispatcher, and trade qualifications — and shares the back office, reporting platform, and 24/7 emergency line."
           />
-          <div className="mt-12 grid lg:grid-cols-3 gap-6">
+          <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {divisions.map((d, i) => (
               <Link key={d.slug} href={`/${d.slug}`} className="card p-7">
                 <div className="text-5xl font-semibold text-brand-500" style={{ fontFamily: "'Poppins', system-ui, sans-serif" }}>

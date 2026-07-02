@@ -18,7 +18,7 @@ export default function HomePage() {
       <Hero />
 
       <Section>
-        <div className="grid lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {divisions.map((d) => (
             <DivisionCard key={d.slug} division={d} />
           ))}
@@ -35,7 +35,7 @@ export default function HomePage() {
               <SectionHead
                 eyebrow="The Woola model"
                 title="Built like a sports team. Run like a service company."
-                description="Three divisions sharing one dispatcher, one operations leader, and one accountable PO across every job. If something breaks at 2 AM, you call one number — and our internal coordination figures out which trade rolls."
+                description="Four divisions sharing one dispatcher, one operations leader, and one accountable PO across every job. If something breaks at 2 AM, you call one number — and our internal coordination figures out which trade rolls."
               />
               <ul className="mt-8 space-y-4">
                 {[

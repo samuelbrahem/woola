@@ -27,6 +27,7 @@ type Params = { division: string };
 const logoBySlug: Record<string, string> = {
   mechanical: "/brand/woola-mechanical-black.png",
   power: "/brand/woola-power-black.png",
+  electrical: "/brand/woola-main.png",
   build: "/brand/woola-build-black.png",
 };
 

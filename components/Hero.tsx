@@ -27,7 +27,7 @@ export function Hero() {
               </span>
             </h1>
             <p className="mt-7 text-lg md:text-xl text-ink-500 max-w-2xl leading-relaxed">
-              Woola consolidates mechanical, plumbing, building services and power systems for
+              Woola consolidates mechanical, electrical, standby power, and building services for
               strata, commercial and high-end residential properties across Vancouver&apos;s Lower
               Mainland — under one PO and one dispatcher.
             </p>

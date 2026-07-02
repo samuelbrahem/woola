@@ -91,7 +91,7 @@ export default function CityPage({ params }: { params: Params }) {
             </ul>
           </div>
           <div className="lg:col-span-5">
-            <SectionHead eyebrow="Divisions" title={`All three divisions cover ${city.name}.`} />
+            <SectionHead eyebrow="Divisions" title={`All four divisions cover ${city.name}.`} />
             <div className="mt-8 space-y-3">
               {divisions.map((d) => (
                 <Link

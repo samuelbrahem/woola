@@ -6,6 +6,7 @@ import type { Division } from "@/lib/divisions";
 const logoBySlug: Record<Division["slug"], string> = {
   mechanical: "/brand/woola-mechanical-black.png",
   power: "/brand/woola-power-black.png",
+  electrical: "/brand/woola-main.png",
   build: "/brand/woola-build-black.png",
 };
 

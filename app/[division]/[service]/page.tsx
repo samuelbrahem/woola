@@ -1,10 +1,11 @@
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { divisions, getService } from "@/lib/divisions";
 import { Section, SectionHead } from "@/components/Section";
 import { CTABanner } from "@/components/CTABanner";
 import { Calculator } from "@/components/Calculator";
-import { ArrowRight, Check, Phone } from "lucide-react";
+import { ArrowRight, Check, Phone, BookOpen } from "lucide-react";
 import type { Metadata } from "next";
 import { cities } from "@/lib/cities";
 
@@ -81,6 +82,16 @@ const scopeDeepDive: Record<string, { name: string; lines: string[] }[]> = {
     { name: "Exterior", lines: ["Fencing, gates, post replacement.", "Power washing, parkade detailing.", "Signage and address numerals."] },
     { name: "Quick response", lines: ["Same-week dispatch for non-emergency.", "Photo-documented work orders.", "Single PO with rest of Woola."] },
   ],
+  "led-lighting": [
+    { name: "Retrofit projects", lines: ["Fluorescent troffer to LED panel swap.", "Common-area, parkade and hallway relamping.", "Photometric design before install."] },
+    { name: "Controls", lines: ["Occupancy and daylight sensors.", "Lutron and Leviton dimming systems.", "Time-of-day scheduling with astronomical clocks."] },
+    { name: "Rebates & payback", lines: ["BC Hydro Power Smart Alliance submission.", "Payback modelling for the strata council.", "Post-install verification and audit paperwork."] },
+  ],
+  "low-voltage": [
+    { name: "Structured cabling", lines: ["Cat 6 and 6A runs to TIA-568 standards.", "Labeled patch panels and rack terminations.", "As-built documentation on closeout."] },
+    { name: "Security & access", lines: ["Camera runs with PoE budgets.", "Access-control panel wiring and door hardware.", "Coordination with your security integrator."] },
+    { name: "Fibre & backbone", lines: ["OS2 single-mode fibre trunks.", "Rack-to-rack and building-to-building runs.", "OTDR test reports on completion."] },
+  ],
 };
 
 export default function ServicePage({ params }: { params: Params }) {
@@ -135,6 +146,52 @@ export default function ServicePage({ params }: { params: Params }) {
           </div>
         </div>
       </section>
+
+      {service.primer && (
+        <section className="bg-white border-b hairline">
+          <div className="container-x section">
+            <div className="flex items-center gap-2 text-brand-500">
+              <BookOpen className="w-4 h-4" strokeWidth={1.75} />
+              <div className="eyebrow !text-brand-500">Plain-English primer</div>
+            </div>
+            <h2 className="mt-4 text-3xl md:text-4xl lg:text-5xl font-semibold text-ink-800 tracking-tight max-w-3xl leading-tight">
+              What is {service.name.toLowerCase()}?
+            </h2>
+            <div className="mt-10 grid lg:grid-cols-12 gap-10 items-start">
+              <div className="lg:col-span-6">
+                <div className="relative overflow-hidden rounded-md aspect-[4/3] bg-ink-100 border hairline">
+                  <Image
+                    src={service.primer.image}
+                    alt={service.primer.imageAlt}
+                    fill
+                    sizes="(min-width: 1024px) 50vw, 100vw"
+                    className="object-cover"
+                  />
+                </div>
+                <div className="mt-2 text-xs text-ink-400">
+                  {service.primer.imageAlt}. Photo: {service.primer.imageCredit}.
+                </div>
+              </div>
+              <div className="lg:col-span-6">
+                <p className="text-lg text-ink-600 leading-relaxed">
+                  {service.primer.what}
+                </p>
+                <div className="mt-8">
+                  <div className="eyebrow">Parts & terms worth knowing</div>
+                  <dl className="mt-4 divide-y hairline border-y hairline">
+                    {service.primer.parts.map((p) => (
+                      <div key={p.term} className="py-4 grid grid-cols-3 gap-4">
+                        <dt className="font-semibold text-ink-800 text-sm">{p.term}</dt>
+                        <dd className="col-span-2 text-sm text-ink-600 leading-relaxed">{p.def}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       {scopes.length > 0 && (
         <Section>

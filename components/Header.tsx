@@ -34,7 +34,7 @@ export function Header() {
               onOpen={() => setOpen(open === "services" ? null : "services")}
               onClose={() => setOpen(null)}
             >
-              <div className="grid grid-cols-3 gap-8 p-8 w-[920px]">
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 p-8 w-[1120px]">
                 {divisions.map((d) => (
                   <div key={d.slug}>
                     <Link
@@ -72,7 +72,7 @@ export function Header() {
               </div>
               <div className="border-t hairline bg-cream-100 px-8 py-4 flex items-center justify-between text-sm">
                 <span className="text-ink-500">
-                  One PO across three divisions — coordinated by a single dispatcher.
+                  One PO across four divisions — coordinated by a single dispatcher.
                 </span>
                 <Link
                   href="/about"
