@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { divisions, getService } from "@/lib/divisions";
+import { divisions, getService, lowerName } from "@/lib/divisions";
 import { Section, SectionHead } from "@/components/Section";
 import { CTABanner } from "@/components/CTABanner";
 import { Calculator } from "@/components/Calculator";
@@ -20,9 +20,19 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const found = getService(params.division, params.service);
   if (!found) return {};
+  const canonical = `https://woola.ca/${found.division.slug}/${found.service.slug}`;
+  const title = `${found.service.name} — ${found.division.name}`;
   return {
-    title: `${found.service.name} — ${found.division.name}`,
+    title,
     description: found.service.description,
+    alternates: { canonical },
+    openGraph: {
+      title,
+      description: found.service.description,
+      url: canonical,
+      type: "article",
+      images: [{ url: "/brand/og-image.png", width: 1200, height: 630, alt: found.service.name }],
+    },
   };
 }
 
@@ -48,9 +58,29 @@ const scopeDeepDive: Record<string, { name: string; lines: string[] }[]> = {
     { name: "Preventative", lines: ["Quarterly PM checklists.", "Refrigerant logbooks for environmental compliance.", "Energy and load reporting."] },
   ],
   generators: [
-    { name: "Annual service", lines: ["CSA C282 inspections and load bank testing.", "Oil, filter, coolant, battery.", "Transfer switch electrical inspection."] },
+    { name: "Annual service", lines: ["Oil, filter, coolant, battery on schedule.", "Coolant heater and block heater checks.", "Minor repairs quoted and closed same visit."] },
     { name: "Installations", lines: ["Generac, Kohler, Cummins authorized installer.", "Permit, ESA, and gas connections.", "Commissioning to manufacturer spec."] },
-    { name: "Fuel & emergency", lines: ["Fuel polishing for diesel reliability.", "24/7 emergency response after outages.", "Spare parts stocked for top units."] },
+    { name: "Emergency", lines: ["24/7 emergency response after outages.", "Spare parts stocked for top units.", "Priority dispatch for contracted sites."] },
+  ],
+  "c282-testing": [
+    { name: "Annual C282 test", lines: ["Stepped load bank run to full nameplate.", "Readings logged at code intervals.", "Signed compliance report filed for you."] },
+    { name: "Monthly programs", lines: ["On-load exercise runs between annual tests.", "Test log maintained on site and digitally.", "Insurer and AHJ document packages."] },
+    { name: "Deficiencies", lines: ["Wet-stacking correction runs.", "Written deficiency list with repair quote in 48 h.", "Repairs by the same division — one PO."] },
+  ],
+  "transfer-switches": [
+    { name: "Inspection & testing", lines: ["Contact resistance and transfer-time testing.", "Infrared scans on lugs and contacts.", "Exercise clock and retransfer settings verified."] },
+    { name: "Repair & retrofit", lines: ["ASCO, Zenith, Cummins, Generac parts.", "Controller retrofits for obsolete switches.", "Bypass-isolation upgrades for serviceability."] },
+    { name: "Controls & monitoring", lines: ["Remote annunciator installation.", "Paralleling gear service for multi-unit plants.", "Alarm and status reporting to your phone."] },
+  ],
+  "fuel-systems": [
+    { name: "Fuel polishing", lines: ["On-site polishing rig — fuel stays in the tank.", "Water separation and fine filtration.", "Before/after lab results in writing."] },
+    { name: "Tank service", lines: ["Tank cleaning and sludge removal.", "Integrity and containment inspections.", "Day tank and transfer pump service."] },
+    { name: "Programs", lines: ["Annual sample-and-polish contracts.", "Biocide treatment dosing.", "Runtime capacity verification to C282."] },
+  ],
+  "ups-battery": [
+    { name: "Service & PM", lines: ["APC, Eaton, Vertiv factory-trained service.", "Annual runtime and capacity testing.", "Firmware and alarm audits."] },
+    { name: "Battery programs", lines: ["VRLA string replacement on 3–5 year cycles.", "Lithium upgrade options with payback math.", "Old batteries recycled with documentation."] },
+    { name: "Critical loads", lines: ["Server room and network closet UPS sizing.", "Fire panel and access-control backup.", "Elevator recall power coordination."] },
   ],
   electrical: [
     { name: "Strata & commercial", lines: ["Service upgrades and panel replacements.", "Infrared thermography reporting.", "Suite power and common-area work."] },
@@ -94,12 +124,26 @@ const scopeDeepDive: Record<string, { name: string; lines: string[] }[]> = {
   ],
 };
 
+const equipmentHeading: Record<string, { title: string; description: string }> = {
+  build: {
+    title: "Assets we look after.",
+    description:
+      "The building systems and finishes we're dispatched to most. If yours isn't listed, ask — we probably handle it.",
+  },
+  default: {
+    title: "Equipment we service.",
+    description:
+      "The equipment our technicians install, maintain, and repair every week. If yours isn't listed, ask — we probably service it.",
+  },
+};
+
 export default function ServicePage({ params }: { params: Params }) {
   const found = getService(params.division, params.service);
   if (!found) return notFound();
   const { division, service } = found;
   const Icon = service.icon;
   const scopes = scopeDeepDive[service.slug] || [];
+  const eqHead = equipmentHeading[division.slug] || equipmentHeading.default;
 
   const showCalculator = service.slug === "hvac" || service.slug === "plumbing" || service.slug === "gas";
 
@@ -155,7 +199,7 @@ export default function ServicePage({ params }: { params: Params }) {
               <div className="eyebrow !text-brand-500">Plain-English primer</div>
             </div>
             <h2 className="mt-4 text-3xl md:text-4xl lg:text-5xl font-semibold text-ink-800 tracking-tight max-w-3xl leading-tight">
-              What is {service.name.toLowerCase()}?
+              What is {lowerName(service.name)}?
             </h2>
             <div className="mt-10 grid lg:grid-cols-12 gap-10 items-start">
               <div className="lg:col-span-6">
@@ -189,6 +233,42 @@ export default function ServicePage({ params }: { params: Params }) {
                 </div>
               </div>
             </div>
+          </div>
+        </section>
+      )}
+
+      {service.equipment && service.equipment.length > 0 && (
+        <section className="bg-cream-100 border-b hairline">
+          <div className="container-x section">
+            <SectionHead
+              eyebrow="Equipment expertise"
+              title={eqHead.title}
+              description={eqHead.description}
+            />
+            <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+              {service.equipment.map((item) => (
+                <div
+                  key={item.name}
+                  className="group card overflow-hidden bg-white flex flex-col"
+                >
+                  <div className="relative aspect-[4/3] bg-ink-100 overflow-hidden">
+                    <Image
+                      src={item.image}
+                      alt={item.alt}
+                      fill
+                      sizes="(min-width: 1024px) 20vw, (min-width: 640px) 30vw, 50vw"
+                      className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                    />
+                  </div>
+                  <div className="px-4 py-3 border-t hairline">
+                    <div className="text-sm font-semibold text-ink-800 leading-tight">
+                      {item.name}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="mt-4 text-xs text-ink-400">Photos: Wikimedia Commons.</div>
           </div>
         </section>
       )}
@@ -269,7 +349,7 @@ export default function ServicePage({ params }: { params: Params }) {
       </Section>
 
       <CTABanner
-        title={`Book ${service.name.toLowerCase()} with Woola.`}
+        title={`Book ${lowerName(service.name)} with Woola.`}
         description="Tell us about the property and we'll get a coordinator in touch within one business day."
       />
     </>

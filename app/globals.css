@@ -13,11 +13,46 @@
   --ink-400: #6F6F6B;
   --ink-300: #A8A8A4;
   --cream-50: #FFFFFF;
-  --cream-100: #FAFAF7;
-  --cream-200: #F2F2EE;
-  --brand-400: #2D8079;
-  --brand-500: #0F6E66;
-  --brand-600: #0B5B54;
+  --cream-100: #FFF7F4;
+  --cream-200: #F7EDE9;
+  --brand-400: #188CA0;
+  --brand-500: #00788C;
+  --brand-600: #006274;
+  --brand-50-rgb: 230 243 245;
+  --brand-400-rgb: 24 140 160;
+  --brand-500-rgb: 0 120 140;
+  --brand-600-rgb: 0 98 116;
+  --accent-500: #89A306;
+}
+
+/* Per-division brand themes — each division reads as its own site.
+   The hex vars drive handwritten CSS; the -rgb triplets drive Tailwind brand-* utilities. */
+.theme-power {
+  --brand-400: #D97706;
+  --brand-500: #B45309;
+  --brand-600: #92400E;
+  --brand-50-rgb: 253 243 231;
+  --brand-400-rgb: 217 119 6;
+  --brand-500-rgb: 180 83 9;
+  --brand-600-rgb: 146 64 14;
+}
+.theme-electrical {
+  --brand-400: #3B82F6;
+  --brand-500: #1D4ED8;
+  --brand-600: #1E40AF;
+  --brand-50-rgb: 235 241 254;
+  --brand-400-rgb: 59 130 246;
+  --brand-500-rgb: 29 78 216;
+  --brand-600-rgb: 30 64 175;
+}
+.theme-build {
+  --brand-400: #C05B41;
+  --brand-500: #9B3E2B;
+  --brand-600: #7C3122;
+  --brand-50-rgb: 249 238 235;
+  --brand-400-rgb: 192 91 65;
+  --brand-500-rgb: 155 62 43;
+  --brand-600-rgb: 124 49 34;
 }
 
 html, body {
@@ -125,7 +160,7 @@ h1, h2, h3, h4 {
 .card:hover {
   border-color: var(--brand-500);
   transform: translateY(-2px);
-  box-shadow: 0 12px 32px rgba(15,110,102,0.10);
+  box-shadow: 0 12px 32px rgb(var(--brand-500-rgb) / 0.10);
 }
 
 .dark-section {
@@ -161,7 +196,7 @@ input, select, textarea {
 .field:focus {
   outline: none;
   border-color: var(--brand-500);
-  box-shadow: 0 0 0 4px rgba(15,110,102,0.10);
+  box-shadow: 0 0 0 4px rgb(var(--brand-500-rgb) / 0.10);
 }
 
 .mega-link {
@@ -199,3 +234,107 @@ input, select, textarea {
 .fade-up { animation: fadeUp 0.5s ease forwards; }
 
 ::selection { background: var(--brand-500); color: var(--cream-50); }
+
+/* ---- Motion ---- */
+@keyframes riseIn {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.rise { opacity: 0; animation: riseIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+.rise-1 { animation-delay: 0.05s; }
+.rise-2 { animation-delay: 0.15s; }
+.rise-3 { animation-delay: 0.25s; }
+.rise-4 { animation-delay: 0.35s; }
+.rise-5 { animation-delay: 0.45s; }
+
+.js-reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.js-reveal.in { opacity: 1; transform: translateY(0); }
+
+@media (prefers-reduced-motion: reduce) {
+  .rise, .js-reveal {
+    animation: none;
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---- Smooth anchor scrolling ---- */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 96px;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+/* ---- Aurora backdrop (hero) ---- */
+@keyframes auroraDrift {
+  0%   { transform: translate(0, 0) scale(1); }
+  33%  { transform: translate(4%, -6%) scale(1.08); }
+  66%  { transform: translate(-5%, 4%) scale(0.96); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+.aurora {
+  position: absolute;
+  inset: -20%;
+  pointer-events: none;
+  filter: blur(80px);
+  opacity: 0.5;
+  background:
+    radial-gradient(38% 45% at 22% 18%, rgb(var(--brand-500-rgb) / 0.30), transparent 70%),
+    radial-gradient(30% 38% at 78% 12%, rgb(var(--brand-400-rgb) / 0.22), transparent 70%),
+    radial-gradient(32% 42% at 62% 78%, rgb(var(--brand-500-rgb) / 0.14), transparent 70%);
+  animation: auroraDrift 24s ease-in-out infinite;
+  will-change: transform;
+}
+@media (prefers-reduced-motion: reduce) {
+  .aurora { animation: none; }
+}
+
+/* ---- Marquee ---- */
+@keyframes marqueeX {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.marquee {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  gap: 3rem;
+  animation: marqueeX 36s linear infinite;
+}
+.marquee:hover .marquee-track { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+}
+
+/* ---- Micro-interactions ---- */
+.btn .lucide { transition: transform 0.2s ease; }
+.btn:hover .lucide-arrow-right { transform: translateX(3px); }
+.btn:hover .lucide-arrow-up-right { transform: translate(2px, -2px); }
+
+.link-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.3s ease;
+}
+.link-underline:hover { background-size: 100% 1px; }
+
+/* Image reveal: subtle de-zoom as cards reveal */
+.js-reveal img { transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1); }
+
+/* Count-up number styling */
+.stat-number {
+  font-variant-numeric: tabular-nums;
+}

@@ -2,44 +2,44 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import type { Division } from "@/lib/divisions";
-
-const logoBySlug: Record<Division["slug"], string> = {
-  mechanical: "/brand/woola-mechanical-black.png",
-  power: "/brand/woola-power-black.png",
-  electrical: "/brand/woola-main.png",
-  build: "/brand/woola-build-black.png",
-};
+import { DivisionWordmark } from "./DivisionWordmark";
 
 export function DivisionCard({ division }: { division: Division }) {
   return (
     <Link
       href={`/${division.slug}`}
-      className="card p-8 flex flex-col h-full group"
+      className="card flex flex-col h-full group overflow-hidden"
     >
-      <div className="flex items-center justify-between">
+      <div className="relative aspect-[16/9] bg-ink-100 overflow-hidden">
         <Image
-          src={logoBySlug[division.slug]}
-          alt={division.name}
-          width={146}
-          height={70}
-          className="h-14 w-auto"
+          src={division.heroImage}
+          alt={division.heroImageAlt}
+          fill
+          sizes="(min-width: 1024px) 25vw, (min-width: 768px) 50vw, 100vw"
+          className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
         />
-        <ArrowUpRight className="w-5 h-5 text-ink-400 group-hover:text-brand-500 transition" strokeWidth={1.5} />
+        <div className="absolute inset-0 bg-gradient-to-t from-ink-900/25 to-transparent" />
       </div>
-      <div className="eyebrow mt-6">{division.subtitle}</div>
-      <p className="mt-3 text-ink-500 text-sm leading-relaxed flex-1">
-        {division.description}
-      </p>
-      <div className="mt-6 pt-6 border-t hairline">
-        <div className="flex flex-wrap gap-2">
-          {division.services.map((s) => (
-            <span
-              key={s.slug}
-              className="text-xs px-2.5 py-1 rounded bg-cream-100 text-ink-700 border hairline"
-            >
-              {s.name}
-            </span>
-          ))}
+      <div className="p-8 flex flex-col flex-1">
+        <div className="flex items-center justify-between">
+          <DivisionWordmark division={division} size="md" />
+          <ArrowUpRight className="w-5 h-5 text-ink-400 group-hover:text-brand-500 transition" strokeWidth={1.5} />
+        </div>
+        <div className="eyebrow mt-6">{division.subtitle}</div>
+        <p className="mt-3 text-ink-500 text-sm leading-relaxed flex-1">
+          {division.description}
+        </p>
+        <div className="mt-6 pt-6 border-t hairline">
+          <div className="flex flex-wrap gap-2">
+            {division.services.map((s) => (
+              <span
+                key={s.slug}
+                className="text-xs px-2.5 py-1 rounded bg-cream-100 text-ink-700 border hairline"
+              >
+                {s.name}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
     </Link>

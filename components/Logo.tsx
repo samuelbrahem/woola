@@ -5,12 +5,12 @@ export function Logo({ variant = "dark" }: { variant?: "dark" | "light" }) {
   return (
     <Link href="/" className="inline-flex items-center group" aria-label="Woola home">
       <Image
-        src="/brand/woola-main.png"
+        src={variant === "light" ? "/brand/woola-ca-white.svg" : "/brand/woola-ca-black.svg"}
         alt="Woola"
         width={150}
-        height={72}
+        height={84}
         priority
-        className={`logo-mark ${variant === "dark" ? "logo-mark--invert" : ""}`}
+        className="logo-mark"
       />
     </Link>
   );

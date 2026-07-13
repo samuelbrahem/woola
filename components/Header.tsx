@@ -34,7 +34,7 @@ export function Header() {
               onOpen={() => setOpen(open === "services" ? null : "services")}
               onClose={() => setOpen(null)}
             >
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 p-8 w-[1120px]">
+              <div className="grid grid-cols-4 gap-6 p-7 w-[960px]">
                 {divisions.map((d) => (
                   <div key={d.slug}>
                     <Link
@@ -144,6 +144,9 @@ export function Header() {
               <Phone className="w-4 h-4" strokeWidth={1.6} />
               <span className="font-medium">{site.phone}</span>
             </a>
+            <Link href="/book" className="btn btn-ghost">
+              Book a meeting
+            </Link>
             <Link href="/contact" className="btn btn-primary">
               Book service
             </Link>
@@ -186,6 +189,7 @@ export function Header() {
               </div>
             ))}
             <div className="border-t hairline pt-4 space-y-2">
+              <Link href="/book" onClick={() => setMobileOpen(false)} className="block font-medium">Book a meeting</Link>
               <Link href="/calculator" onClick={() => setMobileOpen(false)} className="block font-medium">Estimator</Link>
               <Link href="/service-areas" onClick={() => setMobileOpen(false)} className="block font-medium">Service Areas</Link>
               <Link href="/competitors" onClick={() => setMobileOpen(false)} className="block font-medium">Why Woola</Link>
@@ -202,7 +206,7 @@ export function Header() {
   );
 }
 
-function MegaItem({
+export function MegaItem({
   label,
   open,
   onOpen,
@@ -226,7 +230,7 @@ function MegaItem({
         <ChevronDown className={`w-4 h-4 transition-transform ${open ? "rotate-180" : ""}`} />
       </button>
       {open && (
-        <div className="absolute left-1/2 -translate-x-1/2 top-full pt-3">
+        <div className="absolute left-0 top-full pt-3">
           <div className="bg-white rounded-2xl shadow-soft border hairline overflow-hidden">
             {children}
           </div>

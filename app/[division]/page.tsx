@@ -1,10 +1,12 @@
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { divisions, getDivision } from "@/lib/divisions";
+import { divisions, getDivision, lowerName } from "@/lib/divisions";
 import { Section, SectionHead } from "@/components/Section";
 import { CTABanner } from "@/components/CTABanner";
 import { DivisionFAQ } from "@/components/DivisionFAQ";
+import { DivisionWordmark } from "@/components/DivisionWordmark";
+import { CountUp } from "@/components/CountUp";
 import {
   ArrowRight,
   Phone,
@@ -24,13 +26,6 @@ import type { Metadata } from "next";
 
 type Params = { division: string };
 
-const logoBySlug: Record<string, string> = {
-  mechanical: "/brand/woola-mechanical-black.png",
-  power: "/brand/woola-power-black.png",
-  electrical: "/brand/woola-main.png",
-  build: "/brand/woola-build-black.png",
-};
-
 export async function generateStaticParams() {
   return divisions.map((d) => ({ division: d.slug }));
 }
@@ -38,9 +33,19 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const d = getDivision(params.division);
   if (!d) return {};
+  const canonical = `https://woola.ca/${d.slug}`;
+  const title = `${d.name} — ${d.subtitle}`;
   return {
-    title: `${d.name} — ${d.subtitle}`,
+    title,
     description: d.description,
+    alternates: { canonical },
+    openGraph: {
+      title,
+      description: d.description,
+      url: canonical,
+      type: "website",
+      images: [{ url: "/brand/og-image.png", width: 1200, height: 630, alt: d.name }],
+    },
   };
 }
 
@@ -52,22 +57,11 @@ export default function DivisionPage({ params }: { params: Params }) {
 
   return (
     <>
-      {/* Sub-nav */}
-      <div className="sticky top-16 z-40 bg-cream-50/90 backdrop-blur border-b hairline">
-        <div className="container-x flex items-center justify-between h-14 gap-4">
-          <div className="flex items-center gap-3 min-w-0">
-            <Image
-              src={logoBySlug[division.slug]}
-              alt={division.name}
-              width={120}
-              height={58}
-              className="h-7 w-auto"
-            />
-            <span className="hidden sm:inline text-sm text-ink-500 truncate">
-              {division.subtitle}
-            </span>
-          </div>
-          <nav className="hidden md:flex items-center gap-1 text-sm">
+      {/* On-page anchors */}
+      <div className="sticky top-16 z-40 bg-cream-50/90 backdrop-blur border-b hairline hidden md:block">
+        <div className="container-x flex items-center h-11">
+          <span className="eyebrow !text-[10px] mr-4">On this page</span>
+          <nav className="flex items-center gap-1 text-sm">
             {[
               ["Services", "#services"],
               ["Featured work", "#featured"],
@@ -78,14 +72,11 @@ export default function DivisionPage({ params }: { params: Params }) {
               <a
                 key={href}
                 href={href}
-                className="px-3 py-1.5 text-ink-700 hover:text-brand-500 transition"
+                className="px-3 py-1 text-ink-700 hover:text-brand-500 transition"
               >
                 {label}
               </a>
             ))}
-            <a href="#contact" className="ml-2 btn btn-primary text-xs px-4 py-2">
-              <Phone className="w-3.5 h-3.5" /> {division.contactPhone}
-            </a>
           </nav>
         </div>
       </div>
@@ -107,20 +98,11 @@ export default function DivisionPage({ params }: { params: Params }) {
         <div className="container-x pt-16 pb-20 md:pt-24 md:pb-24 relative">
           <div className="grid lg:grid-cols-12 gap-12 items-end">
             <div className="lg:col-span-7">
-              <Link href="/" className="text-sm text-ink-400 hover:text-ink-700">
-                ← Woola Services Group
-              </Link>
-              <div className="eyebrow mt-5">Division · {division.subtitle}</div>
-              <div className="mt-5">
-                <Image
-                  src={logoBySlug[division.slug]}
-                  alt={division.name}
-                  width={584}
-                  height={278}
-                  priority
-                  className="w-[260px] md:w-[340px] lg:w-[420px] h-auto"
-                />
-              </div>
+              <div className="eyebrow">Division · {division.subtitle}</div>
+              <h1 className="mt-5">
+                <span className="sr-only">{division.name} — {division.subtitle}</span>
+                <DivisionWordmark division={division} size="lg" priority />
+              </h1>
               <p className="mt-6 script text-brand-500 text-4xl md:text-5xl leading-none">
                 {division.tagline}
               </p>
@@ -218,7 +200,7 @@ export default function DivisionPage({ params }: { params: Params }) {
               </div>
 
               {/* mini featured chip */}
-              <div className="mt-4 card p-5 bg-ink-800 text-cream-50 relative overflow-hidden">
+              <div className="mt-4 card p-5 !bg-ink-800 !border-ink-700 text-cream-50 relative overflow-hidden">
                 <div className="grain" />
                 <div className="relative flex items-start gap-3">
                   <CalendarClock className="w-5 h-5 mt-0.5 text-brand-400 shrink-0" />
@@ -243,7 +225,7 @@ export default function DivisionPage({ params }: { params: Params }) {
             {division.stats.map((s) => (
               <div key={s.label}>
                 <div className="text-4xl md:text-5xl font-bold tracking-tight text-cream-50">
-                  {s.value}
+                  <CountUp value={s.value} />
                 </div>
                 <div className="mt-2 text-sm font-medium text-cream-100">{s.label}</div>
                 {s.sub && (
@@ -300,7 +282,7 @@ export default function DivisionPage({ params }: { params: Params }) {
                     ))}
                   </ul>
                   <div className="mt-6 pt-6 border-t hairline flex items-center justify-between text-sm">
-                    <span className="text-ink-500">Read the {s.name.toLowerCase()} brief</span>
+                    <span className="text-ink-500">Read the {lowerName(s.name)} brief</span>
                     <ArrowRight className="w-4 h-4 text-ink-400 group-hover:text-brand-500 group-hover:translate-x-0.5 transition" />
                   </div>
                 </div>
@@ -394,6 +376,18 @@ export default function DivisionPage({ params }: { params: Params }) {
             </div>
           </div>
         </div>
+        <div className="marquee mt-14" aria-hidden>
+          <div className="marquee-track">
+            {[...division.brands, ...division.brands].map((b, i) => (
+              <span
+                key={`${b}-${i}`}
+                className="text-2xl md:text-3xl font-semibold text-ink-200 whitespace-nowrap"
+              >
+                {b}
+              </span>
+            ))}
+          </div>
+        </div>
       </Section>
 
       {/* Process */}
@@ -471,7 +465,7 @@ export default function DivisionPage({ params }: { params: Params }) {
             >
               <Image
                 src={`/brand/${c}.png`}
-                alt={c.replace("logo-", "").replace(/-/g, " ")}
+                alt={`${c.replace("logo-", "").replace(/-/g, " ").replace(/\b\w/g, (m) => m.toUpperCase())} certification`}
                 width={180}
                 height={120}
                 className="max-h-16 w-auto opacity-80 hover:opacity-100 transition"

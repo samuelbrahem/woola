@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Phone } from "lucide-react";
 import { site } from "@/lib/site";
 
@@ -11,6 +12,15 @@ export function CTABanner({
 }) {
   return (
     <section className="bg-ink-800 text-cream-50 relative overflow-hidden">
+      <Image
+        src="https://images.unsplash.com/photo-1553946550-4b8f3eea5451?w=1400&q=80&auto=format&fit=crop"
+        alt=""
+        aria-hidden
+        fill
+        sizes="100vw"
+        className="object-cover opacity-25"
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-ink-900/85 via-ink-900/70 to-ink-900/60" />
       <div className="grain" />
       <div className="container-x py-20 relative">
         <div className="grid lg:grid-cols-5 gap-10 items-center">
@@ -25,7 +35,7 @@ export function CTABanner({
             <Link href="/contact" className="btn btn-brand justify-center text-base">
               Request a walk-through <ArrowRight className="w-4 h-4" />
             </Link>
-            <a href={`tel:${site.phone}`} className="btn btn-outline justify-center text-base border-cream-50 text-cream-50 hover:bg-cream-50 hover:text-ink-800">
+            <a href={`tel:${site.phone}`} className="btn justify-center text-base border border-cream-50/80 !text-cream-50 hover:bg-cream-50 hover:!text-ink-800">
               <Phone className="w-4 h-4" /> {site.phone}
             </a>
             <p className="text-xs text-ink-300 text-center mt-1">{site.emergency}</p>
