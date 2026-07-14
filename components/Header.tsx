@@ -131,8 +131,11 @@ export function Header() {
             <Link href="/residential" className="px-4 py-2 text-sm font-medium text-ink-800 rounded-full hover:bg-ink-50">
               Residential
             </Link>
-            <Link href="/calculator" className="px-4 py-2 text-sm font-medium text-ink-800 rounded-full hover:bg-ink-50">
-              Estimator
+            <Link href="/work" className="px-4 py-2 text-sm font-medium text-ink-800 rounded-full hover:bg-ink-50">
+              Work
+            </Link>
+            <Link href="/process" className="px-4 py-2 text-sm font-medium text-ink-800 rounded-full hover:bg-ink-50">
+              Process
             </Link>
             <Link href="/about" className="px-4 py-2 text-sm font-medium text-ink-800 rounded-full hover:bg-ink-50">
               About
@@ -194,6 +197,8 @@ export function Header() {
             <div className="border-t hairline pt-4 space-y-2">
               <Link href="/commercial" onClick={() => setMobileOpen(false)} className="block font-medium">Commercial</Link>
               <Link href="/residential" onClick={() => setMobileOpen(false)} className="block font-medium">Residential</Link>
+              <Link href="/work" onClick={() => setMobileOpen(false)} className="block font-medium">Featured Work</Link>
+              <Link href="/process" onClick={() => setMobileOpen(false)} className="block font-medium">Our Process</Link>
               <Link href="/book" onClick={() => setMobileOpen(false)} className="block font-medium">Book a meeting</Link>
               <Link href="/calculator" onClick={() => setMobileOpen(false)} className="block font-medium">Estimator</Link>
               <Link href="/service-areas" onClick={() => setMobileOpen(false)} className="block font-medium">Service Areas</Link>

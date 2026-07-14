@@ -57,30 +57,6 @@ export default function DivisionPage({ params }: { params: Params }) {
 
   return (
     <>
-      {/* On-page anchors */}
-      <div className="sticky top-16 z-40 bg-cream-50/90 backdrop-blur border-b hairline hidden md:block">
-        <div className="container-x flex items-center h-11">
-          <span className="eyebrow !text-[10px] mr-4">On this page</span>
-          <nav className="flex items-center gap-1 text-sm">
-            {[
-              ["Services", "#services"],
-              ["Featured work", "#featured"],
-              ["Brands", "#brands"],
-              ["Process", "#process"],
-              ["FAQ", "#faq"],
-            ].map(([label, href]) => (
-              <a
-                key={href}
-                href={href}
-                className="px-3 py-1 text-ink-700 hover:text-brand-500 transition"
-              >
-                {label}
-              </a>
-            ))}
-          </nav>
-        </div>
-      </div>
-
       {/* Hero */}
       <section className="relative overflow-hidden bg-cream-50">
         <div

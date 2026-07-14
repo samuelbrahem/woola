@@ -220,17 +220,12 @@ export default function ServicePage({ params }: { params: Params }) {
                 <p className="text-lg text-ink-600 leading-relaxed">
                   {service.primer.what}
                 </p>
-                <div className="mt-8">
-                  <div className="eyebrow">Parts & terms worth knowing</div>
-                  <dl className="mt-4 divide-y hairline border-y hairline">
-                    {service.primer.parts.map((p) => (
-                      <div key={p.term} className="py-4 grid grid-cols-3 gap-4">
-                        <dt className="font-semibold text-ink-800 text-sm">{p.term}</dt>
-                        <dd className="col-span-2 text-sm text-ink-600 leading-relaxed">{p.def}</dd>
-                      </div>
-                    ))}
-                  </dl>
-                </div>
+                <a
+                  href="#glossary"
+                  className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-brand-500 link-underline"
+                >
+                  New to the terminology? See the glossary <ArrowRight className="w-4 h-4" />
+                </a>
               </div>
             </div>
           </div>
@@ -347,6 +342,38 @@ export default function ServicePage({ params }: { params: Params }) {
           </div>
         </div>
       </Section>
+
+      {service.primer && service.primer.parts.length > 0 && (
+        <section id="glossary" className="bg-cream-100 border-t hairline">
+          <div className="container-x section">
+            <div className="grid lg:grid-cols-12 gap-10 items-start">
+              <div className="lg:col-span-4 lg:sticky lg:top-32 self-start">
+                <div className="flex items-center gap-2 text-brand-500">
+                  <BookOpen className="w-4 h-4" strokeWidth={1.75} />
+                  <div className="eyebrow !text-brand-500">Glossary</div>
+                </div>
+                <h2 className="mt-3 text-3xl md:text-4xl font-semibold text-ink-800 tracking-tight">
+                  Parts &amp; terms worth knowing.
+                </h2>
+                <p className="mt-4 text-ink-500 text-sm leading-relaxed">
+                  The vocabulary that comes up in quotes and site visits, explained in
+                  plain English. Ask your coordinator if anything else needs translating.
+                </p>
+              </div>
+              <div className="lg:col-span-8">
+                <dl className="grid sm:grid-cols-2 gap-4">
+                  {service.primer.parts.map((p) => (
+                    <div key={p.term} className="card p-5 bg-white">
+                      <dt className="font-semibold text-ink-800 text-sm">{p.term}</dt>
+                      <dd className="mt-1.5 text-sm text-ink-600 leading-relaxed">{p.def}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       <CTABanner
         title={`Book ${lowerName(service.name)} with Woola.`}

@@ -14,8 +14,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/commercial",
     "/competitors",
     "/contact",
+    "/process",
     "/residential",
     "/service-areas",
+    "/work",
   ];
 
   const divisionPaths = divisions.map((d) => `/${d.slug}`);
