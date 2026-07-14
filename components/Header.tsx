@@ -2,11 +2,10 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { Menu, X, Phone, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { Logo } from "./Logo";
 import { divisions } from "@/lib/divisions";
 import { cities, citiesByRegion } from "@/lib/cities";
-import { site } from "@/lib/site";
 
 const regionOrder = [
   "Vancouver",
@@ -125,31 +124,54 @@ export function Header() {
               </div>
             </MegaItem>
 
-            <Link href="/commercial" className="px-4 py-2 text-sm font-medium text-ink-800 rounded-full hover:bg-ink-50">
-              Commercial
-            </Link>
-            <Link href="/residential" className="px-4 py-2 text-sm font-medium text-ink-800 rounded-full hover:bg-ink-50">
-              Residential
-            </Link>
-            <Link href="/work" className="px-4 py-2 text-sm font-medium text-ink-800 rounded-full hover:bg-ink-50">
-              Work
-            </Link>
-            <Link href="/process" className="px-4 py-2 text-sm font-medium text-ink-800 rounded-full hover:bg-ink-50">
-              Process
-            </Link>
-            <Link href="/about" className="px-4 py-2 text-sm font-medium text-ink-800 rounded-full hover:bg-ink-50">
-              About
-            </Link>
+            <MegaItem
+              label="Who We Serve"
+              open={open === "serve"}
+              onOpen={() => setOpen(open === "serve" ? null : "serve")}
+              onClose={() => setOpen(null)}
+            >
+              <div className="p-4 w-[300px] space-y-1">
+                <Link href="/commercial" onClick={() => setOpen(null)} className="mega-link">
+                  <div>
+                    <div className="text-sm font-medium text-ink-800">Commercial & Strata</div>
+                    <div className="text-xs text-ink-400 mt-0.5">Portfolios, councils, facilities</div>
+                  </div>
+                </Link>
+                <Link href="/residential" onClick={() => setOpen(null)} className="mega-link">
+                  <div>
+                    <div className="text-sm font-medium text-ink-800">Residential</div>
+                    <div className="text-xs text-ink-400 mt-0.5">Homeowners and installs</div>
+                  </div>
+                </Link>
+              </div>
+            </MegaItem>
+
+            <MegaItem
+              label="Company"
+              open={open === "company"}
+              onOpen={() => setOpen(open === "company" ? null : "company")}
+              onClose={() => setOpen(null)}
+            >
+              <div className="p-4 w-[300px] space-y-1">
+                {[
+                  ["About Woola", "/about", "The model behind the four divisions"],
+                  ["Featured Work", "/work", "Recent projects across BC"],
+                  ["Our Process", "/process", "Four steps, every job"],
+                  ["Why Woola", "/competitors", "How we compare"],
+                  ["Estimator", "/calculator", "Rough numbers in 60 seconds"],
+                ].map(([label, href, sub]) => (
+                  <Link key={href} href={href} onClick={() => setOpen(null)} className="mega-link">
+                    <div>
+                      <div className="text-sm font-medium text-ink-800">{label}</div>
+                      <div className="text-xs text-ink-400 mt-0.5">{sub}</div>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </MegaItem>
           </nav>
 
           <div className="hidden lg:flex items-center gap-3">
-            <a
-              href={`tel:${site.phone}`}
-              className="flex items-center gap-2 text-sm text-ink-800"
-            >
-              <Phone className="w-4 h-4" strokeWidth={1.6} />
-              <span className="font-medium">{site.phone}</span>
-            </a>
             <Link href="/book" className="btn btn-ghost">
               Book a meeting
             </Link>

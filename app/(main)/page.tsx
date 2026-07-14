@@ -7,6 +7,7 @@ import { ServiceMap } from "@/components/ServiceMap";
 import { Calculator } from "@/components/Calculator";
 import { Testimonials } from "@/components/Testimonials";
 import { CTABanner } from "@/components/CTABanner";
+import { BuildingXray } from "@/components/BuildingXray";
 import { divisions } from "@/lib/divisions";
 import { cities } from "@/lib/cities";
 import { site } from "@/lib/site";
@@ -69,6 +70,17 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <Section>
+        <SectionHead
+          eyebrow="Interactive · Building X-Ray"
+          title="Every building is a countdown. See yours."
+          description="Drag the age slider and watch each system move toward renewal. This is how we plan maintenance: by remaining service life, not by waiting for the failure call."
+        />
+        <div className="mt-12">
+          <BuildingXray />
+        </div>
+      </Section>
 
       <section className="bg-cream-100 border-y hairline">
         <div className="container-x section">
