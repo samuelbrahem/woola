@@ -4,7 +4,6 @@ import { Section, SectionHead } from "@/components/Section";
 import { DivisionCard } from "@/components/DivisionCard";
 import { Stats } from "@/components/Stats";
 import { ServiceMap } from "@/components/ServiceMap";
-import { Calculator } from "@/components/Calculator";
 import { Testimonials } from "@/components/Testimonials";
 import { CTABanner } from "@/components/CTABanner";
 import { BuildingXray } from "@/components/BuildingXray";
@@ -146,19 +145,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-      <Section>
-        <div className="grid lg:grid-cols-12 gap-10 mb-12">
-          <div className="lg:col-span-7">
-            <SectionHead
-              eyebrow="Free tool"
-              title="Estimate your mechanical project in 60 seconds."
-              description="Move the sliders. We'll show equipment, labour, rebate and net cost ranges based on BC market data before anyone visits your home."
-            />
-          </div>
-        </div>
-        <Calculator />
-      </Section>
 
       <section className="bg-ink-800 text-cream-50 relative overflow-hidden">
         <div className="grain" />
