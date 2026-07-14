@@ -1,8 +1,6 @@
 import Link from "next/link";
-import Image from "next/image";
 import { ArrowRight, Calculator, MapPin, ShieldCheck } from "lucide-react";
 import { site } from "@/lib/site";
-import { divisions } from "@/lib/divisions";
 
 export function Hero() {
   return (
@@ -80,32 +78,6 @@ export function Hero() {
               </div>
             </div>
           </div>
-        </div>
-
-        <div className="mt-16 grid grid-cols-2 lg:grid-cols-4 gap-3">
-          {divisions.map((d, i) => (
-            <Link
-              key={d.slug}
-              href={`/${d.slug}`}
-              data-reveal
-              className={`relative overflow-hidden rounded-md group aspect-[4/3] lg:aspect-[3/4] ${
-                i % 2 === 1 ? "lg:mt-8" : ""
-              }`}
-            >
-              <Image
-                src={d.heroImage}
-                alt={d.heroImageAlt}
-                fill
-                sizes="(min-width: 1024px) 25vw, 50vw"
-                className="object-cover transition-transform duration-500 group-hover:scale-[1.05]"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink-900/70 via-ink-900/10 to-transparent" />
-              <div className="absolute bottom-0 inset-x-0 p-4">
-                <div className="text-cream-50 text-sm font-semibold">{d.name}</div>
-                <div className="text-cream-100/70 text-xs mt-0.5">{d.subtitle}</div>
-              </div>
-            </Link>
-          ))}
         </div>
 
         <div className="mt-16 pt-10 border-t hairline">
