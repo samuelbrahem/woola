@@ -15,7 +15,7 @@ const regionOrder = [
 ];
 
 export const metadata = {
-  title: "Service Areas — Abbotsford to Whistler",
+  title: "Service Areas: Abbotsford to Whistler",
   description: "Woola serves 20+ municipalities across Metro Vancouver, the Fraser Valley, and the Sea-to-Sky Corridor.",
 };
 

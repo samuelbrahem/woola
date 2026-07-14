@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import { ChevronLeft, ChevronRight, Clock, Video, Phone, CheckCircle2, CalendarCheck } from "lucide-react";
 
 const MEETING_TYPES = [
-  { id: "intro", label: "Intro call", length: "15 min", icon: Phone, blurb: "Quick fit check — your buildings, our coverage." },
+  { id: "intro", label: "Intro call", length: "15 min", icon: Phone, blurb: "Quick fit check: your buildings, our coverage." },
   { id: "walkthrough", label: "Walk-through planning", length: "45 min", icon: Video, blurb: "Scope a site visit and maintenance plan." },
   { id: "portfolio", label: "Portfolio review", length: "60 min", icon: CalendarCheck, blurb: "Multi-building strategy with a senior advisor." },
 ];
@@ -83,7 +83,7 @@ export function BookingCalendar() {
               }`}
             >
               <div className={`w-10 h-10 rounded-full flex items-center justify-center shrink-0 ${active ? "bg-brand-500 text-cream-50" : "bg-cream-100 text-ink-700"}`}>
-                <Icon className="w-4.5 h-4.5 w-5 h-5" strokeWidth={1.5} />
+                <Icon className="w-5 h-5" strokeWidth={1.5} />
               </div>
               <div>
                 <div className="flex items-baseline gap-2">

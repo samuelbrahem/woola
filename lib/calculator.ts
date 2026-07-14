@@ -149,7 +149,7 @@ export function estimate(input: CalculatorInput): CalculatorResult {
     notes.push("New ductwork adds material cost. We size and design ducts to TECA Quality First standards.");
   }
   if (input.sqft > 3500) {
-    notes.push("Homes over 3,500 sqft often benefit from zoned systems — we'll quote those at the in-home estimate.");
+    notes.push("Homes over 3,500 sqft often benefit from zoned systems; we'll quote those at the in-home estimate.");
   }
   if (input.system === "furnace_ac") {
     notes.push("Pairing furnace with AC during install saves ~$1,800 vs. installing them separately later.");

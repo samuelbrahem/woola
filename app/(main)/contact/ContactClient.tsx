@@ -22,7 +22,7 @@ export default function ContactClient() {
               </h1>
               <p className="mt-5 text-lg text-ink-500">
                 A coordinator gets in touch within one business day. For contracted-client emergencies, call our
-                24/7 line — {site.phone}.
+                24/7 line at {site.phone}.
               </p>
             </div>
             <div className="lg:col-span-5 hidden lg:block">
@@ -86,7 +86,7 @@ export default function ContactClient() {
                     {divisions.map((d) => (
                       <option key={d.slug} value={d.slug}>{d.name}</option>
                     ))}
-                    <option value="emergency">Emergency — call dispatch</option>
+                    <option value="emergency">Emergency: call dispatch</option>
                   </select>
                 </div>
                 <div>

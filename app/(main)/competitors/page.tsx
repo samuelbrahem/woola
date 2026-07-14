@@ -5,13 +5,13 @@ import { competitors } from "@/lib/competitors";
 import { Check, X, ExternalLink, ArrowRight } from "lucide-react";
 
 export const metadata = {
-  title: "Why Woola — Comparison",
+  title: "Why Woola: Comparison",
   description: "How Woola compares to the multi-vendor stack most property managers run today.",
 };
 
 const woolaRow = {
   name: "Woola",
-  focus: "Mechanical · Electrical · Build — coordinated",
+  focus: "Mechanical · Electrical · Build, coordinated",
   hasCalculator: true,
   has247: true,
   hasRebates: true,

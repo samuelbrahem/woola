@@ -37,7 +37,7 @@ export function Calculator({ compact = false }: { compact?: boolean }) {
           Tell us about the home.
         </h3>
         <p className="text-sm text-ink-500 mb-6">
-          Results are pre-site-visit estimates based on equipment tier and BC averages — they aren't quotes.
+          Results are pre-site-visit estimates based on equipment tier and BC averages. They aren't quotes.
         </p>
 
         <div className="space-y-6">

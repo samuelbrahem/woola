@@ -72,7 +72,7 @@ export function Header() {
               </div>
               <div className="border-t hairline bg-cream-100 px-8 py-4 flex items-center justify-between text-sm">
                 <span className="text-ink-500">
-                  One PO across four divisions — coordinated by a single dispatcher.
+                  One PO across four divisions, coordinated by a single dispatcher.
                 </span>
                 <Link
                   href="/about"
@@ -112,7 +112,7 @@ export function Header() {
                 </div>
                 <div className="mt-6 pt-6 border-t hairline flex items-center justify-between">
                   <span className="text-sm text-ink-500">
-                    {cities.length} municipalities — Abbotsford to Whistler.
+                    {cities.length} municipalities, Abbotsford to Whistler.
                   </span>
                   <Link
                     href="/service-areas"
@@ -125,11 +125,14 @@ export function Header() {
               </div>
             </MegaItem>
 
+            <Link href="/commercial" className="px-4 py-2 text-sm font-medium text-ink-800 rounded-full hover:bg-ink-50">
+              Commercial
+            </Link>
+            <Link href="/residential" className="px-4 py-2 text-sm font-medium text-ink-800 rounded-full hover:bg-ink-50">
+              Residential
+            </Link>
             <Link href="/calculator" className="px-4 py-2 text-sm font-medium text-ink-800 rounded-full hover:bg-ink-50">
               Estimator
-            </Link>
-            <Link href="/competitors" className="px-4 py-2 text-sm font-medium text-ink-800 rounded-full hover:bg-ink-50">
-              Why Woola
             </Link>
             <Link href="/about" className="px-4 py-2 text-sm font-medium text-ink-800 rounded-full hover:bg-ink-50">
               About
@@ -189,6 +192,8 @@ export function Header() {
               </div>
             ))}
             <div className="border-t hairline pt-4 space-y-2">
+              <Link href="/commercial" onClick={() => setMobileOpen(false)} className="block font-medium">Commercial</Link>
+              <Link href="/residential" onClick={() => setMobileOpen(false)} className="block font-medium">Residential</Link>
               <Link href="/book" onClick={() => setMobileOpen(false)} className="block font-medium">Book a meeting</Link>
               <Link href="/calculator" onClick={() => setMobileOpen(false)} className="block font-medium">Estimator</Link>
               <Link href="/service-areas" onClick={() => setMobileOpen(false)} className="block font-medium">Service Areas</Link>

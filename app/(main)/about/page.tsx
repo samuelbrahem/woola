@@ -26,12 +26,12 @@ export default function AboutPage() {
             </div>
             <div className="lg:col-span-5 lg:pt-10">
               <p className="text-lg text-ink-500 leading-relaxed">
-                Most building services companies inherited their structure from a single trade — and bolted
+                Most building services companies inherited their structure from a single trade and bolted
                 others on as customers demanded them. Woola was set up differently. From day one we organized
                 around the property manager's problem, not the trade union's.
               </p>
               <p className="mt-4 text-lg text-ink-500 leading-relaxed">
-                The result is four sister divisions — Mechanical, Power, Electrical, and Build —
+                The result is four sister divisions, Mechanical, Power, Electrical, and Build,
                 sharing one operations spine, one dispatcher, and one accountable PO across every job.
               </p>
             </div>
@@ -84,7 +84,7 @@ export default function AboutPage() {
           <SectionHead
             eyebrow="The model"
             title="One company. Four divisions. Built around the property."
-            description="Each division has a dedicated phone number, dispatcher, and trade qualifications — and shares the back office, reporting platform, and 24/7 emergency line."
+            description="Each division has a dedicated phone number, dispatcher, and trade qualifications, and shares the back office, reporting platform, and 24/7 emergency line."
           />
           <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {divisions.map((d, i) => (
@@ -161,7 +161,7 @@ export default function AboutPage() {
 
       <CTABanner
         title="Tour our shop."
-        description="42 Fawcett Road in Coquitlam. We host property managers, councils, and developers — bring the buildings you're worried about and we'll walk through the work."
+        description="42 Fawcett Road in Coquitlam. We host property managers, councils, and developers. Bring the buildings you're worried about and we'll walk through the work."
       />
     </>
   );

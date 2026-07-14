@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   const c = getCity(params.city);
   if (!c) return {};
   const canonical = `https://woola.ca/service-areas/${c.slug}`;
-  const title = `${c.name} — Mechanical, Electrical & Building Services`;
+  const title = `${c.name} | Mechanical, Electrical & Building Services`;
   return {
     title,
     description: c.blurb,
@@ -151,7 +151,7 @@ export default function CityPage({ params }: { params: Params }) {
         <SectionHead
           eyebrow={`${city.name} estimator`}
           title="Estimate your project in this market."
-          description="The estimator uses BC averages — local crew rates and any city-specific permit fees are layered in at the in-home visit."
+          description="The estimator uses BC averages. Local crew rates and any city-specific permit fees are layered in at the in-home visit."
         />
         <div className="mt-10">
           <Calculator />
@@ -183,7 +183,7 @@ export default function CityPage({ params }: { params: Params }) {
       </Section>
 
       <CTABanner
-        title={`A coordinator for ${city.name} — not a 1-800 number.`}
+        title={`A coordinator for ${city.name}, not a 1-800 number.`}
         description={`Your job is run by a dispatcher who knows ${city.name} routes, parts suppliers, and permit windows.`}
       />
     </>

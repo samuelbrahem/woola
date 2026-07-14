@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   const found = getService(params.division, params.service);
   if (!found) return {};
   const canonical = `https://woola.ca/${found.division.slug}/${found.service.slug}`;
-  const title = `${found.service.name} — ${found.division.name}`;
+  const title = `${found.service.name} | ${found.division.name}`;
   return {
     title,
     description: found.service.description,
@@ -65,7 +65,7 @@ const scopeDeepDive: Record<string, { name: string; lines: string[] }[]> = {
   "c282-testing": [
     { name: "Annual C282 test", lines: ["Stepped load bank run to full nameplate.", "Readings logged at code intervals.", "Signed compliance report filed for you."] },
     { name: "Monthly programs", lines: ["On-load exercise runs between annual tests.", "Test log maintained on site and digitally.", "Insurer and AHJ document packages."] },
-    { name: "Deficiencies", lines: ["Wet-stacking correction runs.", "Written deficiency list with repair quote in 48 h.", "Repairs by the same division — one PO."] },
+    { name: "Deficiencies", lines: ["Wet-stacking correction runs.", "Written deficiency list with repair quote in 48 h.", "Repairs by the same division under one PO."] },
   ],
   "transfer-switches": [
     { name: "Inspection & testing", lines: ["Contact resistance and transfer-time testing.", "Infrared scans on lugs and contacts.", "Exercise clock and retransfer settings verified."] },
@@ -73,7 +73,7 @@ const scopeDeepDive: Record<string, { name: string; lines: string[] }[]> = {
     { name: "Controls & monitoring", lines: ["Remote annunciator installation.", "Paralleling gear service for multi-unit plants.", "Alarm and status reporting to your phone."] },
   ],
   "fuel-systems": [
-    { name: "Fuel polishing", lines: ["On-site polishing rig — fuel stays in the tank.", "Water separation and fine filtration.", "Before/after lab results in writing."] },
+    { name: "Fuel polishing", lines: ["On-site polishing rig, so fuel stays in the tank.", "Water separation and fine filtration.", "Before/after lab results in writing."] },
     { name: "Tank service", lines: ["Tank cleaning and sludge removal.", "Integrity and containment inspections.", "Day tank and transfer pump service."] },
     { name: "Programs", lines: ["Annual sample-and-polish contracts.", "Biocide treatment dosing.", "Runtime capacity verification to C282."] },
   ],
@@ -128,12 +128,12 @@ const equipmentHeading: Record<string, { title: string; description: string }> =
   build: {
     title: "Assets we look after.",
     description:
-      "The building systems and finishes we're dispatched to most. If yours isn't listed, ask — we probably handle it.",
+      "The building systems and finishes we're dispatched to most. If yours isn't listed, ask. We probably handle it.",
   },
   default: {
     title: "Equipment we service.",
     description:
-      "The equipment our technicians install, maintain, and repair every week. If yours isn't listed, ask — we probably service it.",
+      "The equipment our technicians install, maintain, and repair every week. If yours isn't listed, ask. We probably service it.",
   },
 };
 
@@ -277,7 +277,7 @@ export default function ServicePage({ params }: { params: Params }) {
         <Section>
           <SectionHead
             eyebrow="Scope"
-            title="What we actually do — in detail."
+            title="What we actually do, in detail."
             description="The trade-by-trade work we book under this service. If your scope isn't listed, ask. We probably do it."
           />
           <div className="mt-12 grid md:grid-cols-3 gap-6">

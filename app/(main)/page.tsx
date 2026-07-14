@@ -28,26 +28,68 @@ export default function HomePage() {
         </div>
       </Section>
 
+      <section className="border-y hairline bg-white">
+        <div className="container-x section">
+          <SectionHead
+            eyebrow="Who we serve"
+            title="Two kinds of clients. Two ways of working."
+            description="Commercial portfolios and private homes run on different rhythms, so we run them as separate programs with dedicated intake, scheduling, and reporting."
+          />
+          <div className="mt-12 grid md:grid-cols-2 gap-6">
+            <Link href="/commercial" className="card p-9 group flex flex-col">
+              <div className="eyebrow">Strata · Commercial · Industrial</div>
+              <h3 className="mt-3 text-2xl md:text-3xl font-bold text-ink-800 tracking-tight">
+                Commercial & Strata
+              </h3>
+              <p className="mt-3 text-sm text-ink-500 leading-relaxed flex-1">
+                Portfolio maintenance contracts, fixed-price proposals, council-ready
+                reporting, and 24/7 emergency response under a single PO. Built for
+                property managers, strata councils, and facility directors.
+              </p>
+              <div className="mt-6 pt-6 border-t hairline flex items-center justify-between text-sm">
+                <span className="text-ink-500">Maintenance contracts, projects, and emergency SLAs</span>
+                <ArrowRight className="w-4 h-4 text-ink-400 group-hover:text-brand-500 group-hover:translate-x-0.5 transition" />
+              </div>
+            </Link>
+            <Link href="/residential" className="card p-9 group flex flex-col">
+              <div className="eyebrow">Homeowners</div>
+              <h3 className="mt-3 text-2xl md:text-3xl font-bold text-ink-800 tracking-tight">
+                Residential
+              </h3>
+              <p className="mt-3 text-sm text-ink-500 leading-relaxed flex-1">
+                Heat pumps, hot water, gas, EV chargers, and standby power for your
+                home. Upfront pricing, CleanBC and BC Hydro rebates filed for you,
+                and the same licensed techs we send to commercial sites.
+              </p>
+              <div className="mt-6 pt-6 border-t hairline flex items-center justify-between text-sm">
+                <span className="text-ink-500">Installs, replacements, and rebate-eligible upgrades</span>
+                <ArrowRight className="w-4 h-4 text-ink-400 group-hover:text-brand-500 group-hover:translate-x-0.5 transition" />
+              </div>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       <section className="bg-cream-100 border-y hairline">
         <div className="container-x section">
           <div className="grid lg:grid-cols-12 gap-12 items-start">
             <div className="lg:col-span-5">
               <SectionHead
                 eyebrow="The Woola model"
-                title="Built like a sports team. Run like a service company."
-                description="Four divisions sharing one dispatcher, one operations leader, and one accountable PO across every job. If something breaks at 2 AM, you call one number — and our internal coordination figures out which trade rolls."
+                title="Every trade. One team. One call."
+                description="Four divisions sharing one dispatcher, one operations leader, and one accountable PO across every job. If something breaks at 2 AM, you call one number, and our internal coordination figures out which trade rolls."
               />
               <ul className="mt-8 space-y-4">
                 {[
                   {
                     icon: Wrench,
                     title: "Coordinated trades, not subcontracted",
-                    body: "HVAC, plumbing, electrical and building trades are W2 employees on a shared roster — not subs we re-bill.",
+                    body: "HVAC, plumbing, electrical and building trades are W2 employees on a shared roster, not subs we re-bill.",
                   },
                   {
                     icon: Building2,
                     title: "Strata and commercial first",
-                    body: "Our intake, reporting and invoicing is built around the way property managers actually work — not retail residential.",
+                    body: "Our intake, reporting and invoicing is built around the way property managers actually work.",
                   },
                   {
                     icon: Zap,
@@ -99,7 +141,7 @@ export default function HomePage() {
             <SectionHead
               eyebrow="Free tool"
               title="Estimate your mechanical project in 60 seconds."
-              description="Move the sliders. We'll show equipment, labour, rebate and net cost ranges based on BC market data — before anyone visits your home."
+              description="Move the sliders. We'll show equipment, labour, rebate and net cost ranges based on BC market data before anyone visits your home."
             />
           </div>
         </div>
@@ -125,7 +167,7 @@ export default function HomePage() {
         <SectionHead
           eyebrow="Coverage"
           title="From Abbotsford to Whistler, dispatched from Coquitlam."
-          description="Each city gets a dedicated route, response window, and the right truck stock — not a generic call-out."
+          description="Each city gets a dedicated route, response window, and the right truck stock, not a generic call-out."
         />
         <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {cities.slice(0, 9).map((c) => (

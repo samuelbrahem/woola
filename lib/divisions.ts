@@ -199,11 +199,11 @@ export const divisions: Division[] = [
     subtitle: "HVAC, Plumbing & Gas",
     tagline: "Engineered comfort. Verified reliability.",
     description:
-      "Full-spectrum mechanical services for strata, commercial and high-end residential properties — from heat-pump retrofits to industrial refrigeration.",
+      "Full-spectrum mechanical services for strata, commercial and high-end residential properties, from heat-pump retrofits to industrial refrigeration.",
     contactPhone: "604-732-1441",
     contactEmail: "dispatch@woolamech.ca",
     intro:
-      "We design, install, service and maintain the systems that keep buildings comfortable and code-compliant. Our technicians are certified across HVAC, hydronics, gas, and refrigeration — so one team handles what most companies split across four.",
+      "We design, install, service and maintain the systems that keep buildings comfortable and code-compliant. Our technicians are certified across HVAC, hydronics, gas, and refrigeration, so one team handles what most companies split across four.",
     heroImage:
       "https://images.unsplash.com/photo-1527738697320-513f6648bc26?w=1400&q=80&auto=format&fit=crop",
     heroImageAlt: "Aerial view of commercial rooftop HVAC units on a high-rise",
@@ -232,7 +232,7 @@ export const divisions: Division[] = [
     certLogos: ["logo-teca", "logo-worksafe-bc", "logo-asttbc", "logo-hpcn", "logo-pama-member", "logo-interprovincial-standard"],
     testimonial: {
       quote:
-        "We had three vendors for HVAC, plumbing and boilers — and three sets of finger-pointing. Woola Mechanical took over our whole portfolio in 90 days, and I have one phone number now.",
+        "We had three vendors for HVAC, plumbing and boilers, and three sets of finger-pointing. Woola Mechanical took over our whole portfolio in 90 days, and I have one phone number now.",
       author: "Marisa Chen",
       role: "Senior Property Manager",
       org: "Pacific Coast Strata Group",
@@ -251,7 +251,7 @@ export const divisions: Division[] = [
         title: "Surrey strata heat-pump conversion",
         tag: "Decarbonization",
         summary:
-          "184 ductless heat-pump heads across 92 suites — coordinated with the strata, two electrical sub-trades, and FortisBC. Completed three weeks ahead of schedule.",
+          "184 ductless heat-pump heads across 92 suites, coordinated with the strata, two electrical sub-trades, and FortisBC. Completed three weeks ahead of schedule.",
         image:
           "https://images.unsplash.com/photo-1681042803902-f79c240d8f03?w=1200&q=80&auto=format&fit=crop",
         alt: "Rooftop HVAC heat pump units on a multi-family building",
@@ -269,7 +269,7 @@ export const divisions: Division[] = [
     faqs: [
       {
         q: "Do you service residential or only commercial mechanical systems?",
-        a: "Both — we service strata, commercial, and high-end residential. Roughly 60% of our work is multi-residential strata, 30% commercial, and 10% high-end single-family.",
+        a: "Both. We service strata, commercial, and high-end residential. Roughly 60% of our work is multi-residential strata, 30% commercial, and 10% high-end single-family.",
       },
       {
         q: "Are your technicians licensed for both gas and refrigeration?",
@@ -277,7 +277,7 @@ export const divisions: Division[] = [
       },
       {
         q: "Can you handle CleanBC and FortisBC rebate paperwork?",
-        a: "Yes. We're a registered CleanBC Better Homes contractor and a FortisBC trade ally. Rebate paperwork is filed in-house — you don't chase it.",
+        a: "Yes. We're a registered CleanBC Better Homes contractor and a FortisBC trade ally. Rebate paperwork is filed in-house, so you don't chase it.",
       },
       {
         q: "How fast is your emergency response?",
@@ -285,7 +285,7 @@ export const divisions: Division[] = [
       },
       {
         q: "Do you offer fixed-price maintenance contracts?",
-        a: "Yes — most strata and commercial clients sign annual fixed-price PM contracts covering inspections, filter changes, water treatment, and combustion analysis. We then quote remedial work separately at agreed unit rates.",
+        a: "Yes. Most strata and commercial clients sign annual fixed-price PM contracts covering inspections, filter changes, water treatment, and combustion analysis. We then quote remedial work separately at agreed unit rates.",
       },
     ],
     services: [
@@ -304,19 +304,19 @@ export const divisions: Division[] = [
         ],
         primer: {
           what:
-            "HVAC stands for Heating, Ventilation, and Air Conditioning. It's the equipment that heats, cools, and moves fresh air through your building. In a strata that might be a rooftop unit on top of the building, a furnace in a mechanical room, or a heat pump on your balcony. A ductless mini-split is the small wall-mounted unit you see in newer suites — it heats and cools without any ductwork.",
+            "HVAC stands for Heating, Ventilation, and Air Conditioning. It's the equipment that heats, cools, and moves fresh air through your building. In a strata that might be a rooftop unit on top of the building, a furnace in a mechanical room, or a heat pump on your balcony. A ductless mini-split is the small wall-mounted unit you see in newer suites. It heats and cools without any ductwork.",
           image: "/primers/hvac.jpg",
           imageAlt: "Wall-mounted indoor head of a ductless mini-split heat pump",
           imageCredit: "Wikimedia Commons",
           parts: [
             { term: "Heat pump", def: "A single box that heats in winter and cools in summer by moving heat, not burning fuel." },
             { term: "Furnace", def: "Burns natural gas to blow hot air through ducts. Only heats." },
-            { term: "RTU", def: "Rooftop unit — a packaged commercial HVAC box that sits on the roof." },
-            { term: "Ductless mini-split", def: "A wall-mounted head paired with an outdoor condenser — no ducts needed." },
-            { term: "VRF", def: "Variable refrigerant flow — a big-building version of mini-splits that heats and cools different zones at once." },
+            { term: "RTU", def: "Rooftop unit: a packaged commercial HVAC box that sits on the roof." },
+            { term: "Ductless mini-split", def: "A wall-mounted head paired with an outdoor condenser. No ducts needed." },
+            { term: "VRF", def: "Variable refrigerant flow: a big-building version of mini-splits that heats and cools different zones at once." },
             { term: "Ton / BTU", def: "How heating and cooling power is measured. A typical suite needs about one ton (12,000 BTU) of cooling." },
-            { term: "Condenser", def: "The outdoor half of an AC or heat pump — the box with the big fan." },
-            { term: "MERV filter", def: "The furnace filter rating. Higher MERV catches finer dust — most buildings run MERV 8–13." },
+            { term: "Condenser", def: "The outdoor half of an AC or heat pump: the box with the big fan." },
+            { term: "MERV filter", def: "The furnace filter rating. Higher MERV catches finer dust. Most buildings run MERV 8–13." },
             { term: "Make-up air unit", def: "A rooftop fan that pushes fresh air into hallways so suites don't go stale." },
             { term: "Refrigerant", def: "The fluid that moves heat through the system. Older R-22 setups are being phased out for cleaner types." },
           ],
@@ -338,13 +338,13 @@ export const divisions: Division[] = [
         ],
         primer: {
           what:
-            "Plumbing is the network of pipes and fixtures that brings clean water into your building and takes waste water out. It covers your water heater (either a tank in a closet or a tankless unit on the wall), your drains, and the shut-offs behind every sink and toilet. A backflow preventer is a small brass valve that stops dirty water from flowing backwards into the drinking supply — cities require them to be tested every year.",
+            "Plumbing is the network of pipes and fixtures that brings clean water into your building and takes waste water out. It covers your water heater (either a tank in a closet or a tankless unit on the wall), your drains, and the shut-offs behind every sink and toilet. A backflow preventer is a small brass valve that stops dirty water from flowing backwards into the drinking supply. Cities require them to be tested every year.",
           image: "/primers/plumbing.jpg",
           imageAlt: "Wall-mounted tankless (on-demand) gas water heaters",
           imageCredit: "Wikimedia Commons",
           parts: [
             { term: "Tank water heater", def: "The tall cylinder in a closet that stores 40–75 gallons of hot water." },
-            { term: "Tankless", def: "A small wall box that heats water only when you turn on a tap — no storage." },
+            { term: "Tankless", def: "A small wall box that heats water only when you turn on a tap, with no storage." },
             { term: "Backflow preventer", def: "A brass valve that stops dirty water from siphoning into the drinking supply." },
             { term: "Drain stack", def: "The vertical pipe that carries wastewater from every floor down to the sewer." },
             { term: "Re-pipe", def: "Replacing old failing pipe (often copper or galvanized) throughout a building or suite." },
@@ -362,7 +362,7 @@ export const divisions: Division[] = [
         name: "Gas Services",
         short: "Licensed gas fitting",
         description:
-          "Boilers, hydronic systems, rooftop units, restaurant lines, fireplaces, and BBQ rough-ins — installed and maintained by ticketed Class A and B gas fitters.",
+          "Boilers, hydronic systems, rooftop units, restaurant lines, fireplaces, and BBQ rough-ins, installed and maintained by ticketed Class A and B gas fitters.",
         icon: Flame,
         highlights: [
           "Class A & B gas fitters on staff",
@@ -372,18 +372,18 @@ export const divisions: Division[] = [
         ],
         primer: {
           what:
-            "Gas services install and maintain natural gas lines and everything that burns them — boilers, fireplaces, ranges, patio hookups, and rooftop heaters. A condensing boiler is a wall-hung box that heats water for hot-water heating loops; the newer models are up to 96% efficient. Only licensed Class A and Class B gas fitters can legally do this work in BC.",
+            "Gas services install and maintain natural gas lines and everything that burns them: boilers, fireplaces, ranges, patio hookups, and rooftop heaters. A condensing boiler is a wall-hung box that heats water for hot-water heating loops; the newer models are up to 96% efficient. Only licensed Class A and Class B gas fitters can legally do this work in BC.",
           image: "/primers/gas.jpg",
           imageAlt: "Viessmann Vitodens 200 wall-hung condensing gas boiler",
           imageCredit: "Wikimedia Commons",
           parts: [
             { term: "Condensing boiler", def: "A high-efficiency wall-hung box that burns gas to heat water for hot-water heat loops." },
-            { term: "Class A ticket", def: "The higher gas licence — required for commercial and larger residential work." },
+            { term: "Class A ticket", def: "The higher gas licence, required for commercial and larger residential work." },
             { term: "Combustion analysis", def: "A digital meter check to confirm a burner is running clean and efficient." },
-            { term: "Rough-in", def: "The initial pipe run before drywall goes up — the gas line to your BBQ or range." },
-            { term: "BTU load", def: "The total gas demand of your appliances — it decides the pipe size a fitter must run." },
+            { term: "Rough-in", def: "The initial pipe run before drywall goes up: the gas line to your BBQ or range." },
+            { term: "BTU load", def: "The total gas demand of your appliances. It decides the pipe size a fitter must run." },
             { term: "Direct vent", def: "A sealed two-pipe setup that pulls outdoor air in and pushes exhaust out. No chimney needed." },
-            { term: "Hydronics", def: "Heating with hot water pumped through pipes — baseboards, in-floor loops, and rooftop coils." },
+            { term: "Hydronics", def: "Heating with hot water pumped through pipes: baseboards, in-floor loops, and rooftop coils." },
             { term: "Gas pressure test", def: "A licensed leak check on the piping system, required after most alterations." },
             { term: "Snowmelt system", def: "A heated glycol loop under a driveway or ramp that keeps it ice-free in winter." },
           ],
@@ -405,7 +405,7 @@ export const divisions: Division[] = [
         ],
         primer: {
           what:
-            "Commercial refrigeration is the cooling equipment used by grocers, restaurants, and labs. A walk-in cooler is exactly what it sounds like — a room-sized insulated box, usually with the compressor rack on the roof or in a back room. Newer systems use A2L or natural refrigerants that are less harmful to the atmosphere than the older R-22 refrigerant, which is being phased out.",
+            "Commercial refrigeration is the cooling equipment used by grocers, restaurants, and labs. A walk-in cooler is exactly what it sounds like: a room-sized insulated box, usually with the compressor rack on the roof or in a back room. Newer systems use A2L or natural refrigerants that are less harmful to the atmosphere than the older R-22 refrigerant, which is being phased out.",
           image: "/primers/refrigeration.jpg",
           imageAlt: "Interior of a walk-in cooler with insulated walls",
           imageCredit: "Wikimedia Commons",
@@ -413,12 +413,12 @@ export const divisions: Division[] = [
             { term: "Walk-in", def: "A room-sized insulated cooler or freezer with a heavy door and a separate compressor." },
             { term: "Compressor rack", def: "The pump and motor assembly that makes the refrigerant cold. Usually on the roof." },
             { term: "Glycol loop", def: "A closed circuit of chilled glycol that carries cold from a plant to many display cases." },
-            { term: "Refrigerant recovery", def: "Legally required capture of old refrigerant into a cylinder — you can't vent it to the air." },
-            { term: "Reach-in", def: "The standard upright commercial fridge or freezer with doors — the workhorse of every kitchen." },
+            { term: "Refrigerant recovery", def: "Legally required capture of old refrigerant into a cylinder. You can't vent it to the air." },
+            { term: "Reach-in", def: "The standard upright commercial fridge or freezer with doors, the workhorse of every kitchen." },
             { term: "Condensing unit", def: "The compressor-and-fan package that makes the cold. Usually on the roof or behind the building." },
             { term: "Defrost cycle", def: "A timed heat cycle that melts frost off the coils. When it fails, cases ice up and then warm up." },
             { term: "Case controller", def: "The small digital brain on each display case that holds temperature and logs alarms." },
-            { term: "R-22 phase-out", def: "The old refrigerant is banned from new supply — aging systems either retrofit or replace." },
+            { term: "R-22 phase-out", def: "The old refrigerant is banned from new supply, so aging systems either retrofit or replace." },
           ],
         },
         equipment: EQUIPMENT.refrigeration,
@@ -431,11 +431,11 @@ export const divisions: Division[] = [
     subtitle: "Standby Generators & Backup Power",
     tagline: "Standby power. Permanent peace of mind.",
     description:
-      "Generator-first standby power services — annual CSA C282 inspections, load bank testing, transfer switch service, and 24/7 emergency response for BC's most critical facilities.",
+      "Generator-first standby power services: annual CSA C282 inspections, load bank testing, transfer switch service, and 24/7 emergency response for BC's most critical facilities.",
     contactPhone: "604-829-9156",
     contactEmail: "service@woolapower.ca",
     intro:
-      "Woola Power was built around the most demanding electrical asset in any building — the emergency standby generator. We are factory-authorized service providers for Generac, Kohler, and Cummins, own our own load banks, and dispatch 24/7 across BC.",
+      "Woola Power was built around the most demanding electrical asset in any building: the emergency standby generator. We are factory-authorized service providers for Generac, Kohler, and Cummins, own our own load banks, and dispatch 24/7 across BC.",
     heroImage:
       "https://images.unsplash.com/photo-1637296001293-43ec1ac4e5ed?w=1400&q=80&auto=format&fit=crop",
     heroImageAlt: "Industrial diesel generator engine room",
@@ -505,7 +505,7 @@ export const divisions: Division[] = [
       },
       {
         q: "Do you do load-bank testing in-house?",
-        a: "Yes — we own and operate resistive and reactive load banks up to 850 kW. We can run annual CSA C282 testing without subcontracting, which keeps schedules tight and costs predictable.",
+        a: "Yes. We own and operate resistive and reactive load banks up to 850 kW. We can run annual CSA C282 testing without subcontracting, which keeps schedules tight and costs predictable.",
       },
       {
         q: "What's included in a standard generator maintenance package?",
@@ -513,7 +513,7 @@ export const divisions: Division[] = [
       },
       {
         q: "Do you handle diesel fuel testing and polishing?",
-        a: "Yes. Diesel goes bad in a tank — water, microbes, and sludge. We test annually and polish (filter) fuel on schedule so your generator actually starts when the grid drops.",
+        a: "Yes. Diesel goes bad in a tank: water, microbes, and sludge. We test annually and polish (filter) fuel on schedule so your generator actually starts when the grid drops.",
       },
       {
         q: "Can you upgrade or replace an ATS on a live building?",
@@ -526,7 +526,7 @@ export const divisions: Division[] = [
         name: "Standby Generators",
         short: "Emergency power systems",
         description:
-          "Generator supply, installation, and preventative maintenance — oil and filter service, coolant and battery checks, minor repair, and 24/7 emergency response for Generac, Kohler, and Cummins units.",
+          "Generator supply, installation, and preventative maintenance: oil and filter service, coolant and battery checks, minor repair, and 24/7 emergency response for Generac, Kohler, and Cummins units.",
         icon: Zap,
         highlights: [
           "CSA C282 annual inspections",
@@ -541,16 +541,16 @@ export const divisions: Division[] = [
           imageAlt: "Commercial standby diesel generator in a weatherproof enclosure outside a building",
           imageCredit: "Wikimedia Commons",
           parts: [
-            { term: "ATS", def: "Automatic Transfer Switch — the brain that senses grid loss and starts the generator in seconds." },
+            { term: "ATS", def: "Automatic Transfer Switch: the brain that senses grid loss and starts the generator in seconds." },
             { term: "Load bank", def: "A big resistor pack that fakes a building's electrical load so we can test the generator at full output." },
             { term: "CSA C282", def: "The Canadian standard that requires yearly load-bank testing of emergency generators." },
-            { term: "Fuel polishing", def: "Filtering the diesel in the storage tank so it stays clean — old diesel grows sludge and won't start." },
+            { term: "Fuel polishing", def: "Filtering the diesel in the storage tank so it stays clean. Old diesel grows sludge and won't start." },
             { term: "kW rating", def: "How much power the generator can produce. A single-family house needs ~20 kW; a hospital wing might need 750 kW." },
             { term: "Standby vs portable", def: "A standby unit is permanently wired and starts itself. A portable is wheeled out and plugged in." },
-            { term: "Genset", def: "Short for generator set — the engine and alternator packaged together." },
+            { term: "Genset", def: "Short for generator set: the engine and alternator packaged together." },
             { term: "Transfer time", def: "The few seconds between the grid dropping and your generator picking up the load." },
             { term: "Diesel vs natural gas", def: "Diesel stores energy on-site but needs fuel care; natural gas runs as long as the utility line stays up." },
-            { term: "Weekly exercise", def: "A short automatic self-test run, so problems show up on a Tuesday morning — not during an outage." },
+            { term: "Weekly exercise", def: "A short automatic self-test run, so problems show up on a Tuesday morning, not during an outage." },
           ],
         },
         equipment: EQUIPMENT.generators,
@@ -560,28 +560,28 @@ export const divisions: Division[] = [
         name: "CSA C282 & Load Bank Testing",
         short: "Annual compliance testing",
         description:
-          "Annual CSA C282 emergency generator inspections and resistive load bank testing — with the compliance report your AHJ, insurer, and strata council actually need on file.",
+          "Annual CSA C282 emergency generator inspections and resistive load bank testing, with the compliance report your AHJ, insurer, and strata council actually need on file.",
         icon: Gauge,
         highlights: [
-          "Own fleet of load banks — no rental delays",
+          "Own fleet of load banks, no rental delays",
           "C282 reports filed and archived for you",
           "Wet-stacking diagnosis and correction",
           "Deficiency quotes within 48 hours",
         ],
         primer: {
           what:
-            "CSA C282 is the Canadian standard for emergency power in buildings. If your building has an emergency generator, the standard requires a full annual test under real load — not just letting it idle. A load bank is a portable resistor pack that safely fakes your building's electrical demand so the generator can be pushed to full output and proven, without touching your live power. Skip the test and you risk failed insurance claims, AHJ orders, and a generator that dies the one night it matters.",
+            "CSA C282 is the Canadian standard for emergency power in buildings. If your building has an emergency generator, the standard requires a full annual test under real load, not just letting it idle. A load bank is a portable resistor pack that safely fakes your building's electrical demand so the generator can be pushed to full output and proven, without touching your live power. Skip the test and you risk failed insurance claims, AHJ orders, and a generator that dies the one night it matters.",
           image: "/primers/c282-testing.jpg",
           imageAlt: "Portable resistive load bank used for annual generator testing",
           imageCredit: "Wikimedia Commons",
           parts: [
-            { term: "CSA C282", def: "The Canadian standard for emergency electrical power supply in buildings — it mandates annual full-load testing." },
+            { term: "CSA C282", def: "The Canadian standard for emergency electrical power supply in buildings. It mandates annual full-load testing." },
             { term: "Load bank", def: "A big resistor pack that simulates your building's load so the generator can be tested at full output." },
-            { term: "AHJ", def: "Authority Having Jurisdiction — the fire department or safety authority that can demand your test records." },
+            { term: "AHJ", def: "Authority Having Jurisdiction: the fire department or safety authority that can demand your test records." },
             { term: "Wet stacking", def: "Unburned fuel building up in a diesel that only ever idles. Full-load testing burns it off." },
             { term: "Two-hour test", def: "The annual C282 run: stepped loading up to full nameplate rating, logged at intervals." },
             { term: "Monthly exercise", def: "The lighter on-load run the standard requires between annual tests." },
-            { term: "Test log", def: "The record book of every run, reading, and repair — the first thing an inspector or adjuster asks for." },
+            { term: "Test log", def: "The record book of every run, reading, and repair, and the first thing an inspector or adjuster asks for." },
             { term: "Deficiency report", def: "The written list of anything that failed or drifted out of spec, with a repair quote attached." },
           ],
         },
@@ -592,7 +592,7 @@ export const divisions: Division[] = [
         name: "Transfer Switches & Controls",
         short: "ATS service & upgrades",
         description:
-          "Automatic transfer switch inspection, testing, repair, and replacement — plus generator controllers, remote annunciators, and paralleling gear for multi-unit plants.",
+          "Automatic transfer switch inspection, testing, repair, and replacement, plus generator controllers, remote annunciators, and paralleling gear for multi-unit plants.",
         icon: Plug,
         highlights: [
           "ASCO, Zenith, Cummins, Generac ATS service",
@@ -602,18 +602,18 @@ export const divisions: Division[] = [
         ],
         primer: {
           what:
-            "The automatic transfer switch, or ATS, is the decision-maker of your backup power system. It watches utility power around the clock; the moment the grid drops, it signals the generator to start and flips the building's critical circuits over — usually in under ten seconds. When power returns, it transfers back and cools the generator down. Most backup power failures we investigate turn out to be a transfer switch problem, not a generator problem, which is why it deserves its own inspection.",
+            "The automatic transfer switch, or ATS, is the decision-maker of your backup power system. It watches utility power around the clock; the moment the grid drops, it signals the generator to start and flips the building's critical circuits over, usually in under ten seconds. When power returns, it transfers back and cools the generator down. Most backup power failures we investigate turn out to be a transfer switch problem, not a generator problem, which is why it deserves its own inspection.",
           image: "/primers/transfer-switches.jpg",
           imageAlt: "Automatic transfer switch cabinet in a building power room",
           imageCredit: "Wikimedia Commons",
           parts: [
-            { term: "ATS", def: "Automatic Transfer Switch — senses grid loss, starts the generator, and moves the load over." },
+            { term: "ATS", def: "Automatic Transfer Switch. It senses grid loss, starts the generator, and moves the load over." },
             { term: "Open vs closed transition", def: "Open breaks power for a blink during transfer; closed overlaps both sources for zero interruption." },
             { term: "Bypass isolation", def: "An ATS design that lets us service the switch without killing power to the building." },
-            { term: "Annunciator", def: "The small remote panel — often at the concierge desk — that shows generator status and alarms." },
+            { term: "Annunciator", def: "The small remote panel, often at the concierge desk, that shows generator status and alarms." },
             { term: "Paralleling gear", def: "Switchgear that lets multiple generators share one building load as a coordinated plant." },
             { term: "Exercise clock", def: "The timer inside the ATS that runs the generator's weekly self-test automatically." },
-            { term: "Infrared scan", def: "A thermal camera pass over lugs and contacts — hot spots show loose connections before they fail." },
+            { term: "Infrared scan", def: "A thermal camera pass over lugs and contacts. Hot spots show loose connections before they fail." },
             { term: "Retransfer delay", def: "The wait after utility power returns before switching back, so a flickering grid doesn't bounce your building." },
           ],
         },
@@ -634,7 +634,7 @@ export const divisions: Division[] = [
         ],
         primer: {
           what:
-            "Diesel goes bad. Sitting in a tank for a year or two, it absorbs water, grows microbial sludge, and oxidizes — and the first time anyone finds out is when the generator starves mid-outage. Fuel polishing pumps the tank contents through fine filters and water separators until the fuel meets spec again, without replacing it. For buildings that depend on stored diesel, an annual sample-and-polish program costs a fraction of one emergency fuel swap — or one failed outage.",
+            "Diesel goes bad. Sitting in a tank for a year or two, it absorbs water, grows microbial sludge, and oxidizes, and the first time anyone finds out is when the generator starves mid-outage. Fuel polishing pumps the tank contents through fine filters and water separators until the fuel meets spec again, without replacing it. For buildings that depend on stored diesel, an annual sample-and-polish program costs a fraction of one emergency fuel swap, or one failed outage.",
           image: "/primers/fuel-systems.jpg",
           imageAlt: "Aboveground diesel storage tank for a standby generator",
           imageCredit: "Wikimedia Commons",
@@ -642,11 +642,11 @@ export const divisions: Division[] = [
             { term: "Fuel polishing", def: "Circulating stored diesel through filters and water separators until it's clean enough to burn reliably." },
             { term: "Diesel bug", def: "Microbes that live at the fuel-water interface and grow sludge that clogs filters." },
             { term: "Day tank", def: "The small tank beside the generator that gravity-feeds the engine, refilled from main storage by pumps." },
-            { term: "Fuel sampling", def: "Pulling fuel from the tank bottom for lab analysis — water, sediment, and microbial counts." },
+            { term: "Fuel sampling", def: "Pulling fuel from the tank bottom for lab analysis: water, sediment, and microbial counts." },
             { term: "Biocide", def: "A treatment dosed into the tank to kill microbial growth before it becomes sludge." },
-            { term: "Water separator", def: "A filter stage that pulls suspended and free water out of diesel — water is what lets the bug grow." },
-            { term: "Tank integrity test", def: "Inspection of the tank, lines, and containment for leaks and corrosion — required for older tanks." },
-            { term: "Runtime capacity", def: "How many hours your stored fuel actually buys you at full load — C282 sets the minimum for your building class." },
+            { term: "Water separator", def: "A filter stage that pulls suspended and free water out of diesel. Water is what lets the bug grow." },
+            { term: "Tank integrity test", def: "Inspection of the tank, lines, and containment for leaks and corrosion, required for older tanks." },
+            { term: "Runtime capacity", def: "How many hours your stored fuel actually buys you at full load. C282 sets the minimum for your building class." },
           ],
         },
         equipment: EQUIPMENT["fuel-systems"],
@@ -666,18 +666,18 @@ export const divisions: Division[] = [
         ],
         primer: {
           what:
-            "A generator takes about ten seconds to start — and for servers, access control, cameras, and fire panels, ten seconds of dead power is a crash, a locked door, or a false alarm. A UPS (uninterruptible power supply) is a battery system that carries those critical loads through the gap instantly, then hands off to the generator or shuts equipment down gracefully. The batteries inside are consumables: they quietly age out in three to five years, which is why UPS units fail exactly when they're needed unless someone is testing them.",
+            "A generator takes about ten seconds to start. For servers, access control, cameras, and fire panels, ten seconds of dead power is a crash, a locked door, or a false alarm. A UPS (uninterruptible power supply) is a battery system that carries those critical loads through the gap instantly, then hands off to the generator or shuts equipment down gracefully. The batteries inside are consumables: they quietly age out in three to five years, which is why UPS units fail exactly when they're needed unless someone is testing them.",
           image: "/primers/ups-battery.jpg",
           imageAlt: "Commercial rack-mounted uninterruptible power supply system",
           imageCredit: "Wikimedia Commons",
           parts: [
-            { term: "UPS", def: "Uninterruptible power supply — a battery unit that holds critical loads up with zero interruption." },
-            { term: "Runtime", def: "How long the batteries can carry the load — usually sized to bridge the generator start, not to run for hours." },
+            { term: "UPS", def: "Uninterruptible power supply: a battery unit that holds critical loads up with zero interruption." },
+            { term: "Runtime", def: "How long the batteries can carry the load, usually sized to bridge the generator start, not to run for hours." },
             { term: "VRLA vs lithium", def: "Sealed lead-acid batteries are cheaper but last 3–5 years; lithium costs more and lasts 8–10." },
-            { term: "Online double-conversion", def: "The commercial-grade UPS type that rebuilds clean power continuously — no transfer blink at all." },
+            { term: "Online double-conversion", def: "The commercial-grade UPS type that rebuilds clean power continuously, with no transfer blink at all." },
             { term: "Battery string", def: "Batteries wired in series inside the UPS. One weak cell drags down the whole string." },
-            { term: "Runtime test", def: "A controlled discharge that proves actual capacity — the only way to catch aging batteries early." },
-            { term: "Elevator recall", def: "The code-required feature that brings elevators to the lobby on fire alarm — often UPS-backed." },
+            { term: "Runtime test", def: "A controlled discharge that proves actual capacity, the only way to catch aging batteries early." },
+            { term: "Elevator recall", def: "The code-required feature that brings elevators to the lobby on fire alarm, often UPS-backed." },
             { term: "Graceful shutdown", def: "The UPS telling servers to save and power off cleanly before the batteries run dry." },
           ],
         },
@@ -691,7 +691,7 @@ export const divisions: Division[] = [
     subtitle: "Commercial Electrical, EV & Lighting",
     tagline: "Every circuit accounted for.",
     description:
-      "Full-service commercial and strata electrical — service upgrades, panel work, EV charger installations, LED lighting retrofits, and low-voltage data and security cabling.",
+      "Full-service commercial and strata electrical: service upgrades, panel work, EV charger installations, LED lighting retrofits, and low-voltage data and security cabling.",
     contactPhone: "604-829-9160",
     contactEmail: "service@woolaelectrical.ca",
     intro:
@@ -724,7 +724,7 @@ export const divisions: Division[] = [
     certLogos: ["logo-bc-hydro", "logo-worksafe-bc", "logo-asttbc", "logo-isn", "logo-comply-works", "logo-contractor-check"],
     testimonial: {
       quote:
-        "We needed a 240-stall strata EV rollout to work under a single meter — load managed, sub-billed, and rebate-eligible. Woola Electrical ran the whole thing including the BC Hydro paperwork.",
+        "We needed a 240-stall strata EV rollout to work under a single meter: load managed, sub-billed, and rebate-eligible. Woola Electrical ran the whole thing including the BC Hydro paperwork.",
       author: "Ravi Sandhu",
       role: "Strata Council President",
       org: "Elmbridge Park Strata",
@@ -769,7 +769,7 @@ export const divisions: Division[] = [
       },
       {
         q: "Do you install LED lighting under BC Hydro rebates?",
-        a: "Yes — we're a BC Hydro Power Smart Alliance contractor. We complete pre-audit, install, and post-verification for rebate-eligible retrofits and submit the paperwork on your behalf.",
+        a: "Yes. We're a BC Hydro Power Smart Alliance contractor. We complete pre-audit, install, and post-verification for rebate-eligible retrofits and submit the paperwork on your behalf.",
       },
       {
         q: "Do you do low-voltage data, security, and access control?",
@@ -796,7 +796,7 @@ export const divisions: Division[] = [
         ],
         primer: {
           what:
-            "Electrical services cover everything downstream of your main disconnect — the panel with the breakers, the wiring in the walls, and the outlets, switches, and lights it feeds. In a commercial building it also means the big grey cabinets called switchgear, which take utility voltage in and split it out to sub-panels around the building.",
+            "Electrical services cover everything downstream of your main disconnect: the panel with the breakers, the wiring in the walls, and the outlets, switches, and lights it feeds. In a commercial building it also means the big grey cabinets called switchgear, which take utility voltage in and split it out to sub-panels around the building.",
           image: "/primers/electrical.jpg",
           imageAlt: "Open commercial electrical panelboard showing circuit breakers",
           imageCredit: "Wikimedia Commons",
@@ -804,12 +804,12 @@ export const divisions: Division[] = [
             { term: "Panel", def: "The metal box holding your breakers. Each breaker feeds one circuit." },
             { term: "Breaker", def: "A switch that trips off if the circuit pulls too much current, protecting the wire from overheating." },
             { term: "Switchgear", def: "The big commercial-scale breaker cabinets that take utility power in and distribute it." },
-            { term: "FSR", def: "Field Safety Representative — the licence a lead electrician needs to pull permits and sign off in BC." },
+            { term: "FSR", def: "Field Safety Representative: the licence a lead electrician needs to pull permits and sign off in BC." },
             { term: "Arc-flash", def: "A sudden electrical explosion inside gear. Studies label your gear with the required safe-approach distance." },
-            { term: "240V outlet", def: "The larger outlet for dryers, ranges, and EV chargers — twice the voltage of a regular plug. Often called 220V." },
+            { term: "240V outlet", def: "The larger outlet for dryers, ranges, and EV chargers, twice the voltage of a regular plug. Often called 220V." },
             { term: "100A vs 200A service", def: "How much total power your panel can deliver. Heat pumps and EV chargers often push older 100-amp buildings to upgrade." },
-            { term: "GFCI outlet", def: "The outlet with the test button. It cuts power in milliseconds if electricity leaks — required near water." },
-            { term: "Sub-panel", def: "A second, smaller breaker panel fed from the main one — common for suites, garages, and EV chargers." },
+            { term: "GFCI outlet", def: "The outlet with the test button. It cuts power in milliseconds if electricity leaks. Required near water." },
+            { term: "Sub-panel", def: "A second, smaller breaker panel fed from the main one, common for suites, garages, and EV chargers." },
             { term: "Dedicated circuit", def: "A breaker serving one appliance only, so a kettle can't trip your fridge." },
             { term: "Aluminum wiring", def: "Common in 1960s–70s buildings. Safe when maintained, but connections need periodic inspection." },
           ],
@@ -831,7 +831,7 @@ export const divisions: Division[] = [
         ],
         primer: {
           what:
-            "An EV charger is a box that plugs into your building's electrical system and delivers power to a car. Level 2 (240 volts, the same as your dryer) is what almost every home and strata uses — it fills a car overnight. DC fast charging is what you see at highway rest stops; it costs a lot more to install but tops a car up in 30 minutes. For strata buildings, the trick is load management — spreading power fairly across many stalls so the building doesn't need a costly service upgrade.",
+            "An EV charger is a box that plugs into your building's electrical system and delivers power to a car. Level 2 (240 volts, the same as your dryer) is what almost every home and strata uses; it fills a car overnight. DC fast charging is what you see at highway rest stops; it costs a lot more to install but tops a car up in 30 minutes. For strata buildings, the trick is load management: spreading power fairly across many stalls so the building doesn't need a costly service upgrade.",
           image: "/primers/ev-chargers.jpg",
           imageAlt: "Wall-mounted Level 2 EV charging station outside a residence",
           imageCredit: "Wikimedia Commons",
@@ -840,10 +840,10 @@ export const divisions: Division[] = [
             { term: "DC Fast Charge", def: "High-voltage DC charging. 100+ km of range in 10 minutes, but $50k+ install." },
             { term: "EV Ready", def: "A BC building-code standard: every stall wired or ready to be wired for future L2 charging." },
             { term: "Load management", def: "Software that shares limited amps between many chargers so no single stall hogs it." },
-            { term: "Level 1", def: "Charging from a regular wall outlet — 6–8 km of range per hour. Fine as a trickle, slow for daily driving." },
+            { term: "Level 1", def: "Charging from a regular wall outlet: 6–8 km of range per hour. Fine as a trickle, slow for daily driving." },
             { term: "Charging speed", def: "A Level 2 charger adds roughly 30–50 km of range per hour, so overnight covers almost any commute." },
             { term: "J1772 vs NACS", def: "The two plug shapes. J1772 fits most EVs today; NACS is the Tesla-style plug most makers are adopting." },
-            { term: "Dedicated 40A circuit", def: "What a typical Level 2 charger needs from the panel — we confirm your panel has room before quoting." },
+            { term: "Dedicated 40A circuit", def: "What a typical Level 2 charger needs from the panel. We confirm your panel has room before quoting." },
             { term: "Sub-meter", def: "A small meter on each charger so the strata bills each owner for exactly the power they used." },
           ],
         },
@@ -864,20 +864,20 @@ export const divisions: Division[] = [
         ],
         primer: {
           what:
-            "An LED lighting retrofit swaps older fluorescent or incandescent fixtures for LEDs. The math is simple — LEDs use 50–70% less energy for the same brightness and last 3–5x longer, so most jobs pay back in 18 to 36 months. BC Hydro Power Smart offers cash rebates that reduce the up-front cost by 30–50%. The most common commercial retrofit is a troffer: the rectangular panel light you see in office and hallway ceilings.",
+            "An LED lighting retrofit swaps older fluorescent or incandescent fixtures for LEDs. The math is simple: LEDs use 50–70% less energy for the same brightness and last 3–5x longer, so most jobs pay back in 18 to 36 months. BC Hydro Power Smart offers cash rebates that reduce the up-front cost by 30–50%. The most common commercial retrofit is a troffer: the rectangular panel light you see in office and hallway ceilings.",
           image: "/primers/led-lighting.jpg",
           imageAlt: "Retrofit LED troffer panel installed in a suspended commercial ceiling",
           imageCredit: "Wikimedia Commons",
           parts: [
-            { term: "Troffer", def: "The rectangular panel light in a drop ceiling — most common commercial fixture." },
+            { term: "Troffer", def: "The rectangular panel light in a drop ceiling, the most common commercial fixture." },
             { term: "Lumens per watt", def: "How efficient a light is. LEDs hit 100+; fluorescents ~60; incandescent ~15." },
             { term: "Photometric study", def: "A computer model of how bright each spot in a room will be after the retrofit." },
-            { term: "Occupancy sensor", def: "A wall or ceiling sensor that turns lights off when a room is empty — often 20% more savings." },
+            { term: "Occupancy sensor", def: "A wall or ceiling sensor that turns lights off when a room is empty, often good for 20% more savings." },
             { term: "Colour temperature", def: "Measured in kelvin. 3000K is warm white, 4000K is neutral, 5000K is cool daylight." },
-            { term: "CRI", def: "Colour rendering index — how true colours look under the light. 80+ is standard, 90+ is premium." },
+            { term: "CRI", def: "Colour rendering index: how true colours look under the light. 80+ is standard, 90+ is premium." },
             { term: "Wattage equivalent", def: "A \"60W-equivalent\" LED gives the same light using about 9 watts." },
             { term: "Retrofit kit vs new fixture", def: "A kit re-uses the existing housing and swaps the guts; a new fixture replaces everything." },
-            { term: "Emergency & exit lighting", def: "Battery-backed lights and EXIT signs — tested annually by code." },
+            { term: "Emergency & exit lighting", def: "Battery-backed lights and EXIT signs, tested annually by code." },
           ],
         },
         equipment: EQUIPMENT["led-lighting"],
@@ -897,19 +897,19 @@ export const divisions: Division[] = [
         ],
         primer: {
           what:
-            "Low-voltage covers the wiring that carries data, video, and small control signals rather than lighting or power — Cat 6 network cable, security camera runs, door access wiring, fibre-optic backbones. It sits inside walls and ceilings but usually terminates at a data rack (the tall cabinet in a small server closet). PoE means Power over Ethernet — one cable that carries data and just enough power to run a camera or access point.",
+            "Low-voltage covers the wiring that carries data, video, and small control signals rather than lighting or power: Cat 6 network cable, security camera runs, door access wiring, fibre-optic backbones. It sits inside walls and ceilings but usually terminates at a data rack (the tall cabinet in a small server closet). PoE means Power over Ethernet: one cable that carries data and just enough power to run a camera or access point.",
           image: "/primers/low-voltage.jpg",
           imageAlt: "Server rack with structured cabling and patch cords",
           imageCredit: "Wikimedia Commons",
           parts: [
             { term: "Cat 6 / 6A", def: "The blue or white network cable behind every wall jack. Cat 6A handles 10 Gbps." },
-            { term: "Structured cabling", def: "Neat, labelled, standards-based cabling — every cable traceable from jack to rack." },
-            { term: "PoE", def: "Power over Ethernet — one cable carries both data and power to a camera or Wi-Fi access point." },
+            { term: "Structured cabling", def: "Neat, labelled, standards-based cabling, with every cable traceable from jack to rack." },
+            { term: "PoE", def: "Power over Ethernet: one cable carries both data and power to a camera or Wi-Fi access point." },
             { term: "Access control", def: "The card readers and controllers that lock or unlock doors electronically." },
-            { term: "Low voltage", def: "Data, cameras, access control, and intercoms — systems that run on communication-level power, not 120V." },
+            { term: "Low voltage", def: "Data, cameras, access control, and intercoms: systems that run on communication-level power, not 120V." },
             { term: "Cat 6 vs fibre", def: "Copper Cat 6 handles most in-suite and office runs; fibre carries more data between floors or buildings." },
             { term: "Patch panel", def: "The organized wall of ports in the network room where every cable in the building terminates." },
-            { term: "NVR", def: "Network video recorder — the box that stores your camera footage." },
+            { term: "NVR", def: "Network video recorder: the box that stores your camera footage." },
             { term: "Wireless access point", def: "A ceiling-mounted radio that broadcasts Wi-Fi. Several placed right beat one router turned up loud." },
             { term: "Enterphone", def: "The lobby intercom that calls a suite and unlocks the front door." },
           ],
@@ -928,7 +928,7 @@ export const divisions: Division[] = [
     contactPhone: "604-800-3617",
     contactEmail: "estimates@woolabuild.ca",
     intro:
-      "Most property managers juggle a dozen vendors. Woola Build collapses that into one accountable partner — with maintenance packages, envelope work, interior and exterior trades, and construction project management coordinated by an in-house team.",
+      "Most property managers juggle a dozen vendors. Woola Build collapses that into one accountable partner, with maintenance packages, envelope work, interior and exterior trades, and construction project management coordinated by an in-house team.",
     heroImage:
       "https://images.unsplash.com/photo-1632862378069-4ad0348cea4f?w=1400&q=80&auto=format&fit=crop",
     heroImageAlt: "Project team reviewing construction plans on site",
@@ -967,7 +967,7 @@ export const divisions: Division[] = [
         title: "West End strata parkade rehab",
         tag: "Building envelope",
         summary:
-          "Full waterproofing membrane replacement on a two-level parkade — 22,000 sq ft — completed in occupied condition over six weekend phases. Zero vehicle relocation required.",
+          "Full waterproofing membrane replacement on a two-level parkade (22,000 sq ft), completed in occupied condition over six weekend phases. Zero vehicle relocation required.",
         image:
           "https://images.unsplash.com/photo-1619335680796-54f13b88c6ba?w=1200&q=80&auto=format&fit=crop",
         alt: "Concrete parking garage interior",
@@ -985,7 +985,7 @@ export const divisions: Division[] = [
         title: "Coquitlam HQ campus maintenance",
         tag: "Recurring program",
         summary:
-          "Quarterly maintenance contract across six buildings — roof, drainage, parkade, life-safety, exterior cleaning, and small carpentry. Single PO, single invoice, single dispatcher.",
+          "Quarterly maintenance contract across six buildings: roof, drainage, parkade, life-safety, exterior cleaning, and small carpentry. Single PO, single invoice, single dispatcher.",
         image:
           "https://images.unsplash.com/photo-1718152521364-b9655b8a7926?w=1200&q=80&auto=format&fit=crop",
         alt: "Technician pressure washing a commercial walkway",
@@ -1010,7 +1010,7 @@ export const divisions: Division[] = [
       },
       {
         q: "Can you handle strata bylaw and permit paperwork?",
-        a: "Yes — bylaw review, council approvals, permit applications and inspections are all handled by our PM team. Strata councils get a single point of contact through every phase.",
+        a: "Yes. Bylaw review, council approvals, permit applications and inspections are all handled by our PM team. Strata councils get a single point of contact through every phase.",
       },
     ],
     services: [
@@ -1029,20 +1029,20 @@ export const divisions: Division[] = [
         ],
         primer: {
           what:
-            "Building maintenance is planned, recurring work that keeps a property in good shape — inspections, cleaning, small repairs, and life-safety checks. Most strata and commercial buildings sign an annual PM (preventative maintenance) contract with a fixed scope and price. The alternative — waiting until something breaks — always costs more and shows up at the worst time.",
+            "Building maintenance is planned, recurring work that keeps a property in good shape: inspections, cleaning, small repairs, and life-safety checks. Most strata and commercial buildings sign an annual PM (preventative maintenance) contract with a fixed scope and price. The alternative, waiting until something breaks, always costs more and shows up at the worst time.",
           image: "/primers/maintenance.jpg",
           imageAlt: "A professional trade painter performing interior building maintenance",
           imageCredit: "Wikimedia Commons",
           parts: [
-            { term: "PM", def: "Preventative maintenance — scheduled inspections and small repairs done before failures." },
-            { term: "Work order", def: "A single line item of work — dispatched, tracked, photographed, and closed out." },
+            { term: "PM", def: "Preventative maintenance: scheduled inspections and small repairs done before failures." },
+            { term: "Work order", def: "A single line item of work: dispatched, tracked, photographed, and closed out." },
             { term: "Condition report", def: "A visual + written summary of an asset's health after an inspection." },
-            { term: "Life-safety", def: "Fire alarms, sprinklers, emergency lighting — the stuff that keeps people alive in a crisis." },
+            { term: "Life-safety", def: "Fire alarms, sprinklers, emergency lighting: the stuff that keeps people alive in a crisis." },
             { term: "Preventative vs reactive", def: "Scheduled small work that heads off big emergency invoices. Cheaper every time." },
             { term: "Annual fire inspection", def: "The code-required test of alarms, extinguishers, and emergency lights, with a report your insurer can see." },
-            { term: "Backflow test", def: "The yearly certification of the valves that protect the city water supply — cities fine buildings that skip it." },
+            { term: "Backflow test", def: "The yearly certification of the valves that protect the city water supply. Cities fine buildings that skip it." },
             { term: "Roof anchor certification", def: "Annual inspection of the tie-off points that window cleaners and trades clip into." },
-            { term: "Depreciation report", def: "BC's long-range strata planning document — good maintenance records make yours accurate." },
+            { term: "Depreciation report", def: "BC's long-range strata planning document. Good maintenance records make yours accurate." },
           ],
         },
         equipment: EQUIPMENT.maintenance,
@@ -1052,7 +1052,7 @@ export const divisions: Division[] = [
         name: "Building Envelope",
         short: "Roof, cladding, sealants",
         description:
-          "Targeted envelope repairs, sealant renewal, parkade waterproofing, deck membranes, and roofing — paired with engineer-led scoping for larger remediation.",
+          "Targeted envelope repairs, sealant renewal, parkade waterproofing, deck membranes, and roofing, paired with engineer-led scoping for larger remediation.",
         icon: Layers,
         highlights: [
           "Sealant joint replacement programs",
@@ -1062,7 +1062,7 @@ export const divisions: Division[] = [
         ],
         primer: {
           what:
-            "The building envelope is the outer shell — roof, walls, windows, and sealants — that keeps water and air where they belong. On flat commercial roofs the surface is usually a rubbery membrane like EPDM or TPO. When a joint or a membrane fails, water gets in and finds framing, insulation, and drywall to ruin. Envelope work is finding those failures before they turn into a $200k restoration.",
+            "The building envelope is the outer shell (roof, walls, windows, and sealants) that keeps water and air where they belong. On flat commercial roofs the surface is usually a rubbery membrane like EPDM or TPO. When a joint or a membrane fails, water gets in and finds framing, insulation, and drywall to ruin. Envelope work is finding those failures before they turn into a $200k restoration.",
           image: "/primers/envelope.jpg",
           imageAlt: "Flat commercial roof covered with EPDM membrane roofing",
           imageCredit: "Wikimedia Commons",
@@ -1071,8 +1071,8 @@ export const divisions: Division[] = [
             { term: "Sealant joint", def: "The caulking line between two building materials. Fails every 10–15 years." },
             { term: "Traffic deck", def: "The waterproof membrane on a parkade or plaza deck that cars drive on." },
             { term: "Tie-off / anchor", def: "The fall-protection point on a roof so workers can be tied off safely." },
-            { term: "Building envelope", def: "Everything separating inside from outside — roof, walls, windows, decks, and the seals between them." },
-            { term: "Rainscreen", def: "The drainage gap behind the cladding that lets walls dry — the fix that ended BC's leaky-condo era." },
+            { term: "Building envelope", def: "Everything separating inside from outside: roof, walls, windows, decks, and the seals between them." },
+            { term: "Rainscreen", def: "The drainage gap behind the cladding that lets walls dry, the fix that ended BC's leaky-condo era." },
             { term: "Flashing", def: "The bent metal that steers water away from joints, windows, and roof edges." },
             { term: "Membrane", def: "The waterproof layer under decks, roofs, and planters. Invisible when working, expensive when not." },
             { term: "Water ingress", def: "The engineer's term for a leak. A small stain usually means a bigger path behind the wall." },
@@ -1085,7 +1085,7 @@ export const divisions: Division[] = [
         name: "Construction & Renos",
         short: "Tenant improvements",
         description:
-          "Tenant improvements, suite renovations, amenity rebuilds, and small commercial fit-outs — managed by Gold Seal certified project managers.",
+          "Tenant improvements, suite renovations, amenity rebuilds, and small commercial fit-outs, managed by Gold Seal certified project managers.",
         icon: HardHat,
         highlights: [
           "Gold Seal certified PMs",
@@ -1095,19 +1095,19 @@ export const divisions: Division[] = [
         ],
         primer: {
           what:
-            "Construction and renovation work covers new or reconfigured interior space — tenant improvements in a leased office, an amenity rebuild in a tower, or a suite reno. Most of the work happens after framing and drywall go up. A tenant improvement (TI) is when a landlord finishes bare shell space to a tenant's spec. Every project we run at $250k+ has a Gold Seal Certified project manager coordinating trades, permits, and inspections.",
+            "Construction and renovation work covers new or reconfigured interior space: tenant improvements in a leased office, an amenity rebuild in a tower, or a suite reno. Most of the work happens after framing and drywall go up. A tenant improvement (TI) is when a landlord finishes bare shell space to a tenant's spec. Every project we run at $250k+ has a Gold Seal Certified project manager coordinating trades, permits, and inspections.",
           image: "/primers/construction.jpg",
-          imageAlt: "Interior construction — installing drywall on framed walls",
+          imageAlt: "Interior construction: installing drywall on framed walls",
           imageCredit: "Wikimedia Commons",
           parts: [
-            { term: "TI", def: "Tenant Improvement — the fit-out of a leased space to a tenant's requirements." },
+            { term: "TI", def: "Tenant Improvement: the fit-out of a leased space to a tenant's requirements." },
             { term: "Gold Seal PM", def: "The Canadian Construction Association's project manager certification." },
             { term: "Permit", def: "The city-issued authorization to build. Required for structural, plumbing, gas, and electrical." },
             { term: "Substantial completion", def: "The formal milestone where a project is usable, even if minor items remain." },
-            { term: "Change order", def: "A signed scope-and-price adjustment mid-project — no surprises on the final invoice." },
+            { term: "Change order", def: "A signed scope-and-price adjustment mid-project, so there are no surprises on the final invoice." },
             { term: "Fixed price vs cost-plus", def: "Fixed price locks the number up front; cost-plus bills actual costs plus a fee. We quote fixed." },
             { term: "Deficiency list", def: "The walkthrough punch list of small fixes before a project is signed off." },
-            { term: "Holdback", def: "The 10% BC law requires the owner to hold until lien periods expire — it protects you." },
+            { term: "Holdback", def: "The 10% BC law requires the owner to hold until lien periods expire. It protects you." },
             { term: "Strata alteration approval", def: "Council sign-off, and often an alteration agreement, required before suite renovations start." },
           ],
         },
@@ -1128,7 +1128,7 @@ export const divisions: Division[] = [
         ],
         primer: {
           what:
-            "Property services is the catch-all for the small stuff — painting a hallway, fixing a lobby door closer, replacing a fence board, hanging new numerals on suite doors. These are the jobs too small to bid as a project but too many to ignore. We dispatch them same-week and close each one with a photo-documented work order that shows before, during, and after.",
+            "Property services is the catch-all for the small stuff: painting a hallway, fixing a lobby door closer, replacing a fence board, hanging new numerals on suite doors. These are the jobs too small to bid as a project but too many to ignore. We dispatch them same-week and close each one with a photo-documented work order that shows before, during, and after.",
           image: "/primers/property-services.jpg",
           imageAlt: "Worker pressure-washing an exterior building surface",
           imageCredit: "Wikimedia Commons",
@@ -1136,9 +1136,9 @@ export const divisions: Division[] = [
             { term: "Work order", def: "A single dispatched task with a scope, price, and closeout photos." },
             { term: "Same-week dispatch", def: "Non-emergency requests scheduled within the same week for contracted clients." },
             { term: "Common-area refresh", def: "Paint, hardware, and small carpentry updates in lobbies and hallways." },
-            { term: "Common property", def: "Hallways, lobbies, parkades, and exteriors — what the strata, not the owner, maintains." },
+            { term: "Common property", def: "Hallways, lobbies, parkades, and exteriors: what the strata, not the owner, maintains." },
             { term: "Door closer", def: "The arm at the top of a door that controls its swing. The most-replaced part in any building." },
-            { term: "Patch and paint", def: "Drywall repair plus colour-matched paint after any wall is opened — done as one visit." },
+            { term: "Patch and paint", def: "Drywall repair plus colour-matched paint after any wall is opened, done as one visit." },
             { term: "Preventative walk-through", def: "A scheduled building tour that catches small issues before they become work orders." },
             { term: "Photo closeout", def: "Every job ends with before, during, and after photos attached to the work order." },
           ],

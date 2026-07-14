@@ -4,7 +4,7 @@ export const site = {
   tagline: "Strata & Commercial Property Services",
   promise: "Out Work. Out Perform. Out Play.",
   description:
-    "Woola is a single accountable partner for strata, commercial and high-end residential properties across Metro Vancouver and the Sea-to-Sky — mechanical, electrical, and building services under one roof.",
+    "Woola is a single accountable partner for strata, commercial and high-end residential properties across Metro Vancouver and the Sea-to-Sky: mechanical, electrical, and building services under one roof.",
   hq: {
     line1: "#110 – 42 Fawcett Rd.",
     line2: "Coquitlam, BC V3K 6X9",

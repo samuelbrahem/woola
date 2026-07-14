@@ -36,7 +36,7 @@ export const competitors: Competitor[] = [
     has247: false,
     hasRebates: true,
     hasCityPages: false,
-    notes: "Excellent EV-ready credentials, deep multifamily relationships. Electrical only — no mechanical pairing.",
+    notes: "Excellent EV-ready credentials, deep multifamily relationships. Electrical only, no mechanical pairing.",
     weakSpots: ["Electrical only", "No mechanical coordination", "No estimator"],
   },
   {
@@ -81,14 +81,14 @@ export const competitors: Competitor[] = [
   {
     name: "Somatic MEP",
     url: "https://www.somaticmep.com",
-    focus: "MEP — mechanical, electrical, plumbing, controls",
+    focus: "MEP: mechanical, electrical, plumbing, controls",
     segment: "MEP",
     yearsInBusiness: 15,
     hasCalculator: false,
     has247: false,
     hasRebates: false,
     hasCityPages: false,
-    notes: "Strong DDC controls and pre-construction MEP. Pure commercial — no strata maintenance model.",
+    notes: "Strong DDC controls and pre-construction MEP. Pure commercial, no strata maintenance model.",
     weakSpots: ["No strata service model", "No estimator", "No residential"],
   },
   {

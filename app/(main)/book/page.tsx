@@ -7,7 +7,7 @@ import { ShieldCheck, Users, CalendarClock } from "lucide-react";
 export const metadata: Metadata = {
   title: "Book a Meeting with an Advisor",
   description:
-    "Pick a time that works — a Woola property advisor will walk your portfolio, coverage needs, and maintenance planning with you. No obligation.",
+    "Pick a time that works. A Woola property advisor will walk your portfolio, coverage needs, and maintenance planning with you. No obligation.",
   alternates: { canonical: "https://woola.ca/book" },
 };
 
@@ -24,7 +24,7 @@ export default function BookPage() {
             </h1>
             <p className="mt-5 text-lg text-ink-500 max-w-2xl">
               Pick a time below and we&apos;ll match you with a property advisor for your
-              area and building type. No obligation, no prep required — bring your questions.
+              area and building type. No obligation and no prep required. Bring your questions.
             </p>
           </div>
           <div className="mt-8 flex flex-wrap gap-x-8 gap-y-3 text-sm text-ink-500">
@@ -35,7 +35,7 @@ export default function BookPage() {
               <CalendarClock className="w-4 h-4 text-brand-500" strokeWidth={1.5} /> Same-week availability
             </span>
             <span className="inline-flex items-center gap-2">
-              <ShieldCheck className="w-4 h-4 text-brand-500" strokeWidth={1.5} /> Video or phone — your pick
+              <ShieldCheck className="w-4 h-4 text-brand-500" strokeWidth={1.5} /> Video or phone, your pick
             </span>
           </div>
         </div>

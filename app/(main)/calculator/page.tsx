@@ -66,7 +66,7 @@ export default function CalculatorPage() {
 
       <CTABanner
         title="Want the real number?"
-        description="A Woola technician walks the home, measures the load, looks at electrical and ducting, and gives a fixed proposal — usually within 48 hours."
+        description="A Woola technician walks the home, measures the load, looks at electrical and ducting, and gives a fixed proposal, usually within 48 hours."
       />
     </>
   );

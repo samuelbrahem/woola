@@ -5,7 +5,7 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: {
-    default: "Woola — Strata & Commercial Property Services",
+    default: "Woola | Strata & Commercial Property Services",
     template: "%s · Woola",
   },
   description:
@@ -32,9 +32,9 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: site.fullName,
-    title: "Woola — Strata & Commercial Property Services",
+    title: "Woola | Strata & Commercial Property Services",
     description:
-      "One accountable partner for strata and commercial properties across Metro Vancouver — mechanical, electrical, power, and building services under one PO.",
+      "One accountable partner for strata and commercial properties across Metro Vancouver: mechanical, electrical, power, and building services under one PO.",
     url: "https://woola.ca",
     locale: "en_CA",
     images: [
@@ -42,13 +42,13 @@ export const metadata: Metadata = {
         url: "/brand/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Woola Services Group — Mechanical, Power, Electrical, Build",
+        alt: "Woola Services Group: Mechanical, Power, Electrical, Build",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Woola — Strata & Commercial Property Services",
+    title: "Woola | Strata & Commercial Property Services",
     description:
       "Mechanical, electrical, power, and building services for strata and commercial properties across BC.",
     images: ["/brand/og-image.png"],

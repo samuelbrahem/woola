@@ -65,7 +65,7 @@ export const cities: City[] = [
     lat: 49.3286,
     lng: -123.1574,
     blurb:
-      "Specialist work on West Van's high-end homes and waterfront stratas — heat pumps, hydronics, and discreet maintenance programs.",
+      "Specialist work on West Van's high-end homes and waterfront stratas: heat pumps, hydronics, and discreet maintenance programs.",
     hooks: [
       "Concealed ductless mini-splits for heritage homes",
       "Hydronic in-floor heating and snow-melt",
@@ -105,7 +105,7 @@ export const cities: City[] = [
     lat: 49.2827,
     lng: -123.1207,
     blurb:
-      "Largest service footprint — downtown commercial, Kitsilano and Mount Pleasant strata, and Vancouver's restaurant and retail core.",
+      "Largest service footprint: downtown commercial, Kitsilano and Mount Pleasant strata, and Vancouver's restaurant and retail core.",
     hooks: [
       "Downtown commercial HVAC and refrigeration",
       "Rooftop and high-rise crane lifts",
@@ -167,7 +167,7 @@ export const cities: City[] = [
     blurb:
       "Our home base. We're five minutes from City Centre, with the deepest service density anywhere on our map.",
     hooks: [
-      "HQ at Fawcett Road — fastest response in the region",
+      "HQ at Fawcett Road, the fastest response in the region",
       "Burke Mountain and Westwood Plateau new-build service",
       "Henderson and City Centre strata partnerships",
       "Coordinated mechanical + electrical for property managers",
@@ -225,7 +225,7 @@ export const cities: City[] = [
     lat: 49.1666,
     lng: -123.1336,
     blurb:
-      "From YVR-area logistics to City Centre towers — Richmond gets a full mechanical, plumbing and refrigeration team.",
+      "From YVR-area logistics to City Centre towers, Richmond gets a full mechanical, plumbing and refrigeration team.",
     hooks: [
       "Cold-storage and food-service refrigeration",
       "City Centre and Brighouse strata service",
@@ -265,7 +265,7 @@ export const cities: City[] = [
     lat: 49.0847,
     lng: -123.0586,
     blurb:
-      "Tsawwassen and Ladner residential plus Annacis Island and Tilbury industrial — two very different service profiles, one team.",
+      "Tsawwassen and Ladner residential plus Annacis Island and Tilbury industrial: two very different service profiles, one team.",
     hooks: [
       "Industrial mechanical on Annacis and Tilbury",
       "Tsawwassen and Ladner home heat pumps",
@@ -285,7 +285,7 @@ export const cities: City[] = [
     lat: 49.1044,
     lng: -122.6604,
     blurb:
-      "Willoughby's strata boom, Walnut Grove residential, and Langley City commercial — covered by a Fraser Valley-based crew.",
+      "Willoughby's strata boom, Walnut Grove residential, and Langley City commercial, covered by a Fraser Valley-based crew.",
     hooks: [
       "Willoughby strata new-construction service",
       "Walnut Grove furnace and AC replacements",
@@ -345,7 +345,7 @@ export const cities: City[] = [
     lat: 49.1305,
     lng: -122.3045,
     blurb:
-      "Older housing stock that benefits massively from heat-pump retrofits — paired with Mission's industrial north-side mechanical work.",
+      "Older housing stock that benefits massively from heat-pump retrofits, paired with Mission's industrial north-side mechanical work.",
     hooks: [
       "CleanBC and BC Hydro rebate retrofits",
       "Older furnace and tank replacements",

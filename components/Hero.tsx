@@ -24,7 +24,7 @@ export function Hero() {
             <p className="rise rise-2 mt-7 text-lg md:text-xl text-ink-500 max-w-2xl leading-relaxed">
               Woola consolidates mechanical, electrical, standby power, and building services for
               strata, commercial and high-end residential properties across Vancouver&apos;s Lower
-              Mainland — under one PO and one dispatcher.
+              Mainland, under one PO and one dispatcher.
             </p>
             <div className="rise rise-3 mt-9 flex flex-wrap gap-3">
               <Link href="/contact" className="btn btn-primary text-base">
@@ -56,7 +56,7 @@ export function Hero() {
                     "One dispatcher across HVAC, plumbing, electrical, generators, EV and building work.",
                     "Digital reporting your strata council will actually read.",
                     "CleanBC, FortisBC and BC Hydro rebate paperwork submitted in-house.",
-                    "Coordinated 24/7 emergency response — not a call-tree run-around.",
+                    "Coordinated 24/7 emergency response, not a call-tree run-around.",
                     "Fixed-price proposals where most contractors quote T&M.",
                   ].map((line, i) => (
                     <li key={i} className="flex items-start gap-3">

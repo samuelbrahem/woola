@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   const d = getDivision(params.division);
   if (!d) return {};
   const canonical = `https://woola.ca/${d.slug}`;
-  const title = `${d.name} — ${d.subtitle}`;
+  const title = `${d.name} | ${d.subtitle}`;
   return {
     title,
     description: d.description,
@@ -100,7 +100,7 @@ export default function DivisionPage({ params }: { params: Params }) {
             <div className="lg:col-span-7">
               <div className="eyebrow">Division · {division.subtitle}</div>
               <h1 className="mt-5">
-                <span className="sr-only">{division.name} — {division.subtitle}</span>
+                <span className="sr-only">{division.name}: {division.subtitle}</span>
                 <DivisionWordmark division={division} size="lg" priority />
               </h1>
               <p className="mt-6 script text-brand-500 text-4xl md:text-5xl leading-none">
@@ -243,7 +243,7 @@ export default function DivisionPage({ params }: { params: Params }) {
         <SectionHead
           eyebrow="What we do"
           title={`Every ${division.name.split(" ").slice(1).join(" ").toLowerCase()} service, one dispatcher.`}
-          description="Each service ships with its own scope, certifications and reporting — but is coordinated and invoiced under a single PO."
+          description="Each service ships with its own scope, certifications and reporting, but everything is coordinated and invoiced under a single PO."
         />
         <div className="mt-12 grid md:grid-cols-2 gap-6">
           {division.services.map((s, idx) => {
@@ -404,7 +404,7 @@ export default function DivisionPage({ params }: { params: Params }) {
               />
               <p className="mt-6 text-ink-200 text-sm leading-relaxed">
                 Every contract follows the same four-step rhythm so property managers know
-                what to expect — and so our techs don't waste a truck-roll.
+                what to expect, and so our techs don't waste a truck-roll.
               </p>
             </div>
             <div className="lg:col-span-8">
@@ -415,7 +415,7 @@ export default function DivisionPage({ params }: { params: Params }) {
                     b: "We document the existing systems, capture asset photos and tag risks. A condition report lands in your inbox within 48 hours.",
                   },
                   {
-                    t: "Scoped proposal — fixed-price where we can",
+                    t: "Scoped proposal, fixed-price where we can",
                     b: "Where the work is well-defined, we hold a fixed price. Where it isn't, we publish unit rates so there's no end-of-job surprise.",
                   },
                   {
@@ -424,7 +424,7 @@ export default function DivisionPage({ params }: { params: Params }) {
                   },
                   {
                     t: "Photo-documented close-out",
-                    b: "Every job closes with before/after photos, equipment serial numbers, and renewal dates — all stored in the asset registry.",
+                    b: "Every job closes with before/after photos, equipment serial numbers, and renewal dates, all stored in the asset registry.",
                   },
                 ].map((step, i) => (
                   <li

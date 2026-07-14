@@ -26,7 +26,7 @@ export function DivisionHeader({ divisionSlug }: { divisionSlug: string }) {
 
   return (
     <>
-      {/* Group strip — the way back to the parent brand */}
+      {/* Group strip: the way back to the parent brand */}
       <div className="bg-ink-800 text-cream-100">
         <div className="container-x flex items-center justify-between h-9 text-xs">
           <Link href="/" className="flex items-center gap-1.5 hover:text-cream-50 transition uppercase tracking-wider">
@@ -121,7 +121,7 @@ export function DivisionHeader({ divisionSlug }: { divisionSlug: string }) {
                   </div>
                   <div className="mt-6 pt-6 border-t hairline flex items-center justify-between">
                     <span className="text-sm text-ink-500">
-                      {cities.length} municipalities — dispatched from Coquitlam.
+                      {cities.length} municipalities, dispatched from Coquitlam.
                     </span>
                     <Link
                       href="/service-areas"
