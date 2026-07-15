@@ -142,8 +142,8 @@ export function Header() {
               <div className="p-4 w-[300px] space-y-1">
                 <Link href="/commercial" onClick={() => setOpen(null)} className="mega-link">
                   <div>
-                    <div className="text-sm font-medium text-ink-800">Commercial & Strata</div>
-                    <div className="text-xs text-ink-400 mt-0.5">Portfolios, councils, facilities</div>
+                    <div className="text-sm font-medium text-ink-800">Commercial</div>
+                    <div className="text-xs text-ink-400 mt-0.5">Strata, office, industrial, retail, healthcare, hospitality</div>
                   </div>
                 </Link>
                 <Link href="/residential" onClick={() => setOpen(null)} className="mega-link">

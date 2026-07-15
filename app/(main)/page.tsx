@@ -57,17 +57,17 @@ export default function HomePage() {
           />
           <div className="mt-12 grid md:grid-cols-2 gap-6">
             <Link href="/commercial" className="card p-9 group flex flex-col">
-              <div className="eyebrow">Strata · Commercial · Industrial</div>
+              <div className="eyebrow">Strata · Office · Industrial · Retail · Healthcare · Hospitality</div>
               <h3 className="mt-3 text-2xl md:text-3xl font-bold text-ink-800 tracking-tight">
-                Commercial & Strata
+                Commercial
               </h3>
               <p className="mt-3 text-sm text-ink-500 leading-relaxed flex-1">
-                Portfolio maintenance contracts, fixed-price proposals, council-ready
-                reporting, and 24/7 emergency response under a single PO. Built for
-                property managers, strata councils, and facility directors.
+                From strata towers to warehouses, restaurant groups to care facilities:
+                portfolio maintenance contracts, fixed-price projects, compliance testing,
+                and 24/7 emergency response under a single PO.
               </p>
               <div className="mt-6 pt-6 border-t hairline flex items-center justify-between text-sm">
-                <span className="text-ink-500">Maintenance contracts, projects, and emergency SLAs</span>
+                <span className="text-ink-500">Six property segments, one accountable partner</span>
                 <ArrowRight className="w-4 h-4 text-ink-400 group-hover:text-brand-500 group-hover:translate-x-0.5 transition" />
               </div>
             </Link>
