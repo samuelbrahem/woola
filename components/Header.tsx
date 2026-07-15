@@ -23,7 +23,7 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 bg-cream-50/85 backdrop-blur border-b hairline">
       <div className="container-x">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-20">
           <Logo />
 
           <nav className="hidden lg:flex items-center gap-1">
@@ -33,39 +33,48 @@ export function Header() {
               onOpen={() => setOpen(open === "services" ? null : "services")}
               onClose={() => setOpen(null)}
             >
-              <div className="grid grid-cols-4 gap-6 p-7 w-[960px]">
+              <div className="grid grid-cols-4 gap-4 p-6 w-[1000px]">
                 {divisions.map((d) => (
-                  <div key={d.slug}>
+                  <div
+                    key={d.slug}
+                    className="rounded-xl border hairline bg-cream-100/70 p-4 flex flex-col hover:border-brand-500/40 transition"
+                  >
                     <Link
                       href={`/${d.slug}`}
                       onClick={() => setOpen(null)}
-                      className="block group"
+                      className="block group pb-3 border-b hairline"
                     >
                       <div className="eyebrow mb-1">Division</div>
-                      <div className="text-xl font-semibold text-ink-800 group-hover:text-ink-600">
+                      <div className="text-lg font-semibold leading-tight text-ink-800 group-hover:text-brand-500 transition">
                         {d.name}
                       </div>
-                      <div className="text-sm text-ink-500 mt-1">{d.subtitle}</div>
+                      <div className="text-xs text-ink-500 mt-1">{d.subtitle}</div>
                     </Link>
-                    <div className="mt-4 space-y-1">
-                      {d.services.map((s) => {
+                    <div className="mt-3 space-y-0.5 flex-1">
+                      {d.services.slice(0, 4).map((s) => {
                         const Icon = s.icon;
                         return (
                           <Link
                             key={s.slug}
                             href={`/${d.slug}/${s.slug}`}
                             onClick={() => setOpen(null)}
-                            className="mega-link"
+                            className="mega-link !p-2"
                           >
-                            <Icon className="w-5 h-5 mt-0.5 text-ink-800" strokeWidth={1.5} />
+                            <Icon className="w-4 h-4 mt-0.5 text-brand-500 shrink-0" strokeWidth={1.5} />
                             <div>
-                              <div className="text-sm font-medium text-ink-800">{s.name}</div>
-                              <div className="text-xs text-ink-400 mt-0.5">{s.short}</div>
+                              <div className="text-sm font-medium text-ink-800 leading-tight">{s.name}</div>
                             </div>
                           </Link>
                         );
                       })}
                     </div>
+                    <Link
+                      href={`/${d.slug}`}
+                      onClick={() => setOpen(null)}
+                      className="mt-3 pt-3 border-t hairline text-xs font-medium text-brand-500 hover:underline"
+                    >
+                      All {d.name.replace("Woola ", "")} services →
+                    </Link>
                   </div>
                 ))}
               </div>
@@ -158,6 +167,7 @@ export function Header() {
                   ["Featured Work", "/work", "Recent projects across BC"],
                   ["Our Process", "/process", "Four steps, every job"],
                   ["Why Woola", "/competitors", "How we compare"],
+                  ["Careers", "/careers", "Join the roster"],
                   ["Estimator", "/calculator", "Rough numbers in 60 seconds"],
                 ].map(([label, href, sub]) => (
                   <Link key={href} href={href} onClick={() => setOpen(null)} className="mega-link">
@@ -169,6 +179,10 @@ export function Header() {
                 ))}
               </div>
             </MegaItem>
+
+            <Link href="/careers" className="px-4 py-2 text-sm font-medium text-ink-800 rounded-full hover:bg-ink-50">
+              Careers
+            </Link>
           </nav>
 
           <div className="hidden lg:flex items-center gap-3">
@@ -221,6 +235,7 @@ export function Header() {
               <Link href="/residential" onClick={() => setMobileOpen(false)} className="block font-medium">Residential</Link>
               <Link href="/work" onClick={() => setMobileOpen(false)} className="block font-medium">Featured Work</Link>
               <Link href="/process" onClick={() => setMobileOpen(false)} className="block font-medium">Our Process</Link>
+              <Link href="/careers" onClick={() => setMobileOpen(false)} className="block font-medium">Careers</Link>
               <Link href="/book" onClick={() => setMobileOpen(false)} className="block font-medium">Book a meeting</Link>
               <Link href="/calculator" onClick={() => setMobileOpen(false)} className="block font-medium">Estimator</Link>
               <Link href="/service-areas" onClick={() => setMobileOpen(false)} className="block font-medium">Service Areas</Link>

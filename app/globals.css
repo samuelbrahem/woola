@@ -219,7 +219,7 @@ input, select, textarea {
 }
 
 .logo-mark {
-  height: 44px;
+  height: 60px;
   width: auto;
   display: block;
 }
@@ -337,4 +337,16 @@ html {
 /* Count-up number styling */
 .stat-number {
   font-variant-numeric: tabular-nums;
+}
+
+/* Slow Ken Burns drift for hero carousel stills */
+@keyframes kenburns {
+  from { transform: scale(1); }
+  to { transform: scale(1.08); }
+}
+.kenburns {
+  animation: kenburns 9s ease-out forwards;
+}
+@media (prefers-reduced-motion: reduce) {
+  .kenburns { animation: none; }
 }

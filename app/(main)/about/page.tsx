@@ -146,10 +146,39 @@ export default function AboutPage() {
               </p>
             </div>
             <div className="lg:col-span-7">
-              <div className="grid sm:grid-cols-2 gap-2">
-                {site.certifications.map((c) => (
-                  <div key={c} className="flex items-center gap-3 p-4 bg-white rounded-xl border hairline">
-                    <Layers className="w-4 h-4 text-brand-500" strokeWidth={1.5} />
+              <div className="grid grid-cols-3 md:grid-cols-4 gap-3">
+                {[
+                  "logo-teca",
+                  "logo-worksafe-bc",
+                  "logo-boma",
+                  "logo-pama-member",
+                  "logo-bc-hydro",
+                  "logo-asttbc",
+                  "logo-cci-bc",
+                  "logo-egsa",
+                  "logo-hpcn",
+                  "logo-isn",
+                  "logo-contractor-check",
+                  "logo-comply-works",
+                ].map((c) => (
+                  <div
+                    key={c}
+                    className="card p-4 flex items-center justify-center bg-white aspect-[3/2]"
+                  >
+                    <Image
+                      src={`/brand/${c}.png`}
+                      alt={`${c.replace("logo-", "").replace(/-/g, " ").replace(/\b\w/g, (m) => m.toUpperCase())} logo`}
+                      width={160}
+                      height={100}
+                      className="max-h-14 w-auto opacity-80 hover:opacity-100 transition"
+                    />
+                  </div>
+                ))}
+              </div>
+              <div className="mt-5 grid sm:grid-cols-2 gap-2">
+                {site.certifications.slice(0, 6).map((c) => (
+                  <div key={c} className="flex items-center gap-3 p-3 bg-white rounded-xl border hairline">
+                    <Layers className="w-4 h-4 text-brand-500 shrink-0" strokeWidth={1.5} />
                     <span className="text-sm font-medium text-ink-800">{c}</span>
                   </div>
                 ))}

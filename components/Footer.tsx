@@ -3,7 +3,7 @@ import { Logo } from "./Logo";
 import { divisions } from "@/lib/divisions";
 import { cities } from "@/lib/cities";
 import { site } from "@/lib/site";
-import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, Instagram, Facebook, Linkedin, Youtube, LockKeyhole } from "lucide-react";
 
 export function Footer() {
   return (
@@ -33,6 +33,25 @@ export function Footer() {
                 <Clock className="w-4 h-4" strokeWidth={1.5} />
                 <span>{site.hours}</span>
               </div>
+            </div>
+            <div className="mt-6 flex items-center gap-3">
+              {[
+                { icon: Instagram, href: "https://instagram.com/woolaservices", label: "Woola on Instagram" },
+                { icon: Facebook, href: "https://facebook.com/woolaservices", label: "Woola on Facebook" },
+                { icon: Linkedin, href: "https://linkedin.com/company/woola-services-group", label: "Woola on LinkedIn" },
+                { icon: Youtube, href: "https://youtube.com/@woolaservices", label: "Woola on YouTube" },
+              ].map((s) => (
+                <a
+                  key={s.label}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={s.label}
+                  className="w-9 h-9 rounded-full border border-ink-600 text-ink-200 flex items-center justify-center hover:text-cream-50 hover:border-brand-400 transition"
+                >
+                  <s.icon className="w-4 h-4" strokeWidth={1.5} />
+                </a>
+              ))}
             </div>
           </div>
 
@@ -70,7 +89,13 @@ export function Footer() {
             <div className="eyebrow text-brand-400">Company</div>
             <div className="mt-3 space-y-2 text-sm">
               <Link href="/about" className="block text-ink-200 hover:text-cream-50">About Woola</Link>
+              <Link href="/careers" className="block text-ink-200 hover:text-cream-50">Careers</Link>
+              <Link href="/work" className="block text-ink-200 hover:text-cream-50">Featured work</Link>
+              <Link href="/process" className="block text-ink-200 hover:text-cream-50">Our process</Link>
               <Link href="/contact" className="block text-ink-200 hover:text-cream-50">Contact dispatch</Link>
+              <Link href="/portal" className="inline-flex items-center gap-1.5 text-ink-200 hover:text-cream-50">
+                <LockKeyhole className="w-3.5 h-3.5" /> Client portal
+              </Link>
             </div>
           </div>
           <div className="lg:col-span-2">

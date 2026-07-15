@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Hero } from "@/components/Hero";
+import { HeroCarousel } from "@/components/HeroCarousel";
 import { Section, SectionHead } from "@/components/Section";
 import { DivisionCard } from "@/components/DivisionCard";
 import { Stats } from "@/components/Stats";
@@ -10,12 +10,32 @@ import { BuildingXray } from "@/components/BuildingXray";
 import { divisions } from "@/lib/divisions";
 import { cities } from "@/lib/cities";
 import { site } from "@/lib/site";
-import { ArrowRight, Building2, Wrench, Zap } from "lucide-react";
+import { ArrowRight, Building2, Wrench, Zap, ShieldCheck, MapPin } from "lucide-react";
 
 export default function HomePage() {
   return (
     <>
-      <Hero />
+      <HeroCarousel />
+
+      <div className="border-b hairline bg-cream-50">
+        <div className="container-x py-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <div className="flex items-baseline gap-3 md:gap-5 flex-wrap">
+            <span className="text-xl md:text-2xl font-bold tracking-tight text-ink-800">OUT WORK.</span>
+            <span className="text-xl md:text-2xl font-bold tracking-tight text-ink-800">OUT PERFORM.</span>
+            <span className="text-xl md:text-2xl font-bold tracking-tight text-brand-500">OUT PLAY.</span>
+          </div>
+          <div className="flex flex-wrap items-center gap-x-8 gap-y-2 text-sm text-ink-500">
+            <span className="inline-flex items-center gap-2">
+              <ShieldCheck className="w-4 h-4 text-brand-500" strokeWidth={1.5} />
+              WorkSafe COR · TECA Quality First · BOMA member
+            </span>
+            <span className="inline-flex items-center gap-2">
+              <MapPin className="w-4 h-4 text-brand-500" strokeWidth={1.5} />
+              20+ municipalities · HQ in Coquitlam
+            </span>
+          </div>
+        </div>
+      </div>
 
       <Section>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -145,6 +165,53 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <Section>
+        <div className="grid lg:grid-cols-2 gap-10 items-center">
+          <div className="relative overflow-hidden rounded-md aspect-[4/3] bg-ink-100">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/brand/field-generator-delivery.webp"
+              alt="Woola technician receiving a standby generator delivery in the field"
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+            <div className="absolute bottom-0 left-0 right-0 p-5 bg-gradient-to-t from-ink-900/70 to-transparent">
+              <div className="eyebrow !text-brand-400">In the field</div>
+              <div className="mt-1 text-sm text-cream-100">
+                Woola crews, Woola trucks, Woola shirts. You&apos;ll know us when we show up.
+              </div>
+            </div>
+          </div>
+          <div>
+            <SectionHead
+              eyebrow="Preventative maintenance"
+              title="The cheapest repair is the one that never happens."
+              description="Most of our contracted work is planned, not reactive: scheduled inspections, filter and fluid changes, compliance testing, and small fixes caught early. Buildings on a Woola PM program spend less and fail less."
+            />
+            <ul className="mt-6 space-y-3">
+              {[
+                "Custom maintenance calendar per building and asset",
+                "Compliance handled: backflow, CSA C282, fire-safety coordination",
+                "Photo-documented visits your council can audit",
+                "Priority emergency response included",
+              ].map((line) => (
+                <li key={line} className="flex items-start gap-3 text-ink-700">
+                  <span className="mt-2 w-1.5 h-1.5 bg-brand-500 rounded-full shrink-0" />
+                  {line}
+                </li>
+              ))}
+            </ul>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link href="/build/maintenance" className="btn btn-primary">
+                Maintenance packages <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link href="/process" className="btn btn-ghost">
+                How a PM program runs
+              </Link>
+            </div>
+          </div>
+        </div>
+      </Section>
 
       <section className="bg-ink-800 text-cream-50 relative overflow-hidden">
         <div className="grain" />

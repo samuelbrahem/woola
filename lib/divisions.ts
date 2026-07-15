@@ -51,6 +51,8 @@ export type Division = {
   description: string;
   heroImage: string;
   heroImageAlt: string;
+  /** Looping 20-30s promo film. Drop an MP4 in /public/videos and set the path here. */
+  video?: string;
   contactPhone: string;
   contactEmail: string;
   intro: string;

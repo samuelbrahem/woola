@@ -6,6 +6,7 @@ import { Section, SectionHead } from "@/components/Section";
 import { CTABanner } from "@/components/CTABanner";
 import { DivisionFAQ } from "@/components/DivisionFAQ";
 import { DivisionWordmark } from "@/components/DivisionWordmark";
+import { DivisionVideoBanner } from "@/components/DivisionVideoBanner";
 import { CountUp } from "@/components/CountUp";
 import {
   ArrowRight,
@@ -192,6 +193,9 @@ export default function DivisionPage({ params }: { params: Params }) {
           </div>
         </div>
       </section>
+
+      {/* Promo film slot */}
+      <DivisionVideoBanner division={division} />
 
       {/* Stats band */}
       <section className="bg-ink-800 text-cream-50 relative overflow-hidden">
