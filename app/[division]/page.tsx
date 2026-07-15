@@ -69,7 +69,7 @@ export default function DivisionPage({ params }: { params: Params }) {
           className="absolute -top-32 -right-32 w-[520px] h-[520px] rounded-full opacity-[0.07] -z-0"
           style={{
             background:
-              "radial-gradient(closest-side, rgba(15,110,102,0.7), transparent 70%)",
+              "radial-gradient(closest-side, rgb(var(--brand-500-rgb) / 0.7), transparent 70%)",
           }}
         />
         <div className="container-x pt-16 pb-20 md:pt-24 md:pb-24 relative">

@@ -111,8 +111,8 @@ function healthAt(age: number, lifespan: number) {
 
 function colorFor(h: number) {
   if (h > 0.55) return "#89A306";
-  if (h > 0.25) return "#D97706";
-  return "#DC2626";
+  if (h > 0.25) return "#00788C";
+  return "#000000";
 }
 
 function labelFor(h: number) {
@@ -207,8 +207,8 @@ export function BuildingXray() {
             <span>Tap a system to inspect it</span>
             <span className="inline-flex items-center gap-3">
               <span className="inline-flex items-center gap-1"><span className="w-2 h-2 rounded-full" style={{ background: "#89A306" }} /> Healthy</span>
-              <span className="inline-flex items-center gap-1"><span className="w-2 h-2 rounded-full" style={{ background: "#D97706" }} /> Plan</span>
-              <span className="inline-flex items-center gap-1"><span className="w-2 h-2 rounded-full" style={{ background: "#DC2626" }} /> Due</span>
+              <span className="inline-flex items-center gap-1"><span className="w-2 h-2 rounded-full" style={{ background: "#00788C" }} /> Plan</span>
+              <span className="inline-flex items-center gap-1"><span className="w-2 h-2 rounded-full" style={{ background: "#000000" }} /> Due</span>
             </span>
           </div>
         </div>
@@ -244,11 +244,11 @@ export function BuildingXray() {
               <div className="text-[10px] uppercase tracking-wider text-ink-500 mt-0.5">Healthy</div>
             </div>
             <div className="rounded-md border hairline py-3">
-              <div className="text-xl font-bold" style={{ color: "#D97706" }}>{planCount}</div>
+              <div className="text-xl font-bold" style={{ color: "#00788C" }}>{planCount}</div>
               <div className="text-[10px] uppercase tracking-wider text-ink-500 mt-0.5">Plan renewal</div>
             </div>
             <div className="rounded-md border hairline py-3">
-              <div className="text-xl font-bold" style={{ color: "#DC2626" }}>{dueCount}</div>
+              <div className="text-xl font-bold" style={{ color: "#000000" }}>{dueCount}</div>
               <div className="text-[10px] uppercase tracking-wider text-ink-500 mt-0.5">Due now</div>
             </div>
           </div>

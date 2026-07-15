@@ -25,34 +25,40 @@
   --accent-500: #89A306;
 }
 
-/* Per-division brand themes — each division reads as its own site.
-   The hex vars drive handwritten CSS; the -rgb triplets drive Tailwind brand-* utilities. */
+/* Per-division brand themes — each division reads as its own site while
+   staying strictly inside the official Woola palette:
+   teal #00788C · olive #89A306 · black #000000 · blush #FFF7F4 · white.
+   Mechanical uses the root teal. The hex vars drive handwritten CSS;
+   the -rgb triplets drive Tailwind brand-* utilities. */
 .theme-power {
-  --brand-400: #D97706;
-  --brand-500: #B45309;
-  --brand-600: #92400E;
-  --brand-50-rgb: 253 243 231;
-  --brand-400-rgb: 217 119 6;
-  --brand-500-rgb: 180 83 9;
-  --brand-600-rgb: 146 64 14;
+  /* deep teal, the dark end of the brand gradient (#00788C -> #000000) */
+  --brand-400: #006274;
+  --brand-500: #004A58;
+  --brand-600: #00333D;
+  --brand-50-rgb: 224 237 240;
+  --brand-400-rgb: 0 98 116;
+  --brand-500-rgb: 0 74 88;
+  --brand-600-rgb: 0 51 61;
 }
 .theme-electrical {
-  --brand-400: #3B82F6;
-  --brand-500: #1D4ED8;
-  --brand-600: #1E40AF;
-  --brand-50-rgb: 235 241 254;
-  --brand-400-rgb: 59 130 246;
-  --brand-500-rgb: 29 78 216;
-  --brand-600-rgb: 30 64 175;
+  /* brand olive */
+  --brand-400: #9DBA13;
+  --brand-500: #89A306;
+  --brand-600: #6F8405;
+  --brand-50-rgb: 243 246 227;
+  --brand-400-rgb: 157 186 19;
+  --brand-500-rgb: 137 163 6;
+  --brand-600-rgb: 111 132 5;
 }
 .theme-build {
-  --brand-400: #C05B41;
-  --brand-500: #9B3E2B;
-  --brand-600: #7C3122;
-  --brand-50-rgb: 249 238 235;
-  --brand-400-rgb: 192 91 65;
-  --brand-500-rgb: 155 62 43;
-  --brand-600-rgb: 124 49 34;
+  /* brand black */
+  --brand-400: #3A3A38;
+  --brand-500: #1F1F1D;
+  --brand-600: #000000;
+  --brand-50-rgb: 236 236 234;
+  --brand-400-rgb: 58 58 56;
+  --brand-500-rgb: 31 31 29;
+  --brand-600-rgb: 0 0 0;
 }
 
 html, body {

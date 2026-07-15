@@ -13,7 +13,7 @@ const hqIcon = L.divIcon({
   className: "",
   html: `
     <div style="position: relative; transform: translate(-50%, -100%);">
-      <div style="width: 18px; height: 18px; border-radius: 999px; background: #0F6E66; box-shadow: 0 0 0 6px rgba(15,110,102,0.18), 0 2px 8px rgba(0,0,0,0.25); border: 2px solid #fff;"></div>
+      <div style="width: 18px; height: 18px; border-radius: 999px; background: #00788C; box-shadow: 0 0 0 6px rgba(0,120,140,0.18), 0 2px 8px rgba(0,0,0,0.25); border: 2px solid #fff;"></div>
       <div style="position: absolute; top: 22px; left: 50%; transform: translateX(-50%); white-space: nowrap; font: 600 11px 'Poppins',system-ui,sans-serif; background: #0A0A09; color: #fff; padding: 4px 8px; border-radius: 4px; letter-spacing: 0.04em;">WOOLA HQ · COQUITLAM</div>
     </div>
   `,
@@ -75,7 +75,7 @@ export function CoverageMap({ height = 520 }: { height?: number }) {
                 fillOpacity: 1,
               }}
               eventHandlers={{
-                mouseover: (e) => e.target.setStyle({ fillColor: "#0F6E66", color: "#0F6E66", weight: 2 }),
+                mouseover: (e) => e.target.setStyle({ fillColor: "#00788C", color: "#00788C", weight: 2 }),
                 mouseout: (e) => e.target.setStyle({ fillColor: "#ffffff", color: "#0A0A09", weight: 1.5 }),
               }}
             >
@@ -102,7 +102,7 @@ export function CoverageMap({ height = 520 }: { height?: number }) {
                       display: "inline-block",
                       fontSize: 12,
                       fontWeight: 600,
-                      color: "#0F6E66",
+                      color: "#00788C",
                       textDecoration: "none",
                     }}
                   >
