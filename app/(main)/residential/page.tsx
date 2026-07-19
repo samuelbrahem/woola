@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Section, SectionHead } from "@/components/Section";
 import { CTABanner } from "@/components/CTABanner";
+import { FleetStrip } from "@/components/FleetStrip";
 import { Calculator } from "@/components/Calculator";
 import { ArrowRight, Check, Home, Receipt, Leaf, Wrench } from "lucide-react";
 
@@ -122,6 +123,8 @@ export default function ResidentialPage() {
           <Calculator />
         </div>
       </Section>
+
+      <FleetStrip />
 
       <CTABanner
         title="Tell us about your home."

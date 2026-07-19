@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Section, SectionHead } from "@/components/Section";
 import { CTABanner } from "@/components/CTABanner";
+import { FleetStrip } from "@/components/FleetStrip";
 import { divisions } from "@/lib/divisions";
 import {
   ArrowRight,
@@ -272,6 +273,8 @@ export default function CommercialPage() {
           ))}
         </div>
       </Section>
+
+      <FleetStrip />
 
       <CTABanner
         title="Send us your building list."

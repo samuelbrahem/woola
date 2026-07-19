@@ -164,6 +164,8 @@ export function Header() {
               <div className="p-4 w-[300px] space-y-1">
                 {[
                   ["About Woola", "/about", "The model behind the four divisions"],
+                  ["Credentials", "/about/credentials", "Associations and certifications we hold"],
+                  ["Fleet & Branding", "/about/fleet", "The vans you keep seeing"],
                   ["Featured Work", "/work", "Recent projects across BC"],
                   ["Our Process", "/process", "Four steps, every job"],
                   ["Why Woola", "/competitors", "How we compare"],
@@ -241,6 +243,8 @@ export function Header() {
               <Link href="/service-areas" onClick={() => setMobileOpen(false)} className="block font-medium">Service Areas</Link>
               <Link href="/competitors" onClick={() => setMobileOpen(false)} className="block font-medium">Why Woola</Link>
               <Link href="/about" onClick={() => setMobileOpen(false)} className="block font-medium">About</Link>
+              <Link href="/about/credentials" onClick={() => setMobileOpen(false)} className="block font-medium">Credentials</Link>
+              <Link href="/about/fleet" onClick={() => setMobileOpen(false)} className="block font-medium">Fleet & Branding</Link>
               <Link href="/contact" onClick={() => setMobileOpen(false)} className="block font-medium">Contact</Link>
             </div>
             <Link href="/contact" onClick={() => setMobileOpen(false)} className="btn btn-primary w-full justify-center">

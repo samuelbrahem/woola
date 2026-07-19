@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { divisions, getDivision, lowerName } from "@/lib/divisions";
 import { Section, SectionHead } from "@/components/Section";
 import { CTABanner } from "@/components/CTABanner";
+import { FleetStrip } from "@/components/FleetStrip";
 import { DivisionFAQ } from "@/components/DivisionFAQ";
 import { DivisionWordmark } from "@/components/DivisionWordmark";
 import { DivisionVideoBanner } from "@/components/DivisionVideoBanner";
@@ -539,6 +540,8 @@ export default function DivisionPage({ params }: { params: Params }) {
           </div>
         </div>
       </section>
+
+      <FleetStrip />
 
       {/* Final CTA */}
       <div id="contact" />

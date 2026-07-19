@@ -149,27 +149,41 @@ export default function ServicePage({ params }: { params: Params }) {
 
   return (
     <>
-      <section className="bg-cream-50 border-b hairline">
-        <div className="container-x pt-20 pb-16 md:pt-24 md:pb-20">
-          <div className="text-sm text-ink-400">
-            <Link href="/" className="hover:text-ink-700">Woola</Link>
+      <section className="relative overflow-hidden bg-ink-800 border-b hairline">
+        {service.primer && (
+          <>
+            <Image
+              src={service.primer.image}
+              alt={service.primer.imageAlt}
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-ink-900/90 via-ink-900/70 to-ink-900/40" />
+            <div className="absolute inset-0 bg-gradient-to-t from-ink-900/70 via-transparent to-ink-900/30" />
+          </>
+        )}
+        <div className="relative container-x pt-20 pb-16 md:pt-24 md:pb-20">
+          <div className="text-sm text-cream-100/60">
+            <Link href="/" className="hover:text-cream-50">Woola</Link>
             <span className="mx-1.5">/</span>
-            <Link href={`/${division.slug}`} className="hover:text-ink-700">{division.name}</Link>
+            <Link href={`/${division.slug}`} className="hover:text-cream-50">{division.name}</Link>
             <span className="mx-1.5">/</span>
-            <span className="text-ink-700">{service.name}</span>
+            <span className="text-cream-50">{service.name}</span>
           </div>
           <div className="mt-6 grid lg:grid-cols-12 gap-10 items-end">
             <div className="lg:col-span-8">
               <div className="flex items-center gap-3">
-                <div className="w-11 h-11 rounded-xl bg-ink-800 text-cream-50 flex items-center justify-center">
+                <div className="w-11 h-11 rounded-xl bg-brand-500 text-cream-50 flex items-center justify-center">
                   <Icon className="w-5 h-5" strokeWidth={1.5} />
                 </div>
-                <div className="eyebrow">{division.name} · {service.short}</div>
+                <div className="eyebrow !text-brand-400">{division.name} · {service.short}</div>
               </div>
-              <h1 className="mt-4 text-4xl md:text-5xl lg:text-6xl font-semibold leading-[0.98] text-ink-800">
+              <h1 className="mt-4 text-4xl md:text-5xl lg:text-6xl font-semibold leading-[0.98] text-cream-50">
                 {service.name}
               </h1>
-              <p className="mt-5 text-lg text-ink-500 max-w-2xl leading-relaxed">{service.description}</p>
+              <p className="mt-5 text-lg text-cream-100/85 max-w-2xl leading-relaxed">{service.description}</p>
             </div>
             <div className="lg:col-span-4 card p-6">
               <div className="eyebrow">{division.name}</div>

@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Section, SectionHead } from "@/components/Section";
 import { Stats } from "@/components/Stats";
 import { CTABanner } from "@/components/CTABanner";
+import { AboutSubnav } from "@/components/AboutSubnav";
 import { site } from "@/lib/site";
 import { divisions } from "@/lib/divisions";
 import { Award, Users, Layers, Activity } from "lucide-react";
@@ -38,6 +39,7 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+      <AboutSubnav active="/about" />
 
       <section className="bg-cream-50">
         <div className="container-x pb-4">

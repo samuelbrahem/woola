@@ -95,7 +95,7 @@ export function HeroCarousel() {
       aria-roledescription="carousel"
       aria-label="Woola highlights"
     >
-      <div className="relative h-[72vh] min-h-[480px] max-h-[760px]">
+      <div className="relative h-[calc(100vh-5rem)] min-h-[560px]">
         {SLIDES.map((s, i) => (
           <div
             key={s.id}
