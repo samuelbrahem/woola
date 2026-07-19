@@ -226,8 +226,8 @@ export default function ServicePage({ params }: { params: Params }) {
                     className="object-cover"
                   />
                 </div>
-                <div className="mt-2 text-xs text-ink-400">
-                  {service.primer.imageAlt}. Photo: {service.primer.imageCredit}.
+                <div className="mt-2 text-xs text-ink-400 text-right">
+                  Photo: {service.primer.imageCredit}
                 </div>
               </div>
               <div className="lg:col-span-6">

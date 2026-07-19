@@ -11,7 +11,7 @@ export function DivisionFooter({ division }: { division: Division }) {
     <footer className="bg-cream-100 border-t hairline">
       <div className="container-x py-14">
         <div className="grid md:grid-cols-12 gap-10 items-start">
-          <div className="md:col-span-5">
+          <div className="md:col-span-4">
             <DivisionWordmark division={division} size="md" />
             <p className="mt-4 script text-brand-500 text-3xl leading-none">
               {division.tagline}
@@ -35,14 +35,14 @@ export function DivisionFooter({ division }: { division: Division }) {
               ))}
             </ul>
           </div>
-          <div className="md:col-span-2">
+          <div className="md:col-span-3">
             <div className="eyebrow">Dispatch</div>
             <div className="mt-4 space-y-3 text-sm">
               <a href={`tel:${division.contactPhone}`} className="flex items-center gap-2 font-semibold text-ink-800 hover:text-brand-500 transition">
                 <Phone className="w-4 h-4 text-brand-500" strokeWidth={1.75} />
                 {division.contactPhone}
               </a>
-              <a href={`mailto:${division.contactEmail}`} className="flex items-center gap-2 text-ink-600 hover:text-brand-500 transition break-all">
+              <a href={`mailto:${division.contactEmail}`} className="flex items-center gap-2 text-ink-600 hover:text-brand-500 transition">
                 <Mail className="w-4 h-4 text-brand-500 shrink-0" strokeWidth={1.75} />
                 {division.contactEmail}
               </a>

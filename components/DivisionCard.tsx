@@ -26,20 +26,27 @@ export function DivisionCard({ division }: { division: Division }) {
           <ArrowUpRight className="w-5 h-5 text-ink-400 group-hover:text-brand-500 transition" strokeWidth={1.5} />
         </div>
         <div className="eyebrow mt-6">{division.subtitle}</div>
-        <p className="mt-3 text-ink-500 text-sm leading-relaxed flex-1">
+        <p className="mt-3 text-ink-500 text-sm leading-relaxed line-clamp-3">
           {division.description}
         </p>
-        <div className="mt-6 pt-6 border-t hairline">
-          <div className="flex flex-wrap gap-2">
-            {division.services.map((s) => (
-              <span
-                key={s.slug}
-                className="text-xs px-2.5 py-1 rounded bg-cream-100 text-ink-700 border hairline"
-              >
-                {s.name}
-              </span>
-            ))}
-          </div>
+        <div className="mt-5 flex flex-wrap gap-2 flex-1 content-start">
+          {division.services.slice(0, 4).map((s) => (
+            <span
+              key={s.slug}
+              className="text-xs px-2.5 py-1 rounded bg-cream-100 text-ink-700 border hairline"
+            >
+              {s.name}
+            </span>
+          ))}
+          {division.services.length > 4 && (
+            <span className="text-xs px-2.5 py-1 rounded text-ink-500">
+              +{division.services.length - 4} more
+            </span>
+          )}
+        </div>
+        <div className="mt-6 pt-5 border-t hairline flex items-center justify-between text-sm">
+          <span className="font-medium text-ink-800">{division.contactPhone}</span>
+          <span className="text-ink-500">{division.services.length} services</span>
         </div>
       </div>
     </Link>

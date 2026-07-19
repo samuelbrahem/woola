@@ -175,12 +175,6 @@ export default function HomePage() {
               alt="Woola technician receiving a standby generator delivery in the field"
               className="absolute inset-0 w-full h-full object-cover"
             />
-            <div className="absolute bottom-0 left-0 right-0 p-5 bg-gradient-to-t from-ink-900/70 to-transparent">
-              <div className="eyebrow !text-brand-400">In the field</div>
-              <div className="mt-1 text-sm text-cream-100">
-                Woola crews, Woola trucks, Woola shirts. You&apos;ll know us when we show up.
-              </div>
-            </div>
           </div>
           <div>
             <SectionHead

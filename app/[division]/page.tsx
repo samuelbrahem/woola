@@ -74,41 +74,41 @@ export default function DivisionPage({ params }: { params: Params }) {
           }}
         />
         <div className="container-x pt-16 pb-20 md:pt-24 md:pb-24 relative">
-          <div className="grid lg:grid-cols-12 gap-12 items-end">
-            <div className="lg:col-span-7">
-              <div className="eyebrow">Division · {division.subtitle}</div>
-              <h1 className="mt-5">
-                <span className="sr-only">{division.name}: {division.subtitle}</span>
-                <DivisionWordmark division={division} size="lg" priority />
-              </h1>
-              <p className="mt-6 script text-brand-500 text-4xl md:text-5xl leading-none">
-                {division.tagline}
-              </p>
-              <p className="mt-7 text-lg text-ink-500 max-w-2xl leading-relaxed">
-                {division.intro}
-              </p>
-              <div className="mt-7 flex flex-wrap gap-2">
-                {division.heroKeywords.map((k) => (
-                  <span
-                    key={k}
-                    className="text-xs px-3 py-1.5 rounded-full bg-white border hairline text-ink-700"
-                  >
-                    {k}
-                  </span>
-                ))}
-              </div>
-              <div className="mt-9 flex flex-wrap gap-3">
-                <a href={`tel:${division.contactPhone}`} className="btn btn-primary text-base">
-                  <Phone className="w-4 h-4" /> {division.contactPhone}
-                </a>
-                <Link href="/contact" className="btn btn-brand text-base">
-                  Book a property assessment <ArrowRight className="w-4 h-4" />
-                </Link>
-              </div>
+          <div className="max-w-3xl mx-auto text-center">
+            <div className="eyebrow">Division · {division.subtitle}</div>
+            <h1 className="mt-5 flex justify-center">
+              <span className="sr-only">{division.name}: {division.subtitle}</span>
+              <DivisionWordmark division={division} size="lg" priority />
+            </h1>
+            <p className="mt-6 script text-brand-500 text-4xl md:text-5xl leading-none">
+              {division.tagline}
+            </p>
+            <p className="mt-7 text-lg text-ink-500 leading-relaxed">
+              {division.intro}
+            </p>
+            <div className="mt-7 flex flex-wrap justify-center gap-2">
+              {division.heroKeywords.map((k) => (
+                <span
+                  key={k}
+                  className="text-xs px-3 py-1.5 rounded-full bg-white border hairline text-ink-700"
+                >
+                  {k}
+                </span>
+              ))}
             </div>
+            <div className="mt-9 flex flex-wrap justify-center gap-3">
+              <a href={`tel:${division.contactPhone}`} className="btn btn-primary text-base">
+                <Phone className="w-4 h-4" /> {division.contactPhone}
+              </a>
+              <Link href="/contact" className="btn btn-brand text-base">
+                Book a property assessment <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </div>
 
-            <div className="lg:col-span-5">
-              <div className="relative overflow-hidden rounded-md mb-4 aspect-[4/3] bg-ink-100">
+          <div className="mt-14 grid lg:grid-cols-12 gap-6 items-stretch">
+            <div className="lg:col-span-7">
+              <div className="relative overflow-hidden rounded-md aspect-[16/9] lg:aspect-auto lg:h-full bg-ink-100">
                 <Image
                   src={division.heroImage}
                   alt={division.heroImageAlt}
@@ -117,18 +117,10 @@ export default function DivisionPage({ params }: { params: Params }) {
                   priority
                   className="object-cover"
                 />
-                <div
-                  aria-hidden
-                  className="absolute inset-0 bg-gradient-to-t from-ink-800/60 via-transparent to-transparent"
-                />
-                <div className="absolute bottom-0 left-0 right-0 p-5 text-cream-50">
-                  <div className="eyebrow !text-brand-400">In the field</div>
-                  <div className="mt-1 text-sm text-cream-100 max-w-sm">
-                    {division.heroImageAlt}.
-                  </div>
-                </div>
               </div>
+            </div>
 
+            <div className="lg:col-span-5">
               <div className="card p-7 bg-white">
                 <div className="flex items-center gap-2 text-brand-500">
                   <Sparkles className="w-4 h-4" />
