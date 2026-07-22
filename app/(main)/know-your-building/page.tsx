@@ -69,14 +69,15 @@ const cycle = [
 export default function KnowYourBuildingPage() {
   return (
     <>
-      <section className="bg-cream-50 border-b hairline">
-        <div className="container-x pt-20 pb-16">
+      <section className="bg-ink-900 text-cream-50 relative overflow-hidden">
+        <div className="grain" />
+        <div className="container-x pt-20 pb-16 relative">
           <div className="max-w-3xl">
-            <div className="eyebrow">Technology & Reporting</div>
-            <h1 className="mt-3 text-5xl md:text-6xl font-semibold text-ink-800 leading-[0.95]">
+            <div className="eyebrow !text-brand-400">Technology & Reporting</div>
+            <h1 className="mt-3 text-5xl md:text-6xl font-semibold text-cream-50 leading-[0.95]">
               Know your building.
             </h1>
-            <p className="mt-5 text-lg text-ink-500 leading-relaxed">
+            <p className="mt-5 text-lg text-cream-100/80 leading-relaxed">
               Your building contains hundreds of assets with different ages, conditions, and
               replacement timelines. Better information leads to better decisions, so we treat
               documentation as a product, not paperwork.
@@ -122,9 +123,11 @@ export default function KnowYourBuildingPage() {
         </div>
       </Section>
 
-      <section className="bg-cream-100 border-y hairline">
-        <div className="container-x section">
+      <section className="bg-ink-800 text-cream-50 relative overflow-hidden">
+        <div className="grain" />
+        <div className="container-x section relative">
           <SectionHead
+            dark
             eyebrow="How it works"
             title="Inspect. Document. Maintain. Report. Plan."
             description="A cycle, not a one-time audit. Each pass through makes the next budget season easier."

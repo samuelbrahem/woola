@@ -79,14 +79,15 @@ const promises = [
 export default function PropertyManagersPage() {
   return (
     <>
-      <section className="bg-cream-50 border-b hairline">
-        <div className="container-x pt-20 pb-16">
+      <section className="bg-ink-900 text-cream-50 relative overflow-hidden">
+        <div className="grain" />
+        <div className="container-x pt-20 pb-16 relative">
           <div className="max-w-3xl">
-            <div className="eyebrow">Who we serve · Property Managers</div>
-            <h1 className="mt-3 text-5xl md:text-6xl font-semibold text-ink-800 leading-[0.95]">
+            <div className="eyebrow !text-brand-400">Who we serve · Property Managers</div>
+            <h1 className="mt-3 text-5xl md:text-6xl font-semibold text-cream-50 leading-[0.95]">
               Built for property managers.
             </h1>
-            <p className="mt-5 text-lg text-ink-500 leading-relaxed">
+            <p className="mt-5 text-lg text-cream-100/80 leading-relaxed">
               Fewer service providers. Better visibility. Clearer accountability. Woola brings the
               mission-critical building services under one streamlined partner, built around the way
               you actually manage a portfolio.
@@ -95,7 +96,7 @@ export default function PropertyManagersPage() {
               <Link href="/contact" className="btn btn-brand text-base">
                 Send us your building list <ArrowRight className="w-4 h-4" />
               </Link>
-              <a href={`tel:${site.phone}`} className="btn btn-ghost text-base">
+              <a href={`tel:${site.phone}`} className="btn text-base border border-cream-50/40 text-cream-50 hover:bg-cream-50 hover:text-ink-800">
                 <PhoneCall className="w-4 h-4" /> {site.phone}
               </a>
             </div>
@@ -142,19 +143,22 @@ export default function PropertyManagersPage() {
         </div>
       </section>
 
-      <Section>
+      <section className="bg-ink-800 text-cream-50 relative overflow-hidden">
+        <div className="grain" />
+        <div className="container-x section relative">
         <div className="grid lg:grid-cols-12 gap-12 items-start">
           <div className="lg:col-span-5">
             <SectionHead
+              dark
               eyebrow="What we run for portfolios"
               title="Scalable solutions, from one building to fifty."
             />
-            <p className="mt-4 text-ink-500 leading-relaxed">
+            <p className="mt-4 text-cream-100/75 leading-relaxed">
               Start with a single problem building or hand over the whole portfolio. Programs scale
               without changing your point of contact.
             </p>
             <div className="mt-8">
-              <Link href="/know-your-building" className="btn btn-outline">
+              <Link href="/know-your-building" className="btn border border-cream-50/40 text-cream-50 hover:bg-cream-50 hover:text-ink-800">
                 How we document buildings <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
@@ -174,7 +178,8 @@ export default function PropertyManagersPage() {
             ))}
           </div>
         </div>
-      </Section>
+        </div>
+      </section>
 
       <FleetStrip />
 
