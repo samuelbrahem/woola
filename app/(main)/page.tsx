@@ -7,8 +7,8 @@ import { ServiceMap } from "@/components/ServiceMap";
 import { Testimonials } from "@/components/Testimonials";
 import { CTABanner } from "@/components/CTABanner";
 import { BuildingXray } from "@/components/BuildingXray";
+import { IndustryExplorer } from "@/components/IndustryExplorer";
 import { divisions } from "@/lib/divisions";
-import { industries } from "@/lib/industries";
 import { cities } from "@/lib/cities";
 import Image from "next/image";
 import { site } from "@/lib/site";
@@ -61,39 +61,13 @@ export default function HomePage() {
 
       <section className="border-y hairline bg-white">
         <div className="container-x section">
-          <SectionHead eyebrow="Industries" title="Built for your building." />
-          <div className="mt-12 grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-            {industries.map((ind) => (
-              <Link
-                key={ind.slug}
-                href={`/industries/${ind.slug}`}
-                className="group relative overflow-hidden rounded-md aspect-[4/3] bg-ink-100"
-              >
-                <Image
-                  src={ind.image}
-                  alt={ind.imageAlt}
-                  fill
-                  sizes="(min-width: 1024px) 30vw, 45vw"
-                  className="object-cover transition-transform duration-500 group-hover:scale-[1.05]"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-ink-900/85 via-ink-900/25 to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-5">
-                  <h3 className="text-lg md:text-xl font-semibold text-cream-50">{ind.name}</h3>
-                  <span className="mt-1 inline-flex items-center gap-1.5 text-sm text-brand-400 opacity-0 group-hover:opacity-100 transition">
-                    Explore <ArrowRight className="w-4 h-4" />
-                  </span>
-                </div>
-              </Link>
-            ))}
-            <Link
-              href="/property-managers"
-              className="group relative overflow-hidden rounded-md aspect-[4/3] bg-brand-500 flex flex-col justify-end p-5"
-            >
-              <h3 className="text-lg md:text-xl font-semibold text-white">Property Managers</h3>
-              <span className="mt-1 inline-flex items-center gap-1.5 text-sm text-white/90">
-                One partner for the portfolio <ArrowRight className="w-4 h-4" />
-              </span>
-            </Link>
+          <SectionHead
+            eyebrow="Industries"
+            title="Built for your building."
+            description="Hover the index. Every building type runs on different pressures; we run programs for each."
+          />
+          <div className="mt-12">
+            <IndustryExplorer />
           </div>
         </div>
       </section>
