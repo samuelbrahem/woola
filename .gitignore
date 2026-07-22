@@ -11,3 +11,4 @@ out
 next-env.d.ts
 scripts/renders/assets/
 scripts/renders/backup_blender/
+__pycache__/
