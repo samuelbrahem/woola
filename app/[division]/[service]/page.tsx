@@ -4,7 +4,6 @@ import { notFound } from "next/navigation";
 import { divisions, getService, lowerName } from "@/lib/divisions";
 import { Section, SectionHead } from "@/components/Section";
 import { CTABanner } from "@/components/CTABanner";
-import { ReadMore } from "@/components/ReadMore";
 import { SecondOpinionCTA } from "@/components/SecondOpinionCTA";
 import { ArrowRight, Check, Phone, BookOpen } from "lucide-react";
 import type { Metadata } from "next";
@@ -151,21 +150,7 @@ export default function ServicePage({ params }: { params: Params }) {
   return (
     <>
       <section className="relative overflow-hidden bg-ink-800 border-b hairline">
-        {service.primer && (
-          <>
-            <Image
-              src={service.primer.image}
-              alt={service.primer.imageAlt}
-              fill
-              priority
-              sizes="100vw"
-              className="object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-ink-900/90 via-ink-900/70 to-ink-900/40" />
-            <div className="absolute inset-0 bg-gradient-to-t from-ink-900/70 via-transparent to-ink-900/30" />
-          </>
-        )}
-        <div className="relative container-x pt-20 pb-16 md:pt-24 md:pb-20">
+          <div className="relative container-x pt-20 pb-16 md:pt-24 md:pb-20">
           <div className="text-sm text-cream-100/60">
             <Link href="/" className="hover:text-cream-50">Woola</Link>
             <span className="mx-1.5">/</span>
@@ -210,47 +195,6 @@ export default function ServicePage({ params }: { params: Params }) {
         </div>
       </section>
 
-      {service.primer && (
-        <section className="bg-white border-b hairline">
-          <div className="container-x section">
-            <div className="flex items-center gap-2 text-brand-500">
-              <BookOpen className="w-4 h-4" strokeWidth={1.75} />
-              <div className="eyebrow !text-brand-500">Plain-English primer</div>
-            </div>
-            <h2 className="mt-4 text-3xl md:text-4xl lg:text-5xl font-semibold text-ink-800 tracking-tight max-w-3xl leading-tight">
-              What is {lowerName(service.name)}?
-            </h2>
-            <div className="mt-10 grid lg:grid-cols-12 gap-10 items-start">
-              <div className="lg:col-span-6">
-                <div className="relative overflow-hidden rounded-md aspect-[4/3] bg-ink-100 border hairline">
-                  <Image
-                    src={service.primer.image}
-                    alt={service.primer.imageAlt}
-                    fill
-                    sizes="(min-width: 1024px) 50vw, 100vw"
-                    className="object-cover"
-                  />
-                </div>
-                <div className="mt-2 text-xs text-ink-400 text-right">
-                  Photo: {service.primer.imageCredit}
-                </div>
-              </div>
-              <div className="lg:col-span-6">
-                <p className="text-lg text-ink-600 leading-relaxed">
-                  {service.primer.what}
-                </p>
-                <a
-                  href="#glossary"
-                  className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-brand-500 link-underline"
-                >
-                  New to the terminology? See the glossary <ArrowRight className="w-4 h-4" />
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
-      )}
-
       {service.equipment && service.equipment.length > 0 && (
         <section className="bg-cream-100 border-b hairline">
           <div className="container-x section">
@@ -290,9 +234,9 @@ export default function ServicePage({ params }: { params: Params }) {
       {scopes.length > 0 && (
         <Section>
           <SectionHead
-            eyebrow="Scope"
-            title="What we actually do, in detail."
-            description="The trade-by-trade work we book under this service. If your scope isn't listed, ask. We probably do it."
+            eyebrow="Our services"
+            title={`${service.short} services we offer.`}
+            description="What we book, deliver, and stand behind under this service line. If your scope isn't listed, ask. We probably do it."
           />
           <div className="mt-12 grid md:grid-cols-3 gap-6">
             {scopes.map((s) => (
@@ -399,45 +343,25 @@ export default function ServicePage({ params }: { params: Params }) {
         </div>
       </Section>
 
-      {service.primer && service.primer.parts.length > 0 && (
-        <section id="glossary" className="bg-cream-100 border-t hairline">
-          <div className="container-x section">
-            <div className="grid lg:grid-cols-12 gap-10 items-start">
-              <div className="lg:col-span-4 lg:sticky lg:top-32 self-start">
-                <div className="flex items-center gap-2 text-brand-500">
-                  <BookOpen className="w-4 h-4" strokeWidth={1.75} />
-                  <div className="eyebrow !text-brand-500">Glossary</div>
-                </div>
-                <h2 className="mt-3 text-3xl md:text-4xl font-semibold text-ink-800 tracking-tight">
-                  Parts &amp; terms worth knowing.
-                </h2>
-                <p className="mt-4 text-ink-500 text-sm leading-relaxed">
-                  The vocabulary that comes up in quotes and site visits, explained in
-                  plain English.
-                </p>
-                <Link
-                  href="/equipment"
-                  className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-brand-500 hover:underline"
-                >
-                  Browse the equipment library <ArrowRight className="w-4 h-4" />
-                </Link>
-              </div>
-              <div className="lg:col-span-8">
-                <ReadMore collapsedHeight={320} label="Show all terms">
-                  <dl className="grid sm:grid-cols-2 gap-4">
-                    {service.primer.parts.map((p) => (
-                      <div key={p.term} className="card p-5 bg-white">
-                        <dt className="font-semibold text-ink-800 text-sm">{p.term}</dt>
-                        <dd className="mt-1.5 text-sm text-ink-600 leading-relaxed">{p.def}</dd>
-                      </div>
-                    ))}
-                  </dl>
-                </ReadMore>
-              </div>
-            </div>
+
+      <section className="bg-cream-100 border-y hairline">
+        <div className="container-x py-10 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <BookOpen className="w-5 h-5 text-brand-500" strokeWidth={1.75} />
+            <p className="text-sm text-ink-600">
+              New to {lowerName(service.name)}? Read the plain-English primer and glossary in the Learning Hub.
+            </p>
           </div>
-        </section>
-      )}
+          <div className="flex gap-4">
+            <Link href={`/learn/${division.slug}/${service.slug}`} className="text-sm font-medium text-brand-500 hover:underline whitespace-nowrap">
+              Primer & glossary →
+            </Link>
+            <Link href="/equipment" className="text-sm font-medium text-brand-500 hover:underline whitespace-nowrap">
+              Equipment library →
+            </Link>
+          </div>
+        </div>
+      </section>
 
       <CTABanner
         title={`Book ${lowerName(service.name)} with Woola.`}

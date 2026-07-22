@@ -45,7 +45,7 @@ export default function LearnPage() {
               {d.services.map((s) => (
                 <Link
                   key={s.slug}
-                  href={`/${d.slug}/${s.slug}#glossary`}
+                  href={`/learn/${d.slug}/${s.slug}`}
                   className="card bg-white overflow-hidden group flex flex-col"
                 >
                   <div className="relative aspect-[16/9] bg-ink-100 overflow-hidden">
