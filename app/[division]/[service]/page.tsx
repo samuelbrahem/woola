@@ -309,38 +309,31 @@ export default function ServicePage({ params }: { params: Params }) {
       </section>
 
       <Section>
-        <div className="grid lg:grid-cols-2 gap-10">
-          <div>
-            <SectionHead eyebrow="Cities" title="Where this service runs." />
-            <div className="mt-6 flex flex-wrap gap-2">
-              {cities.map((c) => (
-                <Link
-                  key={c.slug}
-                  href={`/service-areas/${c.slug}`}
-                  className="text-sm px-3 py-1.5 rounded-full bg-cream-100 border hairline hover:bg-ink-800 hover:text-cream-50 transition"
-                >
-                  {service.name} in {c.name}
-                </Link>
-              ))}
-            </div>
-          </div>
-          <div>
-            <SectionHead eyebrow="Why Woola" title="What makes this service different." />
-            <ul className="mt-6 space-y-3">
-              {service.highlights.map((h) => (
-                <li key={h} className="flex gap-3 items-start">
-                  <div className="w-7 h-7 rounded-full bg-ink-800 text-cream-50 flex items-center justify-center shrink-0">
-                    <Check className="w-3.5 h-3.5" strokeWidth={2.5} />
-                  </div>
-                  <span className="text-ink-700">{h}</span>
-                </li>
-              ))}
-            </ul>
-            <Link href={`/${division.slug}`} className="btn btn-outline mt-8">
-              See all {division.name} services <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
-        </div>
+        <SectionHead eyebrow="Why Woola" title="What makes this service different." />
+        <ul className="mt-6 grid sm:grid-cols-2 gap-x-10 gap-y-3 max-w-4xl">
+          {service.highlights.map((h) => (
+            <li key={h} className="flex gap-3 items-start">
+              <div className="w-7 h-7 rounded-full bg-ink-800 text-cream-50 flex items-center justify-center shrink-0">
+                <Check className="w-3.5 h-3.5" strokeWidth={2.5} />
+              </div>
+              <span className="text-ink-700">{h}</span>
+            </li>
+          ))}
+        </ul>
+        <Link href={`/${division.slug}`} className="btn btn-outline mt-8">
+          See all {division.name} services <ArrowRight className="w-4 h-4" />
+        </Link>
+        <p className="mt-10 pt-6 border-t hairline text-xs text-ink-400 leading-relaxed max-w-4xl">
+          {service.short} across{" "}
+          {cities.map((c, i) => (
+            <span key={c.slug}>
+              <Link href={`/service-areas/${c.slug}`} className="hover:text-ink-700 hover:underline">
+                {c.name}
+              </Link>
+              {i < cities.length - 1 ? ", " : "."}
+            </span>
+          ))}
+        </p>
       </Section>
 
 
