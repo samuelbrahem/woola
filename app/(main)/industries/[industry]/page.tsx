@@ -120,16 +120,17 @@ export default function IndustryPage({ params }: { params: Params }) {
         </div>
       </section>
 
-      <Section>
+      <section className="bg-brand-500 text-white">
+        <div className="container-x section">
         <div className="grid lg:grid-cols-12 gap-12 items-start">
           <div className="lg:col-span-5">
-            <SectionHead eyebrow="What you're up against" title="We know the pressures." />
+            <SectionHead eyebrow="What you're up against" title="We know the pressures." dark />
             <ul className="mt-8 space-y-4">
               {ind.pressures.map((p) => {
                 const Icon = pressureIcon(p);
                 return (
-                  <li key={p} className="flex items-start gap-3 text-ink-700">
-                    <span className="w-9 h-9 rounded-lg bg-brand-500/10 text-brand-500 flex items-center justify-center shrink-0">
+                  <li key={p} className="flex items-start gap-3 text-white/90">
+                    <span className="w-9 h-9 rounded-lg bg-white/15 text-white flex items-center justify-center shrink-0">
                       <Icon className="w-5 h-5" strokeWidth={1.75} />
                     </span>
                     <span className="pt-1.5">{p}</span>
@@ -139,7 +140,7 @@ export default function IndustryPage({ params }: { params: Params }) {
             </ul>
           </div>
           <div className="lg:col-span-7">
-            <div className="eyebrow">Systems we run for {ind.name.toLowerCase()}</div>
+            <div className="eyebrow !text-white/80">Systems we run for {ind.name.toLowerCase()}</div>
             <div className="mt-4 grid sm:grid-cols-2 gap-3">
               {ind.systems.map((s) => {
                 const Icon = systemIcon(s.name);
@@ -156,7 +157,8 @@ export default function IndustryPage({ params }: { params: Params }) {
             </div>
           </div>
         </div>
-      </Section>
+        </div>
+      </section>
 
       <section className="bg-cream-100 border-y hairline">
         <div className="container-x section">

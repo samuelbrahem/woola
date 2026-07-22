@@ -18,7 +18,7 @@ export function IndustryExplorer() {
           {industries.map((ind, i) => {
             const isActive = ind.slug === activeSlug;
             return (
-              <li key={ind.slug} className="border-b hairline last:border-b-0">
+              <li key={ind.slug} className="border-b border-ink-700 last:border-b-0">
                 <Link
                   href={`/industries/${ind.slug}`}
                   onMouseEnter={() => setActiveSlug(ind.slug)}
@@ -27,7 +27,7 @@ export function IndustryExplorer() {
                 >
                   <span
                     className={`text-sm font-semibold tabular-nums transition-colors ${
-                      isActive ? "text-brand-500" : "text-ink-300"
+                      isActive ? "text-brand-400" : "text-ink-500"
                     }`}
                     style={{ fontFamily: "'Poppins', system-ui, sans-serif" }}
                   >
@@ -36,15 +36,15 @@ export function IndustryExplorer() {
                   <span
                     className={`text-2xl md:text-3xl lg:text-4xl font-semibold tracking-tight transition-all duration-300 ${
                       isActive
-                        ? "text-ink-800 lg:translate-x-2"
-                        : "text-ink-300 group-hover:text-ink-500"
+                        ? "text-cream-50 lg:translate-x-2"
+                        : "text-ink-400 group-hover:text-ink-200"
                     }`}
                   >
                     {ind.name}
                   </span>
                   <ArrowRight
                     className={`ml-auto w-5 h-5 shrink-0 self-center transition-all duration-300 ${
-                      isActive ? "text-brand-500 opacity-100" : "opacity-0"
+                      isActive ? "text-brand-400 opacity-100" : "opacity-0"
                     }`}
                   />
                 </Link>
@@ -54,7 +54,7 @@ export function IndustryExplorer() {
         </ul>
         <Link
           href="/property-managers"
-          className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-brand-500 hover:underline"
+          className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-brand-400 hover:underline"
         >
           Running all of them? Built for property managers <ArrowRight className="w-4 h-4" />
         </Link>
@@ -82,8 +82,8 @@ export function IndustryExplorer() {
         </div>
         <ul className="mt-6 space-y-2.5">
           {active.pressures.map((p) => (
-            <li key={p} className="flex items-start gap-3 text-ink-700">
-              <Check className="w-4 h-4 mt-1 text-brand-500 shrink-0" strokeWidth={2.5} />
+            <li key={p} className="flex items-start gap-3 text-cream-100/85">
+              <Check className="w-4 h-4 mt-1 text-brand-400 shrink-0" strokeWidth={2.5} />
               <span className="text-sm leading-relaxed">{p}</span>
             </li>
           ))}

@@ -59,12 +59,14 @@ export default function HomePage() {
         </div>
       </Section>
 
-      <section className="border-y hairline bg-white">
-        <div className="container-x section">
+      <section className="bg-ink-900 text-cream-50 relative overflow-hidden">
+        <div className="grain" />
+        <div className="container-x section relative">
           <SectionHead
             eyebrow="Industries"
             title="Built for your building."
             description="Hover the index. Every building type runs on different pressures; we run programs for each."
+            dark
           />
           <div className="mt-12">
             <IndustryExplorer />
@@ -205,11 +207,11 @@ export default function HomePage() {
         </div>
       </Section>
 
-      <section className="bg-cream-100 border-y hairline">
+      <section className="bg-brand-500 text-white">
         <div className="container-x section">
           <div className="max-w-3xl">
-            <div className="eyebrow">What clients say</div>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold mt-3 text-ink-800">
+            <div className="eyebrow !text-white/80">What clients say</div>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold mt-3 text-white">
               The point of Woola is that you stop chasing trades.
             </h2>
           </div>

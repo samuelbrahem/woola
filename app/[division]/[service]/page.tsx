@@ -232,11 +232,14 @@ export default function ServicePage({ params }: { params: Params }) {
       )}
 
       {scopes.length > 0 && (
-        <Section>
+        <section className="bg-ink-800 text-cream-50 relative overflow-hidden">
+          <div className="grain" />
+          <div className="container-x section relative">
           <SectionHead
             eyebrow="Our services"
             title={`${service.short} services we offer.`}
             description="What we book, deliver, and stand behind under this service line. If your scope isn't listed, ask. We probably do it."
+            dark
           />
           <div className="mt-12 grid md:grid-cols-3 gap-6">
             {scopes.map((s) => (
@@ -253,7 +256,8 @@ export default function ServicePage({ params }: { params: Params }) {
               </div>
             ))}
           </div>
-        </Section>
+          </div>
+        </section>
       )}
 
       {showCalculator && <SecondOpinionCTA />}

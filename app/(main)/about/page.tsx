@@ -81,9 +81,11 @@ export default function AboutPage() {
         <Stats />
       </Section>
 
-      <section className="bg-cream-100 border-y hairline">
-        <div className="container-x section">
+      <section className="bg-ink-800 text-cream-50 relative overflow-hidden">
+        <div className="grain" />
+        <div className="container-x section relative">
           <SectionHead
+            dark
             eyebrow="The model"
             title="One company. Four divisions. Built around the property."
             description="Each division has a dedicated phone number, dispatcher, and trade qualifications, and shares the back office, reporting platform, and 24/7 emergency line."
