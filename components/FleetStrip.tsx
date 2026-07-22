@@ -4,21 +4,21 @@ import { ArrowRight } from "lucide-react";
 
 export function FleetStrip() {
   return (
-    <section className="bg-ink-800">
+    <section className="bg-cream-100 border-y hairline">
       <div className="container-x py-14 md:py-16">
         <div className="grid lg:grid-cols-12 gap-8 items-center">
           <div className="lg:col-span-5">
-            <div className="eyebrow !text-brand-400">The Woola fleet</div>
-            <h2 className="mt-3 text-3xl md:text-4xl font-semibold text-cream-50 leading-tight">
+            <div className="eyebrow">The Woola fleet</div>
+            <h2 className="mt-3 text-3xl md:text-4xl font-semibold text-ink-800 leading-tight">
               You&apos;ll know us when we pull up.
             </h2>
-            <p className="mt-4 text-cream-100/80 leading-relaxed">
+            <p className="mt-4 text-ink-600 leading-relaxed">
               Marked vans, uniformed crews, and photo-documented work orders on every visit. If it
               doesn&apos;t carry the Woola mark, it isn&apos;t us.
             </p>
             <Link
               href="/about/fleet"
-              className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-brand-400 hover:underline"
+              className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-brand-500 hover:underline"
             >
               Our fleet & branding <ArrowRight className="w-4 h-4" />
             </Link>

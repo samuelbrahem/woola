@@ -120,8 +120,7 @@ export default function PropertyManagersPage() {
         </div>
       </Section>
 
-      <section className="bg-ink-800 text-cream-50 relative overflow-hidden">
-        <div className="grain" />
+      <section className="bg-brand-500 text-white relative overflow-hidden">
         <div className="container-x section relative">
           <SectionHead
             eyebrow="The Woola answer"
@@ -131,12 +130,12 @@ export default function PropertyManagersPage() {
           />
           <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {promises.map((p, i) => (
-              <div key={p.title} className="rounded-md border border-ink-600 bg-ink-700/40 p-7">
-                <div className="text-4xl font-semibold text-brand-400" style={{ fontFamily: "'Poppins', system-ui, sans-serif" }}>
+              <div key={p.title} className="rounded-md border border-white/25 bg-white/10 p-7">
+                <div className="text-4xl font-semibold text-white/70" style={{ fontFamily: "'Poppins', system-ui, sans-serif" }}>
                   0{i + 1}
                 </div>
-                <h3 className="mt-4 text-xl font-semibold text-cream-50">{p.title}</h3>
-                <p className="mt-2 text-sm text-cream-100/80 leading-relaxed">{p.body}</p>
+                <h3 className="mt-4 text-xl font-semibold text-white">{p.title}</h3>
+                <p className="mt-2 text-sm text-white/85 leading-relaxed">{p.body}</p>
               </div>
             ))}
           </div>

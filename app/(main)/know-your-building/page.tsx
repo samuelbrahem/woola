@@ -155,23 +155,22 @@ export default function KnowYourBuildingPage() {
         </div>
       </Section>
 
-      <section className="bg-ink-800 text-cream-50 relative overflow-hidden">
-        <div className="grain" />
+      <section className="bg-brand-500 text-white relative overflow-hidden">
         <div className="container-x section relative">
           <div className="grid lg:grid-cols-12 gap-10 items-center">
             <div className="lg:col-span-8">
-              <div className="eyebrow !text-brand-400">The payoff</div>
+              <div className="eyebrow !text-white/80">The payoff</div>
               <h2 className="mt-3 text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight">
                 Move from contractor to building partner.
               </h2>
-              <p className="mt-5 text-cream-100/80 leading-relaxed max-w-2xl">
+              <p className="mt-5 text-white/85 leading-relaxed max-w-2xl">
                 What needs attention now? What can wait? What should the council budget for next
                 year, and five years out? When the service history lives with the building, those
                 questions get answers instead of guesses.
               </p>
             </div>
             <div className="lg:col-span-4 lg:text-right">
-              <Link href="/property-managers" className="btn btn-brand text-base">
+              <Link href="/property-managers" className="btn bg-ink-900 text-cream-50 hover:bg-ink-700 text-base">
                 For property managers <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
