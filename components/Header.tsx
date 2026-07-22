@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, Phone } from "lucide-react";
 import { Logo } from "./Logo";
 import { divisions } from "@/lib/divisions";
 import { cities, citiesByRegion } from "@/lib/cities";
@@ -15,6 +15,98 @@ const regionOrder = [
   "Fraser Valley",
   "Sea-to-Sky",
 ];
+
+export const companyLinks: [string, string, string][] = [
+  ["About Woola", "/about", "The model behind the four divisions"],
+  ["Credentials", "/about/credentials", "Associations and certifications we hold"],
+  ["Fleet & Branding", "/about/fleet", "The vans you keep seeing"],
+  ["Featured Work", "/work", "Recent projects across BC"],
+  ["Our Process", "/process", "Four steps, every job"],
+  ["Why Woola", "/competitors", "How we compare"],
+  ["Know Your Building", "/know-your-building", "Asset inventory & capital planning"],
+  ["Learning Hub", "/learn", "Plain-English building primers"],
+  ["Equipment Library", "/equipment", "What the machines in your building do"],
+  ["Careers", "/careers", "Join the roster"],
+  ["Second Opinion", "/second-opinion", "Upload a quote, we'll review it free"],
+];
+
+export function ServiceAreasPanel({ onNavigate }: { onNavigate: () => void }) {
+  return (
+    <div className="p-8 w-[760px]">
+      <div className="grid grid-cols-3 gap-x-8 gap-y-2">
+        {regionOrder.map((region) => (
+          <div key={region}>
+            <div className="eyebrow mb-2">{region}</div>
+            <div className="space-y-1">
+              {(citiesByRegion[region] || []).map((c) => (
+                <Link
+                  key={c.slug}
+                  href={`/service-areas/${c.slug}`}
+                  onClick={onNavigate}
+                  className="block text-sm text-ink-700 hover:text-ink-800 hover:underline py-0.5"
+                >
+                  {c.name}
+                </Link>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+      <div className="mt-6 pt-6 border-t hairline flex items-center justify-between">
+        <span className="text-sm text-ink-500">
+          {cities.length} municipalities, Abbotsford to Whistler.
+        </span>
+        <Link
+          href="/service-areas"
+          onClick={onNavigate}
+          className="text-sm font-medium text-ink-800 hover:underline"
+        >
+          View coverage map →
+        </Link>
+      </div>
+    </div>
+  );
+}
+
+export function WhoWeServePanel({ onNavigate }: { onNavigate: () => void }) {
+  return (
+    <div className="p-4 w-[300px] space-y-1">
+      <Link href="/property-managers" onClick={onNavigate} className="mega-link">
+        <div>
+          <div className="text-sm font-medium text-ink-800">Property Managers</div>
+          <div className="text-xs text-ink-400 mt-0.5">One-source accountability for portfolios</div>
+        </div>
+      </Link>
+      <Link href="/commercial" onClick={onNavigate} className="mega-link">
+        <div>
+          <div className="text-sm font-medium text-ink-800">Commercial</div>
+          <div className="text-xs text-ink-400 mt-0.5">Strata, office, industrial, retail, healthcare, hospitality</div>
+        </div>
+      </Link>
+      <Link href="/residential" onClick={onNavigate} className="mega-link">
+        <div>
+          <div className="text-sm font-medium text-ink-800">Residential</div>
+          <div className="text-xs text-ink-400 mt-0.5">Homeowners and installs</div>
+        </div>
+      </Link>
+    </div>
+  );
+}
+
+export function CompanyPanel({ onNavigate }: { onNavigate: () => void }) {
+  return (
+    <div className="p-4 w-[600px] grid grid-cols-2 gap-1">
+      {companyLinks.map(([label, href, sub]) => (
+        <Link key={href} href={href} onClick={onNavigate} className="mega-link">
+          <div>
+            <div className="text-sm font-medium text-ink-800">{label}</div>
+            <div className="text-xs text-ink-400 mt-0.5">{sub}</div>
+          </div>
+        </Link>
+      ))}
+    </div>
+  );
+}
 
 export function Header() {
   const [open, setOpen] = useState<string | null>(null);
@@ -98,39 +190,7 @@ export function Header() {
               onOpen={() => setOpen(open === "areas" ? null : "areas")}
               onClose={() => setOpen(null)}
             >
-              <div className="p-8 w-[760px]">
-                <div className="grid grid-cols-3 gap-x-8 gap-y-2">
-                  {regionOrder.map((region) => (
-                    <div key={region}>
-                      <div className="eyebrow mb-2">{region}</div>
-                      <div className="space-y-1">
-                        {(citiesByRegion[region] || []).map((c) => (
-                          <Link
-                            key={c.slug}
-                            href={`/service-areas/${c.slug}`}
-                            onClick={() => setOpen(null)}
-                            className="block text-sm text-ink-700 hover:text-ink-800 hover:underline py-0.5"
-                          >
-                            {c.name}
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                <div className="mt-6 pt-6 border-t hairline flex items-center justify-between">
-                  <span className="text-sm text-ink-500">
-                    {cities.length} municipalities, Abbotsford to Whistler.
-                  </span>
-                  <Link
-                    href="/service-areas"
-                    onClick={() => setOpen(null)}
-                    className="text-sm font-medium text-ink-800 hover:underline"
-                  >
-                    View coverage map →
-                  </Link>
-                </div>
-              </div>
+              <ServiceAreasPanel onNavigate={() => setOpen(null)} />
             </MegaItem>
 
             <MegaItem
@@ -139,47 +199,17 @@ export function Header() {
               onOpen={() => setOpen(open === "serve" ? null : "serve")}
               onClose={() => setOpen(null)}
             >
-              <div className="p-4 w-[300px] space-y-1">
-                <Link href="/commercial" onClick={() => setOpen(null)} className="mega-link">
-                  <div>
-                    <div className="text-sm font-medium text-ink-800">Commercial</div>
-                    <div className="text-xs text-ink-400 mt-0.5">Strata, office, industrial, retail, healthcare, hospitality</div>
-                  </div>
-                </Link>
-                <Link href="/residential" onClick={() => setOpen(null)} className="mega-link">
-                  <div>
-                    <div className="text-sm font-medium text-ink-800">Residential</div>
-                    <div className="text-xs text-ink-400 mt-0.5">Homeowners and installs</div>
-                  </div>
-                </Link>
-              </div>
+              <WhoWeServePanel onNavigate={() => setOpen(null)} />
             </MegaItem>
 
             <MegaItem
               label="Company"
+              align="right"
               open={open === "company"}
               onOpen={() => setOpen(open === "company" ? null : "company")}
               onClose={() => setOpen(null)}
             >
-              <div className="p-4 w-[300px] space-y-1">
-                {[
-                  ["About Woola", "/about", "The model behind the four divisions"],
-                  ["Credentials", "/about/credentials", "Associations and certifications we hold"],
-                  ["Fleet & Branding", "/about/fleet", "The vans you keep seeing"],
-                  ["Featured Work", "/work", "Recent projects across BC"],
-                  ["Our Process", "/process", "Four steps, every job"],
-                  ["Why Woola", "/competitors", "How we compare"],
-                  ["Careers", "/careers", "Join the roster"],
-                  ["Estimator", "/calculator", "Rough numbers in 60 seconds"],
-                ].map(([label, href, sub]) => (
-                  <Link key={href} href={href} onClick={() => setOpen(null)} className="mega-link">
-                    <div>
-                      <div className="text-sm font-medium text-ink-800">{label}</div>
-                      <div className="text-xs text-ink-400 mt-0.5">{sub}</div>
-                    </div>
-                  </Link>
-                ))}
-              </div>
+              <CompanyPanel onNavigate={() => setOpen(null)} />
             </MegaItem>
 
             <Link href="/careers" className="px-4 py-2 text-sm font-medium text-ink-800 rounded-full hover:bg-ink-50">
@@ -188,11 +218,11 @@ export function Header() {
           </nav>
 
           <div className="hidden lg:flex items-center gap-3">
-            <Link href="/book" className="btn btn-ghost">
-              Book a meeting
-            </Link>
+            <a href="tel:604-800-3617" className="btn btn-ghost">
+              <Phone className="w-4 h-4" /> Call Now
+            </a>
             <Link href="/contact" className="btn btn-primary">
-              Book service
+              Request Service
             </Link>
           </div>
 
@@ -233,13 +263,16 @@ export function Header() {
               </div>
             ))}
             <div className="border-t hairline pt-4 space-y-2">
+              <Link href="/property-managers" onClick={() => setMobileOpen(false)} className="block font-medium">Property Managers</Link>
               <Link href="/commercial" onClick={() => setMobileOpen(false)} className="block font-medium">Commercial</Link>
               <Link href="/residential" onClick={() => setMobileOpen(false)} className="block font-medium">Residential</Link>
+              <Link href="/know-your-building" onClick={() => setMobileOpen(false)} className="block font-medium">Know Your Building</Link>
+              <Link href="/learn" onClick={() => setMobileOpen(false)} className="block font-medium">Learning Hub</Link>
               <Link href="/work" onClick={() => setMobileOpen(false)} className="block font-medium">Featured Work</Link>
               <Link href="/process" onClick={() => setMobileOpen(false)} className="block font-medium">Our Process</Link>
               <Link href="/careers" onClick={() => setMobileOpen(false)} className="block font-medium">Careers</Link>
               <Link href="/book" onClick={() => setMobileOpen(false)} className="block font-medium">Book a meeting</Link>
-              <Link href="/calculator" onClick={() => setMobileOpen(false)} className="block font-medium">Estimator</Link>
+              <Link href="/second-opinion" onClick={() => setMobileOpen(false)} className="block font-medium">Second Opinion</Link>
               <Link href="/service-areas" onClick={() => setMobileOpen(false)} className="block font-medium">Service Areas</Link>
               <Link href="/competitors" onClick={() => setMobileOpen(false)} className="block font-medium">Why Woola</Link>
               <Link href="/about" onClick={() => setMobileOpen(false)} className="block font-medium">About</Link>
@@ -247,9 +280,14 @@ export function Header() {
               <Link href="/about/fleet" onClick={() => setMobileOpen(false)} className="block font-medium">Fleet & Branding</Link>
               <Link href="/contact" onClick={() => setMobileOpen(false)} className="block font-medium">Contact</Link>
             </div>
-            <Link href="/contact" onClick={() => setMobileOpen(false)} className="btn btn-primary w-full justify-center">
-              Book service
-            </Link>
+            <div className="grid grid-cols-2 gap-3">
+              <a href="tel:604-800-3617" className="btn btn-ghost justify-center border hairline">
+                <Phone className="w-4 h-4" /> Call Now
+              </a>
+              <Link href="/contact" onClick={() => setMobileOpen(false)} className="btn btn-primary justify-center">
+                Request Service
+              </Link>
+            </div>
           </div>
         </div>
       )}
@@ -263,25 +301,27 @@ export function MegaItem({
   onOpen,
   onClose,
   children,
+  align = "left",
 }: {
   label: string;
   open: boolean;
   onOpen: () => void;
   onClose: () => void;
   children: React.ReactNode;
+  align?: "left" | "right";
 }) {
   return (
     <div className="relative" onMouseLeave={onClose}>
       <button
         onClick={onOpen}
         onMouseEnter={onOpen}
-        className="flex items-center gap-1 px-4 py-2 text-sm font-medium text-ink-800 rounded-full hover:bg-ink-50"
+        className="flex items-center gap-1 px-4 py-2 text-sm font-medium text-ink-800 rounded-full hover:bg-ink-50 whitespace-nowrap"
       >
         {label}
         <ChevronDown className={`w-4 h-4 transition-transform ${open ? "rotate-180" : ""}`} />
       </button>
       {open && (
-        <div className="absolute left-0 top-full pt-3">
+        <div className={`absolute top-full pt-3 ${align === "right" ? "right-0" : "left-0"}`}>
           <div className="bg-white rounded-2xl shadow-soft border hairline overflow-hidden">
             {children}
           </div>

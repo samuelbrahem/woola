@@ -3,7 +3,7 @@ import { Section, SectionHead } from "@/components/Section";
 import { ServiceMap } from "@/components/ServiceMap";
 import { CTABanner } from "@/components/CTABanner";
 import { cities, citiesByRegion } from "@/lib/cities";
-import { Clock, Users, MapPin, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 const regionOrder = [
   "Tri-Cities",
@@ -62,10 +62,12 @@ export default function ServiceAreasPage() {
                         <ArrowRight className="w-4 h-4 text-ink-400 group-hover:text-ink-800" />
                       </div>
                       <p className="mt-2 text-sm text-ink-500 line-clamp-2">{c.blurb}</p>
-                      <div className="mt-5 pt-5 border-t hairline grid grid-cols-3 gap-3 text-xs">
-                        <Stat icon={Clock} label="Response" value={`${c.responseHours}h`} />
-                        <Stat icon={Users} label="Techs" value={String(c.techsAssigned)} />
-                        <Stat icon={MapPin} label="Drive" value={`${c.driveTimeMin}min`} />
+                      <div className="mt-5 pt-5 border-t hairline flex flex-wrap gap-2">
+                        {["HVAC", "Plumbing", "Electrical", "Generators"].map((s) => (
+                          <span key={s} className="text-xs px-2.5 py-1 rounded bg-cream-100 text-ink-700 border hairline">
+                            {s}
+                          </span>
+                        ))}
                       </div>
                     </Link>
                   ))}
@@ -81,17 +83,5 @@ export default function ServiceAreasPage() {
         description="Send us a postal code and we'll confirm response times and which crew runs your block."
       />
     </>
-  );
-}
-
-function Stat({ icon: Icon, label, value }: { icon: any; label: string; value: string }) {
-  return (
-    <div>
-      <div className="flex items-center gap-1 text-ink-400">
-        <Icon className="w-3 h-3" strokeWidth={1.6} />
-        <span className="uppercase tracking-wider text-[10px]">{label}</span>
-      </div>
-      <div className="font-semibold text-ink-800 mt-0.5 text-sm">{value}</div>
-    </div>
   );
 }

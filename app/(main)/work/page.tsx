@@ -4,7 +4,63 @@ import Link from "next/link";
 import { Section, SectionHead } from "@/components/Section";
 import { CTABanner } from "@/components/CTABanner";
 import { divisions } from "@/lib/divisions";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, AlertTriangle, Lightbulb, Users2, CheckCircle2 } from "lucide-react";
+
+type CaseStudy = {
+  title: string;
+  tag: string;
+  challenge: string;
+  solution: string;
+  teams: string[];
+  result: string;
+};
+
+const CASE_STUDIES: CaseStudy[] = [
+  {
+    title: "120-ton heat pump / chiller retrofit",
+    tag: "Mechanical modernization",
+    challenge:
+      "An aging chiller plant at end of life, with rising energy costs and a council wary of a months-long disruption to cooling.",
+    solution:
+      "Engineered and installed a 120-ton heat pump/chiller replacement, with the electrical service work handled by our own division instead of a second contractor.",
+    teams: ["Mechanical", "Electrical"],
+    result:
+      "A modern, lower-carbon plant commissioned under one PO, with the asset documented into the building's service history from day one.",
+  },
+  {
+    title: "La Casa: three-generator standby installation",
+    tag: "Standby power",
+    challenge:
+      "A community that could not afford to lose power to life-safety systems, requiring three coordinated standby generators with fuel, transfer, and commissioning scope.",
+    solution:
+      "Supplied and installed three standby generator sets: siting, gas and fuel connections, transfer switching, and CSA C282 commissioning run as one project.",
+    teams: ["Power Systems", "Electrical", "Build"],
+    result:
+      "Three units commissioned and enrolled in an ongoing maintenance and load-bank testing program with full compliance documentation.",
+  },
+  {
+    title: "56-unit domestic water repipe",
+    tag: "Occupied-building plumbing",
+    challenge:
+      "Failing domestic water piping across 56 occupied units, where every day of shutdown and every wall opened matters to residents.",
+    solution:
+      "Phased re-pipe with suite-by-suite scheduling, daily water restoration, and in-house drywall and finishing repairs behind the plumbers.",
+    teams: ["Mechanical", "Build"],
+    result:
+      "New domestic water system completed with residents in place, and wall repairs closed by the same accountable team.",
+  },
+  {
+    title: "10-inch underground sanitary replacement",
+    tag: "Civil & underground",
+    challenge:
+      "A failed 10-inch sanitary main under an active property: excavation, shoring, bypass, and municipal coordination in one scope.",
+    solution:
+      "Excavated and replaced the sanitary main with bypass pumping to keep the building in service, coordinating inspections and restoration in-house.",
+    teams: ["Build", "Mechanical"],
+    result:
+      "Service restored on schedule, site reinstated, and the buried asset mapped and added to the property's documentation.",
+  },
+];
 
 export const metadata: Metadata = {
   title: "Featured Work",
@@ -29,6 +85,56 @@ export default function WorkPage() {
               months: retrofits, rollouts, rehabs, and the recurring programs that keep
               buildings out of trouble.
             </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-ink-800 text-cream-50 relative overflow-hidden">
+        <div className="grain" />
+        <div className="container-x section relative">
+          <SectionHead
+            eyebrow="Case studies"
+            title="Multi-trade projects, one accountable team."
+            description="The proof of the integrated model: real projects where divisions worked the same site under one PO."
+            dark
+          />
+          <div className="mt-12 grid md:grid-cols-2 gap-6">
+            {CASE_STUDIES.map((c) => (
+              <article key={c.title} className="rounded-md border border-ink-600 bg-ink-700/40 p-8 flex flex-col">
+                <span className="self-start text-[10px] font-semibold tracking-widest uppercase bg-brand-500/20 text-brand-400 px-2 py-1 rounded">
+                  {c.tag}
+                </span>
+                <h3 className="mt-4 text-2xl font-semibold text-cream-50">{c.title}</h3>
+                <dl className="mt-6 space-y-5 flex-1">
+                  <div>
+                    <dt className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-brand-400">
+                      <AlertTriangle className="w-3.5 h-3.5" /> The challenge
+                    </dt>
+                    <dd className="mt-1.5 text-sm text-cream-100/85 leading-relaxed">{c.challenge}</dd>
+                  </div>
+                  <div>
+                    <dt className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-brand-400">
+                      <Lightbulb className="w-3.5 h-3.5" /> The solution
+                    </dt>
+                    <dd className="mt-1.5 text-sm text-cream-100/85 leading-relaxed">{c.solution}</dd>
+                  </div>
+                  <div>
+                    <dt className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-brand-400">
+                      <CheckCircle2 className="w-3.5 h-3.5" /> The result
+                    </dt>
+                    <dd className="mt-1.5 text-sm text-cream-100/85 leading-relaxed">{c.result}</dd>
+                  </div>
+                </dl>
+                <div className="mt-6 pt-5 border-t border-ink-600 flex items-center gap-2 flex-wrap">
+                  <Users2 className="w-4 h-4 text-brand-400" />
+                  {c.teams.map((t) => (
+                    <span key={t} className="text-xs px-2.5 py-1 rounded-full border border-ink-500 text-cream-100">
+                      Woola {t}
+                    </span>
+                  ))}
+                </div>
+              </article>
+            ))}
           </div>
         </div>
       </section>

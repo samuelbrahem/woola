@@ -2,6 +2,9 @@
 
 import dynamic from "next/dynamic";
 import { cities } from "@/lib/cities";
+import { GoogleCoverageMap } from "./GoogleCoverageMap";
+
+const GOOGLE_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
 
 // Leaflet needs `window`; render the map client-only.
 const CoverageMap = dynamic(() => import("./CoverageMap"), {
@@ -23,7 +26,7 @@ export function ServiceMap() {
           {cities.length} municipalities · HQ in Coquitlam
         </div>
       </div>
-      <CoverageMap height={520} />
+      {GOOGLE_KEY ? <GoogleCoverageMap height={520} apiKey={GOOGLE_KEY} /> : <CoverageMap height={520} />}
       <div className="mt-3 flex items-center gap-4 text-xs text-ink-500 flex-wrap">
         <span className="flex items-center gap-1.5">
           <span className="w-2.5 h-2.5 rounded-full bg-brand-500 ring-2 ring-brand-500/20" /> Woola HQ
@@ -34,9 +37,11 @@ export function ServiceMap() {
         <span className="flex items-center gap-1.5">
           <span className="w-2.5 h-2.5 rounded-full bg-brand-500" /> Hover to preview · click for details
         </span>
-        <span className="ml-auto text-ink-400">
-          Map data © OpenStreetMap · © CARTO
-        </span>
+        {!GOOGLE_KEY && (
+          <span className="ml-auto text-ink-400">
+            Map data © OpenStreetMap · © CARTO
+          </span>
+        )}
       </div>
     </div>
   );

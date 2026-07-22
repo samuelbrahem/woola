@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ChevronLeft, ChevronRight, Play } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight, Play, Phone } from "lucide-react";
 
 type Slide = {
   id: string;
@@ -22,12 +22,12 @@ type Slide = {
 const SLIDES: Slide[] = [
   {
     id: "main",
-    eyebrow: "Strata & Commercial Property Services",
-    title: "A people-focused property services",
-    script: "partner.",
-    sub: "Mechanical, electrical, standby power, and building services under one PO and one dispatcher, across Vancouver's Lower Mainland.",
-    cta: { label: "Book a property assessment", href: "/contact" },
-    cta2: { label: "Talk to an advisor", href: "/book" },
+    eyebrow: "Mission-Critical Building Services",
+    title: "Complete building",
+    script: "solutions.",
+    sub: "One accountable partner for the critical systems that keep your building operating.",
+    cta: { label: "Request Service", href: "/contact" },
+    cta2: { label: "Call Now", href: "tel:604-800-3617" },
     image:
       "https://images.unsplash.com/photo-1527738697320-513f6648bc26?w=1800&q=80&auto=format&fit=crop",
     alt: "Commercial rooftop HVAC units on a high-rise",
@@ -37,7 +37,7 @@ const SLIDES: Slide[] = [
     eyebrow: "Woola Mechanical",
     title: "Engineered comfort.",
     script: "Verified reliability.",
-    sub: "HVAC, plumbing, gas, and refrigeration from Red Seal and gas-ticketed technicians. 98% first-visit fix rate.",
+    sub: "HVAC, plumbing, gas, and refrigeration from Red Seal technicians.",
     cta: { label: "Explore Mechanical", href: "/mechanical" },
     image:
       "https://images.unsplash.com/photo-1563456020159-b74d67e78c26?w=1800&q=80&auto=format&fit=crop",
@@ -48,7 +48,7 @@ const SLIDES: Slide[] = [
     eyebrow: "Woola Power Systems",
     title: "Standby power.",
     script: "Peace of mind.",
-    sub: "Factory-authorized for Generac, Kohler, and Cummins. CSA C282 load-bank testing with our own equipment, 24/7 response.",
+    sub: "Factory-authorized for Generac, Kohler, and Cummins. CSA C282 testing, 24/7 response.",
     cta: { label: "Explore Power Systems", href: "/power" },
     image:
       "https://images.unsplash.com/photo-1636867759143-c28c1e909bd3?w=1800&q=80&auto=format&fit=crop",
@@ -59,7 +59,7 @@ const SLIDES: Slide[] = [
     eyebrow: "Woola Build · Woola Electrical",
     title: "One building. Every trade.",
     script: "One call.",
-    sub: "Envelope, renovations, electrical, EV charging, and the maintenance programs that prevent the 2 AM phone call.",
+    sub: "Envelope, renovations, EV charging, and the maintenance programs that prevent the 2 AM call.",
     cta: { label: "Explore the divisions", href: "/work" },
     image:
       "https://images.unsplash.com/photo-1632862378069-4ad0348cea4f?w=1800&q=80&auto=format&fit=crop",
@@ -149,14 +149,22 @@ export function HeroCarousel() {
                     <Link href={s.cta.href} className="btn btn-brand text-base">
                       {s.cta.label} <ArrowRight className="w-4 h-4" />
                     </Link>
-                    {s.cta2 && (
-                      <Link
-                        href={s.cta2.href}
-                        className="btn text-base border border-cream-50/40 text-cream-50 hover:bg-cream-50 hover:text-ink-800"
-                      >
-                        {s.cta2.label}
-                      </Link>
-                    )}
+                    {s.cta2 &&
+                      (s.cta2.href.startsWith("tel:") ? (
+                        <a
+                          href={s.cta2.href}
+                          className="btn text-base border border-cream-50/40 text-cream-50 hover:bg-cream-50 hover:text-ink-800"
+                        >
+                          <Phone className="w-4 h-4" /> {s.cta2.label}
+                        </a>
+                      ) : (
+                        <Link
+                          href={s.cta2.href}
+                          className="btn text-base border border-cream-50/40 text-cream-50 hover:bg-cream-50 hover:text-ink-800"
+                        >
+                          {s.cta2.label}
+                        </Link>
+                      ))}
                   </div>
                 </div>
               </div>

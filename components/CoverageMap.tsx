@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo } from "react";
-import { MapContainer, TileLayer, CircleMarker, Tooltip, Marker, Popup } from "react-leaflet";
+import { MapContainer, TileLayer, CircleMarker, Tooltip, Marker, Popup, AttributionControl } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import Link from "next/link";
@@ -51,8 +51,10 @@ export function CoverageMap({ height = 520 }: { height?: number }) {
         bounds={bounds}
         boundsOptions={{ padding: [40, 40] }}
         scrollWheelZoom={false}
+        attributionControl={false}
         style={{ height: "100%", width: "100%", background: "#F2F2EE" }}
       >
+        <AttributionControl prefix={false} position="bottomright" />
         <TileLayer
           url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'
@@ -94,7 +96,7 @@ export function CoverageMap({ height = 520 }: { height?: number }) {
                     {c.region} · {c.population.toLocaleString()} residents
                   </div>
                   <div style={{ fontSize: 12, color: "#3A3A38", marginBottom: 8 }}>
-                    {c.techsAssigned} techs assigned · {c.responseHours}h response
+                    Daily Woola routes from Coquitlam HQ
                   </div>
                   <Link
                     href={`/service-areas/${c.slug}`}

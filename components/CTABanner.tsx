@@ -33,7 +33,7 @@ export function CTABanner({
           </div>
           <div className="lg:col-span-2 flex flex-col gap-3">
             <Link href="/contact" className="btn btn-brand justify-center text-base">
-              Request a walk-through <ArrowRight className="w-4 h-4" />
+              Request Service <ArrowRight className="w-4 h-4" />
             </Link>
             <a href={`tel:${site.phone}`} className="btn justify-center text-base border border-cream-50/80 !text-cream-50 hover:bg-cream-50 hover:!text-ink-800">
               <Phone className="w-4 h-4" /> {site.phone}

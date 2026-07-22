@@ -25,8 +25,8 @@ export function DivisionCard({ division }: { division: Division }) {
           <DivisionWordmark division={division} size="md" />
           <ArrowUpRight className="w-5 h-5 text-ink-400 group-hover:text-brand-500 transition" strokeWidth={1.5} />
         </div>
-        <div className="eyebrow mt-6">{division.subtitle}</div>
-        <p className="mt-3 text-ink-500 text-sm leading-relaxed line-clamp-3">
+        <div className="eyebrow mt-6 min-h-[34px]">{division.subtitle}</div>
+        <p className="mt-3 text-ink-500 text-sm leading-relaxed line-clamp-3 min-h-[69px]">
           {division.description}
         </p>
         <div className="mt-5 flex flex-wrap gap-2 flex-1 content-start">

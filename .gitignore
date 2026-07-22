@@ -9,3 +9,5 @@ out
 .vercel
 *.tsbuildinfo
 next-env.d.ts
+scripts/renders/assets/
+scripts/renders/backup_blender/

@@ -1,52 +1,59 @@
 import Link from "next/link";
 import { Logo } from "./Logo";
 import { divisions } from "@/lib/divisions";
-import { cities } from "@/lib/cities";
 import { site } from "@/lib/site";
-import { Phone, Mail, MapPin, Clock, Instagram, Facebook, Linkedin, Youtube, LockKeyhole } from "lucide-react";
+import { Phone, Mail, MapPin, Instagram, Facebook, Linkedin, Youtube, LockKeyhole, Wrench, BatteryCharging, Zap, Hammer } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+
+const divisionIcons: Record<string, LucideIcon> = {
+  mechanical: Wrench,
+  power: BatteryCharging,
+  electrical: Zap,
+  build: Hammer,
+};
+
+const quickLinks = [
+  { label: "About", href: "/about" },
+  { label: "Property Managers", href: "/property-managers" },
+  { label: "Projects", href: "/work" },
+  { label: "Learning Hub", href: "/learn" },
+  { label: "Equipment Library", href: "/equipment" },
+  { label: "Second Opinion", href: "/second-opinion" },
+  { label: "Careers", href: "/careers" },
+  { label: "Service Areas", href: "/service-areas" },
+];
 
 export function Footer() {
   return (
     <footer className="dark-section relative overflow-hidden">
       <div className="grain" />
-      <div className="container-x py-20 relative">
-        <div className="grid lg:grid-cols-5 gap-10">
-          <div className="lg:col-span-2">
+      <div className="container-x py-16 relative">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+          <div>
             <Logo variant="light" />
-            <p className="mt-4 text-sm text-ink-200 max-w-sm">
-              {site.description}
-            </p>
-            <div className="mt-6 space-y-2 text-sm text-ink-200">
+            <div className="mt-5 space-y-2 text-sm text-ink-200">
               <div className="flex items-start gap-3">
-                <MapPin className="w-4 h-4 mt-0.5" strokeWidth={1.5} />
-                <span>{site.hq.line1}<br />{site.hq.line2}</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <Phone className="w-4 h-4" strokeWidth={1.5} />
-                <a href={`tel:${site.phone}`} className="hover:text-cream-50">{site.phone}</a>
+                <MapPin className="w-4 h-4 mt-0.5 shrink-0" strokeWidth={1.5} />
+                <span>{site.hq.line1}, {site.hq.line2}</span>
               </div>
               <div className="flex items-center gap-3">
                 <Mail className="w-4 h-4" strokeWidth={1.5} />
                 <a href={`mailto:${site.email}`} className="hover:text-cream-50">{site.email}</a>
               </div>
-              <div className="flex items-center gap-3">
-                <Clock className="w-4 h-4" strokeWidth={1.5} />
-                <span>{site.hours}</span>
-              </div>
             </div>
-            <div className="mt-6 flex items-center gap-3">
+            <div className="mt-5 flex items-center gap-3">
               {[
-                { icon: Instagram, href: "https://instagram.com/woolaservices", label: "Woola on Instagram" },
-                { icon: Facebook, href: "https://facebook.com/woolaservices", label: "Woola on Facebook" },
-                { icon: Linkedin, href: "https://linkedin.com/company/woola-services-group", label: "Woola on LinkedIn" },
-                { icon: Youtube, href: "https://youtube.com/@woolaservices", label: "Woola on YouTube" },
+                { icon: Instagram, href: "https://instagram.com/woolaservices", label: "Instagram" },
+                { icon: Facebook, href: "https://facebook.com/woolaservices", label: "Facebook" },
+                { icon: Linkedin, href: "https://linkedin.com/company/woola-services-group", label: "LinkedIn" },
+                { icon: Youtube, href: "https://youtube.com/@woolaservices", label: "YouTube" },
               ].map((s) => (
                 <a
                   key={s.label}
                   href={s.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={s.label}
+                  aria-label={`Woola on ${s.label}`}
                   className="w-9 h-9 rounded-full border border-ink-600 text-ink-200 flex items-center justify-center hover:text-cream-50 hover:border-brand-400 transition"
                 >
                   <s.icon className="w-4 h-4" strokeWidth={1.5} />
@@ -55,61 +62,53 @@ export function Footer() {
             </div>
           </div>
 
-          {divisions.map((d) => (
-            <div key={d.slug}>
-              <div className="eyebrow text-brand-400">Division</div>
-              <Link href={`/${d.slug}`} className="block mt-1 text-cream-50 font-semibold hover:text-brand-400">
-                {d.name}
-              </Link>
-              <div className="mt-4 space-y-2">
-                {d.services.map((s) => (
-                  <Link
-                    key={s.slug}
-                    href={`/${d.slug}/${s.slug}`}
-                    className="block text-sm text-ink-200 hover:text-cream-50"
-                  >
-                    {s.name}
-                  </Link>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <div className="mt-16 pt-10 border-t border-ink-600 grid lg:grid-cols-4 gap-8">
           <div>
-            <div className="eyebrow text-brand-400">Tools</div>
-            <div className="mt-3 space-y-2 text-sm">
-              <Link href="/calculator" className="block text-ink-200 hover:text-cream-50">HVAC estimator</Link>
-              <Link href="/service-areas" className="block text-ink-200 hover:text-cream-50">Service area map</Link>
-              <Link href="/competitors" className="block text-ink-200 hover:text-cream-50">Compare providers</Link>
+            <div className="eyebrow text-brand-400">Divisions</div>
+            <div className="mt-4 space-y-3">
+              {divisions.map((d) => {
+                const Icon = divisionIcons[d.slug];
+                return (
+                  <div key={d.slug} className="flex items-start gap-3">
+                    <span className="w-8 h-8 rounded-lg bg-ink-700 text-brand-400 flex items-center justify-center shrink-0">
+                      <Icon className="w-4 h-4" strokeWidth={1.75} />
+                    </span>
+                    <div>
+                      <Link href={`/${d.slug}`} className="block text-sm font-semibold text-cream-50 hover:text-brand-400">
+                        {d.name}
+                      </Link>
+                      <a href={`tel:${d.contactPhone}`} className="text-xs text-ink-200 hover:text-cream-50">
+                        {d.contactPhone}
+                      </a>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
+
           <div>
-            <div className="eyebrow text-brand-400">Company</div>
-            <div className="mt-3 space-y-2 text-sm">
-              <Link href="/about" className="block text-ink-200 hover:text-cream-50">About Woola</Link>
-              <Link href="/careers" className="block text-ink-200 hover:text-cream-50">Careers</Link>
-              <Link href="/work" className="block text-ink-200 hover:text-cream-50">Featured work</Link>
-              <Link href="/process" className="block text-ink-200 hover:text-cream-50">Our process</Link>
-              <Link href="/contact" className="block text-ink-200 hover:text-cream-50">Contact dispatch</Link>
+            <div className="eyebrow text-brand-400">Quick links</div>
+            <div className="mt-4 space-y-2 text-sm">
+              {quickLinks.map((l) => (
+                <Link key={l.href} href={l.href} className="block text-ink-200 hover:text-cream-50">
+                  {l.label}
+                </Link>
+              ))}
               <Link href="/portal" className="inline-flex items-center gap-1.5 text-ink-200 hover:text-cream-50">
                 <LockKeyhole className="w-3.5 h-3.5" /> Client portal
               </Link>
             </div>
           </div>
-          <div className="lg:col-span-2">
-            <div className="eyebrow text-brand-400">Service Areas</div>
-            <div className="mt-3 flex flex-wrap gap-x-3 gap-y-1 text-sm">
-              {cities.map((c, idx) => (
-                <span key={c.slug} className="text-ink-200">
-                  <Link href={`/service-areas/${c.slug}`} className="hover:text-cream-50">
-                    {c.name}
-                  </Link>
-                  {idx < cities.length - 1 && <span className="text-ink-400"> ·</span>}
-                </span>
-              ))}
-            </div>
+
+          <div>
+            <div className="eyebrow text-brand-400">Talk to dispatch</div>
+            <a href={`tel:${site.phone}`} className="btn btn-brand mt-4 w-full justify-center text-base">
+              <Phone className="w-4 h-4" /> Call Now
+            </a>
+            <Link href="/contact" className="btn mt-3 w-full justify-center border border-cream-50/40 !text-cream-50 hover:bg-cream-50 hover:!text-ink-800">
+              Request Service
+            </Link>
+            <p className="mt-4 text-xs text-ink-300">{site.emergency}.</p>
           </div>
         </div>
 

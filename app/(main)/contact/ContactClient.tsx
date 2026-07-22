@@ -5,7 +5,8 @@ import Image from "next/image";
 import { Section, SectionHead } from "@/components/Section";
 import { divisions } from "@/lib/divisions";
 import { site } from "@/lib/site";
-import { Phone, Mail, MapPin, Clock, CheckCircle2 } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, CheckCircle2, Wrench, CalendarCheck, Handshake, ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 export default function ContactClient() {
   const [submitted, setSubmitted] = useState(false);
@@ -40,8 +41,43 @@ export default function ContactClient() {
         </div>
       </section>
 
+      <div className="bg-white border-b hairline">
+        <div className="container-x py-10 grid md:grid-cols-3 gap-4">
+          <a href="#contact-form" className="card p-6 group">
+            <Wrench className="w-6 h-6 text-brand-500" strokeWidth={1.5} />
+            <h2 className="mt-3 font-semibold text-ink-800 group-hover:text-brand-500 transition">Request service</h2>
+            <p className="mt-1.5 text-sm text-ink-600 leading-relaxed">
+              An existing or immediate service need. Use the form below and dispatch takes it from there.
+            </p>
+            <span className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-brand-500">
+              To the form <ArrowRight className="w-4 h-4" />
+            </span>
+          </a>
+          <Link href="/book" className="card p-6 group">
+            <CalendarCheck className="w-6 h-6 text-brand-500" strokeWidth={1.5} />
+            <h2 className="mt-3 font-semibold text-ink-800 group-hover:text-brand-500 transition">Discuss a maintenance program</h2>
+            <p className="mt-1.5 text-sm text-ink-600 leading-relaxed">
+              Property and facility managers: book a meeting to scope comprehensive maintenance for your portfolio.
+            </p>
+            <span className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-brand-500">
+              Book a meeting <ArrowRight className="w-4 h-4" />
+            </span>
+          </Link>
+          <a href={`mailto:${site.email}?subject=Partnering%20with%20Woola`} className="card p-6 group">
+            <Handshake className="w-6 h-6 text-brand-500" strokeWidth={1.5} />
+            <h2 className="mt-3 font-semibold text-ink-800 group-hover:text-brand-500 transition">Partner with Woola</h2>
+            <p className="mt-1.5 text-sm text-ink-600 leading-relaxed">
+              Business owners, operators, and growth conversations. Reach the founders directly.
+            </p>
+            <span className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-brand-500">
+              Email us <ArrowRight className="w-4 h-4" />
+            </span>
+          </a>
+        </div>
+      </div>
+
       <Section>
-        <div className="grid lg:grid-cols-5 gap-10">
+        <div id="contact-form" className="grid lg:grid-cols-5 gap-10 scroll-mt-28">
           <div className="lg:col-span-3 card p-8">
             {submitted ? (
               <div className="py-12 text-center">

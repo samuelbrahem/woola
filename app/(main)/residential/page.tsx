@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Section, SectionHead } from "@/components/Section";
 import { CTABanner } from "@/components/CTABanner";
 import { FleetStrip } from "@/components/FleetStrip";
-import { Calculator } from "@/components/Calculator";
+import { SecondOpinionCTA } from "@/components/SecondOpinionCTA";
 import { ArrowRight, Check, Home, Receipt, Leaf, Wrench } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -62,12 +62,12 @@ export default function ResidentialPage() {
               pricing and rebate paperwork handled in-house.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Link href="/calculator" className="btn btn-primary">
-                Estimate my project <ArrowRight className="w-4 h-4" />
+              <Link href="/second-opinion" className="btn btn-primary">
+                Get a second opinion <ArrowRight className="w-4 h-4" />
               </Link>
-              <Link href="/contact" className="btn btn-ghost">
-                Book a free in-home estimate
-              </Link>
+              <a href="tel:604-800-3617" className="btn btn-ghost">
+                Call Now
+              </a>
             </div>
           </div>
         </div>
@@ -113,16 +113,7 @@ export default function ResidentialPage() {
         </div>
       </section>
 
-      <Section>
-        <SectionHead
-          eyebrow="Free tool"
-          title="Get a starting number in 60 seconds."
-          description="Rough equipment, labour, and rebate ranges for the most common BC home projects."
-        />
-        <div className="mt-10">
-          <Calculator />
-        </div>
-      </Section>
+      <SecondOpinionCTA />
 
       <FleetStrip />
 

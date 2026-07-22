@@ -4,7 +4,7 @@ import { Section, SectionHead } from "@/components/Section";
 import { CTABanner } from "@/components/CTABanner";
 import { DivisionWordmark } from "@/components/DivisionWordmark";
 import { divisions } from "@/lib/divisions";
-import { ArrowRight, MapPin, Clock, Users, GraduationCap, HeartHandshake, TrendingUp } from "lucide-react";
+import { ArrowRight, MapPin, Clock, Users, GraduationCap, HeartHandshake, TrendingUp, ImageIcon } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Careers at Woola",
@@ -24,6 +24,15 @@ const openings = [
   { title: "Building Maintenance Technician", division: "build", type: "Full-time", location: "Tri-Cities" },
   { title: "Construction Project Coordinator", division: "build", type: "Full-time", location: "Coquitlam HQ" },
   { title: "Service Dispatcher", division: "all", type: "Full-time", location: "Coquitlam HQ" },
+];
+
+// Placeholder slots until real crew photography is shot — swap each for an <Image>.
+const photoSlots = [
+  { label: "Crew on site", wide: true },
+  { label: "Shop barbecue", wide: false },
+  { label: "Fleet at HQ", wide: false },
+  { label: "Apprentice training", wide: false },
+  { label: "Generator field work", wide: true },
 ];
 
 const perks = [
@@ -72,6 +81,21 @@ export default function CareersPage() {
               </div>
               <h3 className="mt-4 text-lg font-semibold text-ink-800">{p.title}</h3>
               <p className="mt-2 text-sm text-ink-500 leading-relaxed">{p.body}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-12 grid grid-cols-2 md:grid-cols-3 gap-4">
+          {photoSlots.map((slot) => (
+            <div
+              key={slot.label}
+              className={`rounded-2xl border-2 border-dashed border-ink-200 bg-cream-100 flex flex-col items-center justify-center gap-2 aspect-[4/3] ${
+                slot.wide ? "col-span-2 md:aspect-auto" : ""
+              }`}
+            >
+              <ImageIcon className="w-6 h-6 text-ink-300" strokeWidth={1.5} />
+              <span className="text-xs uppercase tracking-wider text-ink-400">{slot.label}</span>
+              <span className="text-[10px] text-ink-300">Photo coming soon</span>
             </div>
           ))}
         </div>

@@ -4,18 +4,14 @@ import Link from "next/link";
 import { useState } from "react";
 import { Menu, X, Phone, ArrowUpRight } from "lucide-react";
 import { divisions } from "@/lib/divisions";
-import { cities, citiesByRegion } from "@/lib/cities";
 import { DivisionWordmark } from "./DivisionWordmark";
-import { MegaItem } from "./Header";
-
-const regionOrder = [
-  "Vancouver",
-  "North Shore",
-  "Tri-Cities",
-  "South of Fraser",
-  "Fraser Valley",
-  "Sea-to-Sky",
-];
+import {
+  MegaItem,
+  ServiceAreasPanel,
+  WhoWeServePanel,
+  CompanyPanel,
+  companyLinks,
+} from "./Header";
 
 export function DivisionHeader({ divisionSlug }: { divisionSlug: string }) {
   const [open, setOpen] = useState<string | null>(null);
@@ -44,12 +40,9 @@ export function DivisionHeader({ divisionSlug }: { divisionSlug: string }) {
 
       <header className="sticky top-0 z-50 bg-cream-50/85 backdrop-blur border-b hairline">
         <div className="container-x">
-          <div className="flex items-center justify-between h-16">
-            <Link href={`/${division.slug}`} className="flex items-center gap-3 min-w-0">
+          <div className="flex items-center justify-between h-20">
+            <Link href={`/${division.slug}`} className="flex items-center shrink-0">
               <DivisionWordmark division={division} size="sm" />
-              <span className="hidden xl:inline text-xs text-ink-400 uppercase tracking-wider truncate">
-                {division.subtitle}
-              </span>
             </Link>
 
             <nav className="hidden lg:flex items-center gap-1">
@@ -94,61 +87,44 @@ export function DivisionHeader({ divisionSlug }: { divisionSlug: string }) {
               </MegaItem>
 
               <MegaItem
-                label="Coverage"
-                open={open === "coverage"}
-                onOpen={() => setOpen(open === "coverage" ? null : "coverage")}
+                label="Service Areas"
+                open={open === "areas"}
+                onOpen={() => setOpen(open === "areas" ? null : "areas")}
                 onClose={() => setOpen(null)}
               >
-                <div className="p-8 w-[760px]">
-                  <div className="grid grid-cols-3 gap-x-8 gap-y-2">
-                    {regionOrder.map((region) => (
-                      <div key={region}>
-                        <div className="eyebrow mb-2">{region}</div>
-                        <div className="space-y-1">
-                          {(citiesByRegion[region] || []).map((c) => (
-                            <Link
-                              key={c.slug}
-                              href={`/service-areas/${c.slug}`}
-                              onClick={() => setOpen(null)}
-                              className="block text-sm text-ink-700 hover:text-ink-800 hover:underline py-0.5"
-                            >
-                              {c.name}
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                  <div className="mt-6 pt-6 border-t hairline flex items-center justify-between">
-                    <span className="text-sm text-ink-500">
-                      {cities.length} municipalities, dispatched from Coquitlam.
-                    </span>
-                    <Link
-                      href="/service-areas"
-                      onClick={() => setOpen(null)}
-                      className="text-sm font-medium text-ink-800 hover:underline"
-                    >
-                      View coverage map →
-                    </Link>
-                  </div>
-                </div>
+                <ServiceAreasPanel onNavigate={() => setOpen(null)} />
               </MegaItem>
 
-              <Link href="/contact" className="px-4 py-2 text-sm font-medium text-ink-800 rounded-full hover:bg-ink-50">
-                Contact
+              <MegaItem
+                label="Who We Serve"
+                open={open === "serve"}
+                onOpen={() => setOpen(open === "serve" ? null : "serve")}
+                onClose={() => setOpen(null)}
+              >
+                <WhoWeServePanel onNavigate={() => setOpen(null)} />
+              </MegaItem>
+
+              <MegaItem
+                label="Company"
+                align="right"
+                open={open === "company"}
+                onOpen={() => setOpen(open === "company" ? null : "company")}
+                onClose={() => setOpen(null)}
+              >
+                <CompanyPanel onNavigate={() => setOpen(null)} />
+              </MegaItem>
+
+              <Link href="/careers" className="px-4 py-2 text-sm font-medium text-ink-800 rounded-full hover:bg-ink-50">
+                Careers
               </Link>
             </nav>
 
             <div className="hidden lg:flex items-center gap-3">
-              <a
-                href={`tel:${division.contactPhone}`}
-                className="flex items-center gap-2 text-sm text-ink-800"
-              >
-                <Phone className="w-4 h-4 text-brand-500" strokeWidth={1.6} />
-                <span className="font-medium">{division.contactPhone}</span>
+              <a href={`tel:${division.contactPhone}`} className="btn btn-ghost">
+                <Phone className="w-4 h-4" /> Call Now
               </a>
               <Link href="/contact" className="btn btn-brand">
-                Book service
+                Request Service
               </Link>
             </div>
 
@@ -181,15 +157,28 @@ export function DivisionHeader({ divisionSlug }: { divisionSlug: string }) {
                 </div>
               </div>
               <div className="border-t hairline pt-4 space-y-2">
-                <Link href="/service-areas" onClick={() => setMobileOpen(false)} className="block font-medium">Coverage</Link>
+                <Link href="/service-areas" onClick={() => setMobileOpen(false)} className="block font-medium">Service Areas</Link>
+                <Link href="/property-managers" onClick={() => setMobileOpen(false)} className="block font-medium">Property Managers</Link>
+                <Link href="/commercial" onClick={() => setMobileOpen(false)} className="block font-medium">Commercial</Link>
+                <Link href="/residential" onClick={() => setMobileOpen(false)} className="block font-medium">Residential</Link>
+                {companyLinks.map(([label, href]) => (
+                  <Link key={href} href={href} onClick={() => setMobileOpen(false)} className="block font-medium">
+                    {label}
+                  </Link>
+                ))}
                 <Link href="/contact" onClick={() => setMobileOpen(false)} className="block font-medium">Contact</Link>
                 <Link href="/" onClick={() => setMobileOpen(false)} className="block text-sm text-ink-500">
                   Woola Services Group →
                 </Link>
               </div>
-              <Link href="/contact" onClick={() => setMobileOpen(false)} className="btn btn-brand w-full justify-center">
-                Book service
-              </Link>
+              <div className="grid grid-cols-2 gap-3">
+                <a href={`tel:${division.contactPhone}`} className="btn btn-ghost justify-center border hairline">
+                  <Phone className="w-4 h-4" /> Call Now
+                </a>
+                <Link href="/contact" onClick={() => setMobileOpen(false)} className="btn btn-brand justify-center">
+                  Request Service
+                </Link>
+              </div>
             </div>
           </div>
         )}

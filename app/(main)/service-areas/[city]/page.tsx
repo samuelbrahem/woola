@@ -2,10 +2,10 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Section, SectionHead } from "@/components/Section";
 import { CTABanner } from "@/components/CTABanner";
-import { Calculator } from "@/components/Calculator";
+import { SecondOpinionCTA } from "@/components/SecondOpinionCTA";
 import { cities, getCity } from "@/lib/cities";
 import { divisions } from "@/lib/divisions";
-import { Clock, Users, MapPin, Phone, Check, ArrowRight } from "lucide-react";
+import { Phone, Check, ArrowRight } from "lucide-react";
 import type { Metadata } from "next";
 
 type Params = { city: string };
@@ -67,14 +67,15 @@ export default function CityPage({ params }: { params: Params }) {
             </div>
             <div className="lg:col-span-4">
               <div className="card p-6">
-                <div className="eyebrow">Local response</div>
-                <div className="mt-3 grid grid-cols-3 gap-3">
-                  <Metric icon={Clock} label="Response" value={`${city.responseHours} hr`} />
-                  <Metric icon={Users} label="Techs" value={String(city.techsAssigned)} />
-                  <Metric icon={MapPin} label="From HQ" value={`${city.driveTimeMin}m`} />
-                </div>
-                <Link href="/contact" className="btn btn-primary w-full justify-center mt-5">
-                  Book in {city.name} <Phone className="w-4 h-4" />
+                <div className="eyebrow">Local dispatch</div>
+                <p className="mt-3 text-sm text-ink-600 leading-relaxed">
+                  Woola trucks run {city.name} routes daily from our Coquitlam shop.
+                </p>
+                <a href="tel:604-800-3617" className="btn btn-primary w-full justify-center mt-5">
+                  <Phone className="w-4 h-4" /> Call Now
+                </a>
+                <Link href="/contact" className="btn btn-ghost w-full justify-center mt-2 border hairline">
+                  Request Service
                 </Link>
               </div>
             </div>
@@ -147,16 +148,7 @@ export default function CityPage({ params }: { params: Params }) {
         </div>
       </section>
 
-      <Section>
-        <SectionHead
-          eyebrow={`${city.name} estimator`}
-          title="Estimate your project in this market."
-          description="The estimator uses BC averages. Local crew rates and any city-specific permit fees are layered in at the in-home visit."
-        />
-        <div className="mt-10">
-          <Calculator />
-        </div>
-      </Section>
+      <SecondOpinionCTA />
 
       <Section>
         <SectionHead eyebrow="Nearby" title="Other cities we serve." />
@@ -187,17 +179,5 @@ export default function CityPage({ params }: { params: Params }) {
         description={`Your job is run by a dispatcher who knows ${city.name} routes, parts suppliers, and permit windows.`}
       />
     </>
-  );
-}
-
-function Metric({ icon: Icon, label, value }: { icon: any; label: string; value: string }) {
-  return (
-    <div>
-      <div className="flex items-center gap-1 text-ink-400">
-        <Icon className="w-3 h-3" strokeWidth={1.6} />
-        <span className="uppercase tracking-wider text-[10px]">{label}</span>
-      </div>
-      <div className="font-semibold text-ink-800 mt-0.5 text-sm">{value}</div>
-    </div>
   );
 }

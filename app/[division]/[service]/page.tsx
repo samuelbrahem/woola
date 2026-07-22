@@ -4,7 +4,8 @@ import { notFound } from "next/navigation";
 import { divisions, getService, lowerName } from "@/lib/divisions";
 import { Section, SectionHead } from "@/components/Section";
 import { CTABanner } from "@/components/CTABanner";
-import { Calculator } from "@/components/Calculator";
+import { ReadMore } from "@/components/ReadMore";
+import { SecondOpinionCTA } from "@/components/SecondOpinionCTA";
 import { ArrowRight, Check, Phone, BookOpen } from "lucide-react";
 import type { Metadata } from "next";
 import { cities } from "@/lib/cities";
@@ -187,11 +188,15 @@ export default function ServicePage({ params }: { params: Params }) {
             </div>
             <div className="lg:col-span-4 card p-6">
               <div className="eyebrow">{division.name}</div>
-              <div className="mt-2 font-semibold">{division.contactPhone}</div>
-              <div className="mt-1 text-sm text-ink-500">{division.contactEmail}</div>
-              <Link href="/contact" className="btn btn-primary mt-5 w-full justify-center">
-                Book service <Phone className="w-4 h-4" />
+              <a href={`tel:${division.contactPhone}`} className="btn btn-primary mt-3 w-full justify-center">
+                <Phone className="w-4 h-4" /> Call Now
+              </a>
+              <Link href="/contact" className="btn btn-ghost border hairline mt-2 w-full justify-center">
+                Request Service
               </Link>
+              <div className="mt-3 text-xs text-ink-500 text-center">
+                24/7 emergency dispatch for contracted clients
+              </div>
               <ul className="mt-5 space-y-2">
                 {service.highlights.slice(0, 3).map((h) => (
                   <li key={h} className="flex items-start gap-2 text-xs text-ink-600">
@@ -307,20 +312,57 @@ export default function ServicePage({ params }: { params: Params }) {
         </Section>
       )}
 
-      {showCalculator && (
-        <section className="bg-cream-100 border-y hairline">
-          <div className="container-x section">
-            <SectionHead
-              eyebrow="Rough estimator"
-              title="Get a starting number before we visit."
-              description="A no-obligation pre-quote estimate based on home size, equipment tier, and BC market data."
-            />
-            <div className="mt-10">
-              <Calculator />
+      {showCalculator && <SecondOpinionCTA />}
+
+      <section className="bg-cream-100 border-y hairline">
+        <div className="container-x section">
+          <div className="flex items-end justify-between flex-wrap gap-6">
+            <SectionHead eyebrow="Recent projects" title={`${division.name} in the field.`} />
+            <Link
+              href="/work"
+              className="text-sm font-medium text-ink-800 hover:text-brand-500 inline-flex items-center gap-1.5"
+            >
+              All projects <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+          <div className="mt-10 grid md:grid-cols-3 gap-6">
+            {division.featured.slice(0, 3).map((p) => (
+              <article key={p.title} className="card bg-white overflow-hidden group">
+                <div className="relative aspect-[16/10] bg-ink-100 overflow-hidden">
+                  <Image
+                    src={p.image}
+                    alt={p.alt}
+                    fill
+                    sizes="(min-width: 768px) 30vw, 100vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                  />
+                  <span className="absolute top-3 right-3 text-[10px] font-semibold tracking-widest uppercase bg-ink-800/80 text-cream-50 px-2 py-1 rounded backdrop-blur">
+                    {p.tag}
+                  </span>
+                </div>
+                <div className="p-5">
+                  <h3 className="font-semibold text-ink-800">{p.title}</h3>
+                </div>
+              </article>
+            ))}
+          </div>
+          <div className="mt-12 pt-10 border-t hairline">
+            <div className="eyebrow text-center">Credentials & partners</div>
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-x-10 gap-y-6">
+              {["logo-teca", "logo-worksafe-bc", "logo-bc-hydro", "logo-egsa", "logo-contractor-check", "logo-isn"].map((c) => (
+                <Image
+                  key={c}
+                  src={`/brand/${c}.png`}
+                  alt={`${c.replace("logo-", "").replace(/-/g, " ")} logo`}
+                  width={120}
+                  height={72}
+                  className="max-h-10 w-auto opacity-70"
+                />
+              ))}
             </div>
           </div>
-        </section>
-      )}
+        </div>
+      </section>
 
       <Section>
         <div className="grid lg:grid-cols-2 gap-10">
@@ -371,18 +413,26 @@ export default function ServicePage({ params }: { params: Params }) {
                 </h2>
                 <p className="mt-4 text-ink-500 text-sm leading-relaxed">
                   The vocabulary that comes up in quotes and site visits, explained in
-                  plain English. Ask your coordinator if anything else needs translating.
+                  plain English.
                 </p>
+                <Link
+                  href="/equipment"
+                  className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-brand-500 hover:underline"
+                >
+                  Browse the equipment library <ArrowRight className="w-4 h-4" />
+                </Link>
               </div>
               <div className="lg:col-span-8">
-                <dl className="grid sm:grid-cols-2 gap-4">
-                  {service.primer.parts.map((p) => (
-                    <div key={p.term} className="card p-5 bg-white">
-                      <dt className="font-semibold text-ink-800 text-sm">{p.term}</dt>
-                      <dd className="mt-1.5 text-sm text-ink-600 leading-relaxed">{p.def}</dd>
-                    </div>
-                  ))}
-                </dl>
+                <ReadMore collapsedHeight={320} label="Show all terms">
+                  <dl className="grid sm:grid-cols-2 gap-4">
+                    {service.primer.parts.map((p) => (
+                      <div key={p.term} className="card p-5 bg-white">
+                        <dt className="font-semibold text-ink-800 text-sm">{p.term}</dt>
+                        <dd className="mt-1.5 text-sm text-ink-600 leading-relaxed">{p.def}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                </ReadMore>
               </div>
             </div>
           </div>

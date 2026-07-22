@@ -51,7 +51,7 @@ export default function CompetitorsPage() {
                 <th className="py-3 pr-4 font-medium">Provider</th>
                 <th className="py-3 pr-4 font-medium">Focus</th>
                 <th className="py-3 pr-4 font-medium">Segment</th>
-                <th className="py-3 pr-4 font-medium">Estimator</th>
+                <th className="py-3 pr-4 font-medium">Free quote review</th>
                 <th className="py-3 pr-4 font-medium">24/7</th>
                 <th className="py-3 pr-4 font-medium">Rebate help</th>
                 <th className="py-3 pr-4 font-medium">City pages</th>
