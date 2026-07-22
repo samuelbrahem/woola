@@ -298,9 +298,9 @@ export default function ServicePage({ params }: { params: Params }) {
                   key={c}
                   src={`/brand/${c}.png`}
                   alt={`${c.replace("logo-", "").replace(/-/g, " ")} logo`}
-                  width={120}
-                  height={72}
-                  className="max-h-10 w-auto opacity-70"
+                  width={200}
+                  height={120}
+                  className="max-h-16 w-auto opacity-90"
                 />
               ))}
             </div>

@@ -12,7 +12,7 @@ import { industries } from "@/lib/industries";
 import { cities } from "@/lib/cities";
 import Image from "next/image";
 import { site } from "@/lib/site";
-import { ArrowRight, Building2, Wrench, Zap, ShieldCheck, MapPin } from "lucide-react";
+import { ArrowRight, Building2, Wrench, Zap, MapPin } from "lucide-react";
 
 export default function HomePage() {
   return (
@@ -26,10 +26,19 @@ export default function HomePage() {
             <span className="text-xl md:text-2xl font-bold tracking-tight">OUT PERFORM.</span>
             <span className="text-xl md:text-2xl font-bold tracking-tight text-ink-900">OUT PLAY.</span>
           </div>
-          <div className="flex flex-wrap items-center gap-x-8 gap-y-2 text-sm text-white/80">
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-white/80">
             <span className="inline-flex items-center gap-2">
-              <ShieldCheck className="w-4 h-4" strokeWidth={1.5} />
-              WorkSafe COR · TECA · BOMA
+              {["logo-worksafe-bc", "logo-teca", "logo-boma"].map((l) => (
+                <span key={l} className="inline-flex items-center justify-center bg-white rounded px-2 py-1">
+                  <Image
+                    src={`/brand/${l}.png`}
+                    alt={`${l.replace("logo-", "").replace(/-/g, " ")} logo`}
+                    width={90}
+                    height={54}
+                    className="h-7 w-auto"
+                  />
+                </span>
+              ))}
             </span>
             <span className="inline-flex items-center gap-2">
               <MapPin className="w-4 h-4" strokeWidth={1.5} />
