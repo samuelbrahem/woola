@@ -18,7 +18,7 @@ type SystemDef = {
   cy: number;
 };
 
-export type BuildingType = "strata" | "office" | "warehouse";
+export type BuildingType = "strata" | "office" | "warehouse" | "house";
 
 const STRATA_SYSTEMS: SystemDef[] = [
   {
@@ -302,10 +302,80 @@ const WAREHOUSE_SYSTEMS: SystemDef[] = [
   },
 ];
 
+
+const HOUSE_SYSTEMS: SystemDef[] = [
+  {
+    id: "heatpump",
+    name: "Heat pump & air handling",
+    division: "Mechanical",
+    divisionSlug: "mechanical",
+    serviceHref: "/mechanical/hvac",
+    equipmentSlug: "heat-pump",
+    lifespan: 14,
+    what: "Heat pump, air handler, and the ducting that moves comfort through the house. CleanBC rebates filed for you.",
+    renewal: "$8k–$25k installed",
+    cx: 176,
+    cy: 96,
+  },
+  {
+    id: "hotwater",
+    name: "Hot water",
+    division: "Mechanical",
+    divisionSlug: "mechanical",
+    serviceHref: "/mechanical/plumbing",
+    equipmentSlug: "water-heater",
+    lifespan: 10,
+    what: "Tank or tankless, gas or heat-pump: sized right, vented right, and replaced before it lets go in the mechanical room.",
+    renewal: "$2k–$7k installed",
+    cx: 170,
+    cy: 165,
+  },
+  {
+    id: "ev",
+    name: "EV charging",
+    division: "Electrical",
+    divisionSlug: "electrical",
+    serviceHref: "/electrical/ev-chargers",
+    equipmentSlug: "ev-charger",
+    lifespan: 12,
+    what: "Level 2 charging in the garage with a load assessment first, so the panel can actually carry it.",
+    renewal: "$2k–$4k installed",
+    cx: 276,
+    cy: 154,
+  },
+  {
+    id: "roof",
+    name: "Roof & envelope",
+    division: "Build",
+    divisionSlug: "build",
+    serviceHref: "/build/envelope",
+    equipmentSlug: "building-envelope",
+    lifespan: 20,
+    what: "Shingles, flashing, and the envelope details that decide whether BC rain stays outside.",
+    renewal: "$15k–$40k re-roof",
+    cx: 238,
+    cy: 34,
+  },
+  {
+    id: "generator",
+    name: "Home standby power",
+    division: "Power Systems",
+    divisionSlug: "power",
+    serviceHref: "/power/generators",
+    equipmentSlug: "generator",
+    lifespan: 25,
+    what: "A standby generator on a pad, wired to carry the essentials through an outage automatically.",
+    renewal: "$12k–$30k installed",
+    cx: 309,
+    cy: 179,
+  },
+];
+
 const BUILDINGS: Record<BuildingType, { label: string; systems: SystemDef[]; vw: number; vh: number }> = {
   strata: { label: "Strata tower", systems: STRATA_SYSTEMS, vw: 340, vh: 400 },
   office: { label: "Office & mixed-use", systems: OFFICE_SYSTEMS, vw: 340, vh: 400 },
   warehouse: { label: "Industrial & warehouse", systems: WAREHOUSE_SYSTEMS, vw: 340, vh: 227 },
+  house: { label: "Single-family home", systems: HOUSE_SYSTEMS, vw: 340, vh: 227 },
 };
 
 function healthAt(age: number, lifespan: number) {

@@ -234,6 +234,19 @@ export const equipmentLibrary: EquipmentEntry[] = [
     serviceHref: "/mechanical/hvac",
     serviceLabel: "HVAC & Heat Pumps",
   },
+  {
+    slug: "water-heater",
+    name: "Hot Water Heater",
+    category: "Mechanical",
+    image: "/equipment-renders/water-heater.webp",
+    imageAlt: "Cutaway of a gas hot water tank and tankless water heater",
+    what: "Tank or tankless, the appliance that decides whether the morning shower is fine or freezing — and one of the most common sources of water damage when it fails unnoticed.",
+    signs: ["Rusty or lukewarm water", "Rumbling or popping from the tank", "Moisture around the base"],
+    maintenance: ["Annual flush to clear sediment", "Anode rod check every 2–3 years", "T&P valve test annually"],
+    lifespan: "8–12 years (tank) · 15–20 (tankless)",
+    serviceHref: "/mechanical/plumbing",
+    serviceLabel: "Plumbing & Hot Water",
+  },
 ];
 
 export function getEquipment(slug: string) {

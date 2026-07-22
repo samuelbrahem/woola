@@ -7,7 +7,7 @@ export type Industry = {
   description: string;
   pressures: string[];
   systems: { name: string; href: string }[];
-  xrayType: "strata" | "office" | "warehouse";
+  xrayType: "strata" | "office" | "warehouse" | "house";
 };
 
 export const industries: Industry[] = [
@@ -166,7 +166,7 @@ export const industries: Industry[] = [
       { name: "EV Chargers", href: "/electrical/ev-chargers" },
       { name: "Home Standby Power", href: "/power/generators" },
     ],
-    xrayType: "strata",
+    xrayType: "house",
   },
 ];
 

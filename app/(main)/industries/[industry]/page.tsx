@@ -8,7 +8,58 @@ import { BuildingXray } from "@/components/BuildingXray";
 import { FleetStrip } from "@/components/FleetStrip";
 import { industries, getIndustry } from "@/lib/industries";
 import { site } from "@/lib/site";
-import { ArrowRight, Phone, Check } from "lucide-react";
+import {
+  ArrowRight,
+  Phone,
+  Wind,
+  Droplets,
+  Umbrella,
+  PlugZap,
+  Wrench,
+  Zap,
+  Lightbulb,
+  Snowflake,
+  Flame,
+  BatteryCharging,
+  Gauge,
+  BatteryFull,
+  Hammer,
+  Clock,
+  Landmark,
+  Users,
+  AlertTriangle,
+  ShieldAlert,
+  FileWarning,
+  type LucideIcon,
+} from "lucide-react";
+
+function systemIcon(name: string): LucideIcon {
+  const n = name.toLowerCase();
+  if (n.includes("hvac") || n.includes("heat pump")) return Wind;
+  if (n.includes("plumb") || n.includes("hot water")) return Droplets;
+  if (n.includes("envelope")) return Umbrella;
+  if (n.includes("ev")) return PlugZap;
+  if (n.includes("maintenance")) return Wrench;
+  if (n.includes("led") || n.includes("lighting")) return Lightbulb;
+  if (n.includes("refrigeration")) return Snowflake;
+  if (n.includes("gas") || n.includes("boiler")) return Flame;
+  if (n.includes("c282")) return Gauge;
+  if (n.includes("ups")) return BatteryFull;
+  if (n.includes("generator") || n.includes("standby") || n.includes("power")) return BatteryCharging;
+  if (n.includes("improvement") || n.includes("construction")) return Hammer;
+  if (n.includes("electrical") || n.includes("panel") || n.includes("upgrade")) return Zap;
+  return Wrench;
+}
+
+function pressureIcon(text: string): LucideIcon {
+  const t = text.toLowerCase();
+  if (t.includes("downtime") || t.includes("hour") || t.includes("time") || t.includes("break")) return Clock;
+  if (t.includes("council") || t.includes("board") || t.includes("public") || t.includes("budget") || t.includes("noi") || t.includes("cost")) return Landmark;
+  if (t.includes("resident") || t.includes("occupant") || t.includes("tenant") || t.includes("home") || t.includes("stranger")) return Users;
+  if (t.includes("regulation") || t.includes("compliance") || t.includes("safety")) return ShieldAlert;
+  if (t.includes("report") || t.includes("paperwork") || t.includes("quote") || t.includes("log")) return FileWarning;
+  return AlertTriangle;
+}
 
 type Params = { industry: string };
 
@@ -74,23 +125,34 @@ export default function IndustryPage({ params }: { params: Params }) {
           <div className="lg:col-span-5">
             <SectionHead eyebrow="What you're up against" title="We know the pressures." />
             <ul className="mt-8 space-y-4">
-              {ind.pressures.map((p) => (
-                <li key={p} className="flex items-start gap-3 text-ink-700">
-                  <Check className="w-5 h-5 mt-0.5 text-brand-500 shrink-0" strokeWidth={2} />
-                  {p}
-                </li>
-              ))}
+              {ind.pressures.map((p) => {
+                const Icon = pressureIcon(p);
+                return (
+                  <li key={p} className="flex items-start gap-3 text-ink-700">
+                    <span className="w-9 h-9 rounded-lg bg-brand-500/10 text-brand-500 flex items-center justify-center shrink-0">
+                      <Icon className="w-5 h-5" strokeWidth={1.75} />
+                    </span>
+                    <span className="pt-1.5">{p}</span>
+                  </li>
+                );
+              })}
             </ul>
           </div>
           <div className="lg:col-span-7">
             <div className="eyebrow">Systems we run for {ind.name.toLowerCase()}</div>
             <div className="mt-4 grid sm:grid-cols-2 gap-3">
-              {ind.systems.map((s) => (
-                <Link key={s.href + s.name} href={s.href} className="card p-5 group flex items-center justify-between">
-                  <span className="font-medium text-ink-800 group-hover:text-brand-500 transition">{s.name}</span>
-                  <ArrowRight className="w-4 h-4 text-ink-400 group-hover:text-brand-500 group-hover:translate-x-0.5 transition" />
-                </Link>
-              ))}
+              {ind.systems.map((s) => {
+                const Icon = systemIcon(s.name);
+                return (
+                  <Link key={s.href + s.name} href={s.href} className="card p-5 group flex items-center gap-4">
+                    <span className="w-10 h-10 rounded-lg bg-ink-800 text-cream-50 flex items-center justify-center shrink-0 group-hover:bg-brand-500 transition-colors">
+                      <Icon className="w-5 h-5" strokeWidth={1.5} />
+                    </span>
+                    <span className="font-medium text-ink-800 group-hover:text-brand-500 transition flex-1">{s.name}</span>
+                    <ArrowRight className="w-4 h-4 text-ink-400 group-hover:text-brand-500 group-hover:translate-x-0.5 transition" />
+                  </Link>
+                );
+              })}
             </div>
           </div>
         </div>
