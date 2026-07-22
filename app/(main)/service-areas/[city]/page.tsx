@@ -39,28 +39,29 @@ export default function CityPage({ params }: { params: Params }) {
 
   return (
     <>
-      <section className="bg-cream-50 border-b hairline">
-        <div className="container-x pt-20 pb-12">
-          <div className="text-sm text-ink-400">
-            <Link href="/service-areas" className="hover:text-ink-700">Service Areas</Link>
+      <section className="bg-ink-900 text-cream-50 relative overflow-hidden">
+        <div className="grain" />
+        <div className="container-x pt-20 pb-12 relative">
+          <div className="text-sm text-ink-300">
+            <Link href="/service-areas" className="hover:text-cream-50">Service Areas</Link>
             <span className="mx-1.5">/</span>
-            <span className="text-ink-700">{city.name}</span>
+            <span className="text-cream-50">{city.name}</span>
           </div>
           <div className="mt-6 grid lg:grid-cols-12 gap-10 items-end">
             <div className="lg:col-span-8">
-              <div className="eyebrow">{city.region}</div>
-              <h1 className="mt-3 text-5xl md:text-6xl lg:text-7xl font-semibold leading-[0.98] text-ink-800">
+              <div className="eyebrow !text-brand-400">{city.region}</div>
+              <h1 className="mt-3 text-5xl md:text-6xl lg:text-7xl font-semibold leading-[0.98] text-cream-50">
                 Woola in {city.name}.
               </h1>
-              <p className="mt-5 text-lg md:text-xl text-ink-500 max-w-2xl leading-relaxed">{city.blurb}</p>
+              <p className="mt-5 text-lg md:text-xl text-cream-100/80 max-w-2xl leading-relaxed">{city.blurb}</p>
               <div className="mt-6 flex flex-wrap gap-2 text-xs">
-                <span className="px-3 py-1 rounded-full bg-cream-100 border hairline text-ink-700">
+                <span className="px-3 py-1 rounded-full bg-ink-800 border border-ink-600 text-cream-100">
                   Pop. {city.population.toLocaleString()}
                 </span>
-                <span className="px-3 py-1 rounded-full bg-cream-100 border hairline text-ink-700">
+                <span className="px-3 py-1 rounded-full bg-ink-800 border border-ink-600 text-cream-100">
                   Postal: {city.postalPrefix}
                 </span>
-                <span className="px-3 py-1 rounded-full bg-cream-100 border hairline text-ink-700">
+                <span className="px-3 py-1 rounded-full bg-ink-800 border border-ink-600 text-cream-100">
                   HQ drive: {city.driveTimeMin} min
                 </span>
               </div>
@@ -122,9 +123,11 @@ export default function CityPage({ params }: { params: Params }) {
         </div>
       </Section>
 
-      <section className="bg-cream-100 border-y hairline">
-        <div className="container-x section">
+      <section className="bg-ink-800 text-cream-50 relative overflow-hidden">
+        <div className="grain" />
+        <div className="container-x section relative">
           <SectionHead
+            dark
             eyebrow={`${city.name} services`}
             title="Most-requested services in this city."
           />

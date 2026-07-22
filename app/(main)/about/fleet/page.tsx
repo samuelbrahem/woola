@@ -16,13 +16,13 @@ export const metadata = {
 export default function FleetPage() {
   return (
     <>
-      <section className="bg-cream-50 border-b hairline">
+      <section className="bg-ink-900 text-cream-50 relative overflow-hidden">
         <div className="container-x pt-20 pb-14">
-          <div className="eyebrow">About Woola</div>
-          <h1 className="mt-3 text-5xl md:text-6xl font-semibold text-ink-800 leading-[0.95]">
+          <div className="eyebrow !text-brand-400">About Woola</div>
+          <h1 className="mt-3 text-5xl md:text-6xl font-semibold text-cream-50 leading-[0.95]">
             You&apos;ll know us when we pull up.
           </h1>
-          <p className="mt-5 text-lg text-ink-500 max-w-2xl leading-relaxed">
+          <p className="mt-5 text-lg text-cream-100/80 max-w-2xl leading-relaxed">
             Woola is earning a reputation for its vehicle branding, and we lean into it. A marked
             van in your parkade tells residents and councils exactly who is on site, and why.
           </p>
@@ -82,9 +82,10 @@ export default function FleetPage() {
         </div>
       </Section>
 
-      <section className="bg-cream-100 border-y hairline">
+      <section className="bg-ink-800 text-cream-50 relative overflow-hidden">
         <div className="container-x section">
           <SectionHead
+            dark
             eyebrow="Four marks, one standard"
             title="Every division carries the same identity."
             description="Whichever van shows up, the paperwork, the PO, and the accountability are identical."

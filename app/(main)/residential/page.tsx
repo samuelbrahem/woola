@@ -48,15 +48,15 @@ const promises = [
 export default function ResidentialPage() {
   return (
     <>
-      <section className="bg-cream-50 border-b hairline relative overflow-hidden">
+      <section className="bg-ink-900 text-cream-50 relative overflow-hidden">
         <div aria-hidden className="aurora -z-0" />
         <div className="container-x pt-24 pb-16 relative">
           <div className="max-w-3xl">
-            <div className="eyebrow">Residential</div>
-            <h1 className="mt-3 text-5xl md:text-6xl font-semibold text-ink-800 leading-[0.98]">
+            <div className="eyebrow !text-brand-400">Residential</div>
+            <h1 className="mt-3 text-5xl md:text-6xl font-semibold text-cream-50 leading-[0.98]">
               Commercial-grade trades. For your home.
             </h1>
-            <p className="mt-5 text-lg text-ink-500 max-w-2xl">
+            <p className="mt-5 text-lg text-cream-100/80 max-w-2xl">
               Heat pumps, hot water, gas, EV charging, and backup power, installed by the
               same licensed technicians we send to hospitals and high-rises. Upfront
               pricing and rebate paperwork handled in-house.
@@ -93,9 +93,10 @@ export default function ResidentialPage() {
         </div>
       </Section>
 
-      <section className="bg-cream-100 border-y hairline">
+      <section className="bg-brand-500 text-white">
         <div className="container-x section">
           <SectionHead
+            dark
             eyebrow="The homeowner promise"
             title="What working with Woola feels like."
           />

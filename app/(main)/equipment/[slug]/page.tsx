@@ -89,7 +89,8 @@ export default function EquipmentPage({ params }: { params: Params }) {
         </section>
       )}
 
-      <Section>
+      <section className="bg-brand-500 text-white">
+        <div className="container-x section">
         <div className="grid md:grid-cols-3 gap-6">
           <div className="card p-7">
             <AlertTriangle className="w-6 h-6 text-brand-500" strokeWidth={1.5} />
@@ -124,7 +125,8 @@ export default function EquipmentPage({ params }: { params: Params }) {
             </p>
           </div>
         </div>
-      </Section>
+        </div>
+      </section>
 
       <section className="bg-ink-800 text-cream-50 relative overflow-hidden">
         <div className="grain" />

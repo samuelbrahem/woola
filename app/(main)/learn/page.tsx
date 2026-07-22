@@ -21,14 +21,14 @@ export default function LearnPage() {
 
   return (
     <>
-      <section className="bg-cream-50 border-b hairline">
+      <section className="bg-ink-900 text-cream-50 relative overflow-hidden">
         <div className="container-x pt-20 pb-16">
           <div className="max-w-3xl">
-            <div className="eyebrow">Learning Hub</div>
-            <h1 className="mt-3 text-5xl md:text-6xl font-semibold text-ink-800 leading-[0.95]">
+            <div className="eyebrow !text-brand-400">Learning Hub</div>
+            <h1 className="mt-3 text-5xl md:text-6xl font-semibold text-cream-50 leading-[0.95]">
               Your building, in plain English.
             </h1>
-            <p className="mt-5 text-lg text-ink-500 leading-relaxed">
+            <p className="mt-5 text-lg text-cream-100/80 leading-relaxed">
               You shouldn&apos;t need a trade ticket to understand your own building. Every Woola
               service comes with a plain-English primer and glossary, {totalTerms}+ terms explained
               the way we&apos;d explain them across a kitchen table.
@@ -38,9 +38,9 @@ export default function LearnPage() {
       </section>
 
       {divisions.map((d, idx) => (
-        <section key={d.slug} className={idx % 2 === 1 ? "bg-cream-100 border-y hairline" : ""}>
+        <section key={d.slug} className={idx % 2 === 1 ? "bg-ink-800 text-cream-50" : ""}>
           <div className="container-x section">
-            <SectionHead eyebrow={d.subtitle} title={`${d.name} primers.`} />
+            <SectionHead eyebrow={d.subtitle} title={`${d.name} primers.`} dark={idx % 2 === 1} />
             <div className="mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {d.services.map((s) => (
                 <Link

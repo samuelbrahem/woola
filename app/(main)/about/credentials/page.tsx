@@ -29,13 +29,13 @@ const associations = [
 export default function CredentialsPage() {
   return (
     <>
-      <section className="bg-cream-50 border-b hairline">
+      <section className="bg-ink-900 text-cream-50 relative overflow-hidden">
         <div className="container-x pt-20 pb-14">
-          <div className="eyebrow">About Woola</div>
-          <h1 className="mt-3 text-5xl md:text-6xl font-semibold text-ink-800 leading-[0.95]">
+          <div className="eyebrow !text-brand-400">About Woola</div>
+          <h1 className="mt-3 text-5xl md:text-6xl font-semibold text-cream-50 leading-[0.95]">
             Credentials & associations.
           </h1>
-          <p className="mt-5 text-lg text-ink-500 max-w-2xl leading-relaxed">
+          <p className="mt-5 text-lg text-cream-100/80 max-w-2xl leading-relaxed">
             Logos mean more than lists. Every membership and certification below is current, and
             we&apos;ll send the certificates same day if you ask for proof.
           </p>
@@ -67,9 +67,10 @@ export default function CredentialsPage() {
         </div>
       </Section>
 
-      <section className="bg-cream-100 border-y hairline">
+      <section className="bg-ink-800 text-cream-50 relative overflow-hidden">
         <div className="container-x section">
           <SectionHead
+            dark
             eyebrow="Certifications"
             title="Tickets and programs we hold."
             description="Held at the company or technician level and kept current through our own compliance calendar."

@@ -45,17 +45,17 @@ const perks = [
 export default function CareersPage() {
   return (
     <>
-      <section className="bg-cream-50 border-b hairline relative overflow-hidden">
+      <section className="bg-ink-900 text-cream-50 relative overflow-hidden">
         <div aria-hidden className="aurora -z-0" />
         <div className="container-x pt-24 pb-16 relative">
           <div className="max-w-3xl">
-            <div className="eyebrow">Careers</div>
-            <h1 className="mt-3 text-5xl md:text-6xl font-semibold text-ink-800 leading-[0.98]">
+            <div className="eyebrow !text-brand-400">Careers</div>
+            <h1 className="mt-3 text-5xl md:text-6xl font-semibold text-cream-50 leading-[0.98]">
               Out work. Out perform.
               <br />
               <span className="script text-brand-500 text-6xl md:text-7xl leading-none">Out play.</span>
             </h1>
-            <p className="mt-5 text-lg text-ink-500 max-w-2xl">
+            <p className="mt-5 text-lg text-cream-100/80 max-w-2xl">
               Four business units, one roster. We hire trades who take pride in the work,
               sponsor apprenticeships seriously, and promote from within first.
             </p>

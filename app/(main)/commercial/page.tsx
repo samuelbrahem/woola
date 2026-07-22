@@ -151,15 +151,15 @@ const pillars = [
 export default function CommercialPage() {
   return (
     <>
-      <section className="bg-cream-50 border-b hairline relative overflow-hidden">
+      <section className="bg-ink-900 text-cream-50 relative overflow-hidden">
         <div aria-hidden className="aurora -z-0" />
         <div className="container-x pt-24 pb-16 relative">
           <div className="max-w-3xl">
-            <div className="eyebrow">Commercial</div>
-            <h1 className="mt-3 text-5xl md:text-6xl font-semibold text-ink-800 leading-[0.98]">
+            <div className="eyebrow !text-brand-400">Commercial</div>
+            <h1 className="mt-3 text-5xl md:text-6xl font-semibold text-cream-50 leading-[0.98]">
               Every kind of commercial. One accountable partner.
             </h1>
-            <p className="mt-5 text-lg text-ink-500 max-w-2xl">
+            <p className="mt-5 text-lg text-cream-100/80 max-w-2xl">
               Strata towers, office buildings, warehouses, restaurants, care facilities,
               and hotels each run differently. Woola runs programs for all of them across
               Metro Vancouver, the Fraser Valley, and the Sea-to-Sky.
@@ -228,9 +228,10 @@ export default function CommercialPage() {
         </div>
       </Section>
 
-      <section className="bg-cream-100 border-y hairline">
+      <section className="bg-brand-500 text-white">
         <div className="container-x section">
           <SectionHead
+            dark
             eyebrow="How we work with managers"
             title="Built around the way portfolios actually run."
           />

@@ -13,15 +13,15 @@ export default function ContactClient() {
 
   return (
     <>
-      <section className="bg-cream-50 border-b hairline">
+      <section className="bg-ink-900 text-cream-50 relative overflow-hidden">
         <div className="container-x pt-24 pb-12">
           <div className="grid lg:grid-cols-12 gap-10 items-center">
             <div className="lg:col-span-7">
-              <div className="eyebrow">Contact</div>
-              <h1 className="mt-3 text-5xl md:text-6xl font-semibold text-ink-800 leading-[0.98]">
+              <div className="eyebrow !text-brand-400">Contact</div>
+              <h1 className="mt-3 text-5xl md:text-6xl font-semibold text-cream-50 leading-[0.98]">
                 Tell us about the building.
               </h1>
-              <p className="mt-5 text-lg text-ink-500">
+              <p className="mt-5 text-lg text-cream-100/80">
                 A coordinator gets in touch within one business day. For contracted-client emergencies, call our
                 24/7 line at {site.phone}.
               </p>

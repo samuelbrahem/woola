@@ -82,9 +82,11 @@ export default function LearnServicePage({ params }: { params: Params }) {
       </Section>
 
       {service.primer.parts.length > 0 && (
-        <section className="bg-cream-100 border-y hairline">
-          <div className="container-x section">
+        <section className="bg-ink-800 text-cream-50 relative overflow-hidden">
+          <div className="grain" />
+          <div className="container-x section relative">
             <SectionHead
+              dark
               eyebrow="Glossary"
               title="Parts & terms worth knowing."
               description="The vocabulary that comes up in quotes and site visits, explained in plain English."
