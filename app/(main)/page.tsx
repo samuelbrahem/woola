@@ -19,21 +19,20 @@ export default function HomePage() {
     <>
       <HeroCarousel />
 
-      <div className="bg-ink-900 text-cream-50 relative overflow-hidden">
-        <div className="grain" />
+      <div className="bg-brand-500 text-white relative overflow-hidden">
         <div className="container-x py-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4 relative">
           <div className="flex items-baseline gap-3 md:gap-5 flex-wrap">
             <span className="text-xl md:text-2xl font-bold tracking-tight">OUT WORK.</span>
             <span className="text-xl md:text-2xl font-bold tracking-tight">OUT PERFORM.</span>
-            <span className="text-xl md:text-2xl font-bold tracking-tight text-brand-400">OUT PLAY.</span>
+            <span className="text-xl md:text-2xl font-bold tracking-tight text-ink-900">OUT PLAY.</span>
           </div>
-          <div className="flex flex-wrap items-center gap-x-8 gap-y-2 text-sm text-cream-100/70">
+          <div className="flex flex-wrap items-center gap-x-8 gap-y-2 text-sm text-white/80">
             <span className="inline-flex items-center gap-2">
-              <ShieldCheck className="w-4 h-4 text-brand-400" strokeWidth={1.5} />
+              <ShieldCheck className="w-4 h-4" strokeWidth={1.5} />
               WorkSafe COR · TECA · BOMA
             </span>
             <span className="inline-flex items-center gap-2">
-              <MapPin className="w-4 h-4 text-brand-400" strokeWidth={1.5} />
+              <MapPin className="w-4 h-4" strokeWidth={1.5} />
               20+ municipalities · HQ Coquitlam
             </span>
           </div>
@@ -223,12 +222,11 @@ export default function HomePage() {
         </div>
       </Section>
 
-      <section className="bg-ink-800 text-cream-50 relative overflow-hidden">
-        <div className="grain" />
-        <div className="container-x section relative">
+      <section className="bg-cream-100 border-y hairline">
+        <div className="container-x section">
           <div className="max-w-3xl">
-            <div className="eyebrow text-brand-400">What clients say</div>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold mt-3">
+            <div className="eyebrow">What clients say</div>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold mt-3 text-ink-800">
               The point of Woola is that you stop chasing trades.
             </h2>
           </div>
