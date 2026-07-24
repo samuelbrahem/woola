@@ -58,7 +58,7 @@ export default function DivisionPage({ params }: { params: Params }) {
 
   return (
     <>
-      {/* Hero — dark, full-height image/video background, matches main-site style */}
+      {/* Hero: dark, full-height image/video background, matches main-site style */}
       <section className="relative w-full overflow-hidden bg-ink-900 text-cream-50">
         <div className="relative min-h-[calc(100vh-5rem)]">
           {/* Background media */}
@@ -196,11 +196,15 @@ export default function DivisionPage({ params }: { params: Params }) {
         <div className="mt-12 grid md:grid-cols-2 gap-6">
           {division.services.map((s, idx) => {
             const Icon = s.icon;
+            const isOrphan =
+              idx === division.services.length - 1 && division.services.length % 2 === 1;
             return (
               <Link
                 key={s.slug}
                 href={`/${division.slug}/${s.slug}`}
-                className="group relative overflow-hidden rounded-2xl bg-white border hairline hover:border-brand-500/40 hover:shadow-soft transition-all duration-300 flex flex-col"
+                className={`group relative overflow-hidden rounded-2xl bg-white border hairline hover:border-brand-500/40 hover:shadow-soft transition-all duration-300 flex flex-col ${
+                  isOrphan ? "md:col-span-2" : ""
+                }`}
               >
                 <div className="relative aspect-[16/10] overflow-hidden bg-ink-100">
                   <Image
@@ -336,21 +340,15 @@ export default function DivisionPage({ params }: { params: Params }) {
         <div className="grain" />
         <div className="container-x section relative">
           <div id="process" />
-          <div className="grid lg:grid-cols-12 gap-12 items-start">
-            <div className="lg:col-span-4">
-              <SectionHead
-                eyebrow="How we run it"
-                title={`The ${division.name.split(" ").slice(1).join(" ")} delivery model.`}
-                dark
-              />
-              <p className="mt-6 text-ink-200 text-sm leading-relaxed">
-                Every contract follows the same four-step rhythm so property managers know
-                what to expect, and so our techs don't waste a truck-roll.
-              </p>
-            </div>
-            <div className="lg:col-span-8">
-              <ol className="grid sm:grid-cols-2 gap-5">
-                {[
+          <SectionHead
+            eyebrow="How we run it"
+            title={`The ${division.name.split(" ").slice(1).join(" ")} delivery model.`}
+            description="Every contract follows the same four-step rhythm so property managers know what to expect, and so our techs don't waste a truck-roll."
+            dark
+          />
+          <div className="mt-12">
+            <ol className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+              {[
                   {
                     t: "Walk-through & condition report",
                     b: "We document the existing systems, capture asset photos and tag risks. A condition report lands in your inbox within 48 hours.",
@@ -367,24 +365,21 @@ export default function DivisionPage({ params }: { params: Params }) {
                     t: "Photo-documented close-out",
                     b: "Every job closes with before/after photos, equipment serial numbers, and renewal dates, all stored in the asset registry.",
                   },
-                ].map((step, i) => (
-                  <li
-                    key={step.t}
-                    className="rounded-md border border-ink-600 p-6 bg-ink-700/40 hover:border-brand-400 transition"
-                  >
-                    <div className="flex items-center gap-3">
-                      <div className="w-9 h-9 rounded-full bg-brand-500 text-cream-50 flex items-center justify-center text-sm font-bold">
-                        {String(i + 1).padStart(2, "0")}
-                      </div>
-                      <div className="text-base font-semibold text-cream-50">
-                        {step.t}
-                      </div>
-                    </div>
-                    <p className="mt-3 text-sm text-ink-200 leading-relaxed">{step.b}</p>
-                  </li>
-                ))}
-              </ol>
-            </div>
+              ].map((step, i) => (
+                <li
+                  key={step.t}
+                  className="rounded-md border border-ink-600 p-6 bg-ink-700/40 hover:border-brand-400 transition flex flex-col"
+                >
+                  <div className="text-3xl font-mono text-brand-400 leading-none">
+                    {String(i + 1).padStart(2, "0")}
+                  </div>
+                  <div className="mt-5 text-base font-semibold text-cream-50">
+                    {step.t}
+                  </div>
+                  <p className="mt-2 text-sm text-ink-200 leading-relaxed">{step.b}</p>
+                </li>
+              ))}
+            </ol>
           </div>
         </div>
       </section>
@@ -442,21 +437,18 @@ export default function DivisionPage({ params }: { params: Params }) {
       {/* FAQ */}
       <Section>
         <div id="faq" />
-        <div className="max-w-3xl mx-auto text-center">
-          <SectionHead
-            eyebrow="Frequently asked"
-            title={`Quick answers about ${division.name.split(" ").slice(1).join(" ").toLowerCase()}.`}
-            description="Don't see your question? Email the division directly."
-            align="center"
-          />
-          <a
-            href={`mailto:${division.contactEmail}`}
-            className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-brand-500 hover:underline"
-          >
-            <Mail className="w-4 h-4" /> {division.contactEmail}
-          </a>
-        </div>
-        <div className="mt-12 max-w-3xl mx-auto">
+        <SectionHead
+          eyebrow="Frequently asked"
+          title={`Quick answers about ${division.name.split(" ").slice(1).join(" ").toLowerCase()}.`}
+          description="Don't see your question? Email the division directly."
+        />
+        <a
+          href={`mailto:${division.contactEmail}`}
+          className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-brand-500 hover:underline"
+        >
+          <Mail className="w-4 h-4" /> {division.contactEmail}
+        </a>
+        <div className="mt-10">
           <DivisionFAQ items={division.faqs} />
         </div>
       </Section>
@@ -464,13 +456,21 @@ export default function DivisionPage({ params }: { params: Params }) {
       {/* Coverage strip */}
       <section className="bg-ink-800 text-cream-50 relative overflow-hidden border-t hairline">
         <div className="container-x py-14 relative">
-          <div className="max-w-2xl mx-auto text-center">
-            <div className="eyebrow !text-brand-400">Coverage</div>
-            <h3 className="mt-3 text-2xl md:text-3xl font-bold tracking-tight text-cream-50">
-              Dispatched daily across {cities.length}+ municipalities.
-            </h3>
+          <div className="flex items-end justify-between flex-wrap gap-6">
+            <div>
+              <div className="eyebrow !text-brand-400">Coverage</div>
+              <h3 className="mt-3 text-2xl md:text-3xl font-bold tracking-tight text-cream-50">
+                Dispatched daily across {cities.length}+ municipalities.
+              </h3>
+            </div>
+            <Link
+              href="/service-areas"
+              className="text-sm font-medium text-cream-100 hover:text-brand-400 inline-flex items-center gap-1.5 shrink-0"
+            >
+              <MapPin className="w-4 h-4" /> See coverage map →
+            </Link>
           </div>
-          <div className="mt-8 flex flex-wrap justify-center gap-2">
+          <div className="mt-8 flex flex-wrap gap-2">
             {featuredCities.map((c) => (
               <Link
                 key={c.slug}
@@ -483,14 +483,6 @@ export default function DivisionPage({ params }: { params: Params }) {
             <span className="text-xs px-3 py-1.5 text-cream-100/60">
               + {cities.length - featuredCities.length} more
             </span>
-          </div>
-          <div className="mt-8 text-center">
-            <Link
-              href="/service-areas"
-              className="text-sm font-medium text-cream-100 hover:text-brand-400 inline-flex items-center gap-1.5"
-            >
-              <MapPin className="w-4 h-4" /> See coverage map →
-            </Link>
           </div>
         </div>
       </section>

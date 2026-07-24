@@ -224,7 +224,7 @@ export default function ServicePage({ params }: { params: Params }) {
             <SectionHead
               eyebrow="Equipment we know"
               title="The gear we service."
-              description="Each unit links to a plain-English walkthrough — what it does, what fails, and what to keep an eye on."
+              description="Each unit links to a plain-English walkthrough of what it does, what fails, and what to keep an eye on."
             />
 
             {equipmentForService.length < 4 ? (

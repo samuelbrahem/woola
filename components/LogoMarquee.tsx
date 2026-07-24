@@ -4,7 +4,7 @@ import { useState } from "react";
 
 export type MarqueeItem = {
   name: string;
-  /** Kept for compatibility — no longer fetched; wordmark chip is used instead. */
+  /** Kept for compatibility; no longer fetched. */
   domain?: string;
   /** Local image path (e.g. /brand/logo-teca.png). Renders as a real logo when present. */
   src?: string;

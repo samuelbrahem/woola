@@ -25,7 +25,7 @@
   --accent-500: #89A306;
 }
 
-/* Per-division brand themes — each division reads as its own site while
+/* Per-division brand themes. Each division reads as its own site while
    staying strictly inside the official Woola palette:
    teal #00788C · olive #89A306 · black #000000 · blush #FFF7F4 · white.
    Mechanical uses the root teal. The hex vars drive handwritten CSS;

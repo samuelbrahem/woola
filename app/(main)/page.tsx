@@ -111,57 +111,51 @@ export default function HomePage() {
       <section className="bg-ink-800 text-cream-50 relative overflow-hidden">
         <div className="grain" />
         <div className="container-x section relative">
-          <div className="grid lg:grid-cols-12 gap-12 items-start">
-            <div className="lg:col-span-5">
-              <SectionHead
-                eyebrow="The Woola model"
-                title="Every trade. One team. One call."
-                description="Four divisions. One dispatcher. One accountable PO across every job."
-                dark
-              />
-              <ul className="mt-8 space-y-4">
-                {[
-                  {
-                    icon: Wrench,
-                    title: "Our own trades, not subs",
-                    body: "Every trade is a Woola employee on a shared roster.",
-                  },
-                  {
-                    icon: Building2,
-                    title: "Built for property managers",
-                    body: "Intake, reporting and invoicing shaped around how you work.",
-                  },
-                  {
-                    icon: Zap,
-                    title: "Everything documented",
-                    body: "Asset inventory, photos, and service history on every job.",
-                  },
-                ].map((it) => (
-                  <li key={it.title} className="flex gap-4">
-                    <div className="w-10 h-10 rounded-full bg-brand-500 text-white flex items-center justify-center shrink-0">
-                      <it.icon className="w-5 h-5" strokeWidth={1.5} />
-                    </div>
-                    <div>
-                      <div className="font-semibold text-cream-50">{it.title}</div>
-                      <div className="text-sm text-cream-100/70 mt-1">{it.body}</div>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-              <div className="mt-8">
-                <Link href="/about" className="btn border border-cream-50/40 text-cream-50 hover:bg-cream-50 hover:text-ink-800">
-                  How we run jobs <ArrowRight className="w-4 h-4" />
-                </Link>
-              </div>
+          <SectionHead
+            eyebrow="The Woola model"
+            title="Every trade. One team. One call."
+            description="Four divisions. One dispatcher. One accountable PO across every job."
+            dark
+          />
+          <div className="mt-12">
+            <ServiceMap />
+            <div className="mt-4 text-right">
+              <Link href="/service-areas" className="text-sm font-medium text-brand-400 hover:underline">
+                All {cities.length} service areas →
+              </Link>
             </div>
-            <div className="lg:col-span-7">
-              <ServiceMap />
-              <div className="mt-4 text-right">
-                <Link href="/service-areas" className="text-sm font-medium text-brand-400 hover:underline">
-                  All {cities.length} service areas →
-                </Link>
+          </div>
+          <div className="mt-12 grid md:grid-cols-3 gap-6">
+            {[
+              {
+                icon: Wrench,
+                title: "Our own trades, not subs",
+                body: "Every trade is a Woola employee on a shared roster.",
+              },
+              {
+                icon: Building2,
+                title: "Built for property managers",
+                body: "Intake, reporting and invoicing shaped around how you work.",
+              },
+              {
+                icon: Zap,
+                title: "Everything documented",
+                body: "Asset inventory, photos, and service history on every job.",
+              },
+            ].map((it) => (
+              <div key={it.title} className="rounded-lg border border-ink-600 bg-ink-700/40 p-6">
+                <div className="w-10 h-10 rounded-full bg-brand-500 text-white flex items-center justify-center">
+                  <it.icon className="w-5 h-5" strokeWidth={1.5} />
+                </div>
+                <div className="mt-4 font-semibold text-cream-50">{it.title}</div>
+                <div className="mt-2 text-sm text-cream-100/70">{it.body}</div>
               </div>
-            </div>
+            ))}
+          </div>
+          <div className="mt-8">
+            <Link href="/about" className="btn border border-cream-50/40 text-cream-50 hover:bg-cream-50 hover:text-ink-800">
+              How we run jobs <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
         </div>
       </section>

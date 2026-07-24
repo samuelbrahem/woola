@@ -141,53 +141,44 @@ export default function AboutPage() {
 
       <section className="bg-cream-100 border-y hairline">
         <div className="container-x section">
-          <div className="grid lg:grid-cols-12 gap-12">
-            <div className="lg:col-span-5">
-              <SectionHead eyebrow="Credentials" title="What we hold." />
-              <p className="mt-4 text-ink-500">
-                Every credential below is current and verifiable. Ask us for proof and we'll send the
-                certificates same day.
-              </p>
-            </div>
-            <div className="lg:col-span-7">
-              <div className="grid grid-cols-3 md:grid-cols-4 gap-3">
-                {[
-                  "logo-teca",
-                  "logo-worksafe-bc",
-                  "logo-boma",
-                  "logo-pama-member",
-                  "logo-bc-hydro",
-                  "logo-asttbc",
-                  "logo-cci-bc",
-                  "logo-egsa",
-                  "logo-hpcn",
-                  "logo-isn",
-                  "logo-contractor-check",
-                  "logo-comply-works",
-                ].map((c) => (
-                  <div
-                    key={c}
-                    className="card p-4 flex items-center justify-center bg-white aspect-[3/2]"
-                  >
-                    <Image
-                      src={`/brand/${c}.png`}
-                      alt={`${c.replace("logo-", "").replace(/-/g, " ").replace(/\b\w/g, (m) => m.toUpperCase())} logo`}
-                      width={160}
-                      height={100}
-                      className="max-h-14 w-auto opacity-80 hover:opacity-100 transition"
-                    />
-                  </div>
-                ))}
+          <SectionHead
+            eyebrow="Credentials"
+            title="What we hold."
+            description="Every credential below is current and verifiable. Ask us for proof and we'll send the certificates same day."
+            align="center"
+          />
+          <div className="mt-12 flex flex-wrap items-center justify-center gap-x-14 gap-y-10">
+            {[
+              "logo-teca",
+              "logo-worksafe-bc",
+              "logo-boma",
+              "logo-pama-member",
+              "logo-bc-hydro",
+              "logo-asttbc",
+              "logo-cci-bc",
+              "logo-egsa",
+              "logo-hpcn",
+              "logo-isn",
+              "logo-contractor-check",
+              "logo-comply-works",
+            ].map((c) => (
+              <Image
+                key={c}
+                src={`/brand/${c}.png`}
+                alt={c.replace("logo-", "").replace(/-/g, " ").replace(/\b\w/g, (m) => m.toUpperCase())}
+                width={220}
+                height={140}
+                className="max-h-20 w-auto object-contain grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition"
+              />
+            ))}
+          </div>
+          <div className="mt-10 max-w-4xl mx-auto grid sm:grid-cols-2 md:grid-cols-3 gap-2">
+            {site.certifications.slice(0, 6).map((c) => (
+              <div key={c} className="flex items-center gap-3 p-3 bg-white rounded-xl border hairline">
+                <Layers className="w-4 h-4 text-brand-500 shrink-0" strokeWidth={1.5} />
+                <span className="text-sm font-medium text-ink-800">{c}</span>
               </div>
-              <div className="mt-5 grid sm:grid-cols-2 gap-2">
-                {site.certifications.slice(0, 6).map((c) => (
-                  <div key={c} className="flex items-center gap-3 p-3 bg-white rounded-xl border hairline">
-                    <Layers className="w-4 h-4 text-brand-500 shrink-0" strokeWidth={1.5} />
-                    <span className="text-sm font-medium text-ink-800">{c}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>

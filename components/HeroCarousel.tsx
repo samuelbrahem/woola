@@ -22,15 +22,14 @@ type Slide = {
 const SLIDES: Slide[] = [
   {
     id: "main",
-    eyebrow: "Mission-critical building services",
+    eyebrow: "24/7 dispatch · Coquitlam HQ",
     title: "Every system.",
     script: "One partner.",
-    sub: "Mechanical, power, electrical, and building trades — coordinated by a single dispatcher for BC's most demanding buildings.",
+    sub: "Mechanical, power, electrical, and building trades, coordinated by a single dispatcher for BC's most demanding buildings.",
     cta: { label: "Request Service", href: "/contact" },
     cta2: { label: "Call Now", href: "tel:604-800-3617" },
-    image:
-      "https://images.unsplash.com/photo-1527738697320-513f6648bc26?w=1800&q=80&auto=format&fit=crop",
-    alt: "Commercial rooftop HVAC units on a high-rise",
+    image: "/brand/field-generator-delivery.webp",
+    alt: "Woola technician receiving a standby generator delivery in the field",
   },
 ];
 
@@ -62,7 +61,7 @@ export function HeroCarousel() {
       aria-roledescription="carousel"
       aria-label="Woola highlights"
     >
-      <div className="relative h-[calc(100vh-5rem)] min-h-[560px]">
+      <div className="relative h-[calc(100vh-5rem)] min-h-[640px]">
         {SLIDES.map((s, i) => (
           <div
             key={s.id}
@@ -91,43 +90,42 @@ export function HeroCarousel() {
                 className={`object-cover ${i === index ? "kenburns" : ""}`}
               />
             )}
-            <div className="absolute inset-0 bg-gradient-to-r from-ink-900/85 via-ink-900/50 to-ink-900/20" />
-            <div className="absolute inset-0 bg-gradient-to-t from-ink-900/60 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-ink-900/95 via-ink-900/70 to-ink-900/30" />
+            <div className="absolute inset-0 bg-gradient-to-t from-ink-900/85 via-ink-900/10 to-transparent" />
 
-            <div className="absolute inset-0 flex items-center">
+            <div className="absolute inset-0 flex items-end pb-24 md:pb-32 lg:pb-40">
               <div className="container-x w-full">
-                <div className="max-w-2xl">
-                  <div className="eyebrow !text-brand-400">{s.eyebrow}</div>
-                  <h2 className="mt-4 text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.02] tracking-tight text-cream-50">
+                <div className="max-w-5xl">
+                  <h1 className="text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold leading-[0.95] tracking-tight text-cream-50">
                     {s.title}
                     {s.script && (
                       <>
-                        {" "}
-                        <span className="script text-brand-400 text-5xl md:text-6xl lg:text-8xl leading-none">
+                        <br />
+                        <span className="script text-brand-400 text-6xl md:text-8xl lg:text-9xl xl:text-[10rem] leading-[0.9]">
                           {s.script}
                         </span>
                       </>
                     )}
-                  </h2>
-                  <p className="mt-5 text-base md:text-lg text-cream-100/85 max-w-xl leading-relaxed">
+                  </h1>
+                  <p className="mt-8 text-lg md:text-xl lg:text-2xl text-cream-100/90 max-w-2xl leading-relaxed">
                     {s.sub}
                   </p>
-                  <div className="mt-8 flex flex-wrap gap-3">
-                    <Link href={s.cta.href} className="btn btn-brand text-base">
+                  <div className="mt-10 flex flex-wrap gap-4">
+                    <Link href={s.cta.href} className="btn btn-brand text-base px-7 py-4">
                       {s.cta.label} <ArrowRight className="w-4 h-4" />
                     </Link>
                     {s.cta2 &&
                       (s.cta2.href.startsWith("tel:") ? (
                         <a
                           href={s.cta2.href}
-                          className="btn text-base border border-cream-50/40 text-cream-50 hover:bg-cream-50 hover:text-ink-800"
+                          className="btn text-base px-7 py-4 border border-cream-50/40 text-cream-50 hover:bg-cream-50 hover:text-ink-800"
                         >
                           <Phone className="w-4 h-4" /> {s.cta2.label}
                         </a>
                       ) : (
                         <Link
                           href={s.cta2.href}
-                          className="btn text-base border border-cream-50/40 text-cream-50 hover:bg-cream-50 hover:text-ink-800"
+                          className="btn text-base px-7 py-4 border border-cream-50/40 text-cream-50 hover:bg-cream-50 hover:text-ink-800"
                         >
                           {s.cta2.label}
                         </Link>

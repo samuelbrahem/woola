@@ -26,7 +26,7 @@ const openings = [
   { title: "Service Dispatcher", division: "all", type: "Full-time", location: "Coquitlam HQ" },
 ];
 
-// Placeholder slots until real crew photography is shot — swap each for an <Image>.
+// Placeholder slots until real crew photography is shot. Swap each for an <Image>.
 const photoSlots = [
   { label: "Crew on site", wide: true },
   { label: "Shop barbecue", wide: false },
