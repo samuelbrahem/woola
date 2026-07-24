@@ -7,7 +7,7 @@ import { CTABanner } from "@/components/CTABanner";
 import { FleetStrip } from "@/components/FleetStrip";
 import { DivisionFAQ } from "@/components/DivisionFAQ";
 import { DivisionWordmark } from "@/components/DivisionWordmark";
-import { BrandLogo } from "@/components/BrandLogo";
+import { LogoMarquee } from "@/components/LogoMarquee";
 import { DivisionVideoBanner } from "@/components/DivisionVideoBanner";
 import { CountUp } from "@/components/CountUp";
 import {
@@ -16,7 +16,6 @@ import {
   Mail,
   Check,
   Quote,
-  Wrench,
   ShieldCheck,
   CalendarClock,
   Sparkles,
@@ -323,30 +322,25 @@ export default function DivisionPage({ params }: { params: Params }) {
       </section>
 
       {/* Brands & equipment */}
-      <Section>
+      <section className="bg-ink-900 text-cream-50 relative overflow-hidden">
+        <div className="grain" />
         <div id="brands" />
-        <div className="grid lg:grid-cols-12 gap-12 items-start">
-          <div className="lg:col-span-5">
-            <SectionHead
-              eyebrow="Equipment we service"
-              title="Brands & systems."
-              description="Our techs carry factory training and diagnostic software for the equipment that actually shows up in BC buildings."
-            />
-            <div className="mt-8 flex items-center gap-3 text-sm text-ink-500">
-              <Wrench className="w-4 h-4 text-brand-500" />
-              <span>Factory-trained on the brands below. Don't see yours? Just ask.</span>
-            </div>
+        <div className="container-x section relative">
+          <div className="max-w-2xl mx-auto text-center">
+            <div className="eyebrow !text-brand-400">Brands we service</div>
+            <h2 className="mt-3 text-3xl md:text-4xl lg:text-5xl font-semibold text-cream-50">
+              Factory-trained. Not brand-loyal.
+            </h2>
+            <p className="mt-4 text-cream-100/75">
+              Our techs carry the training and diagnostic tools for the gear that actually shows up
+              in BC buildings. Don&apos;t see yours? Ask.
+            </p>
           </div>
-          <div className="lg:col-span-7">
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-              {division.brands.map((b) => (
-                <BrandLogo key={b.name} name={b.name} domain={b.domain} />
-              ))}
-            </div>
+          <div className="mt-12">
+            <LogoMarquee items={division.brands} invert />
           </div>
         </div>
-
-      </Section>
+      </section>
 
       {/* Process */}
       <section className="bg-ink-800 text-cream-50 relative overflow-hidden">

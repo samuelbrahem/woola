@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Section, SectionHead } from "@/components/Section";
 import { CTABanner } from "@/components/CTABanner";
 import { FleetStrip } from "@/components/FleetStrip";
+import { PhotoPlaceholder } from "@/components/PhotoPlaceholder";
 import { SecondOpinionCTA } from "@/components/SecondOpinionCTA";
 import { ArrowRight, Check, Home, Receipt, Leaf, Wrench } from "lucide-react";
 
@@ -51,6 +52,7 @@ export default function ResidentialPage() {
       <section className="bg-ink-900 text-cream-50 relative overflow-hidden">
         <div aria-hidden className="aurora -z-0" />
         <div className="container-x pt-24 pb-16 relative">
+          <div className="grid lg:grid-cols-[1fr_400px] gap-10 items-center">
           <div className="max-w-3xl">
             <div className="eyebrow !text-brand-400">Residential</div>
             <h1 className="mt-3 text-5xl md:text-6xl font-semibold text-cream-50 leading-[0.98]">
@@ -69,6 +71,8 @@ export default function ResidentialPage() {
                 Call Now
               </a>
             </div>
+          </div>
+          <PhotoPlaceholder label="Tech at a home install" dark className="aspect-[4/3]" />
           </div>
         </div>
       </section>

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Section, SectionHead } from "@/components/Section";
 import { CTABanner } from "@/components/CTABanner";
 import { FleetStrip } from "@/components/FleetStrip";
+import { PhotoPlaceholder } from "@/components/PhotoPlaceholder";
 import { site } from "@/lib/site";
 import {
   ArrowRight,
@@ -82,6 +83,7 @@ export default function PropertyManagersPage() {
       <section className="bg-ink-900 text-cream-50 relative overflow-hidden">
         <div className="grain" />
         <div className="container-x pt-20 pb-16 relative">
+          <div className="grid lg:grid-cols-[1fr_400px] gap-10 items-center">
           <div className="max-w-3xl">
             <div className="eyebrow !text-brand-400">Who we serve · Property Managers</div>
             <h1 className="mt-3 text-5xl md:text-6xl font-semibold text-cream-50 leading-[0.95]">
@@ -100,6 +102,8 @@ export default function PropertyManagersPage() {
                 <PhoneCall className="w-4 h-4" /> {site.phone}
               </a>
             </div>
+          </div>
+          <PhotoPlaceholder label="Property manager walk-through" dark className="aspect-[4/3]" />
           </div>
         </div>
       </section>

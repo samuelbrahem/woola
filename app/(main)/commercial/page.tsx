@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Section, SectionHead } from "@/components/Section";
 import { CTABanner } from "@/components/CTABanner";
 import { FleetStrip } from "@/components/FleetStrip";
+import { PhotoPlaceholder } from "@/components/PhotoPlaceholder";
 import { divisions } from "@/lib/divisions";
 import {
   ArrowRight,
@@ -154,6 +155,7 @@ export default function CommercialPage() {
       <section className="bg-ink-900 text-cream-50 relative overflow-hidden">
         <div aria-hidden className="aurora -z-0" />
         <div className="container-x pt-24 pb-16 relative">
+          <div className="grid lg:grid-cols-[1fr_400px] gap-10 items-center">
           <div className="max-w-3xl">
             <div className="eyebrow !text-brand-400">Commercial</div>
             <h1 className="mt-3 text-5xl md:text-6xl font-semibold text-cream-50 leading-[0.98]">
@@ -172,6 +174,8 @@ export default function CommercialPage() {
                 Request a walk-through
               </Link>
             </div>
+          </div>
+          <PhotoPlaceholder label="Commercial building exterior" dark className="aspect-[4/3]" />
           </div>
           <div className="mt-10 flex flex-wrap gap-2">
             {segments.map((s) => (
