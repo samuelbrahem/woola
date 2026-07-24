@@ -8,7 +8,6 @@ import { FleetStrip } from "@/components/FleetStrip";
 import { DivisionFAQ } from "@/components/DivisionFAQ";
 import { DivisionWordmark } from "@/components/DivisionWordmark";
 import { LogoMarquee } from "@/components/LogoMarquee";
-import { DivisionVideoBanner } from "@/components/DivisionVideoBanner";
 import { CountUp } from "@/components/CountUp";
 import {
   ArrowRight,
@@ -22,6 +21,7 @@ import {
   Building2,
   Clock,
   MapPin,
+  Play,
 } from "lucide-react";
 import { cities } from "@/lib/cities";
 import type { Metadata } from "next";
@@ -59,76 +59,78 @@ export default function DivisionPage({ params }: { params: Params }) {
 
   return (
     <>
-      {/* Hero */}
-      <section className="relative overflow-hidden bg-cream-50">
-        <div
-          aria-hidden
-          className={`absolute inset-0 -z-0 bg-gradient-to-br ${division.accent}`}
-        />
-        <div
-          aria-hidden
-          className="absolute -top-32 -right-32 w-[520px] h-[520px] rounded-full opacity-[0.07] -z-0"
-          style={{
-            background:
-              "radial-gradient(closest-side, rgb(var(--brand-500-rgb) / 0.7), transparent 70%)",
-          }}
-        />
-        <div className="container-x pt-16 pb-20 md:pt-24 md:pb-24 relative">
-          <div className="max-w-3xl mx-auto text-center">
-            <div className="eyebrow">Division · {division.subtitle}</div>
-            <h1 className="mt-5 flex justify-center">
-              <span className="sr-only">{division.name}: {division.subtitle}</span>
-              <DivisionWordmark division={division} size="lg" priority />
-            </h1>
-            <p className="mt-6 script text-brand-500 text-4xl md:text-5xl leading-none">
-              {division.tagline}
-            </p>
-            <p className="mt-7 text-lg text-ink-500 leading-relaxed">
-              {division.intro}
-            </p>
-            <div className="mt-7 flex flex-wrap justify-center gap-2">
-              {division.heroKeywords.map((k) => (
-                <span
-                  key={k}
-                  className="text-xs px-3 py-1.5 rounded-full bg-white border hairline text-ink-700"
-                >
-                  {k}
-                </span>
-              ))}
-            </div>
-            <div className="mt-9 flex flex-wrap justify-center gap-3">
-              <a href={`tel:${division.contactPhone}`} className="btn btn-primary text-base">
-                <Phone className="w-4 h-4" /> {division.contactPhone}
-              </a>
-              <Link href="/contact" className="btn btn-brand text-base">
-                Book a property assessment <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
-          </div>
+      {/* Hero — dark, full-height image/video background, matches main-site style */}
+      <section className="relative w-full overflow-hidden bg-ink-900 text-cream-50">
+        <div className="relative min-h-[calc(100vh-5rem)]">
+          {/* Background media */}
+          {division.video ? (
+            <video
+              className="absolute inset-0 w-full h-full object-cover"
+              src={division.video}
+              poster={division.heroImage}
+              autoPlay
+              muted
+              loop
+              playsInline
+            />
+          ) : (
+            <Image
+              src={division.heroImage}
+              alt={division.heroImageAlt}
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover"
+            />
+          )}
+          <div className="absolute inset-0 bg-gradient-to-r from-ink-900/90 via-ink-900/70 to-ink-900/30" />
+          <div className="absolute inset-0 bg-gradient-to-t from-ink-900/80 via-transparent to-transparent" />
 
-          <div className="mt-14 grid lg:grid-cols-12 gap-6 items-stretch">
+          {/* Content */}
+          <div className="relative container-x py-20 md:py-28 grid lg:grid-cols-12 gap-10 items-center min-h-[calc(100vh-5rem)]">
             <div className="lg:col-span-7">
-              <div className="relative overflow-hidden rounded-md aspect-[16/9] lg:aspect-auto lg:h-full bg-ink-100">
-                <Image
-                  src={division.heroImage}
-                  alt={division.heroImageAlt}
-                  fill
-                  sizes="(min-width: 1024px) 40vw, 100vw"
-                  priority
-                  className="object-cover"
-                />
+              <div className="eyebrow !text-brand-400">Division · {division.subtitle}</div>
+              <h1 className="mt-5">
+                <span className="sr-only">{division.name}: {division.subtitle}</span>
+                <DivisionWordmark division={division} size="lg" priority invert />
+              </h1>
+              <p className="mt-6 script text-brand-400 text-4xl md:text-5xl leading-none">
+                {division.tagline}
+              </p>
+              <p className="mt-7 text-lg text-cream-100/85 max-w-xl leading-relaxed">
+                {division.intro}
+              </p>
+              <div className="mt-7 flex flex-wrap gap-2">
+                {division.heroKeywords.map((k) => (
+                  <span
+                    key={k}
+                    className="text-xs px-3 py-1.5 rounded-full bg-cream-50/10 backdrop-blur-sm border border-cream-50/20 text-cream-100"
+                  >
+                    {k}
+                  </span>
+                ))}
+              </div>
+              <div className="mt-9 flex flex-wrap gap-3">
+                <Link href="/contact" className="btn btn-brand text-base">
+                  Book a property assessment <ArrowRight className="w-4 h-4" />
+                </Link>
+                <a
+                  href={`tel:${division.contactPhone}`}
+                  className="btn text-base border border-cream-50/40 text-cream-50 hover:bg-cream-50 hover:text-ink-800"
+                >
+                  <Phone className="w-4 h-4" /> {division.contactPhone}
+                </a>
               </div>
             </div>
 
+            {/* Direct dispatch card */}
             <div className="lg:col-span-5">
-              <div className="card p-7 bg-white">
+              <div className="card p-7 bg-white/95 backdrop-blur-md">
                 <div className="flex items-center gap-2 text-brand-500">
                   <Sparkles className="w-4 h-4" />
                   <div className="eyebrow !text-brand-500">Direct dispatch</div>
                 </div>
-                <div
-                  className="mt-3 text-3xl font-bold tracking-tight text-ink-800"
-                >
+                <div className="mt-3 text-3xl font-bold tracking-tight text-ink-800">
                   {division.contactPhone}
                 </div>
                 <a
@@ -169,10 +171,8 @@ export default function DivisionPage({ params }: { params: Params }) {
                 </div>
               </div>
 
-              {/* mini featured chip */}
-              <div className="mt-4 card p-5 !bg-ink-800 !border-ink-700 text-cream-50 relative overflow-hidden">
-                <div className="grain" />
-                <div className="relative flex items-start gap-3">
+              <div className="mt-4 card p-5 !bg-ink-900/80 backdrop-blur-md !border-ink-700 text-cream-50">
+                <div className="flex items-start gap-3">
                   <CalendarClock className="w-5 h-5 mt-0.5 text-brand-400 shrink-0" />
                   <div>
                     <div className="eyebrow !text-brand-400">This quarter</div>
@@ -184,11 +184,14 @@ export default function DivisionPage({ params }: { params: Params }) {
               </div>
             </div>
           </div>
+
+          {!division.video && (
+            <div className="absolute bottom-4 right-6 z-10 inline-flex items-center gap-1.5 text-[10px] uppercase tracking-widest text-cream-100/50">
+              <Play className="w-3 h-3" /> Video banner slot
+            </div>
+          )}
         </div>
       </section>
-
-      {/* Promo film slot */}
-      <DivisionVideoBanner division={division} />
 
       {/* Stats band */}
       <section className="bg-ink-800 text-cream-50 relative overflow-hidden">
