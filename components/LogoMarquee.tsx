@@ -16,15 +16,16 @@ function LogoTile({ item, invert }: { item: MarqueeItem; invert: boolean }) {
   const filter = invert ? "brightness(0) invert(1)" : undefined;
 
   return (
-    <div className="flex items-center justify-center h-20 min-w-[200px] px-8 shrink-0">
+    <div className="flex items-center justify-center h-20 w-[160px] shrink-0">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={item.src}
         alt={item.name}
         onError={() => setBroken(true)}
-        className="max-h-14 w-auto max-w-[200px] object-contain opacity-90 hover:opacity-100 transition-opacity"
+        className="max-h-16 max-w-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity"
         style={{ filter }}
-        loading="lazy"
+        loading="eager"
+        decoding="async"
       />
     </div>
   );

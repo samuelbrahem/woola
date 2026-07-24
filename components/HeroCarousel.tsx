@@ -95,37 +95,37 @@ export function HeroCarousel() {
 
             <div className="absolute inset-0 flex items-end pb-24 md:pb-32 lg:pb-40">
               <div className="container-x w-full">
-                <div className="max-w-5xl">
-                  <h1 className="text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold leading-[0.95] tracking-tight text-cream-50">
+                <div className="max-w-3xl">
+                  <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1] tracking-tight text-cream-50">
                     {s.title}
                     {s.script && (
                       <>
                         <br />
-                        <span className="script text-brand-400 text-6xl md:text-8xl lg:text-9xl xl:text-[10rem] leading-[0.9]">
+                        <span className="script text-brand-400 text-5xl md:text-6xl lg:text-7xl leading-[0.9]">
                           {s.script}
                         </span>
                       </>
                     )}
                   </h1>
-                  <p className="mt-8 text-lg md:text-xl lg:text-2xl text-cream-100/90 max-w-2xl leading-relaxed">
+                  <p className="mt-6 text-base md:text-lg text-cream-100/90 max-w-xl leading-relaxed">
                     {s.sub}
                   </p>
-                  <div className="mt-10 flex flex-wrap gap-4">
-                    <Link href={s.cta.href} className="btn btn-brand text-base px-7 py-4">
+                  <div className="mt-8 flex flex-wrap gap-3">
+                    <Link href={s.cta.href} className="btn btn-brand text-base">
                       {s.cta.label} <ArrowRight className="w-4 h-4" />
                     </Link>
                     {s.cta2 &&
                       (s.cta2.href.startsWith("tel:") ? (
                         <a
                           href={s.cta2.href}
-                          className="btn text-base px-7 py-4 border border-cream-50/40 text-cream-50 hover:bg-cream-50 hover:text-ink-800"
+                          className="btn text-base border border-cream-50/40 text-cream-50 hover:bg-cream-50 hover:text-ink-800"
                         >
                           <Phone className="w-4 h-4" /> {s.cta2.label}
                         </a>
                       ) : (
                         <Link
                           href={s.cta2.href}
-                          className="btn text-base px-7 py-4 border border-cream-50/40 text-cream-50 hover:bg-cream-50 hover:text-ink-800"
+                          className="btn text-base border border-cream-50/40 text-cream-50 hover:bg-cream-50 hover:text-ink-800"
                         >
                           {s.cta2.label}
                         </Link>

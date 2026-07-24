@@ -8,6 +8,7 @@ import { FleetStrip } from "@/components/FleetStrip";
 import { DivisionFAQ } from "@/components/DivisionFAQ";
 import { DivisionWordmark } from "@/components/DivisionWordmark";
 import { LogoMarquee } from "@/components/LogoMarquee";
+import { CredentialsReveal } from "@/components/CredentialsReveal";
 import { CountUp } from "@/components/CountUp";
 import {
   ArrowRight,
@@ -392,18 +393,7 @@ export default function DivisionPage({ params }: { params: Params }) {
           description={`The ${division.name.split(" ").slice(1).join(" ")} team carries the certifications property managers, strata councils and insurers look for.`}
           align="center"
         />
-        <div className="mt-12 flex flex-wrap items-center justify-center gap-x-14 gap-y-10">
-          {division.certLogos.map((c) => (
-            <Image
-              key={c}
-              src={`/brand/${c}.png`}
-              alt={c.replace("logo-", "").replace(/-/g, " ").replace(/\b\w/g, (m) => m.toUpperCase())}
-              width={220}
-              height={140}
-              className="max-h-20 w-auto object-contain grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition"
-            />
-          ))}
-        </div>
+        <CredentialsReveal items={division.certLogos} />
       </Section>
 
       {/* Testimonial */}
