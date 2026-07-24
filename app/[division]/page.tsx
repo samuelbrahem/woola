@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { divisions, getDivision, lowerName } from "@/lib/divisions";
+import { divisions, getDivision } from "@/lib/divisions";
 import { Section, SectionHead } from "@/components/Section";
 import { CTABanner } from "@/components/CTABanner";
 import { FleetStrip } from "@/components/FleetStrip";
@@ -200,28 +200,39 @@ export default function DivisionPage({ params }: { params: Params }) {
               <Link
                 key={s.slug}
                 href={`/${division.slug}/${s.slug}`}
-                className="card p-8 flex flex-col group relative overflow-hidden"
+                className="group relative overflow-hidden rounded-2xl bg-white border hairline hover:border-brand-500/40 hover:shadow-soft transition-all duration-300 flex flex-col"
               >
-                <div
-                  aria-hidden
-                  className="absolute -top-12 -right-12 w-40 h-40 rounded-full bg-brand-50 opacity-0 group-hover:opacity-100 transition-opacity"
-                />
-                <div className="relative">
-                  <div className="flex items-start justify-between">
-                    <div className="w-14 h-14 rounded-md bg-ink-800 text-cream-50 flex items-center justify-center group-hover:bg-brand-500 transition">
-                      <Icon className="w-7 h-7" strokeWidth={1.5} />
+                <div className="relative aspect-[16/10] overflow-hidden bg-ink-100">
+                  <Image
+                    src={s.primer.image}
+                    alt={s.primer.imageAlt}
+                    fill
+                    sizes="(min-width: 768px) 50vw, 100vw"
+                    className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink-900/85 via-ink-900/25 to-transparent" />
+
+                  <div className="absolute top-5 left-5 right-5 flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <div className="w-10 h-10 rounded-lg bg-cream-50/95 backdrop-blur-sm flex items-center justify-center shadow-soft">
+                        <Icon className="w-5 h-5 text-brand-500" strokeWidth={1.7} />
+                      </div>
+                      <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-cream-50/85">
+                        Service · {String(idx + 1).padStart(2, "0")}
+                      </span>
                     </div>
-                    <span className="text-xs font-mono text-ink-400">
-                      0{idx + 1}
-                    </span>
                   </div>
-                  <h3 className="text-2xl md:text-3xl font-bold mt-6 text-ink-800 tracking-tight">
+
+                  <h3 className="absolute bottom-5 left-5 right-5 text-2xl md:text-3xl font-bold text-cream-50 tracking-tight leading-tight">
                     {s.name}
                   </h3>
-                  <p className="mt-2 text-sm text-ink-500 leading-relaxed">
+                </div>
+
+                <div className="p-6 md:p-7 flex flex-col flex-1">
+                  <p className="text-sm text-ink-500 leading-relaxed">
                     {s.description}
                   </p>
-                  <ul className="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2">
+                  <ul className="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 flex-1">
                     {s.highlights.map((h) => (
                       <li key={h} className="flex items-start gap-2 text-sm text-ink-700">
                         <Check className="w-4 h-4 mt-0.5 text-brand-500 shrink-0" strokeWidth={2} />
@@ -229,9 +240,13 @@ export default function DivisionPage({ params }: { params: Params }) {
                       </li>
                     ))}
                   </ul>
-                  <div className="mt-6 pt-6 border-t hairline flex items-center justify-between text-sm">
-                    <span className="text-ink-500">Read the {lowerName(s.name)} brief</span>
-                    <ArrowRight className="w-4 h-4 text-ink-400 group-hover:text-brand-500 group-hover:translate-x-0.5 transition" />
+                  <div className="mt-6 pt-5 border-t hairline flex items-center justify-between">
+                    <span className="text-sm font-medium text-ink-700 group-hover:text-brand-500 transition">
+                      Explore service
+                    </span>
+                    <div className="w-9 h-9 rounded-full border hairline flex items-center justify-center group-hover:bg-brand-500 group-hover:border-brand-500 transition">
+                      <ArrowRight className="w-4 h-4 text-ink-500 group-hover:text-cream-50 transition" />
+                    </div>
                   </div>
                 </div>
               </Link>
@@ -297,22 +312,21 @@ export default function DivisionPage({ params }: { params: Params }) {
       </section>
 
       {/* Brands & equipment */}
-      <section className="bg-ink-900 text-cream-50 relative overflow-hidden">
-        <div className="grain" />
+      <section className="bg-cream-50 border-y hairline relative overflow-hidden">
         <div id="brands" />
         <div className="container-x section relative">
           <div className="max-w-2xl mx-auto text-center">
-            <div className="eyebrow !text-brand-400">Brands we service</div>
-            <h2 className="mt-3 text-3xl md:text-4xl lg:text-5xl font-semibold text-cream-50">
+            <div className="eyebrow">Brands we service</div>
+            <h2 className="mt-3 text-3xl md:text-4xl lg:text-5xl font-semibold text-ink-800">
               Factory-trained. Not brand-loyal.
             </h2>
-            <p className="mt-4 text-cream-100/75">
+            <p className="mt-4 text-ink-500">
               Our techs carry the training and diagnostic tools for the gear that actually shows up
               in BC buildings. Don&apos;t see yours? Ask.
             </p>
           </div>
           <div className="mt-12">
-            <LogoMarquee items={division.brands} invert />
+            <LogoMarquee items={division.brands} />
           </div>
         </div>
       </section>
@@ -377,27 +391,22 @@ export default function DivisionPage({ params }: { params: Params }) {
 
       {/* Certifications */}
       <Section>
-        <div className="flex items-end justify-between flex-wrap gap-6">
-          <SectionHead
-            eyebrow="Credentials"
-            title="Audited, ticketed, and on the list."
-            description={`The ${division.name.split(" ").slice(1).join(" ")} team carries the certifications property managers, strata councils and insurers look for.`}
-          />
-        </div>
-        <div className="mt-12 grid grid-cols-3 md:grid-cols-6 gap-4">
+        <SectionHead
+          eyebrow="Credentials"
+          title="Audited, ticketed, and on the list."
+          description={`The ${division.name.split(" ").slice(1).join(" ")} team carries the certifications property managers, strata councils and insurers look for.`}
+          align="center"
+        />
+        <div className="mt-12 flex flex-wrap items-center justify-center gap-x-14 gap-y-10">
           {division.certLogos.map((c) => (
-            <div
+            <Image
               key={c}
-              className="card p-5 flex items-center justify-center bg-white aspect-[3/2]"
-            >
-              <Image
-                src={`/brand/${c}.png`}
-                alt={`${c.replace("logo-", "").replace(/-/g, " ").replace(/\b\w/g, (m) => m.toUpperCase())} certification`}
-                width={180}
-                height={120}
-                className="max-h-16 w-auto opacity-80 hover:opacity-100 transition"
-              />
-            </div>
+              src={`/brand/${c}.png`}
+              alt={c.replace("logo-", "").replace(/-/g, " ").replace(/\b\w/g, (m) => m.toUpperCase())}
+              width={220}
+              height={140}
+              className="max-h-20 w-auto object-contain grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition"
+            />
           ))}
         </div>
       </Section>
@@ -433,44 +442,35 @@ export default function DivisionPage({ params }: { params: Params }) {
       {/* FAQ */}
       <Section>
         <div id="faq" />
-        <div className="grid lg:grid-cols-12 gap-12 items-start">
-          <div className="lg:col-span-4 lg:sticky lg:top-32 self-start">
-            <SectionHead
-              eyebrow="Frequently asked"
-              title={`Quick answers about ${division.name.split(" ").slice(1).join(" ").toLowerCase()}.`}
-              description="Don't see your question? Email the division directly."
-            />
-            <a
-              href={`mailto:${division.contactEmail}`}
-              className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-brand-500 hover:underline"
-            >
-              <Mail className="w-4 h-4" /> {division.contactEmail}
-            </a>
-          </div>
-          <div className="lg:col-span-8">
-            <DivisionFAQ items={division.faqs} />
-          </div>
+        <div className="max-w-3xl mx-auto text-center">
+          <SectionHead
+            eyebrow="Frequently asked"
+            title={`Quick answers about ${division.name.split(" ").slice(1).join(" ").toLowerCase()}.`}
+            description="Don't see your question? Email the division directly."
+            align="center"
+          />
+          <a
+            href={`mailto:${division.contactEmail}`}
+            className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-brand-500 hover:underline"
+          >
+            <Mail className="w-4 h-4" /> {division.contactEmail}
+          </a>
+        </div>
+        <div className="mt-12 max-w-3xl mx-auto">
+          <DivisionFAQ items={division.faqs} />
         </div>
       </Section>
 
       {/* Coverage strip */}
       <section className="bg-ink-800 text-cream-50 relative overflow-hidden border-t hairline">
         <div className="container-x py-14 relative">
-          <div className="flex items-end justify-between flex-wrap gap-6 mb-8">
-            <div>
-              <div className="eyebrow !text-brand-400">Coverage</div>
-              <h3 className="mt-3 text-2xl md:text-3xl font-bold tracking-tight text-cream-50">
-                Dispatched daily across {cities.length}+ municipalities.
-              </h3>
-            </div>
-            <Link
-              href="/service-areas"
-              className="text-sm font-medium text-cream-100 hover:text-brand-400 inline-flex items-center gap-1.5"
-            >
-              <MapPin className="w-4 h-4" /> See coverage map →
-            </Link>
+          <div className="max-w-2xl mx-auto text-center">
+            <div className="eyebrow !text-brand-400">Coverage</div>
+            <h3 className="mt-3 text-2xl md:text-3xl font-bold tracking-tight text-cream-50">
+              Dispatched daily across {cities.length}+ municipalities.
+            </h3>
           </div>
-          <div className="flex flex-wrap gap-2">
+          <div className="mt-8 flex flex-wrap justify-center gap-2">
             {featuredCities.map((c) => (
               <Link
                 key={c.slug}
@@ -483,6 +483,14 @@ export default function DivisionPage({ params }: { params: Params }) {
             <span className="text-xs px-3 py-1.5 text-cream-100/60">
               + {cities.length - featuredCities.length} more
             </span>
+          </div>
+          <div className="mt-8 text-center">
+            <Link
+              href="/service-areas"
+              className="text-sm font-medium text-cream-100 hover:text-brand-400 inline-flex items-center gap-1.5"
+            >
+              <MapPin className="w-4 h-4" /> See coverage map →
+            </Link>
           </div>
         </div>
       </section>

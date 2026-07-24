@@ -150,24 +150,18 @@ export default function PropertyManagersPage() {
       <section className="bg-ink-800 text-cream-50 relative overflow-hidden">
         <div className="grain" />
         <div className="container-x section relative">
-        <div className="grid lg:grid-cols-12 gap-12 items-start">
-          <div className="lg:col-span-5">
+          <div className="flex items-end justify-between flex-wrap gap-6">
             <SectionHead
               dark
               eyebrow="What we run for portfolios"
               title="Scalable solutions, from one building to fifty."
+              description="Start with a single problem building or hand over the whole portfolio. Programs scale without changing your point of contact."
             />
-            <p className="mt-4 text-cream-100/75 leading-relaxed">
-              Start with a single problem building or hand over the whole portfolio. Programs scale
-              without changing your point of contact.
-            </p>
-            <div className="mt-8">
-              <Link href="/know-your-building" className="btn border border-cream-50/40 text-cream-50 hover:bg-cream-50 hover:text-ink-800">
-                How we document buildings <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
+            <Link href="/know-your-building" className="btn border border-cream-50/40 text-cream-50 hover:bg-cream-50 hover:text-ink-800 shrink-0">
+              How we document buildings <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
-          <div className="lg:col-span-7 grid sm:grid-cols-2 gap-4">
+          <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {[
               { icon: ShieldCheck, title: "Comprehensive maintenance", body: "Custom calendars per building and asset class, with compliance testing built in.", href: "/build/maintenance" },
               { icon: AlarmClock, title: "24/7 emergency response", body: "Priority dispatch for contracted portfolios. One number, any trade.", href: "/contact" },
@@ -181,7 +175,6 @@ export default function PropertyManagersPage() {
               </Link>
             ))}
           </div>
-        </div>
         </div>
       </section>
 

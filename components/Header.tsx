@@ -268,6 +268,7 @@ export function Header() {
               <Link href="/residential" onClick={() => setMobileOpen(false)} className="block font-medium">Residential</Link>
               <Link href="/know-your-building" onClick={() => setMobileOpen(false)} className="block font-medium">Know Your Building</Link>
               <Link href="/learn" onClick={() => setMobileOpen(false)} className="block font-medium">Learning Hub</Link>
+              <Link href="/equipment" onClick={() => setMobileOpen(false)} className="block font-medium">Equipment Library</Link>
               <Link href="/work" onClick={() => setMobileOpen(false)} className="block font-medium">Featured Work</Link>
               <Link href="/process" onClick={() => setMobileOpen(false)} className="block font-medium">Our Process</Link>
               <Link href="/careers" onClick={() => setMobileOpen(false)} className="block font-medium">Careers</Link>

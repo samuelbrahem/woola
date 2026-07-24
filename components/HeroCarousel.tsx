@@ -22,48 +22,15 @@ type Slide = {
 const SLIDES: Slide[] = [
   {
     id: "main",
-    eyebrow: "Mission-Critical Building Services",
-    title: "Complete building",
-    script: "solutions.",
-    sub: "One accountable partner for the critical systems that keep your building operating.",
+    eyebrow: "Mission-critical building services",
+    title: "Every system.",
+    script: "One partner.",
+    sub: "Mechanical, power, electrical, and building trades — coordinated by a single dispatcher for BC's most demanding buildings.",
     cta: { label: "Request Service", href: "/contact" },
     cta2: { label: "Call Now", href: "tel:604-800-3617" },
     image:
       "https://images.unsplash.com/photo-1527738697320-513f6648bc26?w=1800&q=80&auto=format&fit=crop",
     alt: "Commercial rooftop HVAC units on a high-rise",
-  },
-  {
-    id: "mechanical",
-    eyebrow: "Woola Mechanical",
-    title: "Engineered comfort.",
-    script: "Verified reliability.",
-    sub: "HVAC, plumbing, gas, and refrigeration from Red Seal technicians.",
-    cta: { label: "Explore Mechanical", href: "/mechanical" },
-    image:
-      "https://images.unsplash.com/photo-1563456020159-b74d67e78c26?w=1800&q=80&auto=format&fit=crop",
-    alt: "Commercial mechanical plant room with insulated piping",
-  },
-  {
-    id: "power",
-    eyebrow: "Woola Power Systems",
-    title: "Standby power.",
-    script: "Peace of mind.",
-    sub: "Factory-authorized for Generac, Kohler, and Cummins. CSA C282 testing, 24/7 response.",
-    cta: { label: "Explore Power Systems", href: "/power" },
-    image:
-      "https://images.unsplash.com/photo-1636867759143-c28c1e909bd3?w=1800&q=80&auto=format&fit=crop",
-    alt: "Containerized standby generators at an industrial power yard",
-  },
-  {
-    id: "build",
-    eyebrow: "Woola Build · Woola Electrical",
-    title: "One building. Every trade.",
-    script: "One call.",
-    sub: "Envelope, renovations, EV charging, and the maintenance programs that prevent the 2 AM call.",
-    cta: { label: "Explore the divisions", href: "/work" },
-    image:
-      "https://images.unsplash.com/photo-1632862378069-4ad0348cea4f?w=1800&q=80&auto=format&fit=crop",
-    alt: "Project team reviewing construction plans on site",
   },
 ];
 
@@ -172,42 +139,43 @@ export function HeroCarousel() {
           </div>
         ))}
 
-        {/* Controls */}
-        <div className="absolute bottom-6 inset-x-0 z-20">
-          <div className="container-x flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              {SLIDES.map((s, i) => (
+        {SLIDES.length > 1 && (
+          <div className="absolute bottom-6 inset-x-0 z-20">
+            <div className="container-x flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                {SLIDES.map((s, i) => (
+                  <button
+                    key={s.id}
+                    onClick={() => go(i)}
+                    aria-label={`Go to slide ${i + 1}`}
+                    className={`h-1.5 rounded-full transition-all duration-300 ${
+                      i === index ? "w-10 bg-brand-400" : "w-4 bg-cream-50/40 hover:bg-cream-50/70"
+                    }`}
+                  />
+                ))}
+                <span className="ml-3 hidden md:inline-flex items-center gap-1.5 text-[10px] uppercase tracking-widest text-cream-100/50">
+                  <Play className="w-3 h-3" /> Video banners coming soon
+                </span>
+              </div>
+              <div className="flex items-center gap-2">
                 <button
-                  key={s.id}
-                  onClick={() => go(i)}
-                  aria-label={`Go to slide ${i + 1}`}
-                  className={`h-1.5 rounded-full transition-all duration-300 ${
-                    i === index ? "w-10 bg-brand-400" : "w-4 bg-cream-50/40 hover:bg-cream-50/70"
-                  }`}
-                />
-              ))}
-              <span className="ml-3 hidden md:inline-flex items-center gap-1.5 text-[10px] uppercase tracking-widest text-cream-100/50">
-                <Play className="w-3 h-3" /> Video banners coming soon
-              </span>
-            </div>
-            <div className="flex items-center gap-2">
-              <button
-                onClick={() => go(index - 1)}
-                aria-label="Previous slide"
-                className="w-9 h-9 rounded-full border border-cream-50/30 text-cream-50 flex items-center justify-center hover:bg-cream-50/10 transition"
-              >
-                <ChevronLeft className="w-4 h-4" />
-              </button>
-              <button
-                onClick={() => go(index + 1)}
-                aria-label="Next slide"
-                className="w-9 h-9 rounded-full border border-cream-50/30 text-cream-50 flex items-center justify-center hover:bg-cream-50/10 transition"
-              >
-                <ChevronRight className="w-4 h-4" />
-              </button>
+                  onClick={() => go(index - 1)}
+                  aria-label="Previous slide"
+                  className="w-9 h-9 rounded-full border border-cream-50/30 text-cream-50 flex items-center justify-center hover:bg-cream-50/10 transition"
+                >
+                  <ChevronLeft className="w-4 h-4" />
+                </button>
+                <button
+                  onClick={() => go(index + 1)}
+                  aria-label="Next slide"
+                  className="w-9 h-9 rounded-full border border-cream-50/30 text-cream-50 flex items-center justify-center hover:bg-cream-50/10 transition"
+                >
+                  <ChevronRight className="w-4 h-4" />
+                </button>
+              </div>
             </div>
           </div>
-        </div>
+        )}
       </div>
     </section>
   );

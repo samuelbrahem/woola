@@ -9,6 +9,7 @@ import { ArrowRight, Check, Phone, BookOpen } from "lucide-react";
 import type { Metadata } from "next";
 import { cities } from "@/lib/cities";
 import { equipmentLibrary } from "@/lib/equipment-library";
+import { EquipmentSlider } from "@/components/EquipmentSlider";
 
 const SERVICE_EQUIPMENT: Record<string, string[]> = {
   hvac: ["rooftop-unit", "heat-pump", "air-handler", "cooling-tower", "fan-coil"],
@@ -167,8 +168,7 @@ export default function ServicePage({ params }: { params: Params }) {
   const showCalculator = service.slug === "hvac" || service.slug === "plumbing" || service.slug === "gas";
   const equipmentForService = (SERVICE_EQUIPMENT[service.slug] || [])
     .map((slug) => equipmentLibrary.find((e) => e.slug === slug))
-    .filter((e): e is NonNullable<typeof e> => Boolean(e))
-    .map((e) => ({ slug: e.slug, name: e.name, image: e.image, imageAlt: e.imageAlt }));
+    .filter((e): e is NonNullable<typeof e> => Boolean(e));
 
   return (
     <>
@@ -223,39 +223,90 @@ export default function ServicePage({ params }: { params: Params }) {
           <div className="container-x section">
             <SectionHead
               eyebrow="Equipment we know"
-              title="Real gear, not stock photos."
-              description="Every unit below has its own walkthrough on the equipment library: what each part does, what fails, and what to look for."
+              title="The gear we service."
+              description="Each unit links to a plain-English walkthrough — what it does, what fails, and what to keep an eye on."
             />
-            <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-              {equipmentForService.map((eq) => (
-                <Link
-                  key={eq.slug}
-                  href={`/equipment/${eq.slug}`}
-                  className="group card overflow-hidden bg-white flex flex-col"
-                >
-                  <div className="relative aspect-[4/3] bg-white overflow-hidden">
-                    <Image
-                      src={eq.image}
-                      alt={eq.imageAlt}
-                      fill
-                      sizes="(min-width: 1024px) 20vw, (min-width: 640px) 30vw, 50vw"
-                      className="object-contain transition-transform duration-500 group-hover:scale-[1.03] p-3"
-                    />
-                  </div>
-                  <div className="px-4 py-3 border-t hairline flex items-center justify-between">
-                    <div className="text-sm font-semibold text-ink-800 leading-tight">
-                      {eq.name}
+
+            {equipmentForService.length < 4 ? (
+              <div className="mt-10 space-y-6">
+                {equipmentForService.map((eq, i) => (
+                  <div
+                    key={eq.slug}
+                    className={`card overflow-hidden bg-white grid lg:grid-cols-2 ${
+                      i % 2 === 1 ? "lg:[&>div:first-child]:order-2" : ""
+                    }`}
+                  >
+                    <div className="relative aspect-[4/3] lg:aspect-auto bg-cream-100 border-b lg:border-b-0 lg:border-r hairline">
+                      <Image
+                        src={eq.image}
+                        alt={eq.imageAlt}
+                        fill
+                        sizes="(min-width: 1024px) 50vw, 100vw"
+                        className="object-contain p-6"
+                      />
                     </div>
-                    <ArrowRight className="w-4 h-4 text-ink-400 group-hover:text-brand-500 group-hover:translate-x-0.5 transition" />
+                    <div className="p-8 md:p-10 flex flex-col">
+                      <div className="flex items-center gap-3 flex-wrap">
+                        <div className="eyebrow !text-brand-500">{eq.category}</div>
+                        <span className="text-[10px] uppercase tracking-widest text-ink-400 border hairline rounded-full px-2.5 py-1">
+                          Lifespan · {eq.lifespan}
+                        </span>
+                      </div>
+                      <h3 className="mt-3 text-2xl md:text-3xl font-bold text-ink-800 tracking-tight">
+                        {eq.name}
+                      </h3>
+                      <p className="mt-4 text-sm text-ink-600 leading-relaxed">
+                        {eq.what}
+                      </p>
+                      <div className="mt-6 grid sm:grid-cols-2 gap-6">
+                        <div>
+                          <div className="text-xs font-semibold uppercase tracking-wider text-ink-500">
+                            Signs of trouble
+                          </div>
+                          <ul className="mt-3 space-y-2">
+                            {eq.signs.map((s) => (
+                              <li key={s} className="flex items-start gap-2 text-sm text-ink-700">
+                                <span className="text-brand-500 mt-1">·</span>
+                                <span>{s}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                        <div>
+                          <div className="text-xs font-semibold uppercase tracking-wider text-ink-500">
+                            What we maintain
+                          </div>
+                          <ul className="mt-3 space-y-2">
+                            {eq.maintenance.map((m) => (
+                              <li key={m} className="flex items-start gap-2 text-sm text-ink-700">
+                                <Check className="w-4 h-4 mt-0.5 text-brand-500 shrink-0" strokeWidth={2} />
+                                <span>{m}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                      <div className="mt-8 pt-6 border-t hairline flex items-center justify-between gap-4 flex-wrap">
+                        <Link
+                          href={`/equipment/${eq.slug}`}
+                          className="text-sm font-medium text-brand-500 hover:underline inline-flex items-center gap-1.5"
+                        >
+                          Full {eq.name} walkthrough <ArrowRight className="w-4 h-4" />
+                        </Link>
+                        <Link
+                          href="/equipment"
+                          className="text-xs text-ink-500 hover:text-ink-800 inline-flex items-center gap-1"
+                        >
+                          Browse the full equipment library →
+                        </Link>
+                      </div>
+                    </div>
                   </div>
-                </Link>
-              ))}
-            </div>
-            <div className="mt-6">
-              <Link href="/equipment" className="text-sm font-medium text-brand-500 hover:underline inline-flex items-center gap-1.5">
-                Browse the full equipment library <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
+                ))}
+              </div>
+            ) : (
+              <EquipmentSlider items={equipmentForService} />
+            )}
           </div>
         </section>
       )}

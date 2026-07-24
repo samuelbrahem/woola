@@ -315,8 +315,13 @@ html {
 .marquee-track {
   display: flex;
   width: max-content;
-  gap: 3rem;
   animation: marqueeX 36s linear infinite;
+}
+.marquee-list {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  padding-right: 3rem; /* keeps spacing between the two copies for a seamless loop */
 }
 .marquee:hover .marquee-track { animation-play-state: paused; }
 @media (prefers-reduced-motion: reduce) {

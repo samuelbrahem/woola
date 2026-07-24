@@ -12,30 +12,20 @@ export type MarqueeItem = {
 
 function LogoTile({ item, invert }: { item: MarqueeItem; invert: boolean }) {
   const [broken, setBroken] = useState(false);
+  if (!item.src || broken) return null;
   const filter = invert ? "brightness(0) invert(1)" : undefined;
-  const showImage = item.src && !broken;
 
   return (
-    <div className="flex items-center justify-center h-16 min-w-[180px] px-6">
-      {showImage ? (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
-          src={item.src}
-          alt={item.name}
-          onError={() => setBroken(true)}
-          className="max-h-12 w-auto max-w-[180px] object-contain opacity-90 hover:opacity-100 transition-opacity"
-          style={{ filter }}
-          loading="lazy"
-        />
-      ) : (
-        <span
-          className={`text-base md:text-lg font-semibold tracking-tight whitespace-nowrap ${
-            invert ? "text-cream-50/85" : "text-ink-800"
-          }`}
-        >
-          {item.name}
-        </span>
-      )}
+    <div className="flex items-center justify-center h-20 min-w-[200px] px-8 shrink-0">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={item.src}
+        alt={item.name}
+        onError={() => setBroken(true)}
+        className="max-h-14 w-auto max-w-[200px] object-contain opacity-90 hover:opacity-100 transition-opacity"
+        style={{ filter }}
+        loading="lazy"
+      />
     </div>
   );
 }
@@ -51,13 +41,19 @@ export function LogoMarquee({
   items: MarqueeItem[];
   invert?: boolean;
 }) {
-  const doubled = [...items, ...items];
   return (
     <div className="marquee">
       <div className="marquee-track py-2">
-        {doubled.map((it, i) => (
-          <LogoTile key={`${it.name}-${i}`} item={it} invert={invert} />
-        ))}
+        <div className="marquee-list">
+          {items.map((it) => (
+            <LogoTile key={`a-${it.name}`} item={it} invert={invert} />
+          ))}
+        </div>
+        <div className="marquee-list" aria-hidden="true">
+          {items.map((it) => (
+            <LogoTile key={`b-${it.name}`} item={it} invert={invert} />
+          ))}
+        </div>
       </div>
     </div>
   );
