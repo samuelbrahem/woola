@@ -7,6 +7,7 @@ import { CTABanner } from "@/components/CTABanner";
 import { FleetStrip } from "@/components/FleetStrip";
 import { DivisionFAQ } from "@/components/DivisionFAQ";
 import { DivisionWordmark } from "@/components/DivisionWordmark";
+import { BrandLogo } from "@/components/BrandLogo";
 import { DivisionVideoBanner } from "@/components/DivisionVideoBanner";
 import { CountUp } from "@/components/CountUp";
 import {
@@ -339,28 +340,12 @@ export default function DivisionPage({ params }: { params: Params }) {
           <div className="lg:col-span-7">
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
               {division.brands.map((b) => (
-                <div
-                  key={b}
-                  className="card p-4 text-center text-sm font-medium text-ink-800 hover:bg-cream-100 transition"
-                >
-                  {b}
-                </div>
+                <BrandLogo key={b.name} name={b.name} domain={b.domain} />
               ))}
             </div>
           </div>
         </div>
-        <div className="marquee mt-14" aria-hidden>
-          <div className="marquee-track">
-            {[...division.brands, ...division.brands].map((b, i) => (
-              <span
-                key={`${b}-${i}`}
-                className="text-2xl md:text-3xl font-semibold text-ink-200 whitespace-nowrap"
-              >
-                {b}
-              </span>
-            ))}
-          </div>
-        </div>
+
       </Section>
 
       {/* Process */}

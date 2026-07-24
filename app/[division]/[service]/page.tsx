@@ -8,6 +8,25 @@ import { SecondOpinionCTA } from "@/components/SecondOpinionCTA";
 import { ArrowRight, Check, Phone, BookOpen } from "lucide-react";
 import type { Metadata } from "next";
 import { cities } from "@/lib/cities";
+import { equipmentLibrary } from "@/lib/equipment-library";
+
+const SERVICE_EQUIPMENT: Record<string, string[]> = {
+  hvac: ["rooftop-unit", "heat-pump", "air-handler", "cooling-tower", "fan-coil"],
+  plumbing: ["water-heater", "pump"],
+  gas: ["boiler", "gas-heater"],
+  refrigeration: ["compressor", "cooling-tower"],
+  generators: ["generator"],
+  "c282-testing": ["generator"],
+  "transfer-switches": ["transfer-switch"],
+  "fuel-systems": ["generator", "pump"],
+  "ups-battery": ["electrical-panel"],
+  electrical: ["electrical-panel", "controls"],
+  "ev-chargers": ["ev-charger"],
+  "led-lighting": ["led-lighting"],
+  "low-voltage": ["controls"],
+  envelope: ["building-envelope"],
+  "property-services": ["loading-dock"],
+};
 
 type Params = { division: string; service: string };
 
@@ -146,6 +165,10 @@ export default function ServicePage({ params }: { params: Params }) {
   const eqHead = equipmentHeading[division.slug] || equipmentHeading.default;
 
   const showCalculator = service.slug === "hvac" || service.slug === "plumbing" || service.slug === "gas";
+  const equipmentForService = (SERVICE_EQUIPMENT[service.slug] || [])
+    .map((slug) => equipmentLibrary.find((e) => e.slug === slug))
+    .filter((e): e is NonNullable<typeof e> => Boolean(e))
+    .map((e) => ({ slug: e.slug, name: e.name, image: e.image, imageAlt: e.imageAlt }));
 
   return (
     <>
@@ -195,38 +218,44 @@ export default function ServicePage({ params }: { params: Params }) {
         </div>
       </section>
 
-      {service.equipment && service.equipment.length > 0 && (
+      {equipmentForService.length > 0 && (
         <section className="bg-cream-100 border-b hairline">
           <div className="container-x section">
             <SectionHead
-              eyebrow="Equipment expertise"
-              title={eqHead.title}
-              description={eqHead.description}
+              eyebrow="Equipment we know"
+              title="Real gear, not stock photos."
+              description="Every unit below has its own walkthrough on the equipment library: what each part does, what fails, and what to look for."
             />
             <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-              {service.equipment.map((item) => (
-                <div
-                  key={item.name}
+              {equipmentForService.map((eq) => (
+                <Link
+                  key={eq.slug}
+                  href={`/equipment/${eq.slug}`}
                   className="group card overflow-hidden bg-white flex flex-col"
                 >
-                  <div className="relative aspect-[4/3] bg-ink-100 overflow-hidden">
+                  <div className="relative aspect-[4/3] bg-white overflow-hidden">
                     <Image
-                      src={item.image}
-                      alt={item.alt}
+                      src={eq.image}
+                      alt={eq.imageAlt}
                       fill
                       sizes="(min-width: 1024px) 20vw, (min-width: 640px) 30vw, 50vw"
-                      className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                      className="object-contain transition-transform duration-500 group-hover:scale-[1.03] p-3"
                     />
                   </div>
-                  <div className="px-4 py-3 border-t hairline">
+                  <div className="px-4 py-3 border-t hairline flex items-center justify-between">
                     <div className="text-sm font-semibold text-ink-800 leading-tight">
-                      {item.name}
+                      {eq.name}
                     </div>
+                    <ArrowRight className="w-4 h-4 text-ink-400 group-hover:text-brand-500 group-hover:translate-x-0.5 transition" />
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
-            <div className="mt-4 text-xs text-ink-400">Photos: Wikimedia Commons.</div>
+            <div className="mt-6">
+              <Link href="/equipment" className="text-sm font-medium text-brand-500 hover:underline inline-flex items-center gap-1.5">
+                Browse the full equipment library <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
           </div>
         </section>
       )}
