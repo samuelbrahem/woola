@@ -16,7 +16,6 @@ import {
   Check,
   Quote,
   ShieldCheck,
-  CalendarClock,
   Sparkles,
   Building2,
   Clock,
@@ -100,26 +99,10 @@ export default function DivisionPage({ params }: { params: Params }) {
               <p className="mt-7 text-lg text-cream-100/85 max-w-xl leading-relaxed">
                 {division.intro}
               </p>
-              <div className="mt-7 flex flex-wrap gap-2">
-                {division.heroKeywords.map((k) => (
-                  <span
-                    key={k}
-                    className="text-xs px-3 py-1.5 rounded-full bg-cream-50/10 backdrop-blur-sm border border-cream-50/20 text-cream-100"
-                  >
-                    {k}
-                  </span>
-                ))}
-              </div>
-              <div className="mt-9 flex flex-wrap gap-3">
+              <div className="mt-9">
                 <Link href="/contact" className="btn btn-brand text-base">
                   Book a property assessment <ArrowRight className="w-4 h-4" />
                 </Link>
-                <a
-                  href={`tel:${division.contactPhone}`}
-                  className="btn text-base border border-cream-50/40 text-cream-50 hover:bg-cream-50 hover:text-ink-800"
-                >
-                  <Phone className="w-4 h-4" /> {division.contactPhone}
-                </a>
               </div>
             </div>
 
@@ -171,17 +154,6 @@ export default function DivisionPage({ params }: { params: Params }) {
                 </div>
               </div>
 
-              <div className="mt-4 card p-5 !bg-ink-900/80 backdrop-blur-md !border-ink-700 text-cream-50">
-                <div className="flex items-start gap-3">
-                  <CalendarClock className="w-5 h-5 mt-0.5 text-brand-400 shrink-0" />
-                  <div>
-                    <div className="eyebrow !text-brand-400">This quarter</div>
-                    <div className="text-sm text-cream-100 mt-1.5">
-                      Now accepting Q3 maintenance contracts. Lock in pricing before September renewal.
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
 
