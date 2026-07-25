@@ -4,8 +4,11 @@ import Link from "next/link";
 import { useState } from "react";
 import { Menu, X, ChevronDown, Phone } from "lucide-react";
 import { Logo } from "./Logo";
-import { divisions } from "@/lib/divisions";
+import { AudienceSwitch } from "./AudienceSwitch";
+import { divisions, featuredServices, topLevelServices } from "@/lib/divisions";
+import { residentialServices } from "@/lib/residential";
 import { cities, citiesByRegion } from "@/lib/cities";
+import { site } from "@/lib/site";
 
 const regionOrder = [
   "Vancouver",
@@ -126,50 +129,88 @@ export function Header() {
               onOpen={() => setOpen(open === "services" ? null : "services")}
               onClose={() => setOpen(null)}
             >
-              <div className="grid grid-cols-4 gap-4 p-6 w-[1000px]">
-                {divisions.map((d) => (
-                  <div
-                    key={d.slug}
-                    className="rounded-xl border hairline bg-cream-100/70 p-4 flex flex-col hover:border-brand-500/40 transition"
-                  >
-                    <Link
-                      href={`/${d.slug}`}
-                      onClick={() => setOpen(null)}
-                      className="block group pb-3 border-b hairline"
-                    >
-                      <div className="eyebrow mb-1">Division</div>
-                      <div className="text-lg font-semibold leading-tight text-ink-800 group-hover:text-brand-500 transition">
-                        {d.name}
+              <div className="flex w-[1180px]">
+                <div className="flex-1 p-5">
+                  <div className="eyebrow mb-3 px-1">Commercial · four divisions</div>
+                  <div className="grid grid-cols-4 gap-3">
+                    {divisions.map((d) => (
+                      <div
+                        key={d.slug}
+                        className="rounded-xl border hairline bg-cream-100/70 p-3.5 flex flex-col hover:border-brand-500/40 transition"
+                      >
+                        <Link
+                          href={`/${d.slug}`}
+                          onClick={() => setOpen(null)}
+                          className="block group pb-2.5 border-b hairline"
+                        >
+                          <div className="text-base font-semibold leading-tight text-ink-800 group-hover:text-brand-500 transition">
+                            {d.name}
+                          </div>
+                          <div className="text-xs text-ink-500 mt-1">{d.subtitle}</div>
+                        </Link>
+                        <div className="mt-2 space-y-0.5 flex-1">
+                          {featuredServices(d).map((s) => {
+                            const Icon = s.icon;
+                            return (
+                              <Link
+                                key={s.slug}
+                                href={`/${d.slug}/${s.slug}`}
+                                onClick={() => setOpen(null)}
+                                className="mega-link !p-1.5"
+                              >
+                                <Icon className="w-4 h-4 mt-0.5 text-brand-500 shrink-0" strokeWidth={1.5} />
+                                <div>
+                                  <div className="text-sm font-medium text-ink-800 leading-tight">{s.name}</div>
+                                </div>
+                              </Link>
+                            );
+                          })}
+                        </div>
+                        <Link
+                          href={`/${d.slug}`}
+                          onClick={() => setOpen(null)}
+                          className="mt-2.5 pt-2.5 border-t hairline text-xs font-medium text-brand-500 hover:underline"
+                        >
+                          All {d.name.replace("Woola ", "")} services →
+                        </Link>
                       </div>
-                      <div className="text-xs text-ink-500 mt-1">{d.subtitle}</div>
-                    </Link>
-                    <div className="mt-3 space-y-0.5 flex-1">
-                      {d.services.slice(0, 4).map((s) => {
-                        const Icon = s.icon;
-                        return (
-                          <Link
-                            key={s.slug}
-                            href={`/${d.slug}/${s.slug}`}
-                            onClick={() => setOpen(null)}
-                            className="mega-link !p-2"
-                          >
-                            <Icon className="w-4 h-4 mt-0.5 text-brand-500 shrink-0" strokeWidth={1.5} />
-                            <div>
-                              <div className="text-sm font-medium text-ink-800 leading-tight">{s.name}</div>
-                            </div>
-                          </Link>
-                        );
-                      })}
-                    </div>
-                    <Link
-                      href={`/${d.slug}`}
-                      onClick={() => setOpen(null)}
-                      className="mt-3 pt-3 border-t hairline text-xs font-medium text-brand-500 hover:underline"
-                    >
-                      All {d.name.replace("Woola ", "")} services →
-                    </Link>
+                    ))}
                   </div>
-                ))}
+                </div>
+                <div className="w-[340px] shrink-0 border-l hairline bg-cream-100/60 p-5 flex flex-col">
+                  <div className="eyebrow mb-3">Residential · for homeowners</div>
+                  <Link
+                    href="/residential"
+                    onClick={() => setOpen(null)}
+                    className="block group pb-2.5 border-b hairline"
+                  >
+                    <div className="text-base font-semibold leading-tight text-ink-800 group-hover:text-brand-500 transition">
+                      Woola Residential
+                    </div>
+                    <div className="text-xs text-ink-500 mt-1">
+                      Heating, cooling, plumbing, hot water & more
+                    </div>
+                  </Link>
+                  <div className="mt-2 flex-1">
+                    {residentialServices.map((s) => (
+                      <Link
+                        key={s.slug}
+                        href={`/residential/${s.slug}`}
+                        onClick={() => setOpen(null)}
+                        className="block text-sm text-ink-700 hover:text-ink-800 hover:underline py-[3px]"
+                      >
+                        {s.name}
+                      </Link>
+                    ))}
+                  </div>
+                  <Link
+                    href="/residential"
+                    onClick={() => setOpen(null)}
+                    className="mt-2.5 pt-2.5 border-t hairline text-xs font-medium text-brand-500 hover:underline"
+                  >
+                    All residential services →
+                  </Link>
+                </div>
               </div>
               <div className="border-t hairline bg-cream-100 px-8 py-4 flex items-center justify-between text-sm">
                 <span className="text-ink-500">
@@ -219,7 +260,8 @@ export function Header() {
           </nav>
 
           <div className="hidden lg:flex items-center gap-3">
-            <a href="tel:604-800-3617" className="btn btn-ghost">
+            <AudienceSwitch className="hidden xl:inline-flex" />
+            <a href={`tel:${site.phone}`} className="btn btn-ghost">
               <Phone className="w-4 h-4" /> Call Now
             </a>
             <Link href="/contact" className="btn btn-primary">
@@ -240,6 +282,7 @@ export function Header() {
       {mobileOpen && (
         <div className="lg:hidden border-t hairline bg-cream-50">
           <div className="container-x py-6 space-y-6">
+            <AudienceSwitch />
             {divisions.map((d) => (
               <div key={d.slug}>
                 <Link
@@ -250,7 +293,7 @@ export function Header() {
                   {d.name}
                 </Link>
                 <div className="mt-2 ml-1 space-y-1">
-                  {d.services.map((s) => (
+                  {topLevelServices(d).map((s) => (
                     <Link
                       key={s.slug}
                       href={`/${d.slug}/${s.slug}`}
@@ -263,6 +306,27 @@ export function Header() {
                 </div>
               </div>
             ))}
+            <div>
+              <Link
+                href="/residential"
+                onClick={() => setMobileOpen(false)}
+                className="block text-lg font-semibold text-ink-800"
+              >
+                Woola Residential
+              </Link>
+              <div className="mt-2 ml-1 space-y-1">
+                {residentialServices.map((s) => (
+                  <Link
+                    key={s.slug}
+                    href={`/residential/${s.slug}`}
+                    onClick={() => setMobileOpen(false)}
+                    className="block text-sm text-ink-600 py-1"
+                  >
+                    {s.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
             <div className="border-t hairline pt-4 space-y-2">
               <Link href="/property-managers" onClick={() => setMobileOpen(false)} className="block font-medium">Property Managers</Link>
               <Link href="/commercial" onClick={() => setMobileOpen(false)} className="block font-medium">Commercial</Link>
@@ -284,7 +348,7 @@ export function Header() {
               <Link href="/contact" onClick={() => setMobileOpen(false)} className="block font-medium">Contact</Link>
             </div>
             <div className="grid grid-cols-2 gap-3">
-              <a href="tel:604-800-3617" className="btn btn-ghost justify-center border hairline">
+              <a href={`tel:${site.phone}`} className="btn btn-ghost justify-center border hairline">
                 <Phone className="w-4 h-4" /> Call Now
               </a>
               <Link href="/contact" onClick={() => setMobileOpen(false)} className="btn btn-primary justify-center">

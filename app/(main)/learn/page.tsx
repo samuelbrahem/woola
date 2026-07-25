@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Section, SectionHead } from "@/components/Section";
 import { CTABanner } from "@/components/CTABanner";
-import { divisions } from "@/lib/divisions";
+import { divisions, primerServices } from "@/lib/divisions";
 import { ArrowRight, BookOpen } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 export default function LearnPage() {
   const totalTerms = divisions.reduce(
-    (sum, d) => sum + d.services.reduce((s, sv) => s + sv.primer.parts.length, 0),
+    (sum, d) => sum + primerServices(d).reduce((s, sv) => s + sv.primer.parts.length, 0),
     0
   );
 
@@ -42,7 +42,7 @@ export default function LearnPage() {
           <div className="container-x section">
             <SectionHead eyebrow={d.subtitle} title={`${d.name} primers.`} dark={idx % 2 === 1} />
             <div className="mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {d.services.map((s) => (
+              {primerServices(d).map((s) => (
                 <Link
                   key={s.slug}
                   href={`/learn/${d.slug}/${s.slug}`}

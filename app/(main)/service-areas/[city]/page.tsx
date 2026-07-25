@@ -5,6 +5,7 @@ import { CTABanner } from "@/components/CTABanner";
 import { SecondOpinionCTA } from "@/components/SecondOpinionCTA";
 import { cities, getCity } from "@/lib/cities";
 import { divisions } from "@/lib/divisions";
+import { site } from "@/lib/site";
 import { Phone, Check, ArrowRight } from "lucide-react";
 import type { Metadata } from "next";
 
@@ -72,7 +73,7 @@ export default function CityPage({ params }: { params: Params }) {
                 <p className="mt-3 text-sm text-ink-600 leading-relaxed">
                   Woola trucks run {city.name} routes daily from our Coquitlam shop.
                 </p>
-                <a href="tel:604-800-3617" className="btn btn-primary w-full justify-center mt-5">
+                <a href={`tel:${site.phone}`} className="btn btn-primary w-full justify-center mt-5">
                   <Phone className="w-4 h-4" /> Call Now
                 </a>
                 <Link href="/contact" className="btn btn-ghost w-full justify-center mt-2 border hairline">

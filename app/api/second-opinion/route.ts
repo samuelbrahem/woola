@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { site } from "@/lib/site";
 
 const MAX_FILES = 10;
 const MAX_FILE_BYTES = 8 * 1024 * 1024;
@@ -37,7 +38,7 @@ export async function POST(req: NextRequest) {
 
   if (!apiKey) {
     return NextResponse.json(
-      { message: "Uploads aren't live yet. Please call 604-800-3617 or email services@woola.ca." },
+      { message: `Uploads aren't live yet. Please call ${site.phone} or email ${site.email}.` },
       { status: 503 }
     );
   }
@@ -76,7 +77,7 @@ export async function POST(req: NextRequest) {
 
   if (!res.ok) {
     return NextResponse.json(
-      { message: "Could not send right now. Please call 604-800-3617." },
+      { message: `Could not send right now. Please call ${site.phone}.` },
       { status: 502 }
     );
   }

@@ -4,32 +4,34 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Section, SectionHead } from "@/components/Section";
 import { CTABanner } from "@/components/CTABanner";
-import { divisions, getService, lowerName } from "@/lib/divisions";
+import { divisions, getService, lowerName, primerServices } from "@/lib/divisions";
 import { ArrowRight, BookOpen } from "lucide-react";
 
 type Params = { division: string; service: string };
 
 export async function generateStaticParams() {
   return divisions.flatMap((d) =>
-    d.services.map((s) => ({ division: d.slug, service: s.slug }))
+    primerServices(d).map((s) => ({ division: d.slug, service: s.slug }))
   );
 }
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const found = getService(params.division, params.service);
-  if (!found) return {};
+  const primer = found?.service.primer;
+  if (!found || !primer) return {};
   const title = `What is ${found.service.name}? | Learning Hub`;
   return {
     title,
-    description: found.service.primer.what.slice(0, 155),
+    description: primer.what.slice(0, 155),
     alternates: { canonical: `https://woola.ca/learn/${found.division.slug}/${found.service.slug}` },
   };
 }
 
 export default function LearnServicePage({ params }: { params: Params }) {
   const found = getService(params.division, params.service);
-  if (!found) return notFound();
+  if (!found || !found.service.primer) return notFound();
   const { division, service } = found;
+  const primer = found.service.primer;
 
   return (
     <>
@@ -55,8 +57,8 @@ export default function LearnServicePage({ params }: { params: Params }) {
           <div className="lg:col-span-6">
             <div className="relative overflow-hidden rounded-md aspect-[4/3] bg-ink-100 border hairline">
               <Image
-                src={service.primer.image}
-                alt={service.primer.imageAlt}
+                src={primer.image}
+                alt={primer.imageAlt}
                 fill
                 priority
                 sizes="(min-width: 1024px) 50vw, 100vw"
@@ -64,11 +66,11 @@ export default function LearnServicePage({ params }: { params: Params }) {
               />
             </div>
             <div className="mt-2 text-xs text-ink-400 text-right">
-              Photo: {service.primer.imageCredit}
+              Photo: {primer.imageCredit}
             </div>
           </div>
           <div className="lg:col-span-6">
-            <p className="text-lg text-ink-600 leading-relaxed">{service.primer.what}</p>
+            <p className="text-lg text-ink-600 leading-relaxed">{primer.what}</p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link href={`/${division.slug}/${service.slug}`} className="btn btn-primary">
                 {service.name} services <ArrowRight className="w-4 h-4" />
@@ -81,7 +83,7 @@ export default function LearnServicePage({ params }: { params: Params }) {
         </div>
       </Section>
 
-      {service.primer.parts.length > 0 && (
+      {primer.parts.length > 0 && (
         <section className="bg-ink-800 text-cream-50 relative overflow-hidden">
           <div className="grain" />
           <div className="container-x section relative">
@@ -92,7 +94,7 @@ export default function LearnServicePage({ params }: { params: Params }) {
               description="The vocabulary that comes up in quotes and site visits, explained in plain English."
             />
             <dl className="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {service.primer.parts.map((p) => (
+              {primer.parts.map((p) => (
                 <div key={p.term} className="card p-5 bg-white">
                   <dt className="font-semibold text-ink-800 text-sm">{p.term}</dt>
                   <dd className="mt-1.5 text-sm text-ink-600 leading-relaxed">{p.def}</dd>

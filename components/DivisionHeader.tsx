@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { Menu, X, Phone, ArrowUpRight } from "lucide-react";
-import { divisions } from "@/lib/divisions";
+import { divisions, topLevelServices } from "@/lib/divisions";
 import { DivisionWordmark } from "./DivisionWordmark";
 import {
   MegaItem,
@@ -55,7 +55,7 @@ export function DivisionHeader({ divisionSlug }: { divisionSlug: string }) {
                 <div className="p-7 w-[640px]">
                   <div className="eyebrow mb-4">{division.name} services</div>
                   <div className="grid grid-cols-2 gap-2">
-                    {division.services.map((s) => {
+                    {topLevelServices(division).map((s) => {
                       const Icon = s.icon;
                       return (
                         <Link
@@ -144,7 +144,7 @@ export function DivisionHeader({ divisionSlug }: { divisionSlug: string }) {
               <div>
                 <div className="eyebrow mb-2">Services</div>
                 <div className="space-y-1">
-                  {division.services.map((s) => (
+                  {topLevelServices(division).map((s) => (
                     <Link
                       key={s.slug}
                       href={`/${division.slug}/${s.slug}`}

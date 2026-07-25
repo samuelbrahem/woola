@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
+import { topLevelServices, featuredServices } from "@/lib/divisions";
 import type { Division } from "@/lib/divisions";
 import { DivisionWordmark } from "./DivisionWordmark";
 
@@ -30,23 +31,18 @@ export function DivisionCard({ division }: { division: Division }) {
           {division.description}
         </p>
         <div className="mt-5 flex flex-wrap gap-2 flex-1 content-start">
-          {division.services.slice(0, 4).map((s) => (
+          {(division.homepageChips ?? featuredServices(division).map((s) => s.name)).map((chip) => (
             <span
-              key={s.slug}
+              key={chip}
               className="text-xs px-2.5 py-1 rounded bg-cream-100 text-ink-700 border hairline"
             >
-              {s.name}
+              {chip}
             </span>
           ))}
-          {division.services.length > 4 && (
-            <span className="text-xs px-2.5 py-1 rounded text-ink-500">
-              +{division.services.length - 4} more
-            </span>
-          )}
         </div>
         <div className="mt-6 pt-5 border-t hairline flex items-center justify-between text-sm">
           <span className="font-medium text-ink-800">{division.contactPhone}</span>
-          <span className="text-ink-500">{division.services.length} services</span>
+          <span className="text-ink-500">{topLevelServices(division).length} services</span>
         </div>
       </div>
     </Link>

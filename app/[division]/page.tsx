@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { divisions, getDivision } from "@/lib/divisions";
+import { divisions, getDivision, topLevelServices } from "@/lib/divisions";
 import { Section, SectionHead } from "@/components/Section";
 import { CTABanner } from "@/components/CTABanner";
 import { FleetStrip } from "@/components/FleetStrip";
@@ -193,10 +193,10 @@ export default function DivisionPage({ params }: { params: Params }) {
           description="Each service ships with its own scope, certifications and reporting, but everything is coordinated and invoiced under a single PO."
         />
         <div className="mt-12 grid md:grid-cols-2 gap-6">
-          {division.services.map((s, idx) => {
+          {topLevelServices(division).map((s, idx, services) => {
             const Icon = s.icon;
             const isOrphan =
-              idx === division.services.length - 1 && division.services.length % 2 === 1;
+              idx === services.length - 1 && services.length % 2 === 1;
             return (
               <Link
                 key={s.slug}
@@ -207,8 +207,8 @@ export default function DivisionPage({ params }: { params: Params }) {
               >
                 <div className="relative aspect-[16/10] overflow-hidden bg-ink-100">
                   <Image
-                    src={s.primer.image}
-                    alt={s.primer.imageAlt}
+                    src={s.primer?.image ?? division.heroImage}
+                    alt={s.primer?.imageAlt ?? s.name}
                     fill
                     sizes="(min-width: 768px) 50vw, 100vw"
                     className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"

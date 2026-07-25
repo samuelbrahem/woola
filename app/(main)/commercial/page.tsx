@@ -5,6 +5,7 @@ import { CTABanner } from "@/components/CTABanner";
 import { FleetStrip } from "@/components/FleetStrip";
 import { PhotoPlaceholder } from "@/components/PhotoPlaceholder";
 import { divisions } from "@/lib/divisions";
+import { DivisionCard } from "@/components/DivisionCard";
 import {
   ArrowRight,
   Check,
@@ -190,6 +191,19 @@ export default function CommercialPage() {
           </div>
         </div>
       </section>
+
+      <Section>
+        <SectionHead
+          eyebrow="Four divisions"
+          title="The trades your building depends on. One accountable partner."
+          description="Commercial clients understand divisions, and ours are built to work together: mechanical, power, electrical, and build under one PO, one dispatcher, and one standard of reporting. Stop refereeing contractors; start holding one partner to account."
+        />
+        <div className="mt-12 grid md:grid-cols-2 xl:grid-cols-4 gap-6">
+          {divisions.map((d) => (
+            <DivisionCard key={d.slug} division={d} />
+          ))}
+        </div>
+      </Section>
 
       <Section>
         <SectionHead

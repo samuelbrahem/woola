@@ -10,6 +10,8 @@ import type { Metadata } from "next";
 import { cities } from "@/lib/cities";
 import { equipmentLibrary } from "@/lib/equipment-library";
 import { EquipmentSlider } from "@/components/EquipmentSlider";
+import { getServiceContent } from "@/lib/content";
+import { ServiceLongform } from "@/components/ServiceLongform";
 
 const SERVICE_EQUIPMENT: Record<string, string[]> = {
   hvac: ["rooftop-unit", "heat-pump", "air-handler", "cooling-tower", "fan-coil"],
@@ -27,6 +29,21 @@ const SERVICE_EQUIPMENT: Record<string, string[]> = {
   "low-voltage": ["controls"],
   envelope: ["building-envelope"],
   "property-services": ["loading-dock"],
+  "heating-systems": ["boiler", "heat-pump", "pump"],
+  "cooling-systems": ["rooftop-unit", "cooling-tower", "compressor"],
+  "ventilation-iaq": ["air-handler", "fan-coil"],
+  drainage: ["pump"],
+  "preventative-maintenance": ["boiler", "rooftop-unit", "generator"],
+  retrofits: ["boiler", "rooftop-unit", "cooling-tower"],
+  "maintenance-inspections": ["generator", "transfer-switch"],
+  "repairs-troubleshooting": ["generator"],
+  "emergency-service": ["generator"],
+  "integrated-contracting": ["generator", "transfer-switch", "electrical-panel"],
+  "tenant-improvements": ["electrical-panel", "led-lighting"],
+  "panel-upgrades": ["electrical-panel"],
+  "infrared-scanning": ["electrical-panel"],
+  "waterline-repiping": ["pump", "water-heater"],
+  "turnkey-projects": ["loading-dock"],
 };
 
 type Params = { division: string; service: string };
@@ -162,6 +179,7 @@ export default function ServicePage({ params }: { params: Params }) {
   if (!found) return notFound();
   const { division, service } = found;
   const Icon = service.icon;
+  const content = getServiceContent(division.slug, service.slug);
   const scopes = scopeDeepDive[service.slug] || [];
   const eqHead = equipmentHeading[division.slug] || equipmentHeading.default;
 
@@ -217,6 +235,12 @@ export default function ServicePage({ params }: { params: Params }) {
           </div>
         </div>
       </section>
+
+      {content && (
+        <Section>
+          <ServiceLongform content={content} />
+        </Section>
+      )}
 
       {equipmentForService.length > 0 && (
         <section className="bg-cream-100 border-b hairline">
@@ -421,24 +445,26 @@ export default function ServicePage({ params }: { params: Params }) {
       </Section>
 
 
-      <section className="bg-cream-100 border-y hairline">
-        <div className="container-x py-10 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <BookOpen className="w-5 h-5 text-brand-500" strokeWidth={1.75} />
-            <p className="text-sm text-ink-600">
-              New to {lowerName(service.name)}? Read the plain-English primer and glossary in the Learning Hub.
-            </p>
+      {service.primer && (
+        <section className="bg-cream-100 border-y hairline">
+          <div className="container-x py-10 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            <div className="flex items-center gap-3">
+              <BookOpen className="w-5 h-5 text-brand-500" strokeWidth={1.75} />
+              <p className="text-sm text-ink-600">
+                New to {lowerName(service.name)}? Read the plain-English primer and glossary in the Learning Hub.
+              </p>
+            </div>
+            <div className="flex gap-4">
+              <Link href={`/learn/${division.slug}/${service.slug}`} className="text-sm font-medium text-brand-500 hover:underline whitespace-nowrap">
+                Primer & glossary →
+              </Link>
+              <Link href="/equipment" className="text-sm font-medium text-brand-500 hover:underline whitespace-nowrap">
+                Equipment library →
+              </Link>
+            </div>
           </div>
-          <div className="flex gap-4">
-            <Link href={`/learn/${division.slug}/${service.slug}`} className="text-sm font-medium text-brand-500 hover:underline whitespace-nowrap">
-              Primer & glossary →
-            </Link>
-            <Link href="/equipment" className="text-sm font-medium text-brand-500 hover:underline whitespace-nowrap">
-              Equipment library →
-            </Link>
-          </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       <CTABanner
         title={`Book ${lowerName(service.name)} with Woola.`}
