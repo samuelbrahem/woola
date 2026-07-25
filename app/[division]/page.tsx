@@ -6,7 +6,6 @@ import { Section, SectionHead } from "@/components/Section";
 import { CTABanner } from "@/components/CTABanner";
 import { FleetStrip } from "@/components/FleetStrip";
 import { DivisionFAQ } from "@/components/DivisionFAQ";
-import { DivisionWordmark } from "@/components/DivisionWordmark";
 import { LogoMarquee } from "@/components/LogoMarquee";
 import { CredentialsReveal } from "@/components/CredentialsReveal";
 import { CountUp } from "@/components/CountUp";
@@ -90,14 +89,13 @@ export default function DivisionPage({ params }: { params: Params }) {
           <div className="relative container-x py-20 md:py-28 grid lg:grid-cols-12 gap-10 items-center min-h-[calc(100vh-5rem)]">
             <div className="lg:col-span-7">
               <div className="eyebrow !text-brand-400">Division · {division.subtitle}</div>
-              <h1 className="mt-5">
-                <span className="sr-only">{division.name}: {division.subtitle}</span>
-                <DivisionWordmark division={division} size="lg" priority invert />
+              <h1 className="mt-4 text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-cream-50 leading-[1.05]">
+                {division.name}
               </h1>
-              <p className="mt-6 script text-brand-400 text-4xl md:text-5xl leading-none">
+              <p className="mt-4 script text-brand-400 text-3xl md:text-4xl leading-none">
                 {division.tagline}
               </p>
-              <p className="mt-7 text-lg text-cream-100/85 max-w-xl leading-relaxed">
+              <p className="mt-6 text-lg text-cream-100/85 max-w-xl leading-relaxed">
                 {division.intro}
               </p>
               <div className="mt-9">
