@@ -14,6 +14,20 @@ import {
   Cable,
   Gauge,
   Fuel,
+  Thermometer,
+  Fan,
+  AirVent,
+  Waves,
+  ClipboardCheck,
+  RefreshCw,
+  Wrench,
+  Siren,
+  Network,
+  Hammer,
+  PlugZap,
+  ScanLine,
+  Droplet,
+  KeyRound,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -34,8 +48,12 @@ export type Service = {
   description: string;
   icon: LucideIcon;
   highlights: string[];
-  primer: ServicePrimer;
+  primer?: ServicePrimer;
   equipment?: EquipmentItem[];
+  /** Surfaced in the mega menu and division-card six-item lists. */
+  featured?: boolean;
+  /** Slug of a parent service. Child pages are hidden from top-level grids and menus. */
+  parent?: string;
 };
 
 export type DivisionStat = { value: string; label: string; sub?: string };
@@ -47,6 +65,8 @@ export type Division = {
   slug: "mechanical" | "power" | "electrical" | "build";
   name: string;
   subtitle: string;
+  /** Exact six-item list Brett specified for the woola.ca homepage cards. */
+  homepageChips?: string[];
   tagline: string;
   description: string;
   heroImage: string;
@@ -199,6 +219,7 @@ export const divisions: Division[] = [
     slug: "mechanical",
     name: "Woola Mechanical",
     subtitle: "HVAC, Plumbing & Gas",
+    homepageChips: ["HVAC", "Plumbing", "Gas Services", "Refrigeration", "Commercial", "Residential"],
     tagline: "Engineered comfort. Verified reliability.",
     description:
       "Full-spectrum mechanical services for strata, commercial and high-end residential properties, from heat-pump retrofits to industrial refrigeration.",
@@ -295,6 +316,7 @@ export const divisions: Division[] = [
         slug: "hvac",
         name: "HVAC & Heat Pumps",
         short: "Heating, cooling, ventilation",
+        featured: true,
         description:
           "Central furnaces, ducted and ductless heat pumps, air conditioners, RTUs, VRF systems, make-up air, and exhaust. We hold TECA Quality First and CleanBC Better Homes registrations.",
         icon: Wind,
@@ -326,9 +348,55 @@ export const divisions: Division[] = [
         equipment: EQUIPMENT.hvac,
       },
       {
+        slug: "heating-systems",
+        name: "Heating Systems",
+        short: "Boilers, hydronics, radiant",
+        parent: "hvac",
+        description:
+          "Commercial boiler plants, heat pumps, hydronic distribution, unit heaters, and radiant systems. Maintained, diagnosed, optimized, and replaced before they fail in season.",
+        icon: Thermometer,
+        highlights: [
+          "Combustion analysis and system optimization",
+          "Pumps, expansion tanks, heat exchangers",
+          "Boiler plant retrofits and capital upgrades",
+          "Emergency heating repairs",
+        ],
+      },
+      {
+        slug: "cooling-systems",
+        name: "Cooling Systems",
+        short: "RTUs, chillers, VRF",
+        parent: "hvac",
+        description:
+          "Rooftop units, chillers and cooling towers, condensing units, and VRF systems. Seasonal start-ups, refrigerant leak detection, and capital equipment upgrades.",
+        icon: Fan,
+        highlights: [
+          "All major RTU manufacturers serviced",
+          "Air-cooled and water-cooled chiller plants",
+          "VRF / VRV diagnostics and commissioning support",
+          "Emergency cooling repairs",
+        ],
+      },
+      {
+        slug: "ventilation-iaq",
+        name: "Ventilation & Air Quality",
+        short: "AHUs, MAUs, exhaust, IAQ",
+        parent: "hvac",
+        description:
+          "Air handling units, make-up air, exhaust fans, ERVs and HRVs, parkade ventilation and gas detection, building pressurization, and airflow balancing.",
+        icon: AirVent,
+        highlights: [
+          "Parkade gas detection and code compliance",
+          "Airflow diagnostics and balancing",
+          "Filtration and IAQ improvements",
+          "ERV / HRV service programs",
+        ],
+      },
+      {
         slug: "plumbing",
         name: "Plumbing",
-        short: "Domestic water & drainage",
+        short: "Domestic water systems",
+        featured: true,
         description:
           "Re-pipes, drain replacements, hot water tanks, tankless systems, backflow testing and certification, fixture replacement, and emergency leak response.",
         icon: Droplets,
@@ -360,9 +428,25 @@ export const divisions: Division[] = [
         equipment: EQUIPMENT.plumbing,
       },
       {
+        slug: "drainage",
+        name: "Drainage",
+        short: "Drains, jetting, CCTV",
+        featured: true,
+        description:
+          "Commercial drain cleaning, hydro jetting, CCTV camera inspections, leak detection, hydrovac excavation, catch basins, and sewer and storm maintenance.",
+        icon: Waves,
+        highlights: [
+          "Hydro jetting and root removal",
+          "CCTV inspections with recorded footage",
+          "Hydrovac daylighting for repairs",
+          "Preventative drain programs",
+        ],
+      },
+      {
         slug: "gas",
         name: "Gas Services",
         short: "Licensed gas fitting",
+        featured: true,
         description:
           "Boilers, hydronic systems, rooftop units, restaurant lines, fireplaces, and BBQ rough-ins, installed and maintained by ticketed Class A and B gas fitters.",
         icon: Flame,
@@ -396,6 +480,7 @@ export const divisions: Division[] = [
         slug: "refrigeration",
         name: "Refrigeration",
         short: "Commercial cooling",
+        featured: true,
         description:
           "Walk-ins, reach-ins, ice plants, glycol systems, condensing units, leak detection, and refrigerant recovery for grocery, food service, and lab clients.",
         icon: Snowflake,
@@ -425,15 +510,52 @@ export const divisions: Division[] = [
         },
         equipment: EQUIPMENT.refrigeration,
       },
+      {
+        slug: "preventative-maintenance",
+        name: "Preventative Maintenance",
+        short: "Planned mechanical care",
+        featured: true,
+        description:
+          "Scheduled inspections, servicing, and digital condition reporting across every mechanical system in the building, built around a baseline and a plan, not a checklist.",
+        icon: ClipboardCheck,
+        highlights: [
+          "Program built from an equipment baseline",
+          "Digital reports with prioritized deficiencies",
+          "One partner across HVAC, plumbing, gas, refrigeration",
+          "Feeds capital planning and budgeting",
+        ],
+      },
+      {
+        slug: "retrofits",
+        name: "Retrofits & Capital Projects",
+        short: "Replacements, planned right",
+        description:
+          "Boiler, RTU, chiller, and plumbing infrastructure replacements planned from maintenance history, competitively priced, and executed in occupied buildings.",
+        icon: RefreshCw,
+        highlights: [
+          "Repair-versus-replace cases you can defend",
+          "Scheduled around occupancy, not emergencies",
+          "In-house electrical and construction coordination",
+          "Commissioning and closeout documentation",
+        ],
+      },
     ],
   },
   {
     slug: "power",
     name: "Woola Power Systems",
     subtitle: "Standby Generators & Backup Power",
-    tagline: "Standby power. Permanent peace of mind.",
+    homepageChips: [
+      "Inspections & Maintenance",
+      "Repairs & Troubleshooting",
+      "Fuel Services",
+      "Generator Sales & Replacement",
+      "Emergency Service",
+      "Electrical Contracting",
+    ],
+    tagline: "We protect critical infrastructure.",
     description:
-      "Generator-first standby power services: annual CSA C282 inspections, load bank testing, transfer switch service, and 24/7 emergency response for BC's most critical facilities.",
+      "Commercial critical power partner: generator maintenance and inspections, CSA C282 testing, repairs, fuel services, replacements, and 24/7 emergency response for BC's most critical facilities.",
     contactPhone: "604-829-9156",
     contactEmail: "service@woolapower.ca",
     intro:
@@ -524,11 +646,42 @@ export const divisions: Division[] = [
     ],
     services: [
       {
-        slug: "generators",
-        name: "Standby Generators",
-        short: "Emergency power systems",
+        slug: "maintenance-inspections",
+        name: "Maintenance & Inspections",
+        short: "Generator PM programs",
+        featured: true,
         description:
-          "Generator supply, installation, and preventative maintenance: oil and filter service, coolant and battery checks, minor repair, and 24/7 emergency response for Generac, Kohler, and Cummins units.",
+          "Scheduled preventative maintenance and full-system inspections for standby generators: engine, cooling, fuel, batteries, transfer switch, and controls, photo-documented every visit.",
+        icon: ClipboardCheck,
+        highlights: [
+          "Complete-system inspections, not start-stop checks",
+          "Digital reports with prioritized deficiencies",
+          "Battery, fuel, and ATS failure points covered",
+          "Supports reserve fund and lifecycle planning",
+        ],
+      },
+      {
+        slug: "repairs-troubleshooting",
+        name: "Repairs & Troubleshooting",
+        short: "Root-cause generator service",
+        featured: true,
+        description:
+          "No-starts, alarm faults, shutdowns, and failed tests diagnosed to root cause with manufacturer procedures, then repaired and verified under load.",
+        icon: Wrench,
+        highlights: [
+          "Structured diagnostics before parts swapping",
+          "Engine, electrical, ATS, and controls repair",
+          "Factory diagnostic software for major OEMs",
+          "Functional testing after every repair",
+        ],
+      },
+      {
+        slug: "generators",
+        name: "Generator Replacement & Retrofits",
+        short: "Sales, installs, modernization",
+        featured: true,
+        description:
+          "Aging or failed generator? New building? We assess, size, and install standby generators, retrofit controls and transfer switches, and manage the full project from concrete pad to commissioning.",
         icon: Zap,
         highlights: [
           "CSA C282 annual inspections",
@@ -623,8 +776,9 @@ export const divisions: Division[] = [
       },
       {
         slug: "fuel-systems",
-        name: "Fuel Systems & Polishing",
+        name: "Fuel Services",
         short: "Diesel quality & tank service",
+        featured: true,
         description:
           "Diesel fuel polishing, tank cleaning and inspection, day tank and transfer pump service, fuel sampling with lab analysis, and biocide treatment programs.",
         icon: Fuel,
@@ -685,12 +839,50 @@ export const divisions: Division[] = [
         },
         equipment: EQUIPMENT["ups-battery"],
       },
+      {
+        slug: "emergency-service",
+        name: "Emergency Service",
+        short: "24/7 generator response",
+        featured: true,
+        description:
+          "When a generator won't start or a building is running on backup power, our dispatch triages by phone, sends a technician, and keeps you informed through to the follow-up report.",
+        icon: Siren,
+        highlights: [
+          "24/7 dispatch, every day of the year",
+          "Phone triage before the truck rolls",
+          "Temporary power options when repairs take time",
+          "Written follow-up report after every callout",
+        ],
+      },
+      {
+        slug: "integrated-contracting",
+        name: "Integrated Contracting",
+        short: "Turnkey power projects",
+        featured: true,
+        description:
+          "Generator and electrical infrastructure projects delivered by one team: electrical, mechanical, civil, concrete, and commissioning coordinated in-house across Woola's divisions.",
+        icon: Network,
+        highlights: [
+          "One proposal, one project team",
+          "Self-performed civil, concrete, and electrical",
+          "ATS, switchgear, and distribution upgrades",
+          "Ongoing service after commissioning",
+        ],
+      },
     ],
   },
   {
     slug: "electrical",
     name: "Woola Electrical",
     subtitle: "Commercial Electrical, EV & Lighting",
+    homepageChips: [
+      "Service & Maintenance",
+      "Tenant Improvements",
+      "Lighting Upgrades",
+      "EV Charging",
+      "Panel & Service Upgrades",
+      "Infrared Scanning",
+    ],
     tagline: "Every circuit accounted for.",
     description:
       "Full-service commercial and strata electrical: service upgrades, panel work, EV charger installations, LED lighting retrofits, and low-voltage data and security cabling.",
@@ -785,8 +977,9 @@ export const divisions: Division[] = [
     services: [
       {
         slug: "electrical",
-        name: "Commercial Electrical",
-        short: "Service upgrades, panels, wiring",
+        name: "Electrical Service & Maintenance",
+        short: "Service calls, panels, wiring",
+        featured: true,
         description:
           "Service upgrades, panel replacements, dedicated circuits, common-area work, infrared thermography, and arc-flash studies for strata and commercial buildings.",
         icon: Plug,
@@ -820,8 +1013,9 @@ export const divisions: Division[] = [
       },
       {
         slug: "ev-chargers",
-        name: "EV Charger Installs",
+        name: "EV Charging",
         short: "Level 2 & DC fast charging",
+        featured: true,
         description:
           "Single-stall residential and strata Level 2, networked fleets, and DC fast charging. CleanBC and BC Hydro rebate-eligible installs with EV Ready planning for strata.",
         icon: BatteryCharging,
@@ -853,8 +1047,9 @@ export const divisions: Division[] = [
       },
       {
         slug: "led-lighting",
-        name: "LED Lighting Retrofits",
-        short: "BC Hydro Power Smart",
+        name: "Lighting Upgrades",
+        short: "LED retrofits & controls",
+        featured: true,
         description:
           "Replace fluorescent troffers and legacy bulbs with efficient LED equivalents. Photometric studies, dimming controls, occupancy sensors, and BC Hydro rebate paperwork handled.",
         icon: Lightbulb,
@@ -918,12 +1113,65 @@ export const divisions: Division[] = [
         },
         equipment: EQUIPMENT["low-voltage"],
       },
+      {
+        slug: "tenant-improvements",
+        name: "Tenant Improvements",
+        short: "Commercial fit-out electrical",
+        featured: true,
+        description:
+          "Electrical fit-outs for leased commercial space: lighting, power, and data rough-ins, panel work, and inspections, coordinated with landlords, tenants, and Woola Build.",
+        icon: Hammer,
+        highlights: [
+          "Permit-to-inspection handled in-house",
+          "Coordinated with Woola Build fit-out crews",
+          "Occupied-building scheduling",
+          "As-built documentation on closeout",
+        ],
+      },
+      {
+        slug: "panel-upgrades",
+        name: "Panel & Service Upgrades",
+        short: "Capacity for what's next",
+        featured: true,
+        description:
+          "Service upgrades, panel and switchgear replacements, and distribution modifications that make room for heat pumps, EV charging, and modern building loads.",
+        icon: PlugZap,
+        highlights: [
+          "Load calculations before you commit",
+          "Aging and obsolete panel replacement",
+          "Utility coordination handled",
+          "Minimal-outage cutover planning",
+        ],
+      },
+      {
+        slug: "infrared-scanning",
+        name: "Infrared Scanning",
+        short: "Thermal electrical inspection",
+        featured: true,
+        description:
+          "Thermographic scans of panels, switchgear, and connections that find hot spots before they become failures, with reports insurers and owners can act on.",
+        icon: ScanLine,
+        highlights: [
+          "Non-invasive, no-outage inspections",
+          "Annotated thermal reports",
+          "Supports insurance requirements",
+          "Repairs quoted from findings",
+        ],
+      },
     ],
   },
   {
     slug: "build",
     name: "Woola Build",
     subtitle: "Building Maintenance & Construction",
+    homepageChips: [
+      "Building Envelope",
+      "Waterline Re-piping",
+      "Maintenance Packages",
+      "Construction & Renos",
+      "Property Services",
+      "Turnkey Projects",
+    ],
     tagline: "Prevent problems before they cost you.",
     description:
       "A single trade-coordinated partner for strata and commercial property maintenance, building envelope, interior renovations and small-cap construction.",
@@ -1020,6 +1268,7 @@ export const divisions: Division[] = [
         slug: "maintenance",
         name: "Maintenance Packages",
         short: "Proactive building care",
+        featured: true,
         description:
           "Quarterly and annual maintenance plans covering roof, drainage, parkade, common areas, irrigation, life-safety and exterior cleaning. One contract. One invoice.",
         icon: ShieldCheck,
@@ -1053,6 +1302,7 @@ export const divisions: Division[] = [
         slug: "envelope",
         name: "Building Envelope",
         short: "Roof, cladding, sealants",
+        featured: true,
         description:
           "Targeted envelope repairs, sealant renewal, parkade waterproofing, deck membranes, and roofing, paired with engineer-led scoping for larger remediation.",
         icon: Layers,
@@ -1086,6 +1336,7 @@ export const divisions: Division[] = [
         slug: "construction",
         name: "Construction & Renos",
         short: "Tenant improvements",
+        featured: true,
         description:
           "Tenant improvements, suite renovations, amenity rebuilds, and small commercial fit-outs, managed by Gold Seal certified project managers.",
         icon: HardHat,
@@ -1119,6 +1370,7 @@ export const divisions: Division[] = [
         slug: "property-services",
         name: "Property Services",
         short: "On-call building work",
+        featured: true,
         description:
           "Carpentry, painting, fencing, hardware replacement, common-room refreshes and the long tail of small jobs that property managers never have time to source.",
         icon: Building2,
@@ -1147,6 +1399,36 @@ export const divisions: Division[] = [
         },
         equipment: EQUIPMENT["property-services"],
       },
+      {
+        slug: "waterline-repiping",
+        name: "Waterline Re-piping",
+        short: "Domestic water renewal",
+        featured: true,
+        description:
+          "Building water line replacement and full re-piping projects, planned and executed with Woola Mechanical's plumbers in occupied buildings, suite by suite.",
+        icon: Droplet,
+        highlights: [
+          "Occupied-building phasing plans",
+          "In-house plumbing and drywall repair",
+          "Water shutdowns communicated ahead",
+          "Closeout documentation for the strata",
+        ],
+      },
+      {
+        slug: "turnkey-projects",
+        name: "Turnkey Project Solutions",
+        short: "Multi-trade, one partner",
+        featured: true,
+        description:
+          "Projects that span trades: mechanical, electrical, civil, concrete, and finishing delivered under one contract, one schedule, and one project manager.",
+        icon: KeyRound,
+        highlights: [
+          "Self-performed core trades",
+          "Gold Seal project management",
+          "Single proposal and invoice",
+          "Service continuity after handover",
+        ],
+      },
     ],
   },
 ];
@@ -1154,6 +1436,26 @@ export const divisions: Division[] = [
 export const allServices = divisions.flatMap((d) =>
   d.services.map((s) => ({ ...s, division: d }))
 );
+
+/** Services shown in division-page grids (excludes child pages like HVAC's sub-services). */
+export function topLevelServices(d: Division) {
+  return d.services.filter((s) => !s.parent);
+}
+
+/** The six-per-division lists surfaced in menus and homepage cards. */
+export function featuredServices(d: Division) {
+  return d.services.filter((s) => s.featured);
+}
+
+/** Child services of a parent (e.g. Heating / Cooling / Ventilation under HVAC). */
+export function childServices(d: Division, parentSlug: string) {
+  return d.services.filter((s) => s.parent === parentSlug);
+}
+
+/** Services that have a Learning Hub primer. */
+export function primerServices(d: Division) {
+  return d.services.filter((s): s is Service & { primer: ServicePrimer } => Boolean(s.primer));
+}
 
 // Lowercase a service name for mid-sentence use, preserving acronyms (HVAC, LED, EV).
 export function lowerName(name: string) {
