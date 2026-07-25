@@ -5,23 +5,16 @@ import { CTABanner } from "@/components/CTABanner";
 import { FleetStrip } from "@/components/FleetStrip";
 import { PhotoPlaceholder } from "@/components/PhotoPlaceholder";
 import { SecondOpinionCTA } from "@/components/SecondOpinionCTA";
-import { ArrowRight, Check, Home, Receipt, Leaf, Wrench } from "lucide-react";
+import { residentialServices } from "@/lib/residential";
+import { site } from "@/lib/site";
+import { ArrowRight, Home, Receipt, Leaf, Wrench } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Residential Services",
   description:
-    "Heat pumps, hot water, gas, EV chargers, and standby power for BC homes. Upfront pricing, CleanBC and BC Hydro rebates filed in-house, and licensed Red Seal technicians.",
+    "Heating, cooling, plumbing, hot water, gas, and air quality for BC homes. The same licensed technicians trusted by commercial buildings, with upfront pricing and rebates filed in-house.",
   alternates: { canonical: "https://woola.ca/residential" },
 };
-
-const offers = [
-  { name: "Heat pumps & HVAC", href: "/mechanical/hvac", blurb: "Cold-climate heat pumps, furnaces, and AC with CleanBC rebates filed for you." },
-  { name: "Hot water", href: "/mechanical/plumbing", blurb: "Tank, tankless, and heat-pump water heaters, plus emergency leak response." },
-  { name: "Gas services", href: "/mechanical/gas", blurb: "Fireplaces, ranges, BBQ lines, and furnace hookups by licensed gas fitters." },
-  { name: "EV chargers", href: "/electrical/ev-chargers", blurb: "Level 2 home charging with panel assessment and BC Hydro rebate paperwork." },
-  { name: "Home standby power", href: "/power/generators", blurb: "Standby generators sized for your home, installed and maintained." },
-  { name: "Electrical", href: "/electrical/electrical", blurb: "Panel upgrades, dedicated circuits, and lighting by FSR-certified electricians." },
-];
 
 const promises = [
   {
@@ -51,28 +44,28 @@ export default function ResidentialPage() {
     <>
       <section className="bg-ink-900 text-cream-50 relative overflow-hidden">
         <div aria-hidden className="aurora -z-0" />
-        <div className="container-x pt-24 pb-16 relative">
+        <div className="container-x pt-20 pb-16 relative">
           <div className="grid lg:grid-cols-[1fr_400px] gap-10 items-center">
-          <div className="max-w-3xl">
-            <div className="eyebrow !text-brand-400">Residential</div>
-            <h1 className="mt-3 text-5xl md:text-6xl font-semibold text-cream-50 leading-[0.98]">
-              Commercial-grade trades. For your home.
-            </h1>
-            <p className="mt-5 text-lg text-cream-100/80 max-w-2xl">
-              Heat pumps, hot water, gas, EV charging, and backup power, installed by the
-              same licensed technicians we send to hospitals and high-rises. Upfront
-              pricing and rebate paperwork handled in-house.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link href="/second-opinion" className="btn btn-primary">
-                Get a second opinion <ArrowRight className="w-4 h-4" />
-              </Link>
-              <a href="tel:604-800-3617" className="btn btn-ghost">
-                Call Now
-              </a>
+            <div className="max-w-3xl">
+              <div className="eyebrow !text-brand-400">Woola Residential</div>
+              <h1 className="mt-3 text-5xl md:text-6xl font-semibold text-cream-50 leading-[0.98]">
+                Commercial-grade trades. For your home.
+              </h1>
+              <p className="mt-5 text-lg text-cream-100/80 max-w-2xl">
+                Heating, cooling, plumbing, hot water, gas, and air quality, handled by the
+                same licensed technicians we send to hospitals and high-rises. Honest
+                recommendations, upfront pricing, and rebate paperwork done in-house.
+              </p>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Link href="/contact" className="btn btn-primary">
+                  Request a visit <ArrowRight className="w-4 h-4" />
+                </Link>
+                <a href={`tel:${site.phone}`} className="btn btn-ghost">
+                  Call {site.phone}
+                </a>
+              </div>
             </div>
-          </div>
-          <PhotoPlaceholder label="Tech at a home install" dark className="aspect-[4/3]" />
+            <PhotoPlaceholder label="Tech at a home install" dark className="aspect-[4/3]" />
           </div>
         </div>
       </section>
@@ -80,20 +73,29 @@ export default function ResidentialPage() {
       <Section>
         <SectionHead
           eyebrow="What we do at home"
-          title="The residential lineup."
+          title="Every system in your house, one number to call."
+          description="Homeowners don't think in trades or divisions, and neither does this section. Pick the problem; we bring the right ticketed people."
         />
         <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {offers.map((o) => (
-            <Link key={o.name} href={o.href} className="card p-7 group">
-              <div className="flex items-center justify-between">
-                <h3 className="text-lg font-semibold text-ink-800 group-hover:text-brand-500 transition">
-                  {o.name}
-                </h3>
-                <ArrowRight className="w-4 h-4 text-ink-400 group-hover:text-brand-500 group-hover:translate-x-0.5 transition" />
-              </div>
-              <p className="mt-2 text-sm text-ink-500 leading-relaxed">{o.blurb}</p>
-            </Link>
-          ))}
+          {residentialServices.map((s) => {
+            const Icon = s.icon;
+            return (
+              <Link key={s.slug} href={`/residential/${s.slug}`} className="card p-7 group">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="w-9 h-9 rounded-lg bg-brand-500/10 text-brand-500 flex items-center justify-center">
+                      <Icon className="w-4.5 h-4.5 w-5 h-5" strokeWidth={1.5} />
+                    </div>
+                    <h3 className="text-lg font-semibold text-ink-800 group-hover:text-brand-500 transition">
+                      {s.name}
+                    </h3>
+                  </div>
+                  <ArrowRight className="w-4 h-4 text-ink-400 group-hover:text-brand-500 group-hover:translate-x-0.5 transition shrink-0" />
+                </div>
+                <p className="mt-3 text-sm text-ink-500 leading-relaxed">{s.description}</p>
+              </Link>
+            );
+          })}
         </div>
       </Section>
 
