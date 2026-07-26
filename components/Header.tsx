@@ -141,12 +141,11 @@ export function Header() {
                         <Link
                           href={`/${d.slug}`}
                           onClick={() => setOpen(null)}
-                          className="flex flex-col group min-h-[88px] pb-2.5 border-b hairline"
+                          className="block group pb-2 border-b hairline"
                         >
-                          <div className="text-base font-semibold leading-tight text-ink-800 group-hover:text-brand-500 transition">
+                          <div className="text-base font-semibold leading-tight text-ink-800 group-hover:text-brand-500 transition whitespace-nowrap">
                             {d.name}
                           </div>
-                          <div className="text-xs text-ink-500 mt-1">{d.subtitle}</div>
                         </Link>
                         <div className="mt-2 space-y-0.5 flex-1">
                           {featuredServices(d).map((s) => {
@@ -182,13 +181,10 @@ export function Header() {
                   <Link
                     href="/residential"
                     onClick={() => setOpen(null)}
-                    className="flex flex-col group min-h-[88px] pb-2.5 border-b hairline"
+                    className="block group pb-2 border-b hairline"
                   >
-                    <div className="text-base font-semibold leading-tight text-ink-800 group-hover:text-brand-500 transition">
+                    <div className="text-base font-semibold leading-tight text-ink-800 group-hover:text-brand-500 transition whitespace-nowrap">
                       Woola Residential
-                    </div>
-                    <div className="text-xs text-ink-500 mt-1">
-                      Heating, cooling, plumbing, hot water & more
                     </div>
                   </Link>
                   <div className="mt-2 flex-1">
