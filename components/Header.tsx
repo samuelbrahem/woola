@@ -260,7 +260,6 @@ export function Header() {
           </nav>
 
           <div className="hidden lg:flex items-center gap-3">
-            <AudienceSwitch className="hidden xl:inline-flex" />
             <a href={`tel:${site.phone}`} className="btn btn-ghost">
               <Phone className="w-4 h-4" /> Call Now
             </a>
