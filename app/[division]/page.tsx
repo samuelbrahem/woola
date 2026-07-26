@@ -103,6 +103,12 @@ export default function DivisionPage({ params }: { params: Params }) {
                   Book a property assessment <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
+              <div className="mt-4 text-sm text-cream-100/70">
+                Homeowner?{" "}
+                <Link href="/residential" className="text-brand-400 hover:underline">
+                  Visit Woola Residential →
+                </Link>
+              </div>
             </div>
 
             {/* Direct dispatch card */}

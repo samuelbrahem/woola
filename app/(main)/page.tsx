@@ -48,8 +48,56 @@ export default function HomePage() {
         </div>
       </div>
 
+      <section className="border-b hairline">
+        <div className="container-x py-10 md:py-14">
+          <div className="grid md:grid-cols-2 gap-5">
+            <Link
+              href="/commercial"
+              className="group relative overflow-hidden rounded-2xl bg-ink-900 text-cream-50 p-8 md:p-10 flex flex-col justify-between min-h-[240px]"
+            >
+              <div>
+                <div className="eyebrow !text-brand-400">For property managers, strata & owners</div>
+                <h2 className="mt-3 text-2xl md:text-3xl font-semibold leading-tight">
+                  Run your buildings with one accountable partner.
+                </h2>
+                <p className="mt-3 text-sm text-cream-100/75 max-w-md leading-relaxed">
+                  Mechanical, power, electrical, and build under one PO, with the documentation
+                  and capital planning your council or ownership group expects.
+                </p>
+              </div>
+              <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-brand-400 group-hover:gap-3 transition-all">
+                Explore commercial services <ArrowRight className="w-4 h-4" />
+              </span>
+            </Link>
+            <Link
+              href="/residential"
+              className="group relative overflow-hidden rounded-2xl border hairline bg-white p-8 md:p-10 flex flex-col justify-between min-h-[240px] hover:border-brand-500/40 hover:shadow-soft transition"
+            >
+              <div>
+                <div className="eyebrow !text-brand-500">For homeowners</div>
+                <h2 className="mt-3 text-2xl md:text-3xl font-semibold leading-tight text-ink-800">
+                  Commercial-grade trades, at your house.
+                </h2>
+                <p className="mt-3 text-sm text-ink-500 max-w-md leading-relaxed">
+                  Heating, cooling, plumbing, hot water, and gas from the licensed technicians
+                  we send to hospitals and high-rises. Upfront pricing, honest recommendations.
+                </p>
+              </div>
+              <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-brand-500 group-hover:gap-3 transition-all">
+                Explore residential services <ArrowRight className="w-4 h-4" />
+              </span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       <Section>
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <SectionHead
+          eyebrow="Commercial divisions"
+          title="Four specialist divisions. One call."
+          description="Every trade your building depends on, self-performed and coordinated by a single dispatcher, so nothing falls between contractors."
+        />
+        <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {divisions.map((d) => (
             <DivisionCard key={d.slug} division={d} />
           ))}

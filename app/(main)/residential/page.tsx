@@ -64,6 +64,12 @@ export default function ResidentialPage() {
                   Call {site.phone}
                 </a>
               </div>
+              <div className="mt-4 text-sm text-cream-100/60">
+                Managing a building or portfolio?{" "}
+                <Link href="/commercial" className="text-brand-400 hover:underline">
+                  Woola Commercial →
+                </Link>
+              </div>
             </div>
             <PhotoPlaceholder label="Tech at a home install" dark className="aspect-[4/3]" />
           </div>

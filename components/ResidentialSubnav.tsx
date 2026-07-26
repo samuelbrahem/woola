@@ -32,7 +32,7 @@ export function ResidentialSubnav() {
             </Link>
           ))}
         </div>
-        <AudienceSwitch className="hidden md:inline-flex shrink-0" />
+        <AudienceSwitch className="shrink-0" />
       </div>
     </div>
   );
