@@ -2,6 +2,103 @@ import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { divisions, getDivision, topLevelServices } from "@/lib/divisions";
+
+type TriageOption = { label: string; title: string; body: string; href: string; cta: string };
+
+const TRIAGE: Record<string, TriageOption[]> = {
+  mechanical: [
+    {
+      label: "Fix",
+      title: "Something's down",
+      body: "No heat, a leak, a failed rooftop unit, a backed-up drain. Tell dispatch what's happening.",
+      href: "/contact",
+      cta: "Request a repair",
+    },
+    {
+      label: "Replace",
+      title: "Equipment at end of life",
+      body: "Boilers, RTUs, chillers, piping. Replace on your schedule, not the equipment's.",
+      href: "/mechanical/retrofits",
+      cta: "Plan a replacement",
+    },
+    {
+      label: "Maintain",
+      title: "Stop the next failure",
+      body: "Scheduled inspections and condition reports across every mechanical system.",
+      href: "/mechanical/preventative-maintenance",
+      cta: "See maintenance programs",
+    },
+  ],
+  power: [
+    {
+      label: "Fix",
+      title: "Generator trouble",
+      body: "No-start, alarm fault, failed test, or an outage running long. Get a technician on it.",
+      href: "/power/repairs-troubleshooting",
+      cta: "Get it diagnosed",
+    },
+    {
+      label: "Replace",
+      title: "Aging or failed unit",
+      body: "Replacement, retrofit, or a new installation, managed from concrete pad to commissioning.",
+      href: "/power/generators",
+      cta: "Scope a replacement",
+    },
+    {
+      label: "Maintain",
+      title: "Keep it start-ready",
+      body: "Inspections, C282 testing, fuel care, and reporting that proves readiness.",
+      href: "/power/maintenance-inspections",
+      cta: "See maintenance programs",
+    },
+  ],
+  electrical: [
+    {
+      label: "Fix",
+      title: "Electrical problem",
+      body: "Tripping breakers, dead circuits, common-area faults. Book a service call.",
+      href: "/contact",
+      cta: "Request a service call",
+    },
+    {
+      label: "Upgrade",
+      title: "More capacity or better light",
+      body: "Panel and service upgrades, EV charging, LED retrofits, tenant fit-outs.",
+      href: "/electrical/panel-upgrades",
+      cta: "Plan an upgrade",
+    },
+    {
+      label: "Maintain",
+      title: "Catch faults early",
+      body: "Inspection programs and infrared scans that find hot spots before they fail.",
+      href: "/electrical/infrared-scanning",
+      cta: "See inspection options",
+    },
+  ],
+  build: [
+    {
+      label: "Fix",
+      title: "Building repairs",
+      body: "Doors, leaks, damage, and the small-jobs list that never shrinks. Same-week dispatch.",
+      href: "/build/property-services",
+      cta: "Send the list",
+    },
+    {
+      label: "Build",
+      title: "Renovate or fit out",
+      body: "Tenant improvements, amenity rebuilds, and envelope projects with one PM.",
+      href: "/build/construction",
+      cta: "Start a project",
+    },
+    {
+      label: "Maintain",
+      title: "Planned building care",
+      body: "Quarterly and annual packages covering roof, parkade, common areas, and life safety.",
+      href: "/build/maintenance",
+      cta: "See maintenance packages",
+    },
+  ],
+};
 import { Section, SectionHead } from "@/components/Section";
 import { CTABanner } from "@/components/CTABanner";
 import { FleetStrip } from "@/components/FleetStrip";
@@ -169,6 +266,26 @@ export default function DivisionPage({ params }: { params: Params }) {
           )}
         </div>
       </section>
+
+      {/* Fix / Replace / Maintain triage */}
+      {(TRIAGE[division.slug] ?? []).length > 0 && (
+        <section className="bg-cream-50 border-b hairline">
+          <div className="container-x py-10 md:py-12">
+            <div className="grid md:grid-cols-3 gap-5">
+              {TRIAGE[division.slug].map((t) => (
+                <Link key={t.label} href={t.href} className="card p-7 group flex flex-col">
+                  <div className="eyebrow !text-brand-500">{t.label}</div>
+                  <h2 className="mt-2 text-xl font-semibold text-ink-800">{t.title}</h2>
+                  <p className="mt-2 text-sm text-ink-500 leading-relaxed flex-1">{t.body}</p>
+                  <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-brand-500 group-hover:gap-2.5 transition-all">
+                    {t.cta} <ArrowRight className="w-4 h-4" />
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Stats band */}
       <section className="bg-ink-800 text-cream-50 relative overflow-hidden">
