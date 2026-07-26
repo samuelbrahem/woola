@@ -141,7 +141,7 @@ export function Header() {
                         <Link
                           href={`/${d.slug}`}
                           onClick={() => setOpen(null)}
-                          className="block group pb-2.5 border-b hairline"
+                          className="flex flex-col group min-h-[88px] pb-2.5 border-b hairline"
                         >
                           <div className="text-base font-semibold leading-tight text-ink-800 group-hover:text-brand-500 transition">
                             {d.name}
@@ -182,7 +182,7 @@ export function Header() {
                   <Link
                     href="/residential"
                     onClick={() => setOpen(null)}
-                    className="block group pb-2.5 border-b hairline"
+                    className="flex flex-col group min-h-[88px] pb-2.5 border-b hairline"
                   >
                     <div className="text-base font-semibold leading-tight text-ink-800 group-hover:text-brand-500 transition">
                       Woola Residential
