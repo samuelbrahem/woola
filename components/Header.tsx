@@ -129,83 +129,68 @@ export function Header() {
               onOpen={() => setOpen(open === "services" ? null : "services")}
               onClose={() => setOpen(null)}
             >
-              <div className="flex w-[1180px]">
-                <div className="flex-1 p-5">
-                  <div className="eyebrow mb-3 px-1">Commercial · four divisions</div>
-                  <div className="grid grid-cols-4 gap-3">
-                    {divisions.map((d) => (
-                      <div
-                        key={d.slug}
-                        className="rounded-xl border hairline bg-cream-100/70 p-3.5 flex flex-col hover:border-brand-500/40 transition"
-                      >
-                        <Link
-                          href={`/${d.slug}`}
-                          onClick={() => setOpen(null)}
-                          className="block group pb-2 border-b hairline"
-                        >
-                          <div className="text-base font-semibold leading-tight text-ink-800 group-hover:text-brand-500 transition whitespace-nowrap">
-                            {d.name}
-                          </div>
-                        </Link>
-                        <div className="mt-2 space-y-0.5 flex-1">
-                          {featuredServices(d).map((s) => {
-                            const Icon = s.icon;
-                            return (
-                              <Link
-                                key={s.slug}
-                                href={`/${d.slug}/${s.slug}`}
-                                onClick={() => setOpen(null)}
-                                className="mega-link !p-1.5"
-                              >
-                                <Icon className="w-4 h-4 mt-0.5 text-brand-500 shrink-0" strokeWidth={1.5} />
-                                <div>
-                                  <div className="text-sm font-medium text-ink-800 leading-tight">{s.name}</div>
-                                </div>
-                              </Link>
-                            );
-                          })}
-                        </div>
-                        <Link
-                          href={`/${d.slug}`}
-                          onClick={() => setOpen(null)}
-                          className="mt-2.5 pt-2.5 border-t hairline text-xs font-medium text-brand-500 hover:underline"
-                        >
-                          All {d.name.replace("Woola ", "")} services →
-                        </Link>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-                <div className="w-[340px] shrink-0 border-l hairline bg-cream-100/60 p-5 flex flex-col">
-                  <div className="eyebrow mb-3">Residential · for homeowners</div>
-                  <Link
-                    href="/residential"
-                    onClick={() => setOpen(null)}
-                    className="block group pb-2 border-b hairline"
-                  >
-                    <div className="text-base font-semibold leading-tight text-ink-800 group-hover:text-brand-500 transition whitespace-nowrap">
-                      Woola Residential
-                    </div>
-                  </Link>
-                  <div className="mt-2 flex-1">
-                    {residentialServices.map((s) => (
+              <div className="w-[1180px] p-6">
+                <div className="grid grid-cols-5 gap-x-6">
+                  <div className="col-span-4 eyebrow mb-3">Commercial</div>
+                  <div className="eyebrow mb-3 pl-6 border-l hairline">Residential</div>
+                  {divisions.map((d) => (
+                    <div key={d.slug}>
                       <Link
-                        key={s.slug}
-                        href={`/residential/${s.slug}`}
+                        href={`/${d.slug}`}
                         onClick={() => setOpen(null)}
-                        className="block text-sm text-ink-700 hover:text-ink-800 hover:underline py-[3px]"
+                        className="block pb-2 border-b hairline text-sm font-semibold text-ink-800 hover:text-brand-500 transition whitespace-nowrap"
                       >
-                        {s.name}
+                        {d.name}
                       </Link>
-                    ))}
+                      <div className="mt-2">
+                        {featuredServices(d).map((s) => (
+                          <Link
+                            key={s.slug}
+                            href={`/${d.slug}/${s.slug}`}
+                            onClick={() => setOpen(null)}
+                            className="block py-[5px] text-[13px] leading-snug text-ink-600 hover:text-ink-900 whitespace-nowrap"
+                          >
+                            {s.slug === "generators" ? "Generator Replacement" : s.name}
+                          </Link>
+                        ))}
+                      </div>
+                      <Link
+                        href={`/${d.slug}`}
+                        onClick={() => setOpen(null)}
+                        className="mt-3 inline-block text-xs font-medium text-brand-500 hover:underline whitespace-nowrap"
+                      >
+                        All {d.name.replace("Woola ", "")} services →
+                      </Link>
+                    </div>
+                  ))}
+                  <div className="pl-6 border-l hairline">
+                    <Link
+                      href="/residential"
+                      onClick={() => setOpen(null)}
+                      className="block pb-2 border-b hairline text-sm font-semibold text-ink-800 hover:text-brand-500 transition whitespace-nowrap"
+                    >
+                      Woola Residential
+                    </Link>
+                    <div className="mt-2">
+                      {[...residentialServices.slice(0, 5), residentialServices[residentialServices.length - 1]].map((s) => (
+                        <Link
+                          key={s.slug}
+                          href={`/residential/${s.slug}`}
+                          onClick={() => setOpen(null)}
+                          className="block py-[5px] text-[13px] leading-snug text-ink-600 hover:text-ink-900 whitespace-nowrap"
+                        >
+                          {s.name}
+                        </Link>
+                      ))}
+                    </div>
+                    <Link
+                      href="/residential"
+                      onClick={() => setOpen(null)}
+                      className="mt-3 inline-block text-xs font-medium text-brand-500 hover:underline whitespace-nowrap"
+                    >
+                      All residential services →
+                    </Link>
                   </div>
-                  <Link
-                    href="/residential"
-                    onClick={() => setOpen(null)}
-                    className="mt-2.5 pt-2.5 border-t hairline text-xs font-medium text-brand-500 hover:underline"
-                  >
-                    All residential services →
-                  </Link>
                 </div>
               </div>
               <div className="border-t hairline bg-cream-100 px-8 py-4 flex items-center justify-between text-sm">
