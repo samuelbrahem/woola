@@ -76,7 +76,7 @@ const STRATA_SYSTEMS: SystemDef[] = [
   {
     id: "generator",
     name: "Standby generator",
-    division: "Power Systems",
+    division: "Power",
     divisionSlug: "power",
     serviceHref: "/power/generators",
     equipmentSlug: "generator",
@@ -183,7 +183,7 @@ const OFFICE_SYSTEMS: SystemDef[] = [
   {
     id: "generator",
     name: "Standby generator",
-    division: "Power Systems",
+    division: "Power",
     divisionSlug: "power",
     serviceHref: "/power/generators",
     equipmentSlug: "generator",
@@ -359,7 +359,7 @@ const HOUSE_SYSTEMS: SystemDef[] = [
   {
     id: "generator",
     name: "Home standby power",
-    division: "Power Systems",
+    division: "Power",
     divisionSlug: "power",
     serviceHref: "/power/generators",
     equipmentSlug: "generator",

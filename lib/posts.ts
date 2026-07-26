@@ -20,7 +20,7 @@ export const posts: Post[] = [
     date: "2026-07-18",
     readingTime: "4 min read",
     category: "Building Ops",
-    author: { name: "Woola Power Systems", role: "Field Notes" },
+    author: { name: "Woola Power", role: "Field Notes" },
     cover: "/equipment-renders/generator.webp",
     coverAlt: "3D cutaway render of a standby diesel generator",
     body: [

@@ -9,7 +9,7 @@ import { ArrowRight, MapPin, Clock, Users, GraduationCap, HeartHandshake, Trendi
 export const metadata: Metadata = {
   title: "Careers at Woola",
   description:
-    "Join Woola Services Group. Open positions across Mechanical, Power Systems, Electrical, and Build: Red Seal trades, apprenticeships, coordinators, and PMs in Metro Vancouver.",
+    "Join Woola Services Group. Open positions across Mechanical, Power, Electrical, and Build: Red Seal trades, apprenticeships, coordinators, and PMs in Metro Vancouver.",
   alternates: { canonical: "https://woola.ca/careers" },
 };
 

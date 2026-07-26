@@ -543,7 +543,7 @@ export const divisions: Division[] = [
   },
   {
     slug: "power",
-    name: "Woola Power Systems",
+    name: "Woola Power",
     subtitle: "Standby Generators & Backup Power",
     homepageChips: [
       "Inspections & Maintenance",

@@ -34,7 +34,7 @@ const CASE_STUDIES: CaseStudy[] = [
       "A community that could not afford to lose power to life-safety systems, requiring three coordinated standby generators with fuel, transfer, and commissioning scope.",
     solution:
       "Supplied and installed three standby generator sets: siting, gas and fuel connections, transfer switching, and CSA C282 commissioning run as one project.",
-    teams: ["Power Systems", "Electrical", "Build"],
+    teams: ["Power", "Electrical", "Build"],
     result:
       "Three units commissioned and enrolled in an ongoing maintenance and load-bank testing program with full compliance documentation.",
   },
