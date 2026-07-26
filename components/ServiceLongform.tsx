@@ -19,7 +19,7 @@ export function ServiceLongform({ content }: { content: ServiceContent }) {
 
       <div className="mt-12 space-y-12">
         {content.blocks.map((block, i) => (
-          <div key={block.heading ?? i}>
+          <div key={block.heading ?? i} data-reveal>
             {block.heading && (
               <h2 className="text-2xl md:text-3xl font-semibold text-ink-800 tracking-tight">
                 {block.heading}

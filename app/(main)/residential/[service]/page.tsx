@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { Check, Phone } from "lucide-react";
@@ -89,7 +90,34 @@ export default function ResidentialServicePage({ params }: { params: Params }) {
 
       {content && (
         <Section>
-          <ServiceLongform content={content} />
+          <div className="grid lg:grid-cols-12 gap-12 items-start">
+            <div className="lg:col-span-7">
+              <ServiceLongform content={content} />
+            </div>
+            <div className="lg:col-span-5 lg:sticky lg:top-28 space-y-6">
+              <figure className="card overflow-hidden bg-cream-100">
+                <div className="relative aspect-[4/3]">
+                  <Image
+                    src={service.image}
+                    alt={service.imageAlt}
+                    fill
+                    sizes="(min-width: 1024px) 40vw, 100vw"
+                    className="object-cover"
+                  />
+                </div>
+              </figure>
+              <div className="card p-6 bg-ink-800 text-cream-50">
+                <div className="eyebrow !text-brand-400">Talk it through first</div>
+                <p className="mt-2 text-sm text-cream-100/80 leading-relaxed">
+                  Not sure what you need? Call and describe what's happening. A coordinator
+                  will tell you what it likely is and what a visit involves.
+                </p>
+                <a href={`tel:${site.phone}`} className="btn btn-primary mt-4 w-full justify-center">
+                  <Phone className="w-4 h-4" /> {site.phone}
+                </a>
+              </div>
+            </div>
+          </div>
         </Section>
       )}
 

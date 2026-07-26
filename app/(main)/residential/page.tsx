@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { Section, SectionHead } from "@/components/Section";
 import { CTABanner } from "@/components/CTABanner";
 import { FleetStrip } from "@/components/FleetStrip";
@@ -86,19 +87,30 @@ export default function ResidentialPage() {
           {residentialServices.map((s) => {
             const Icon = s.icon;
             return (
-              <Link key={s.slug} href={`/residential/${s.slug}`} className="card p-7 group">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className="w-9 h-9 rounded-lg bg-brand-500/10 text-brand-500 flex items-center justify-center">
-                      <Icon className="w-4.5 h-4.5 w-5 h-5" strokeWidth={1.5} />
-                    </div>
-                    <h3 className="text-lg font-semibold text-ink-800 group-hover:text-brand-500 transition">
-                      {s.name}
-                    </h3>
-                  </div>
-                  <ArrowRight className="w-4 h-4 text-ink-400 group-hover:text-brand-500 group-hover:translate-x-0.5 transition shrink-0" />
+              <Link key={s.slug} href={`/residential/${s.slug}`} className="card overflow-hidden group flex flex-col">
+                <div className="relative aspect-[16/10] bg-cream-100 overflow-hidden">
+                  <Image
+                    src={s.image}
+                    alt={s.imageAlt}
+                    fill
+                    sizes="(min-width: 1024px) 30vw, (min-width: 768px) 45vw, 100vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                  />
                 </div>
-                <p className="mt-3 text-sm text-ink-500 leading-relaxed">{s.description}</p>
+                <div className="p-6 flex flex-col flex-1">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <div className="w-9 h-9 rounded-lg bg-brand-500/10 text-brand-500 flex items-center justify-center">
+                        <Icon className="w-5 h-5" strokeWidth={1.5} />
+                      </div>
+                      <h3 className="text-lg font-semibold text-ink-800 group-hover:text-brand-500 transition">
+                        {s.name}
+                      </h3>
+                    </div>
+                    <ArrowRight className="w-4 h-4 text-ink-400 group-hover:text-brand-500 group-hover:translate-x-0.5 transition shrink-0" />
+                  </div>
+                  <p className="mt-3 text-sm text-ink-500 leading-relaxed">{s.description}</p>
+                </div>
               </Link>
             );
           })}

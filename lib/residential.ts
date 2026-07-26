@@ -20,6 +20,9 @@ export type ResidentialService = {
   description: string;
   icon: LucideIcon;
   highlights: string[];
+  /** Page figure. Reuses existing approved renders/photos until dedicated residential photography lands. */
+  image: string;
+  imageAlt: string;
 };
 
 /**
@@ -30,6 +33,8 @@ export type ResidentialService = {
 export const residentialServices: ResidentialService[] = [
   {
     slug: "heating",
+    image: "/equipment-renders/boiler.webp",
+    imageAlt: "Cutaway render of a high-efficiency boiler",
     name: "Heating",
     short: "Furnaces, boilers, heat pumps",
     description:
@@ -44,6 +49,8 @@ export const residentialServices: ResidentialService[] = [
   },
   {
     slug: "cooling",
+    image: "/equipment-renders/heat-pump.webp",
+    imageAlt: "Cutaway render of a heat pump outdoor unit",
     name: "Air Conditioning & Cooling",
     short: "AC, heat pumps, mini-splits",
     description:
@@ -58,6 +65,8 @@ export const residentialServices: ResidentialService[] = [
   },
   {
     slug: "plumbing",
+    image: "/primers/plumbing.jpg",
+    imageAlt: "Wall-hung tankless water heaters in a mechanical closet",
     name: "Plumbing",
     short: "Repairs, fixtures, repiping",
     description:
@@ -72,6 +81,8 @@ export const residentialServices: ResidentialService[] = [
   },
   {
     slug: "hot-water",
+    image: "/equipment-renders/water-heater.webp",
+    imageAlt: "Cutaway render of a residential hot water tank",
     name: "Hot Water",
     short: "Tanks & tankless systems",
     description:
@@ -86,6 +97,8 @@ export const residentialServices: ResidentialService[] = [
   },
   {
     slug: "drains",
+    image: "/equipment-renders/pump.webp",
+    imageAlt: "Cutaway render of a sump pump",
     name: "Drains & Sewer",
     short: "Cleaning, jetting, cameras",
     description:
@@ -100,6 +113,8 @@ export const residentialServices: ResidentialService[] = [
   },
   {
     slug: "gas-fitting",
+    image: "/primers/gas.jpg",
+    imageAlt: "Wall-hung condensing gas boiler",
     name: "Gas Fitting",
     short: "Lines, fireplaces, BBQs",
     description:
@@ -114,6 +129,8 @@ export const residentialServices: ResidentialService[] = [
   },
   {
     slug: "indoor-air-quality",
+    image: "/equipment/hvac/erv-hrv.jpg",
+    imageAlt: "Heat recovery ventilator with heat exchanger core",
     name: "Indoor Air Quality",
     short: "Ventilation, filtration, HRVs",
     description:
@@ -128,6 +145,8 @@ export const residentialServices: ResidentialService[] = [
   },
   {
     slug: "repairs",
+    image: "/equipment-renders/controls.webp",
+    imageAlt: "Smart thermostat render",
     name: "Repairs",
     short: "Honest mechanical diagnosis",
     description:
@@ -142,6 +161,8 @@ export const residentialServices: ResidentialService[] = [
   },
   {
     slug: "installations",
+    image: "/equipment-renders/gas-heater.webp",
+    imageAlt: "Cutaway render of a high-efficiency furnace",
     name: "Installations & Replacement",
     short: "Sized right, installed right",
     description:
@@ -156,6 +177,8 @@ export const residentialServices: ResidentialService[] = [
   },
   {
     slug: "maintenance-plans",
+    image: "/equipment/maintenance/hvac-filter.webp",
+    imageAlt: "Pleated HVAC air filter",
     name: "Home Maintenance Plans",
     short: "Seasonal care, priority booking",
     description:
@@ -170,6 +193,8 @@ export const residentialServices: ResidentialService[] = [
   },
   {
     slug: "emergency",
+    image: "/primers/hvac.jpg",
+    imageAlt: "Ductless mini-split indoor unit on a wall",
     name: "Emergency Service",
     short: "No heat, leaks, urgent repairs",
     description:
