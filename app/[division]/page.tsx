@@ -196,7 +196,7 @@ export default function DivisionPage({ params }: { params: Params }) {
                 {division.intro}
               </p>
               <div className="mt-9">
-                <Link href="/contact" className="btn btn-brand text-base">
+                <Link href="/contact" className="btn btn-on-dark text-base">
                   Book a property assessment <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>

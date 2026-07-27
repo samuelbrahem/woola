@@ -26,6 +26,7 @@
   /* Accent for text sitting on dark (ink) backgrounds. Themes whose brand
      ramp is too dark for ink override this with a legible in-palette tone. */
   --brand-on-dark: var(--brand-400);
+  --brand-on-dark-contrast: #FFFFFF;
 }
 
 /* Per-division brand themes. Each division reads as its own site while
@@ -64,6 +65,7 @@
   --brand-500-rgb: 31 31 29;
   --brand-600-rgb: 0 0 0;
   --brand-on-dark: #F7EDE9;
+  --brand-on-dark-contrast: #141413;
 }
 
 html, body {
@@ -126,6 +128,15 @@ h1, h2, h3, h4 {
   border: 1px solid var(--brand-500);
 }
 .btn-brand:hover { background: var(--brand-600); border-color: var(--brand-600); transform: translateY(-1px); }
+
+/* Brand button for dark (ink) backgrounds: fills with the theme's on-dark
+   accent and picks a contrast text color per theme. */
+.btn-on-dark {
+  background: var(--brand-on-dark);
+  color: var(--brand-on-dark-contrast);
+  border: 1px solid var(--brand-on-dark);
+}
+.btn-on-dark:hover { filter: brightness(1.06); transform: translateY(-1px); }
 
 .btn-outline {
   background: transparent;
