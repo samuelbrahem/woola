@@ -23,6 +23,9 @@
   --brand-500-rgb: 0 120 140;
   --brand-600-rgb: 0 98 116;
   --accent-500: #89A306;
+  /* Accent for text sitting on dark (ink) backgrounds. Themes whose brand
+     ramp is too dark for ink override this with a legible in-palette tone. */
+  --brand-on-dark: var(--brand-400);
 }
 
 /* Per-division brand themes. Each division reads as its own site while
@@ -39,6 +42,7 @@
   --brand-400-rgb: 0 98 116;
   --brand-500-rgb: 0 74 88;
   --brand-600-rgb: 0 51 61;
+  --brand-on-dark: #188CA0;
 }
 .theme-electrical {
   /* brand olive */
@@ -59,6 +63,7 @@
   --brand-400-rgb: 58 58 56;
   --brand-500-rgb: 31 31 29;
   --brand-600-rgb: 0 0 0;
+  --brand-on-dark: #F7EDE9;
 }
 
 html, body {

@@ -185,11 +185,11 @@ export default function DivisionPage({ params }: { params: Params }) {
           {/* Content */}
           <div className="relative container-x py-20 md:py-28 grid lg:grid-cols-12 gap-10 items-center min-h-[calc(100vh-5rem)]">
             <div className="lg:col-span-7">
-              <div className="eyebrow !text-brand-400">Division · {division.subtitle}</div>
+              <div className="eyebrow !text-[color:var(--brand-on-dark)]">Division · {division.subtitle}</div>
               <h1 className="mt-4 text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-cream-50 leading-[1.05]">
                 {division.name}
               </h1>
-              <p className="mt-4 script text-brand-400 text-3xl md:text-4xl leading-none">
+              <p className="mt-4 script text-[color:var(--brand-on-dark)] text-3xl md:text-4xl leading-none">
                 {division.tagline}
               </p>
               <p className="mt-6 text-lg text-cream-100/85 max-w-xl leading-relaxed">
@@ -202,7 +202,7 @@ export default function DivisionPage({ params }: { params: Params }) {
               </div>
               <div className="mt-4 text-sm text-cream-100/70">
                 Homeowner?{" "}
-                <Link href="/residential" className="text-brand-400 hover:underline">
+                <Link href="/residential" className="text-[color:var(--brand-on-dark)] hover:underline">
                   Visit Woola Residential →
                 </Link>
               </div>
@@ -490,9 +490,9 @@ export default function DivisionPage({ params }: { params: Params }) {
               ].map((step, i) => (
                 <li
                   key={step.t}
-                  className="rounded-md border border-ink-600 p-6 bg-ink-700/40 hover:border-brand-400 transition flex flex-col"
+                  className="rounded-md border border-ink-600 p-6 bg-ink-700/40 hover:border-[color:var(--brand-on-dark)] transition flex flex-col"
                 >
-                  <div className="text-3xl font-mono text-brand-400 leading-none">
+                  <div className="text-3xl font-mono text-[color:var(--brand-on-dark)] leading-none">
                     {String(i + 1).padStart(2, "0")}
                   </div>
                   <div className="mt-5 text-base font-semibold text-cream-50">
@@ -569,14 +569,14 @@ export default function DivisionPage({ params }: { params: Params }) {
         <div className="container-x py-14 relative">
           <div className="flex items-end justify-between flex-wrap gap-6">
             <div>
-              <div className="eyebrow !text-brand-400">Coverage</div>
+              <div className="eyebrow !text-[color:var(--brand-on-dark)]">Coverage</div>
               <h3 className="mt-3 text-2xl md:text-3xl font-bold tracking-tight text-cream-50">
                 Dispatched daily across {cities.length}+ municipalities.
               </h3>
             </div>
             <Link
               href="/service-areas"
-              className="text-sm font-medium text-cream-100 hover:text-brand-400 inline-flex items-center gap-1.5 shrink-0"
+              className="text-sm font-medium text-cream-100 hover:text-[color:var(--brand-on-dark)] inline-flex items-center gap-1.5 shrink-0"
             >
               <MapPin className="w-4 h-4" /> See coverage map →
             </Link>
@@ -586,7 +586,7 @@ export default function DivisionPage({ params }: { params: Params }) {
               <Link
                 key={c.slug}
                 href={`/service-areas/${c.slug}`}
-                className="text-xs px-3 py-1.5 rounded-full border border-ink-600 text-cream-100 hover:border-brand-400 hover:text-brand-400 transition"
+                className="text-xs px-3 py-1.5 rounded-full border border-ink-600 text-cream-100 hover:border-[color:var(--brand-on-dark)] hover:text-[color:var(--brand-on-dark)] transition"
               >
                 {c.name}
               </Link>
