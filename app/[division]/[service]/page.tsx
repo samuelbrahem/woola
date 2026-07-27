@@ -205,7 +205,7 @@ export default function ServicePage({ params }: { params: Params }) {
                 <div className="w-11 h-11 rounded-xl bg-brand-500 text-cream-50 flex items-center justify-center">
                   <Icon className="w-5 h-5" strokeWidth={1.5} />
                 </div>
-                <div className="eyebrow !text-brand-400">{division.name} · {service.short}</div>
+                <div className="eyebrow !text-[color:var(--brand-on-dark)]">{division.name} · {service.short}</div>
               </div>
               <h1 className="mt-4 text-4xl md:text-5xl lg:text-6xl font-semibold leading-[0.98] text-cream-50">
                 {service.name}
