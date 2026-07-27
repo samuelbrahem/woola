@@ -12,6 +12,7 @@ import { equipmentLibrary } from "@/lib/equipment-library";
 import { EquipmentSlider } from "@/components/EquipmentSlider";
 import { getServiceContent } from "@/lib/content";
 import { ServiceLongform } from "@/components/ServiceLongform";
+import { PhotoPlaceholder } from "@/components/PhotoPlaceholder";
 
 const SERVICE_EQUIPMENT: Record<string, string[]> = {
   hvac: ["rooftop-unit", "heat-pump", "air-handler", "cooling-tower", "fan-coil"],
@@ -188,9 +189,27 @@ export default function ServicePage({ params }: { params: Params }) {
     .map((slug) => equipmentLibrary.find((e) => e.slug === slug))
     .filter((e): e is NonNullable<typeof e> => Boolean(e));
 
+  const heroImage = service.primer?.image ?? division.heroImage;
+  const sideImage = equipmentForService[0]
+    ? { src: equipmentForService[0].image, alt: equipmentForService[0].imageAlt, contain: true }
+    : service.primer
+      ? { src: service.primer.image, alt: service.primer.imageAlt, contain: false }
+      : null;
+
   return (
     <>
       <section className="relative overflow-hidden bg-ink-800 border-b hairline">
+        <Image
+          src={heroImage}
+          alt=""
+          aria-hidden
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover opacity-30"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-ink-900/90 via-ink-900/70 to-ink-900/40" />
+        <div className="absolute inset-0 bg-gradient-to-t from-ink-900/70 via-transparent to-transparent" />
           <div className="relative container-x pt-20 pb-16 md:pt-24 md:pb-20">
           <div className="text-sm text-cream-100/60">
             <Link href="/" className="hover:text-cream-50">Woola</Link>
@@ -238,7 +257,41 @@ export default function ServicePage({ params }: { params: Params }) {
 
       {content && (
         <Section>
-          <ServiceLongform content={content} />
+          <div className="grid lg:grid-cols-12 gap-12 items-start">
+            <div className="lg:col-span-7">
+              <ServiceLongform content={content} />
+            </div>
+            <div className="lg:col-span-5 lg:sticky lg:top-28 space-y-6">
+              {sideImage ? (
+                <figure className="card overflow-hidden bg-cream-100">
+                  <div className="relative aspect-[4/3]">
+                    <Image
+                      src={sideImage.src}
+                      alt={sideImage.alt}
+                      fill
+                      sizes="(min-width: 1024px) 40vw, 100vw"
+                      className={sideImage.contain ? "object-contain p-6" : "object-cover"}
+                    />
+                  </div>
+                </figure>
+              ) : (
+                <PhotoPlaceholder label="Field photo slot" className="aspect-[4/3]" />
+              )}
+              <div className="card p-6 bg-ink-800 text-cream-50">
+                <div className="eyebrow !text-[color:var(--brand-on-dark)]">Talk it through first</div>
+                <p className="mt-2 text-sm text-cream-100/80 leading-relaxed">
+                  Describe the building and what's happening. A coordinator scopes the visit
+                  before anyone rolls a truck.
+                </p>
+                <a
+                  href={`tel:${division.contactPhone}`}
+                  className="btn btn-on-dark mt-4 w-full justify-center"
+                >
+                  <Phone className="w-4 h-4" /> {division.contactPhone}
+                </a>
+              </div>
+            </div>
+          </div>
         </Section>
       )}
 

@@ -129,10 +129,8 @@ export function Header() {
               onOpen={() => setOpen(open === "services" ? null : "services")}
               onClose={() => setOpen(null)}
             >
-              <div className="w-[1180px] p-6">
-                <div className="grid grid-cols-5 gap-3">
-                  <div className="col-span-4 eyebrow pl-1">Commercial</div>
-                  <div className="eyebrow pl-1">Residential</div>
+              <div className="w-[1040px] p-6">
+                <div className="grid grid-cols-4 gap-3">
                   {divisions.map((d) => (
                     <div
                       key={d.slug}
@@ -170,34 +168,6 @@ export function Header() {
                       </Link>
                     </div>
                   ))}
-                  <div className="rounded-xl border hairline bg-brand-500/[0.06] px-3.5 py-3.5 flex flex-col hover:border-brand-500/40 transition">
-                    <Link
-                      href="/residential"
-                      onClick={() => setOpen(null)}
-                      className="block pb-2 border-b hairline text-sm font-semibold text-ink-800 hover:text-brand-500 transition whitespace-nowrap"
-                    >
-                      Woola Residential
-                    </Link>
-                    <div className="mt-2 flex-1">
-                      {[...residentialServices.slice(0, 5), residentialServices[residentialServices.length - 1]].map((s) => (
-                        <Link
-                          key={s.slug}
-                          href={`/residential/${s.slug}`}
-                          onClick={() => setOpen(null)}
-                          className="block py-[5px] text-[13px] leading-snug text-ink-600 hover:text-ink-900 whitespace-nowrap"
-                        >
-                          {s.name}
-                        </Link>
-                      ))}
-                    </div>
-                    <Link
-                      href="/residential"
-                      onClick={() => setOpen(null)}
-                      className="mt-auto pt-2.5 border-t hairline text-xs font-medium text-brand-500 hover:underline whitespace-nowrap"
-                    >
-                      All residential services →
-                    </Link>
-                  </div>
                 </div>
               </div>
               <div className="border-t hairline bg-cream-100 px-8 py-4 flex items-center justify-between text-sm">
