@@ -130,11 +130,14 @@ export function Header() {
               onClose={() => setOpen(null)}
             >
               <div className="w-[1180px] p-6">
-                <div className="grid grid-cols-5 gap-x-6">
-                  <div className="col-span-4 eyebrow mb-3">Commercial</div>
-                  <div className="eyebrow mb-3 pl-6 border-l hairline">Residential</div>
+                <div className="grid grid-cols-5 gap-3">
+                  <div className="col-span-4 eyebrow pl-1">Commercial</div>
+                  <div className="eyebrow pl-1">Residential</div>
                   {divisions.map((d) => (
-                    <div key={d.slug}>
+                    <div
+                      key={d.slug}
+                      className="rounded-xl border hairline bg-cream-100/70 px-3.5 py-3.5 flex flex-col hover:border-brand-500/40 transition"
+                    >
                       <Link
                         href={`/${d.slug}`}
                         onClick={() => setOpen(null)}
@@ -142,7 +145,7 @@ export function Header() {
                       >
                         {d.name}
                       </Link>
-                      <div className="mt-2">
+                      <div className="mt-2 flex-1">
                         {featuredServices(d).map((s) => (
                           <Link
                             key={s.slug}
@@ -150,20 +153,24 @@ export function Header() {
                             onClick={() => setOpen(null)}
                             className="block py-[5px] text-[13px] leading-snug text-ink-600 hover:text-ink-900 whitespace-nowrap"
                           >
-                            {s.slug === "generators" ? "Generator Replacement" : s.name}
+                            {s.slug === "generators"
+                              ? "Generator Replacement"
+                              : s.slug === "electrical"
+                                ? "Service & Maintenance"
+                                : s.name}
                           </Link>
                         ))}
                       </div>
                       <Link
                         href={`/${d.slug}`}
                         onClick={() => setOpen(null)}
-                        className="mt-3 inline-block text-xs font-medium text-brand-500 hover:underline whitespace-nowrap"
+                        className="mt-auto pt-2.5 border-t hairline text-xs font-medium text-brand-500 hover:underline whitespace-nowrap"
                       >
                         All {d.name.replace("Woola ", "")} services →
                       </Link>
                     </div>
                   ))}
-                  <div className="pl-6 border-l hairline">
+                  <div className="rounded-xl border hairline bg-brand-500/[0.06] px-3.5 py-3.5 flex flex-col hover:border-brand-500/40 transition">
                     <Link
                       href="/residential"
                       onClick={() => setOpen(null)}
@@ -171,7 +178,7 @@ export function Header() {
                     >
                       Woola Residential
                     </Link>
-                    <div className="mt-2">
+                    <div className="mt-2 flex-1">
                       {[...residentialServices.slice(0, 5), residentialServices[residentialServices.length - 1]].map((s) => (
                         <Link
                           key={s.slug}
@@ -186,7 +193,7 @@ export function Header() {
                     <Link
                       href="/residential"
                       onClick={() => setOpen(null)}
-                      className="mt-3 inline-block text-xs font-medium text-brand-500 hover:underline whitespace-nowrap"
+                      className="mt-auto pt-2.5 border-t hairline text-xs font-medium text-brand-500 hover:underline whitespace-nowrap"
                     >
                       All residential services →
                     </Link>
