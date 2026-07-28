@@ -40,7 +40,7 @@ export function HeaderLogo() {
           width={340}
           height={230}
           priority
-          className={`absolute left-0 top-1/2 -translate-y-1/2 h-12 w-auto ${
+          className={`absolute left-0 top-1/2 -translate-y-1/2 h-16 w-auto ${
             phase === "drive"
               ? "animate-[van-in_1.3s_cubic-bezier(0.22,1,0.36,1)_both]"
               : "animate-[van-out_0.55s_ease-in_both]"
