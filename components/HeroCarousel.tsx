@@ -35,6 +35,92 @@ const SLIDES: Slide[] = [
 
 const INTERVAL = 6500;
 
+const ROTATING_WORDS = ["system", "boiler", "rooftop", "generator", "panel", "parkade"];
+
+function RotatingWord() {
+  const [i, setI] = useState(0);
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const t = setInterval(() => setI((v) => (v + 1) % ROTATING_WORDS.length), 2200);
+    return () => clearInterval(t);
+  }, []);
+  return (
+    <span className="inline-block overflow-hidden align-bottom">
+      <span
+        key={ROTATING_WORDS[i]}
+        className="inline-block text-brand-400 animate-[hero-word_0.5s_cubic-bezier(0.22,1,0.36,1)_both]"
+      >
+        {ROTATING_WORDS[i]}
+      </span>
+    </span>
+  );
+}
+
+/**
+ * Schematic overlay: system lines trace in from the edges and converge into
+ * one node. Every system, one partner, drawn literally. Current keeps
+ * flowing along the lines after the trace completes.
+ */
+function HeroCircuit() {
+  const paths = [
+    "M600 80 H300 V380 H84",
+    "M600 210 H360 V380 H84",
+    "M600 560 H300 V380 H84",
+    "M430 700 V380 H84",
+    "M520 0 V240 H240 V380 H84",
+  ];
+  return (
+    <svg
+      aria-hidden
+      viewBox="0 0 600 700"
+      preserveAspectRatio="xMaxYMid slice"
+      className="pointer-events-none absolute right-0 inset-y-0 h-full w-[58%] hidden md:block opacity-50"
+    >
+      {paths.map((d, i) => (
+        <path
+          key={`t${i}`}
+          d={d}
+          fill="none"
+          stroke="#188CA0"
+          strokeWidth="1.5"
+          strokeLinejoin="round"
+          className="hero-trace"
+          style={{ animationDelay: `${0.3 + i * 0.25}s` }}
+        />
+      ))}
+      {paths.map((d, i) => (
+        <path
+          key={`f${i}`}
+          d={d}
+          fill="none"
+          stroke="#7FD4DF"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="hero-flow"
+          style={{ animationDelay: `${3 + i * 1.1}s` }}
+        />
+      ))}
+      {[
+        [600, 80],
+        [600, 210],
+        [600, 560],
+        [430, 700],
+        [520, 0],
+      ].map(([x, y], i) => (
+        <circle key={`n${i}`} cx={x} cy={y} r="4" fill="#188CA0" opacity="0.8" />
+      ))}
+      <circle cx="84" cy="380" r="7" fill="#188CA0">
+        <animate attributeName="r" values="6;9;6" dur="2.4s" repeatCount="indefinite" />
+      </circle>
+      <circle cx="84" cy="380" r="14" fill="none" stroke="#188CA0" strokeWidth="1.5" opacity="0.5">
+        <animate attributeName="r" values="12;22" dur="2.4s" repeatCount="indefinite" />
+        <animate attributeName="opacity" values="0.5;0" dur="2.4s" repeatCount="indefinite" />
+      </circle>
+    </svg>
+  );
+}
+
 export function HeroCarousel() {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
@@ -92,12 +178,19 @@ export function HeroCarousel() {
             )}
             <div className="absolute inset-0 bg-gradient-to-r from-ink-900/95 via-ink-900/70 to-ink-900/30" />
             <div className="absolute inset-0 bg-gradient-to-t from-ink-900/85 via-ink-900/10 to-transparent" />
+            {s.id === "main" && i === index && <HeroCircuit />}
 
             <div className="absolute inset-0 flex items-end pb-24 md:pb-32 lg:pb-40">
               <div className="container-x w-full">
                 <div className="max-w-3xl">
                   <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1] tracking-tight text-cream-50">
-                    {s.title}
+                    {s.id === "main" ? (
+                      <>
+                        Every <RotatingWord />.
+                      </>
+                    ) : (
+                      s.title
+                    )}
                     {s.script && (
                       <>
                         <br />
