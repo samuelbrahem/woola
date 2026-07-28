@@ -24,11 +24,20 @@ export function SiteIntro() {
   const [phase, setPhase] = useState<"hidden" | "playing" | "leaving">("hidden");
 
   useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    if (sessionStorage.getItem(SESSION_KEY)) return;
+    const clearPending = () => document.documentElement.classList.remove("intro-pending");
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      clearPending();
+      return;
+    }
+    if (sessionStorage.getItem(SESSION_KEY)) {
+      clearPending();
+      return;
+    }
     sessionStorage.setItem(SESSION_KEY, "1");
     setPhase("playing");
     document.body.classList.add("intro-hold");
+    // Drop the pre-paint cover only after the overlay has painted.
+    requestAnimationFrame(() => requestAnimationFrame(clearPending));
     const hold = setTimeout(() => {
       setPhase("leaving");
       document.body.classList.remove("intro-hold");
@@ -38,6 +47,7 @@ export function SiteIntro() {
       clearTimeout(hold);
       clearTimeout(done);
       document.body.classList.remove("intro-hold");
+      clearPending();
     };
   }, []);
 

@@ -17,6 +17,12 @@ import { ArrowRight, Building2, Wrench, Zap, MapPin } from "lucide-react";
 export default function HomePage() {
   return (
     <>
+      <script
+        dangerouslySetInnerHTML={{
+          __html:
+            '(function(){try{if(!sessionStorage.getItem("woola-intro-seen")&&!window.matchMedia("(prefers-reduced-motion: reduce)").matches){document.documentElement.classList.add("intro-pending");}}catch(e){}})();',
+        }}
+      />
       <SiteIntro />
       <div className="hero-reveal overflow-hidden">
         <HeroCarousel />

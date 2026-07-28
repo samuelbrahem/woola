@@ -84,6 +84,17 @@
   100% { opacity: 1; transform: translateY(0); letter-spacing: 0.28em; }
 }
 
+/* Set synchronously by an inline script before first paint on intro-eligible
+   visits, so the page never flashes before the intro mounts. SiteIntro
+   removes it once the overlay is up. */
+html.intro-pending body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 99;
+  background: #040404;
+}
+
 @keyframes intro-line {
   from { transform: scaleX(0); }
   to { transform: scaleX(1); }
