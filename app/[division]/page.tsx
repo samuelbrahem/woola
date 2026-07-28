@@ -106,6 +106,7 @@ import { DivisionFAQ } from "@/components/DivisionFAQ";
 import { LogoMarquee } from "@/components/LogoMarquee";
 import { CredentialsReveal } from "@/components/CredentialsReveal";
 import { CountUp } from "@/components/CountUp";
+import { MechanicalServiceIndex } from "@/components/MechanicalServiceIndex";
 import {
   ArrowRight,
   Phone,
@@ -310,75 +311,88 @@ export default function DivisionPage({ params }: { params: Params }) {
       {/* Services */}
       <Section>
         <div id="services" />
-        <SectionHead
-          eyebrow="What we do"
-          title={`Every ${division.name.split(" ").slice(1).join(" ").toLowerCase()} service, one dispatcher.`}
-          description="Each service ships with its own scope, certifications and reporting, but everything is coordinated and invoiced under a single PO."
-        />
-        <div className="mt-12 grid md:grid-cols-2 gap-6">
-          {topLevelServices(division).map((s, idx, services) => {
-            const Icon = s.icon;
-            const isOrphan =
-              idx === services.length - 1 && services.length % 2 === 1;
-            return (
-              <Link
-                key={s.slug}
-                href={`/${division.slug}/${s.slug}`}
-                className={`group relative overflow-hidden rounded-2xl bg-white border hairline hover:border-brand-500/40 hover:shadow-soft transition-all duration-300 flex flex-col ${
-                  isOrphan ? "md:col-span-2" : ""
-                }`}
-              >
-                <div className="relative aspect-[16/10] overflow-hidden bg-ink-100">
-                  <Image
-                    src={s.primer?.image ?? division.heroImage}
-                    alt={s.primer?.imageAlt ?? s.name}
-                    fill
-                    sizes="(min-width: 768px) 50vw, 100vw"
-                    className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-ink-900/85 via-ink-900/25 to-transparent" />
+        {division.slug === "mechanical" ? (
+          <>
+            <SectionHead
+              eyebrow="Woola Mechanical systems map"
+              title="One building. Seven connected systems."
+              description="Each field scope has its own trained team, tooling, and reporting. Everything stays coordinated under one service history and one PO."
+            />
+            <MechanicalServiceIndex />
+          </>
+        ) : (
+          <>
+            <SectionHead
+              eyebrow="What we do"
+              title={`Every ${division.name.split(" ").slice(1).join(" ").toLowerCase()} service, one dispatcher.`}
+              description="Each service ships with its own scope, certifications and reporting, but everything is coordinated and invoiced under a single PO."
+            />
+            <div className="mt-12 grid md:grid-cols-2 gap-6">
+              {topLevelServices(division).map((s, idx, services) => {
+                const Icon = s.icon;
+                const isOrphan =
+                  idx === services.length - 1 && services.length % 2 === 1;
+                return (
+                  <Link
+                    key={s.slug}
+                    href={`/${division.slug}/${s.slug}`}
+                    className={`group relative overflow-hidden rounded-2xl bg-white border hairline hover:border-brand-500/40 hover:shadow-soft transition-all duration-300 flex flex-col ${
+                      isOrphan ? "md:col-span-2" : ""
+                    }`}
+                  >
+                    <div className="relative aspect-[16/10] overflow-hidden bg-ink-100">
+                      <Image
+                        src={s.primer?.image ?? division.heroImage}
+                        alt={s.primer?.imageAlt ?? s.name}
+                        fill
+                        sizes="(min-width: 768px) 50vw, 100vw"
+                        className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-ink-900/85 via-ink-900/25 to-transparent" />
 
-                  <div className="absolute top-5 left-5 right-5 flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <div className="w-10 h-10 rounded-lg bg-cream-50/95 backdrop-blur-sm flex items-center justify-center shadow-soft">
-                        <Icon className="w-5 h-5 text-brand-500" strokeWidth={1.7} />
+                      <div className="absolute top-5 left-5 right-5 flex items-center justify-between">
+                        <div className="flex items-center gap-2">
+                          <div className="w-10 h-10 rounded-lg bg-cream-50/95 backdrop-blur-sm flex items-center justify-center shadow-soft">
+                            <Icon className="w-5 h-5 text-brand-500" strokeWidth={1.7} />
+                          </div>
+                          <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-cream-50/85">
+                            Service · {String(idx + 1).padStart(2, "0")}
+                          </span>
+                        </div>
                       </div>
-                      <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-cream-50/85">
-                        Service · {String(idx + 1).padStart(2, "0")}
-                      </span>
-                    </div>
-                  </div>
 
-                  <h3 className="absolute bottom-5 left-5 right-5 text-2xl md:text-3xl font-bold text-cream-50 tracking-tight leading-tight">
-                    {s.name}
-                  </h3>
-                </div>
-
-                <div className="p-6 md:p-7 flex flex-col flex-1">
-                  <p className="text-sm text-ink-500 leading-relaxed">
-                    {s.description}
-                  </p>
-                  <ul className="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 flex-1">
-                    {s.highlights.map((h) => (
-                      <li key={h} className="flex items-start gap-2 text-sm text-ink-700">
-                        <Check className="w-4 h-4 mt-0.5 text-brand-500 shrink-0" strokeWidth={2} />
-                        <span>{h}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <div className="mt-6 pt-5 border-t hairline flex items-center justify-between">
-                    <span className="text-sm font-medium text-ink-700 group-hover:text-brand-500 transition">
-                      Explore service
-                    </span>
-                    <div className="w-9 h-9 rounded-full border hairline flex items-center justify-center group-hover:bg-brand-500 group-hover:border-brand-500 transition">
-                      <ArrowRight className="w-4 h-4 text-ink-500 group-hover:text-cream-50 transition" />
+                      <h3 className="absolute bottom-5 left-5 right-5 text-2xl md:text-3xl font-bold text-cream-50 tracking-tight leading-tight">
+                        {s.name}
+                      </h3>
                     </div>
-                  </div>
-                </div>
-              </Link>
-            );
-          })}
-        </div>
+
+                    <div className="p-6 md:p-7 flex flex-col flex-1">
+                      <p className="text-sm text-ink-500 leading-relaxed">
+                        {s.description}
+                      </p>
+                      <ul className="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 flex-1">
+                        {s.highlights.map((h) => (
+                          <li key={h} className="flex items-start gap-2 text-sm text-ink-700">
+                            <Check className="w-4 h-4 mt-0.5 text-brand-500 shrink-0" strokeWidth={2} />
+                            <span>{h}</span>
+                          </li>
+                        ))}
+                      </ul>
+                      <div className="mt-6 pt-5 border-t hairline flex items-center justify-between">
+                        <span className="text-sm font-medium text-ink-700 group-hover:text-brand-500 transition">
+                          Explore service
+                        </span>
+                        <div className="w-9 h-9 rounded-full border hairline flex items-center justify-center group-hover:bg-brand-500 group-hover:border-brand-500 transition">
+                          <ArrowRight className="w-4 h-4 text-ink-500 group-hover:text-cream-50 transition" />
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+          </>
+        )}
       </Section>
 
       {/* Featured work */}

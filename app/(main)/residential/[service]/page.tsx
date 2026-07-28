@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   const service = getResidentialService(params.service);
   if (!service) return {};
   const canonical = `https://woola.ca/residential/${service.slug}`;
-  const title = `${service.name} | Woola Residential`;
+  const title = service.pageTitle;
   return {
     title,
     description: service.description,
@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
       description: service.description,
       url: canonical,
       type: "article",
-      images: [{ url: "/brand/og-image.png", width: 1200, height: 630, alt: service.name }],
+      images: [{ url: "/brand/og-image.png", width: 1200, height: 630, alt: service.pageTitle }],
     },
   };
 }
@@ -61,7 +61,7 @@ export default function ResidentialServicePage({ params }: { params: Params }) {
                 <div className="eyebrow !text-brand-400">Woola Residential · {service.short}</div>
               </div>
               <h1 className="mt-4 text-4xl md:text-5xl font-semibold leading-[0.98] text-cream-50">
-                {service.name}
+                {service.pageTitle}
               </h1>
               <p className="mt-5 text-lg text-cream-100/85 max-w-2xl leading-relaxed">
                 {service.description}

@@ -219,7 +219,7 @@ export const divisions: Division[] = [
     slug: "mechanical",
     name: "Woola Mechanical",
     subtitle: "HVAC, Plumbing & Gas",
-    homepageChips: ["HVAC", "Plumbing", "Drainage", "Gas Services", "Refrigeration", "Preventative Maintenance"],
+    homepageChips: ["HVAC", "Plumbing", "Gas Services", "Refrigeration", "Commercial", "Residential"],
     tagline: "Engineered comfort. Verified reliability.",
     description:
       "Full-spectrum mechanical services for strata, commercial and high-end residential properties, from heat-pump retrofits to industrial refrigeration.",
@@ -547,7 +547,7 @@ export const divisions: Division[] = [
     subtitle: "Standby Generators & Backup Power",
     homepageChips: [
       "Inspections & Maintenance",
-      "Repairs & Troubleshooting",
+      "Repairs, Service, Troubleshooting",
       "Fuel Services",
       "Generator Sales & Replacement",
       "Emergency Service",
@@ -879,7 +879,7 @@ export const divisions: Division[] = [
       "Service & Maintenance",
       "Tenant Improvements",
       "Lighting Upgrades",
-      "EV Charging",
+      "Electrical Car Charging",
       "Panel & Service Upgrades",
       "Infrared Scanning",
     ],
@@ -1170,7 +1170,7 @@ export const divisions: Division[] = [
       "Maintenance Packages",
       "Construction & Renos",
       "Property Services",
-      "Turnkey Projects",
+      "Turnkey Project Solutions",
     ],
     tagline: "Prevent problems before they cost you.",
     description:

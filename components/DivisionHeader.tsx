@@ -53,8 +53,8 @@ export function DivisionHeader({ divisionSlug }: { divisionSlug: string }) {
                 onOpen={() => setOpen(open === "services" ? null : "services")}
                 onClose={() => setOpen(null)}
               >
-                <div className={division.slug === "mechanical" ? "flex w-[900px]" : "w-[640px]"}>
-                  <div className="p-7 flex-1">
+                <div className={division.slug === "mechanical" ? "grid grid-cols-3 w-[960px]" : "w-[640px]"}>
+                  <div className={division.slug === "mechanical" ? "col-span-2 p-7" : "p-7"}>
                     <div className="eyebrow mb-4">
                       {division.name} services{division.slug === "mechanical" ? " · Commercial" : ""}
                     </div>
@@ -79,7 +79,7 @@ export function DivisionHeader({ divisionSlug }: { divisionSlug: string }) {
                     </div>
                   </div>
                   {division.slug === "mechanical" && (
-                    <div className="w-[250px] shrink-0 border-l hairline bg-brand-500/[0.04] p-7 flex flex-col">
+                    <div className="col-span-1 border-l hairline bg-brand-500/[0.04] p-7 flex flex-col">
                       <div className="eyebrow mb-4">Residential</div>
                       <div className="flex-1">
                         {residentialServices.map((s) => (
@@ -171,7 +171,9 @@ export function DivisionHeader({ divisionSlug }: { divisionSlug: string }) {
           <div className="lg:hidden border-t hairline bg-cream-50">
             <div className="container-x py-6 space-y-5">
               <div>
-                <div className="eyebrow mb-2">Services</div>
+                <div className="eyebrow mb-2">
+                  {division.slug === "mechanical" ? "Commercial services" : "Services"}
+                </div>
                 <div className="space-y-1">
                   {topLevelServices(division).map((s) => (
                     <Link
@@ -185,6 +187,29 @@ export function DivisionHeader({ divisionSlug }: { divisionSlug: string }) {
                   ))}
                 </div>
               </div>
+              {division.slug === "mechanical" && (
+                <div className="border-t hairline pt-4">
+                  <Link
+                    href="/residential"
+                    onClick={() => setMobileOpen(false)}
+                    className="block text-lg font-semibold text-ink-800"
+                  >
+                    Residential services
+                  </Link>
+                  <div className="mt-2 space-y-1">
+                    {residentialServices.map((s) => (
+                      <Link
+                        key={s.slug}
+                        href={`/residential/${s.slug}`}
+                        onClick={() => setMobileOpen(false)}
+                        className="block text-sm text-ink-700 py-1"
+                      >
+                        {s.name}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
               <div className="border-t hairline pt-4 space-y-2">
                 <Link href="/service-areas" onClick={() => setMobileOpen(false)} className="block font-medium">Service Areas</Link>
                 <Link href="/property-managers" onClick={() => setMobileOpen(false)} className="block font-medium">Property Managers</Link>
