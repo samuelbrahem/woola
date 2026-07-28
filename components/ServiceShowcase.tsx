@@ -9,7 +9,7 @@ import { getDivision, topLevelServices } from "@/lib/divisions";
 type Visual = { src: string; alt: string; contain?: boolean };
 
 /** Every service gets its own dedicated visual; no shared fallbacks. */
-const VISUALS: Record<string, Visual> = {
+export const VISUALS: Record<string, Visual> = {
   hvac: { src: "/primers/hvac.jpg", alt: "Ductless mini-split indoor head" },
   plumbing: { src: "/primers/plumbing.jpg", alt: "Wall-hung tankless water heaters" },
   drainage: { src: "/equipment-renders/drain-auger.webp", alt: "Drain cleaning machine", contain: true },
