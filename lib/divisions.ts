@@ -219,7 +219,7 @@ export const divisions: Division[] = [
     slug: "mechanical",
     name: "Woola Mechanical",
     subtitle: "HVAC, Plumbing & Gas",
-    homepageChips: ["HVAC", "Plumbing", "Gas Services", "Refrigeration", "Commercial", "Residential"],
+    homepageChips: ["HVAC", "Plumbing", "Drainage", "Gas Services", "Refrigeration", "Preventative Maintenance"],
     tagline: "Engineered comfort. Verified reliability.",
     description:
       "Full-spectrum mechanical services for strata, commercial and high-end residential properties, from heat-pump retrofits to industrial refrigeration.",
