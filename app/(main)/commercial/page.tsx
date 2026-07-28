@@ -9,7 +9,6 @@ import { DivisionCard } from "@/components/DivisionCard";
 import { IndustryExplorer } from "@/components/IndustryExplorer";
 import {
   ArrowRight,
-  Check,
   FileText,
   Clock,
   ShieldCheck,
@@ -131,32 +130,6 @@ export default function CommercialPage() {
           </div>
         </div>
       </section>
-
-      <Section>
-        <SectionHead
-          eyebrow="Coverage"
-          title="Every division, on commercial terms."
-          description="Maintenance contracts, capital projects, and compliance testing from all four divisions, coordinated by one dispatcher."
-        />
-        <div className="mt-10 grid md:grid-cols-2 lg:grid-cols-4 gap-5">
-          {divisions.map((d) => (
-            <Link key={d.slug} href={`/${d.slug}`} className="card p-6 group bg-white">
-              <div className="eyebrow">{d.subtitle}</div>
-              <div className="mt-2 font-semibold text-ink-800 group-hover:text-brand-500 transition">
-                {d.name}
-              </div>
-              <ul className="mt-4 space-y-2">
-                {d.services.slice(0, 3).map((s) => (
-                  <li key={s.slug} className="flex items-start gap-2 text-xs text-ink-600">
-                    <Check className="w-3.5 h-3.5 mt-0.5 text-brand-500 shrink-0" />
-                    {s.name}
-                  </li>
-                ))}
-              </ul>
-            </Link>
-          ))}
-        </div>
-      </Section>
 
       <FleetStrip />
 
