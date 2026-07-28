@@ -34,17 +34,35 @@ export default function FleetPage() {
         <div className="container-x pt-10 pb-4">
           <div className="relative aspect-[16/7] rounded-md overflow-hidden">
             <Image
-              src="/brand/field-generator-delivery.webp"
-              alt="Woola technician receiving a standby generator delivery in the field"
+              src="/field/10-25-2024-mattmatt-11.jpg"
+              alt="Woola Mechanical van driving through a commercial district"
               fill
               priority
               sizes="100vw"
               className="object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-ink-900/60 via-transparent to-transparent" />
-            <p className="absolute bottom-4 left-5 right-5 text-sm text-cream-100/90">
-              Woola crews, Woola trucks, Woola shirts. If it doesn&apos;t carry the mark, it isn&apos;t us.
-            </p>
+          </div>
+          <div className="mt-4 grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[
+              { src: "/field/vehicle-22.jpg", alt: "Rear of a Woola van with roof ladder racks" },
+              { src: "/field/11-15-2024-paddy-riley-16.jpg", alt: "Technician at the van before a service call" },
+              { src: "/field/10-25-2024-mattmatt-7.jpg", alt: "Technician loading a ladder onto a Woola van" },
+              { src: "/field/10-25-2024-mattmatt-10.jpg", alt: "Technician securing equipment on the van roof" },
+              { src: "/field/12-03-2024-surrey-prep-22.jpg", alt: "Technician loading tools into the van" },
+              { src: "/field/01-08-2025-surrey-mech-37.jpg", alt: "Woola Mechanical crew in a mechanical room" },
+              { src: "/field/10-25-2024-mattmatt-32.jpg", alt: "Two Woola crew members overlooking the city" },
+              { src: "/field/10-25-2024-mattmatt-22.jpg", alt: "Woola technician reviewing a work order" },
+            ].map((p) => (
+              <div key={p.src} className="relative aspect-[4/3] rounded-md overflow-hidden">
+                <Image
+                  src={p.src}
+                  alt={p.alt}
+                  fill
+                  sizes="(min-width: 768px) 22vw, 45vw"
+                  className="object-cover"
+                />
+              </div>
+            ))}
           </div>
         </div>
       </section>
