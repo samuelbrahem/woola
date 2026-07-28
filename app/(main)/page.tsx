@@ -9,7 +9,6 @@ import { ServiceMap } from "@/components/ServiceMap";
 import { Testimonials } from "@/components/Testimonials";
 import { CTABanner } from "@/components/CTABanner";
 import { BuildingXray } from "@/components/BuildingXray";
-import { IndustryExplorer } from "@/components/IndustryExplorer";
 import { cities } from "@/lib/cities";
 import Image from "next/image";
 import { site } from "@/lib/site";
@@ -77,21 +76,6 @@ export default function HomePage() {
           <Stats />
         </div>
       </Section>
-
-      <section className="bg-ink-900 text-cream-50 relative overflow-hidden">
-        <div className="grain" />
-        <div className="container-x section relative">
-          <SectionHead
-            eyebrow="Industries"
-            title="Built for your building."
-            description="Hover the index. Every building type runs on different pressures; we run programs for each."
-            dark
-          />
-          <div className="mt-12">
-            <IndustryExplorer />
-          </div>
-        </div>
-      </section>
 
       <Section>
         <SectionHead

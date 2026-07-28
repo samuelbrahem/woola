@@ -6,6 +6,7 @@ import { FleetStrip } from "@/components/FleetStrip";
 import { PhotoPlaceholder } from "@/components/PhotoPlaceholder";
 import { divisions } from "@/lib/divisions";
 import { DivisionCard } from "@/components/DivisionCard";
+import { IndustryExplorer } from "@/components/IndustryExplorer";
 import {
   ArrowRight,
   Check,
@@ -210,6 +211,21 @@ export default function CommercialPage() {
           ))}
         </div>
       </Section>
+
+      <section className="bg-ink-900 text-cream-50 relative overflow-hidden">
+        <div className="grain" />
+        <div className="container-x section relative">
+          <SectionHead
+            eyebrow="Industries"
+            title="Built for your building."
+            description="Hover the index. Every building type runs on different pressures; we run programs for each."
+            dark
+          />
+          <div className="mt-12">
+            <IndustryExplorer />
+          </div>
+        </div>
+      </section>
 
       <Section>
         <SectionHead

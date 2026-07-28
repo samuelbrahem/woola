@@ -3,7 +3,11 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { industries } from "@/lib/industries";
+import { industries as allIndustries } from "@/lib/industries";
+
+// Residential has its own experience at /residential; the explorer is a
+// commercial index.
+const industries = allIndustries.filter((i) => i.slug !== "residential");
 import { ArrowRight, Check } from "lucide-react";
 
 export function IndustryExplorer() {
