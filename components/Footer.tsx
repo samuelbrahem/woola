@@ -16,7 +16,6 @@ const quickLinks = [
   { label: "About", href: "/about" },
   { label: "Property Managers", href: "/property-managers" },
   { label: "Projects", href: "/work" },
-  { label: "Learning Hub", href: "/learn" },
   { label: "Equipment Library", href: "/equipment" },
   { label: "Second Opinion", href: "/second-opinion" },
   { label: "Careers", href: "/careers" },

@@ -5,7 +5,7 @@ import { divisions, getService, lowerName } from "@/lib/divisions";
 import { Section, SectionHead } from "@/components/Section";
 import { CTABanner } from "@/components/CTABanner";
 import { SecondOpinionCTA } from "@/components/SecondOpinionCTA";
-import { ArrowRight, Check, Phone, BookOpen } from "lucide-react";
+import { ArrowRight, Check, Phone } from "lucide-react";
 import type { Metadata } from "next";
 import { cities } from "@/lib/cities";
 import { equipmentLibrary } from "@/lib/equipment-library";
@@ -498,26 +498,6 @@ export default function ServicePage({ params }: { params: Params }) {
       </Section>
 
 
-      {service.primer && (
-        <section className="bg-cream-100 border-y hairline">
-          <div className="container-x py-10 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-            <div className="flex items-center gap-3">
-              <BookOpen className="w-5 h-5 text-brand-500" strokeWidth={1.75} />
-              <p className="text-sm text-ink-600">
-                New to {lowerName(service.name)}? Read the plain-English primer and glossary in the Learning Hub.
-              </p>
-            </div>
-            <div className="flex gap-4">
-              <Link href={`/learn/${division.slug}/${service.slug}`} className="text-sm font-medium text-brand-500 hover:underline whitespace-nowrap">
-                Primer & glossary →
-              </Link>
-              <Link href="/equipment" className="text-sm font-medium text-brand-500 hover:underline whitespace-nowrap">
-                Equipment library →
-              </Link>
-            </div>
-          </div>
-        </section>
-      )}
 
       <CTABanner
         title={`Book ${lowerName(service.name)} with Woola.`}

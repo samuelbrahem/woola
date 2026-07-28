@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { divisions, primerServices } from "@/lib/divisions";
+import { divisions } from "@/lib/divisions";
 import { cities } from "@/lib/cities";
 import { residentialServices } from "@/lib/residential";
 import { posts } from "@/lib/posts";
@@ -23,7 +23,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/contact",
     "/equipment",
     "/know-your-building",
-    "/learn",
     "/portal",
     "/process",
     "/property-managers",
@@ -40,9 +39,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const residentialPaths = residentialServices.map((s) => `/residential/${s.slug}`);
   const cityPaths = cities.map((c) => `/service-areas/${c.slug}`);
   const postPaths = posts.map((p) => `/blog/${p.slug}`);
-  const learnPaths = divisions.flatMap((d) =>
-    primerServices(d).map((s) => `/learn/${d.slug}/${s.slug}`)
-  );
   const equipmentPaths = equipmentLibrary.map((e) => `/equipment/${e.slug}`);
   const industryPaths = industries.map((i) => `/industries/${i.slug}`);
 
@@ -53,7 +49,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...residentialPaths,
     ...cityPaths,
     ...postPaths,
-    ...learnPaths,
     ...equipmentPaths,
     ...industryPaths,
   ];

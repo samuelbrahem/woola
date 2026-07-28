@@ -27,7 +27,6 @@ export const companyLinks: [string, string, string][] = [
   ["Our Process", "/process", "Four steps, every job"],
   ["Why Woola", "/competitors", "How we compare"],
   ["Know Your Building", "/know-your-building", "Asset inventory & capital planning"],
-  ["Learning Hub", "/learn", "Plain-English building primers"],
   ["Equipment Library", "/equipment", "What the machines in your building do"],
   ["Field Notes", "/blog", "Rebates, compliance, and stories from the field"],
   ["Careers", "/careers", "Join the roster"],
@@ -289,7 +288,6 @@ export function Header() {
               <Link href="/commercial" onClick={() => setMobileOpen(false)} className="block font-medium">Commercial</Link>
               <Link href="/residential" onClick={() => setMobileOpen(false)} className="block font-medium">Residential</Link>
               <Link href="/know-your-building" onClick={() => setMobileOpen(false)} className="block font-medium">Know Your Building</Link>
-              <Link href="/learn" onClick={() => setMobileOpen(false)} className="block font-medium">Learning Hub</Link>
               <Link href="/equipment" onClick={() => setMobileOpen(false)} className="block font-medium">Equipment Library</Link>
               <Link href="/blog" onClick={() => setMobileOpen(false)} className="block font-medium">Field Notes</Link>
               <Link href="/work" onClick={() => setMobileOpen(false)} className="block font-medium">Featured Work</Link>
