@@ -1,30 +1,106 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { divisions } from "@/lib/divisions";
 import { site } from "@/lib/site";
 import { Phone, Mail, MapPin, Clock, CheckCircle2, CalendarCheck, Handshake, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 
+const LINES = [
+  { key: "hq", label: "All of Woola", phone: site.phone },
+  ...divisions.map((d) => ({
+    key: d.slug,
+    label: d.name.replace("Woola ", ""),
+    phone: d.contactPhone,
+  })),
+];
+
+/** Live-ish dispatch status from Vancouver local time (Mon-Fri, 7:00-17:00). */
+function useDispatchOpen() {
+  const [open, setOpen] = useState<boolean | null>(null);
+  useEffect(() => {
+    const compute = () => {
+      const parts = new Intl.DateTimeFormat("en-CA", {
+        timeZone: "America/Vancouver",
+        hour: "numeric",
+        hour12: false,
+        weekday: "short",
+      }).formatToParts(new Date());
+      const hour = Number(parts.find((p) => p.type === "hour")?.value ?? 0);
+      const day = parts.find((p) => p.type === "weekday")?.value ?? "";
+      setOpen(!["Sat", "Sun"].includes(day) && hour >= 7 && hour < 17);
+    };
+    compute();
+    const t = setInterval(compute, 60_000);
+    return () => clearInterval(t);
+  }, []);
+  return open;
+}
+
 export default function ContactClient() {
   const [submitted, setSubmitted] = useState(false);
+  const [line, setLine] = useState(0);
+  const open = useDispatchOpen();
+  const current = LINES[line];
 
   return (
     <>
       <section className="bg-ink-900 text-cream-50 relative overflow-hidden">
         <div aria-hidden className="aurora -z-0" />
         <div className="container-x pt-20 pb-16 relative">
-          <div className="eyebrow !text-brand-400">Contact</div>
+          <div className="flex items-center gap-4 flex-wrap">
+            <div className="eyebrow !text-brand-400">Contact</div>
+            {open !== null && (
+              <span className="inline-flex items-center gap-2 text-xs font-medium uppercase tracking-wider">
+                <span className="relative flex w-2.5 h-2.5">
+                  <span
+                    className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-60 ${
+                      open ? "bg-green-400" : "bg-amber-400"
+                    }`}
+                  />
+                  <span
+                    className={`relative inline-flex rounded-full w-2.5 h-2.5 ${
+                      open ? "bg-green-400" : "bg-amber-400"
+                    }`}
+                  />
+                </span>
+                <span className={open ? "text-green-300" : "text-amber-300"}>
+                  {open ? "Dispatch is answering now" : "After hours · contracted clients still get through"}
+                </span>
+              </span>
+            )}
+          </div>
           <h1 className="mt-3 text-4xl md:text-5xl font-semibold text-cream-50 leading-tight">
             Talk to dispatch.
           </h1>
+          <div className="mt-6 flex flex-wrap gap-2">
+            {LINES.map((l, i) => (
+              <button
+                key={l.key}
+                type="button"
+                onClick={() => setLine(i)}
+                onMouseEnter={() => setLine(i)}
+                className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition border ${
+                  i === line
+                    ? "bg-brand-500 border-brand-500 text-cream-50"
+                    : "border-cream-50/25 text-cream-100/75 hover:border-cream-50/60 hover:text-cream-50"
+                }`}
+              >
+                {l.label}
+              </button>
+            ))}
+          </div>
           <a
-            href={`tel:${site.phone}`}
-            className="mt-6 block text-[13vw] md:text-8xl lg:text-9xl font-bold tracking-tight leading-none text-cream-50 hover:text-brand-400 transition-colors tabular-nums"
+            key={current.key}
+            href={`tel:${current.phone}`}
+            className="mt-5 block text-[13vw] md:text-8xl lg:text-9xl font-bold tracking-tight leading-none text-cream-50 hover:text-brand-400 transition-colors tabular-nums animate-[intro-in_0.35s_ease-out]"
           >
-            {site.phone}
+            {current.phone}
           </a>
-          <div aria-hidden className="mt-8 h-0.5 w-[min(420px,70vw)] bg-brand-500" />
+          <div className="mt-2 text-sm text-cream-100/60">
+            {current.key === "hq" ? "Rings the coordination office in Coquitlam." : `Rings ${current.label} dispatch directly.`}
+          </div>
+          <div aria-hidden className="mt-7 h-0.5 w-[min(420px,70vw)] bg-brand-500" />
           <p className="mt-6 text-lg text-cream-100/80 max-w-2xl">
             Dispatch answers live, Monday to Friday, 7 to 5. Contracted clients reach the
             same line 24/7. Prefer a callback? Thirty seconds of form below.
