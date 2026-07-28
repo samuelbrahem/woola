@@ -70,12 +70,6 @@ export default function CommercialPage() {
                 Request a walk-through
               </Link>
             </div>
-            <div className="mt-4 text-sm text-cream-100/60">
-              Here for your home?{" "}
-              <Link href="/residential" className="text-brand-400 hover:underline">
-                Woola Residential →
-              </Link>
-            </div>
           </div>
           <PhotoPlaceholder label="Commercial building exterior" dark className="aspect-[4/3]" />
           </div>
