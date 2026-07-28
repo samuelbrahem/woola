@@ -57,6 +57,45 @@ export default function HomePage() {
         </div>
       </div>
 
+      <section className="bg-cream-50 border-b hairline">
+        <div className="container-x section">
+          <div className="grid lg:grid-cols-12 gap-10 lg:gap-16">
+            <div className="lg:col-span-5">
+              <div className="eyebrow">Who we are</div>
+              <h2 className="mt-3 text-3xl md:text-4xl lg:text-5xl font-semibold text-ink-800 leading-tight">
+                Built to be the last contractor you hire.
+              </h2>
+              <Link href="/about" className="btn btn-outline mt-8">
+                About Woola <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+            <div className="lg:col-span-7 space-y-5 text-ink-600 leading-relaxed">
+              <p className="text-lg text-ink-700">
+                Woola is a Coquitlam-based building services group with four divisions under
+                one roof: Mechanical, Power, Electrical, and Build. One dispatcher coordinates
+                all of it, one PO covers it, and one team carries the accountability most
+                buildings spread across a dozen vendors.
+              </p>
+              <p>
+                The trades are ours. Red Seal, gas-ticketed, and FSR-certified technicians on
+                a shared roster, not a rotating cast of subcontractors, backed by a
+                documentation habit that treats every visit as part of your building's
+                permanent record: photos, asset histories, and the condition data that makes
+                capital planning honest.
+              </p>
+              <p>
+                From strata towers and commercial portfolios to the house you come home to,
+                the promise on the side of our vans is the standard we hire, train, and
+                dispatch against. Out work. Out perform. Out play.
+              </p>
+            </div>
+          </div>
+          <div className="mt-14 pt-10 border-t hairline">
+            <Stats />
+          </div>
+        </div>
+      </section>
+
       <AudienceSplit />
 
       <Section>
@@ -71,9 +110,6 @@ export default function HomePage() {
         />
         <div className="mt-12">
           <DivisionExplorer />
-        </div>
-        <div className="mt-14">
-          <Stats />
         </div>
       </Section>
 
