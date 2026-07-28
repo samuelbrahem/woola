@@ -3,7 +3,8 @@ import Link from "next/link";
 import { Section, SectionHead } from "@/components/Section";
 import { CTABanner } from "@/components/CTABanner";
 import { FleetStrip } from "@/components/FleetStrip";
-import { PhotoPlaceholder } from "@/components/PhotoPlaceholder";
+import { CircuitField } from "@/components/CircuitField";
+import { CountUp } from "@/components/CountUp";
 import { site } from "@/lib/site";
 import {
   ArrowRight,
@@ -82,19 +83,19 @@ export default function PropertyManagersPage() {
     <>
       <section className="bg-ink-900 text-cream-50 relative overflow-hidden">
         <div className="grain" />
+        <CircuitField withVan />
         <div className="container-x pt-20 pb-16 relative">
-          <div className="grid lg:grid-cols-[1fr_400px] gap-10 items-center">
           <div className="max-w-3xl">
-            <div className="eyebrow !text-brand-400">Who we serve · Property Managers</div>
-            <h1 className="mt-3 text-5xl md:text-6xl font-semibold text-cream-50 leading-[0.95]">
+            <div className="rise eyebrow !text-brand-400">Who we serve · Property Managers</div>
+            <h1 className="rise rise-1 mt-3 text-5xl md:text-6xl font-semibold text-cream-50 leading-[0.95]">
               Built for property managers.
             </h1>
-            <p className="mt-5 text-lg text-cream-100/80 leading-relaxed">
+            <p className="rise rise-2 mt-5 text-lg text-cream-100/80 leading-relaxed">
               Fewer service providers. Better visibility. Clearer accountability. Woola brings the
               mission-critical building services under one streamlined partner, built around the way
               you actually manage a portfolio.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="rise rise-3 mt-8 flex flex-wrap gap-3">
               <Link href="/contact" className="btn btn-brand text-base">
                 Send us your building list <ArrowRight className="w-4 h-4" />
               </Link>
@@ -103,7 +104,20 @@ export default function PropertyManagersPage() {
               </a>
             </div>
           </div>
-          <PhotoPlaceholder label="Property manager walk-through" dark className="aspect-[4/3]" />
+          <div className="rise rise-5 mt-14 pt-8 border-t border-ink-700 grid grid-cols-2 md:grid-cols-4 gap-8">
+            {[
+              { value: "120+", label: "Buildings under maintenance" },
+              { value: "< 4 hr", label: "Emergency response, contracted" },
+              { value: "98%", label: "First-visit fix rate" },
+              { value: "24/7", label: "One number, any trade" },
+            ].map((s) => (
+              <div key={s.label}>
+                <div className="text-3xl md:text-4xl font-bold tracking-tight text-cream-50">
+                  <CountUp value={s.value} />
+                </div>
+                <div className="mt-1.5 text-sm text-cream-100/70">{s.label}</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>

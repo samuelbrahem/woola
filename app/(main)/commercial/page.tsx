@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Section, SectionHead } from "@/components/Section";
 import { CTABanner } from "@/components/CTABanner";
 import { FleetStrip } from "@/components/FleetStrip";
-import { PhotoPlaceholder } from "@/components/PhotoPlaceholder";
+import { CircuitField } from "@/components/CircuitField";
 import { divisions } from "@/lib/divisions";
 import { DivisionCard } from "@/components/DivisionCard";
 import { IndustryExplorer } from "@/components/IndustryExplorer";
@@ -50,19 +50,19 @@ export default function CommercialPage() {
     <>
       <section className="bg-ink-900 text-cream-50 relative overflow-hidden">
         <div aria-hidden className="aurora -z-0" />
-        <div className="container-x pt-24 pb-16 relative">
-          <div className="grid lg:grid-cols-[1fr_400px] gap-10 items-center">
+        <CircuitField />
+        <div className="container-x pt-24 pb-20 relative">
           <div className="max-w-3xl">
-            <div className="eyebrow !text-brand-400">Commercial</div>
-            <h1 className="mt-3 text-5xl md:text-6xl font-semibold text-cream-50 leading-[0.98]">
+            <div className="rise eyebrow !text-brand-400">Commercial</div>
+            <h1 className="rise rise-1 mt-3 text-5xl md:text-6xl font-semibold text-cream-50 leading-[0.98]">
               Every kind of commercial. One accountable partner.
             </h1>
-            <p className="mt-5 text-lg text-cream-100/80 max-w-2xl">
+            <p className="rise rise-2 mt-5 text-lg text-cream-100/80 max-w-2xl">
               Strata towers, office buildings, warehouses, restaurants, care facilities,
               and hotels each run differently. Woola runs programs for all of them across
               Metro Vancouver, the Fraser Valley, and the Sea-to-Sky.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="rise rise-3 mt-8 flex flex-wrap gap-3">
               <Link href="/book" className="btn btn-brand">
                 Book a portfolio review <ArrowRight className="w-4 h-4" />
               </Link>
@@ -70,8 +70,6 @@ export default function CommercialPage() {
                 Request a walk-through
               </Link>
             </div>
-          </div>
-          <PhotoPlaceholder label="Commercial building exterior" dark className="aspect-[4/3]" />
           </div>
         </div>
       </section>
