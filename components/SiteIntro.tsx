@@ -16,7 +16,7 @@ const INTRO_VIDEO: string | null = null;
 
 const SESSION_KEY = "woola-intro-seen";
 const HOLD_MS = INTRO_VIDEO ? 3600 : 2200;
-const SWEEP_MS = 700;
+const SWEEP_MS = 1000;
 
 const PROMISE_WORDS = ["OUT WORK.", "OUT PERFORM.", "OUT PLAY."];
 
@@ -38,11 +38,13 @@ export function SiteIntro() {
     document.body.classList.add("intro-hold");
     // Drop the pre-paint cover only after the overlay has painted.
     requestAnimationFrame(() => requestAnimationFrame(clearPending));
-    const hold = setTimeout(() => {
-      setPhase("leaving");
+    const hold = setTimeout(() => setPhase("leaving"), HOLD_MS);
+    // intro-hold stays on until the wipe completes so the header van's
+    // entrance starts only after the intro van has left the screen.
+    const done = setTimeout(() => {
+      setPhase("hidden");
       document.body.classList.remove("intro-hold");
-    }, HOLD_MS);
-    const done = setTimeout(() => setPhase("hidden"), HOLD_MS + SWEEP_MS);
+    }, HOLD_MS + SWEEP_MS);
     return () => {
       clearTimeout(hold);
       clearTimeout(done);
@@ -54,13 +56,15 @@ export function SiteIntro() {
   if (phase === "hidden") return null;
 
   return (
-    <div
-      aria-hidden
-      className={`fixed inset-0 z-[100] bg-ink-900 overflow-hidden transition-transform ease-[cubic-bezier(0.77,0,0.18,1)] ${
-        phase === "leaving" ? "-translate-y-full" : "translate-y-0"
-      }`}
-      style={{ transitionDuration: `${SWEEP_MS}ms` }}
-    >
+    <div aria-hidden className="fixed inset-0 z-[100] overflow-hidden pointer-events-none">
+      <div
+        className="absolute inset-0 bg-ink-900"
+        style={
+          phase === "leaving"
+            ? { animation: `intro-wipe ${SWEEP_MS}ms linear forwards` }
+            : undefined
+        }
+      >
       {INTRO_VIDEO && (
         <video
           className="absolute inset-0 w-full h-full object-cover opacity-60"
@@ -97,6 +101,18 @@ export function SiteIntro() {
           ))}
         </p>
       </div>
+      </div>
+      {phase === "leaving" && (
+        <Image
+          src="/brand/van-side.png"
+          alt=""
+          width={900}
+          height={609}
+          priority
+          className="absolute top-1/2 left-0 h-28 md:h-40 w-auto drop-shadow-2xl"
+          style={{ animation: `intro-drive ${SWEEP_MS}ms linear forwards` }}
+        />
+      )}
     </div>
   );
 }
