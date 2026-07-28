@@ -91,15 +91,15 @@ export default function CommercialPage() {
                 label: "Replace",
                 title: "Equipment at end of life",
                 body: "Boilers, RTUs, chillers, switchgear, roofs. Replacements planned from maintenance history and delivered around occupancy, not emergencies.",
-                href: "/mechanical/retrofits",
-                cta: "Plan a capital project",
+                href: "/know-your-building",
+                cta: "Plan capital renewal",
               },
               {
                 label: "Maintain",
                 title: "Stop the next failure",
                 body: "Fixed-price maintenance contracts across every trade, with condition reports your council or asset manager can actually audit.",
-                href: "/mechanical/preventative-maintenance",
-                cta: "See maintenance programs",
+                href: "/book",
+                cta: "Book a portfolio review",
               },
             ].map((t) => (
               <Link key={t.label} href={t.href} className="card p-7 group flex flex-col">
