@@ -227,9 +227,8 @@ export const divisions: Division[] = [
     contactEmail: "dispatch@woolamech.ca",
     intro:
       "We design, install, service and maintain the systems that keep buildings comfortable and code-compliant. Our technicians are certified across HVAC, hydronics, gas, and refrigeration, so one team handles what most companies split across four.",
-    heroImage:
-      "https://images.unsplash.com/photo-1527738697320-513f6648bc26?w=1400&q=80&auto=format&fit=crop",
-    heroImageAlt: "Aerial view of commercial rooftop HVAC units on a high-rise",
+    heroImage: "/field/01-08-2025-surrey-mech-1.jpg",
+    heroImageAlt: "Woola Mechanical technicians working on copper piping in a mechanical room",
     accent: "from-brand-500/15 via-brand-400/5 to-transparent",
     heroKeywords: ["HVAC", "Plumbing", "Gas", "Refrigeration", "Heat Pumps", "Hydronics"],
     stats: [
@@ -266,27 +265,24 @@ export const divisions: Division[] = [
         tag: "Hydronics retrofit",
         summary:
           "Replaced two atmospheric boilers with high-efficiency condensing units over a single weekend with zero hot-water downtime. CleanBC rebate captured in-house.",
-        image:
-          "https://images.unsplash.com/photo-1563456020159-b74d67e78c26?w=1200&q=80&auto=format&fit=crop",
-        alt: "Commercial mechanical plant room with insulated piping",
+        image: "/field/01-08-2025-surrey-mech-10.jpg",
+        alt: "Woola technician working at a commercial boiler's copper piping",
       },
       {
         title: "Surrey strata heat-pump conversion",
         tag: "Decarbonization",
         summary:
           "184 ductless heat-pump heads across 92 suites, coordinated with the strata, two electrical sub-trades, and FortisBC. Completed three weeks ahead of schedule.",
-        image:
-          "https://images.unsplash.com/photo-1681042803902-f79c240d8f03?w=1200&q=80&auto=format&fit=crop",
-        alt: "Rooftop HVAC heat pump units on a multi-family building",
+        image: "/field/02-26-2025-dan-and-jaydon-14.jpg",
+        alt: "Woola technician brazing at a heat pump condenser",
       },
       {
         title: "Richmond cold-storage refrigeration",
         tag: "Industrial refrigeration",
         summary:
           "Glycol-loop conversion off R-22 to a natural refrigerant solution. EPA-compliant recovery, leak detection, and 24/7 SLA monitoring after commissioning.",
-        image:
-          "https://images.unsplash.com/photo-1592228533283-d78f7c1cf453?w=1200&q=80&auto=format&fit=crop",
-        alt: "Cold-storage warehouse with racked frozen inventory",
+        image: "/field/02-24-2025-dan-new-west-9.jpg",
+        alt: "Overhead grooved glycol piping in an industrial facility",
       },
     ],
     faqs: [

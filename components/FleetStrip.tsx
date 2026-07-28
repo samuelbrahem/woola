@@ -16,14 +16,31 @@ export function FleetStrip() {
             doesn&apos;t carry the Woola mark, it isn&apos;t us.
           </p>
         </div>
-        <div className="mt-10 relative aspect-[21/9] rounded-md overflow-hidden max-w-5xl mx-auto">
-          <Image
-            src="/brand/field-generator-delivery.webp"
-            alt="Woola technician receiving a standby generator delivery in the field"
-            fill
-            sizes="(min-width: 1024px) 80vw, 100vw"
-            className="object-cover"
-          />
+        <div className="mt-10 grid md:grid-cols-3 gap-4 max-w-5xl mx-auto">
+          {[
+            {
+              src: "/field/10-25-2024-mattmatt-11.jpg",
+              alt: "Woola Mechanical van driving through a commercial district",
+            },
+            {
+              src: "/field/11-15-2024-paddy-riley-16.jpg",
+              alt: "Woola technician at the van before a service call",
+            },
+            {
+              src: "/field/10-25-2024-mattmatt-7.jpg",
+              alt: "Technician loading a ladder onto a Woola van",
+            },
+          ].map((p) => (
+            <div key={p.src} className="relative aspect-[4/3] rounded-md overflow-hidden">
+              <Image
+                src={p.src}
+                alt={p.alt}
+                fill
+                sizes="(min-width: 768px) 30vw, 100vw"
+                className="object-cover"
+              />
+            </div>
+          ))}
         </div>
         <div className="mt-6 text-center">
           <Link

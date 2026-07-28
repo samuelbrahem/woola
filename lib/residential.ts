@@ -161,8 +161,8 @@ export const residentialServices: ResidentialService[] = [
   },
   {
     slug: "repairs",
-    image: "/equipment-renders/service-gauges.webp",
-    imageAlt: "Refrigeration manifold gauges beside a multimeter",
+    image: "/field/11-15-2024-paddy-riley-4.jpg",
+    imageAlt: "Woola technician making an exterior repair at a home",
     name: "Repairs",
     navName: "Repairs",
     pageTitle: "Residential Mechanical Repairs",
@@ -179,8 +179,8 @@ export const residentialServices: ResidentialService[] = [
   },
   {
     slug: "installations",
-    image: "/equipment-renders/home-heat-pump.webp",
-    imageAlt: "Cutaway render of a residential heat pump outdoor unit",
+    image: "/field/installations-intro.jpg",
+    imageAlt: "Bank of tankless water heaters installed by Woola",
     name: "Installations & Replacement",
     navName: "Installations",
     pageTitle: "Residential Equipment Installation & Replacement",

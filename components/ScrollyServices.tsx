@@ -52,9 +52,12 @@ const ELEVATION: Record<string, { order: number; level: string }> = {
 
 /** Prefer real photography over studio renders wherever a photo exists. */
 const PHOTO_OVERRIDES: Record<string, { src: string; alt: string }> = {
+  hvac: { src: "/field/07-03-2024-crane-26.jpg", alt: "Rooftop unit being crane-lifted onto a roof" },
+  gas: { src: "/field/01-08-2025-surrey-mech-10.jpg", alt: "Technician at a boiler's copper and gas piping" },
+  plumbing: { src: "/field/01-08-2025-surrey-mech-13.jpg", alt: "Technician working on copper water piping" },
   drainage: { src: "/equipment/plumbing/backflow-preventer.jpg", alt: "Backflow preventer piping" },
-  "preventative-maintenance": { src: "/equipment/maintenance/hvac-filter.webp", alt: "Pleated HVAC filter" },
-  retrofits: { src: "/equipment/hvac/rtus.jpg", alt: "Rooftop units on a commercial roof" },
+  "preventative-maintenance": { src: "/field/11-01-2024-woola-and-dispatch-5.jpg", alt: "Technician servicing a pump motor" },
+  retrofits: { src: "/field/08-07-2024-crane-hotel-1.jpg", alt: "Crane over a high-rise during equipment replacement" },
   "repairs-troubleshooting": { src: "/equipment/generators/batteries.jpg", alt: "Generator starting batteries" },
   "emergency-service": { src: "/equipment/generators/load-bank.jpg", alt: "Portable load bank at a generator" },
   "waterline-repiping": { src: "/primers/plumbing.jpg", alt: "Domestic water piping" },
