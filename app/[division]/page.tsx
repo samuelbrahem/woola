@@ -106,7 +106,7 @@ import { DivisionFAQ } from "@/components/DivisionFAQ";
 import { LogoMarquee } from "@/components/LogoMarquee";
 import { CredentialsReveal } from "@/components/CredentialsReveal";
 import { CountUp } from "@/components/CountUp";
-import { ServiceAccordion } from "@/components/ServiceAccordion";
+import { ServiceShowcase } from "@/components/ServiceShowcase";
 import {
   ArrowRight,
   Phone,
@@ -316,7 +316,7 @@ export default function DivisionPage({ params }: { params: Params }) {
           title={`Every ${division.name.split(" ").slice(1).join(" ").toLowerCase()} service, one dispatcher.`}
           description="Each service ships with its own scope, certifications and reporting, but everything is coordinated and invoiced under a single PO."
         />
-        <ServiceAccordion division={division.slug} />
+        <ServiceShowcase division={division.slug} />
       </Section>
 
       {/* Featured work */}
