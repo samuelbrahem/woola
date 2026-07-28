@@ -159,30 +159,6 @@ export function Header() {
                           </Link>
                         ))}
                       </div>
-                      {d.slug === "mechanical" && (
-                        <div className="mt-2 pt-2 border-t hairline">
-                          <div className="text-[10px] font-semibold uppercase tracking-widest text-ink-400 mb-1">
-                            Residential
-                          </div>
-                          {residentialServices.slice(0, 4).map((s) => (
-                            <Link
-                              key={s.slug}
-                              href={`/residential/${s.slug}`}
-                              onClick={() => setOpen(null)}
-                              className="block py-[5px] text-[13px] leading-snug text-ink-600 hover:text-ink-900 whitespace-nowrap"
-                            >
-                              {s.name}
-                            </Link>
-                          ))}
-                          <Link
-                            href="/residential"
-                            onClick={() => setOpen(null)}
-                            className="block py-[5px] text-[13px] leading-snug font-medium text-brand-500 hover:underline whitespace-nowrap"
-                          >
-                            All residential →
-                          </Link>
-                        </div>
-                      )}
                       <Link
                         href={`/${d.slug}`}
                         onClick={() => setOpen(null)}

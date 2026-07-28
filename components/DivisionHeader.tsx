@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { Menu, X, Phone, ArrowUpRight } from "lucide-react";
 import { divisions, topLevelServices } from "@/lib/divisions";
+import { residentialServices } from "@/lib/residential";
 import { DivisionWordmark } from "./DivisionWordmark";
 import {
   MegaItem,
@@ -52,27 +53,55 @@ export function DivisionHeader({ divisionSlug }: { divisionSlug: string }) {
                 onOpen={() => setOpen(open === "services" ? null : "services")}
                 onClose={() => setOpen(null)}
               >
-                <div className="p-7 w-[640px]">
-                  <div className="eyebrow mb-4">{division.name} services</div>
-                  <div className="grid grid-cols-2 gap-2">
-                    {topLevelServices(division).map((s) => {
-                      const Icon = s.icon;
-                      return (
-                        <Link
-                          key={s.slug}
-                          href={`/${division.slug}/${s.slug}`}
-                          onClick={() => setOpen(null)}
-                          className="mega-link"
-                        >
-                          <Icon className="w-5 h-5 mt-0.5 text-brand-500" strokeWidth={1.5} />
-                          <div>
-                            <div className="text-sm font-medium text-ink-800">{s.name}</div>
-                            <div className="text-xs text-ink-400 mt-0.5">{s.short}</div>
-                          </div>
-                        </Link>
-                      );
-                    })}
+                <div className={division.slug === "mechanical" ? "flex w-[900px]" : "w-[640px]"}>
+                  <div className="p-7 flex-1">
+                    <div className="eyebrow mb-4">
+                      {division.name} services{division.slug === "mechanical" ? " · Commercial" : ""}
+                    </div>
+                    <div className="grid grid-cols-2 gap-2">
+                      {topLevelServices(division).map((s) => {
+                        const Icon = s.icon;
+                        return (
+                          <Link
+                            key={s.slug}
+                            href={`/${division.slug}/${s.slug}`}
+                            onClick={() => setOpen(null)}
+                            className="mega-link"
+                          >
+                            <Icon className="w-5 h-5 mt-0.5 text-brand-500" strokeWidth={1.5} />
+                            <div>
+                              <div className="text-sm font-medium text-ink-800">{s.name}</div>
+                              <div className="text-xs text-ink-400 mt-0.5">{s.short}</div>
+                            </div>
+                          </Link>
+                        );
+                      })}
+                    </div>
                   </div>
+                  {division.slug === "mechanical" && (
+                    <div className="w-[250px] shrink-0 border-l hairline bg-brand-500/[0.04] p-7 flex flex-col">
+                      <div className="eyebrow mb-4">Residential</div>
+                      <div className="flex-1">
+                        {residentialServices.map((s) => (
+                          <Link
+                            key={s.slug}
+                            href={`/residential/${s.slug}`}
+                            onClick={() => setOpen(null)}
+                            className="block py-[4px] text-[13px] leading-snug text-ink-600 hover:text-ink-900 whitespace-nowrap"
+                          >
+                            {s.name}
+                          </Link>
+                        ))}
+                      </div>
+                      <Link
+                        href="/residential"
+                        onClick={() => setOpen(null)}
+                        className="mt-3 pt-2.5 border-t hairline text-xs font-medium text-brand-500 hover:underline whitespace-nowrap"
+                      >
+                        All residential services →
+                      </Link>
+                    </div>
+                  )}
                 </div>
                 <div className="border-t hairline bg-cream-100 px-8 py-4 flex items-center justify-between text-sm">
                   <span className="script text-brand-500 text-xl leading-none">{division.tagline}</span>
