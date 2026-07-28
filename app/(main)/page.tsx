@@ -53,37 +53,55 @@ export default function HomePage() {
           <div className="grid md:grid-cols-2 gap-5">
             <Link
               href="/commercial"
-              className="group relative overflow-hidden rounded-2xl bg-ink-900 text-cream-50 p-8 md:p-10 flex flex-col justify-between min-h-[240px]"
+              className="group relative overflow-hidden rounded-2xl text-cream-50 p-8 md:p-10 flex flex-col justify-between min-h-[320px]"
             >
-              <div>
-                <div className="eyebrow !text-brand-400">For property managers, strata & owners</div>
-                <h2 className="mt-3 text-2xl md:text-3xl font-semibold leading-tight">
+              <Image
+                src="https://images.unsplash.com/photo-1527738697320-513f6648bc26?w=1400&q=80&auto=format&fit=crop"
+                alt="Aerial view of commercial rooftop HVAC units on a high-rise"
+                fill
+                sizes="(min-width: 768px) 50vw, 100vw"
+                className="object-cover transition-transform duration-700 group-hover:scale-[1.05]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink-900/95 via-ink-900/70 to-ink-900/40" />
+              <div className="relative">
+                <div className="eyebrow !text-[color:var(--brand-on-dark)]">
+                  For property managers, strata & owners
+                </div>
+                <h2 className="mt-3 text-3xl md:text-4xl font-semibold leading-tight text-cream-50">
                   Run your buildings with one accountable partner.
                 </h2>
-                <p className="mt-3 text-sm text-cream-100/75 max-w-md leading-relaxed">
+                <p className="mt-3 text-sm text-cream-100/85 max-w-md leading-relaxed">
                   Mechanical, power, electrical, and build under one PO, with the documentation
                   and capital planning your council or ownership group expects.
                 </p>
               </div>
-              <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-brand-400 group-hover:gap-3 transition-all">
+              <span className="relative mt-6 btn btn-brand w-fit">
                 Explore commercial services <ArrowRight className="w-4 h-4" />
               </span>
             </Link>
             <Link
               href="/residential"
-              className="group relative overflow-hidden rounded-2xl border hairline bg-white p-8 md:p-10 flex flex-col justify-between min-h-[240px] hover:border-brand-500/40 hover:shadow-soft transition"
+              className="group relative overflow-hidden rounded-2xl text-cream-50 p-8 md:p-10 flex flex-col justify-between min-h-[320px]"
             >
-              <div>
-                <div className="eyebrow !text-brand-500">For homeowners</div>
-                <h2 className="mt-3 text-2xl md:text-3xl font-semibold leading-tight text-ink-800">
+              <Image
+                src="https://images.unsplash.com/photo-1593941707874-ef25b8b4a92b?w=1400&q=80&auto=format&fit=crop"
+                alt="Electric vehicle charging at a home charging station"
+                fill
+                sizes="(min-width: 768px) 50vw, 100vw"
+                className="object-cover transition-transform duration-700 group-hover:scale-[1.05]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-brand-600/95 via-brand-500/75 to-brand-500/40" />
+              <div className="relative">
+                <div className="eyebrow !text-cream-100/90">For homeowners</div>
+                <h2 className="mt-3 text-3xl md:text-4xl font-semibold leading-tight text-cream-50">
                   Commercial-grade trades, at your house.
                 </h2>
-                <p className="mt-3 text-sm text-ink-500 max-w-md leading-relaxed">
+                <p className="mt-3 text-sm text-cream-100/90 max-w-md leading-relaxed">
                   Heating, cooling, plumbing, hot water, and gas from the licensed technicians
                   we send to hospitals and high-rises. Upfront pricing, honest recommendations.
                 </p>
               </div>
-              <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-brand-500 group-hover:gap-3 transition-all">
+              <span className="relative mt-6 btn bg-cream-50 text-ink-800 hover:bg-white w-fit">
                 Explore residential services <ArrowRight className="w-4 h-4" />
               </span>
             </Link>
