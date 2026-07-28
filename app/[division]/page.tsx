@@ -106,7 +106,7 @@ import { DivisionFAQ } from "@/components/DivisionFAQ";
 import { LogoMarquee } from "@/components/LogoMarquee";
 import { CredentialsReveal } from "@/components/CredentialsReveal";
 import { CountUp } from "@/components/CountUp";
-import { ServiceAccordion } from "@/components/ServiceAccordion";
+import { ScrollyServices } from "@/components/ScrollyServices";
 import {
   ArrowRight,
   Phone,
@@ -309,15 +309,8 @@ export default function DivisionPage({ params }: { params: Params }) {
       </section>
 
       {/* Services */}
-      <Section>
-        <div id="services" />
-        <SectionHead
-          eyebrow="What we do"
-          title={`Every ${division.name.split(" ").slice(1).join(" ").toLowerCase()} service, one dispatcher.`}
-          description="Each service ships with its own scope, certifications and reporting, but everything is coordinated and invoiced under a single PO."
-        />
-        <ServiceAccordion division={division.slug} />
-      </Section>
+      <div id="services" />
+      <ScrollyServices division={division.slug} />
 
       {/* Featured work */}
       <section className="bg-cream-100 border-y hairline">
