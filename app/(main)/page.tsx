@@ -1,14 +1,13 @@
 import Link from "next/link";
 import { HeroCarousel } from "@/components/HeroCarousel";
 import { Section, SectionHead } from "@/components/Section";
-import { DivisionCard } from "@/components/DivisionCard";
+import { DivisionExplorer } from "@/components/DivisionExplorer";
 import { Stats } from "@/components/Stats";
 import { ServiceMap } from "@/components/ServiceMap";
 import { Testimonials } from "@/components/Testimonials";
 import { CTABanner } from "@/components/CTABanner";
 import { BuildingXray } from "@/components/BuildingXray";
 import { IndustryExplorer } from "@/components/IndustryExplorer";
-import { divisions } from "@/lib/divisions";
 import { cities } from "@/lib/cities";
 import Image from "next/image";
 import { site } from "@/lib/site";
@@ -124,16 +123,13 @@ export default function HomePage() {
 
       <Section>
         <SectionHead
-          eyebrow="Commercial divisions"
-          title="Four specialist divisions. One call."
-          description="Every trade your building depends on, self-performed and coordinated by a single dispatcher, so nothing falls between contractors."
+          eyebrow="What we do"
+          title="Every system a building depends on. One team behind all of it."
         />
-        <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {divisions.map((d) => (
-            <DivisionCard key={d.slug} division={d} />
-          ))}
+        <div className="mt-12">
+          <DivisionExplorer />
         </div>
-        <div className="mt-10">
+        <div className="mt-14">
           <Stats />
         </div>
       </Section>
