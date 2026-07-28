@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { HeroCarousel } from "@/components/HeroCarousel";
+import { SiteIntro } from "@/components/SiteIntro";
 import { Section, SectionHead } from "@/components/Section";
 import { DivisionExplorer } from "@/components/DivisionExplorer";
 import { Stats } from "@/components/Stats";
@@ -16,6 +17,7 @@ import { ArrowRight, Building2, Wrench, Zap, MapPin } from "lucide-react";
 export default function HomePage() {
   return (
     <>
+      <SiteIntro />
       <HeroCarousel />
 
       <div className="bg-brand-500 text-white relative overflow-hidden">
