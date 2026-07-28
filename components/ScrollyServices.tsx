@@ -137,7 +137,7 @@ export function ScrollyServices({ division: divisionSlug }: { division: string }
                 <div
                   key={s.slug}
                   aria-hidden={i !== idx}
-                  className={`absolute inset-0 flex flex-col justify-center transition-all duration-600 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                  className={`absolute inset-0 flex flex-col justify-center transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
                     i === idx
                       ? "opacity-100 translate-y-0"
                       : i < idx
