@@ -63,18 +63,18 @@ function RotatingWord() {
  */
 function HeroCircuit() {
   const paths = [
-    "M600 80 H300 V380 H84",
-    "M600 210 H360 V380 H84",
-    "M600 560 H300 V380 H84",
-    "M430 700 V380 H84",
-    "M520 0 V240 H240 V380 H84",
+    "M600 80 H314 Q300 80 300 94 V366 Q300 380 286 380 H84",
+    "M600 210 H374 Q360 210 360 224 V366 Q360 380 346 380 H84",
+    "M600 560 H314 Q300 560 300 546 V394 Q300 380 286 380 H84",
+    "M430 700 V394 Q430 380 416 380 H84",
+    "M520 0 V226 Q520 240 506 240 H254 Q240 240 240 254 V366 Q240 380 226 380 H84",
   ];
   return (
     <svg
       aria-hidden
       viewBox="0 0 600 700"
       preserveAspectRatio="xMaxYMid slice"
-      className="pointer-events-none absolute right-0 inset-y-0 h-full w-[58%] hidden md:block opacity-50"
+      className="pointer-events-none absolute right-0 inset-y-0 h-full w-[58%] hidden md:block opacity-60"
     >
       {paths.map((d, i) => (
         <path
@@ -117,6 +117,31 @@ function HeroCircuit() {
         <animate attributeName="r" values="12;22" dur="2.4s" repeatCount="indefinite" />
         <animate attributeName="opacity" values="0.5;0" dur="2.4s" repeatCount="indefinite" />
       </circle>
+      {/* The fleet, en route: top-down van sprites driving the lines to the node. */}
+      <g className="hero-vans">
+        {[
+          { path: paths[0], dur: "11s", begin: "0.8s" },
+          { path: paths[2], dur: "13s", begin: "4.5s" },
+          { path: paths[4], dur: "15s", begin: "8s" },
+        ].map((v, i) => (
+          <g key={i}>
+            <image
+              href="/brand/van-topdown.png"
+              width="42"
+              height="28.8"
+              x="-21"
+              y="-14.4"
+            />
+            <animateMotion
+              dur={v.dur}
+              begin={v.begin}
+              repeatCount="indefinite"
+              rotate="auto"
+              path={v.path}
+            />
+          </g>
+        ))}
+      </g>
     </svg>
   );
 }

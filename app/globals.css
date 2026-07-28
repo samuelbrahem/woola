@@ -123,6 +123,7 @@ html.intro-pending body::before {
 @media (prefers-reduced-motion: reduce) {
   .hero-trace { animation: none; stroke-dashoffset: 0; }
   .hero-flow { animation: none; }
+  .hero-vans { display: none; }
 }
 
 /* The brand line motif: drawn under the wordmark in the intro, then again
