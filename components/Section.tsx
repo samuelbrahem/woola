@@ -30,7 +30,7 @@ export function SectionHead({
   dark?: boolean;
 }) {
   return (
-    <div className={`max-w-3xl ${align === "center" ? "mx-auto text-center" : ""}`}>
+    <div data-reveal className={`max-w-3xl ${align === "center" ? "mx-auto text-center" : ""}`}>
       {eyebrow && <div className="eyebrow">{eyebrow}</div>}
       <h2 className={`text-3xl md:text-4xl lg:text-5xl font-semibold mt-3 ${dark ? "text-cream-50" : "text-ink-800"}`}>
         {title}

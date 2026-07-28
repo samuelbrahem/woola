@@ -186,17 +186,17 @@ export default function DivisionPage({ params }: { params: Params }) {
           {/* Content */}
           <div className="relative container-x py-20 md:py-28 grid lg:grid-cols-12 gap-10 items-center min-h-[calc(100vh-5rem)]">
             <div className="lg:col-span-7">
-              <div className="eyebrow !text-[color:var(--brand-on-dark)]">Division · {division.subtitle}</div>
-              <h1 className="mt-4 text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-cream-50 leading-[1.05]">
+              <div className="rise eyebrow !text-[color:var(--brand-on-dark)]">Division · {division.subtitle}</div>
+              <h1 className="rise rise-1 mt-4 text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-cream-50 leading-[1.05]">
                 {division.name}
               </h1>
-              <p className="mt-4 script text-[color:var(--brand-on-dark)] text-3xl md:text-4xl leading-none">
+              <p className="rise rise-2 mt-4 script text-[color:var(--brand-on-dark)] text-3xl md:text-4xl leading-none">
                 {division.tagline}
               </p>
-              <p className="mt-6 text-lg text-cream-100/85 max-w-xl leading-relaxed">
+              <p className="rise rise-3 mt-6 text-lg text-cream-100/85 max-w-xl leading-relaxed">
                 {division.intro}
               </p>
-              <div className="mt-9">
+              <div className="rise rise-4 mt-9">
                 <Link href="/contact" className="btn btn-on-dark text-base">
                   Book a property assessment <ArrowRight className="w-4 h-4" />
                 </Link>
@@ -211,7 +211,7 @@ export default function DivisionPage({ params }: { params: Params }) {
 
             {/* Direct dispatch card */}
             <div className="lg:col-span-5">
-              <div className="card p-7 bg-white/95 backdrop-blur-md">
+              <div className="rise rise-4 card p-7 bg-white/95 backdrop-blur-md">
                 <div className="flex items-center gap-2 text-brand-500">
                   <Sparkles className="w-4 h-4" />
                   <div className="eyebrow !text-brand-500">Direct dispatch</div>

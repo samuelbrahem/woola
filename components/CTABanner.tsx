@@ -12,7 +12,7 @@ export function CTABanner({
   return (
     <section className="bg-cream-50 border-t hairline">
       <div className="container-x py-20">
-        <div className="max-w-3xl mx-auto text-center">
+        <div data-reveal className="max-w-3xl mx-auto text-center">
           <div className="eyebrow">{site.promise}</div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold mt-3 text-ink-800">
             {title}

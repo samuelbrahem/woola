@@ -45,7 +45,7 @@ export default function ResidentialServicePage({ params }: { params: Params }) {
     <>
       <section className="relative overflow-hidden bg-ink-800 border-b hairline">
         <div className="relative container-x pt-16 pb-14 md:pt-20 md:pb-16">
-          <div className="text-sm text-cream-100/60">
+          <div className="rise text-sm text-cream-100/60">
             <Link href="/" className="hover:text-cream-50">Woola</Link>
             <span className="mx-1.5">/</span>
             <Link href="/residential" className="hover:text-cream-50">Residential</Link>
@@ -54,20 +54,20 @@ export default function ResidentialServicePage({ params }: { params: Params }) {
           </div>
           <div className="mt-6 grid lg:grid-cols-12 gap-10 items-end">
             <div className="lg:col-span-8">
-              <div className="flex items-center gap-3">
+              <div className="rise rise-1 flex items-center gap-3">
                 <div className="w-11 h-11 rounded-xl bg-brand-500 text-cream-50 flex items-center justify-center">
                   <Icon className="w-5 h-5" strokeWidth={1.5} />
                 </div>
                 <div className="eyebrow !text-brand-400">Woola Residential · {service.short}</div>
               </div>
-              <h1 className="mt-4 text-4xl md:text-5xl font-semibold leading-[0.98] text-cream-50">
+              <h1 className="rise rise-2 mt-4 text-4xl md:text-5xl font-semibold leading-[0.98] text-cream-50">
                 {service.pageTitle}
               </h1>
-              <p className="mt-5 text-lg text-cream-100/85 max-w-2xl leading-relaxed">
+              <p className="rise rise-3 mt-5 text-lg text-cream-100/85 max-w-2xl leading-relaxed">
                 {service.description}
               </p>
             </div>
-            <div className="lg:col-span-4 card p-6">
+            <div className="rise rise-4 lg:col-span-4 card p-6">
               <div className="eyebrow">Talk to us</div>
               <a href={`tel:${site.phone}`} className="btn btn-primary mt-3 w-full justify-center">
                 <Phone className="w-4 h-4" /> Call {site.phone}

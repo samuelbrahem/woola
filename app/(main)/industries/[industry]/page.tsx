@@ -98,14 +98,14 @@ export default function IndustryPage({ params }: { params: Params }) {
         <div className="absolute inset-0 bg-gradient-to-r from-ink-900/90 via-ink-900/60 to-ink-900/30" />
         <div className="relative container-x pt-28 pb-20 md:pt-36 md:pb-28">
           <div className="max-w-2xl">
-            <div className="eyebrow !text-brand-400">Industries · {ind.short}</div>
-            <h1 className="mt-4 text-5xl md:text-6xl font-semibold text-cream-50 leading-[0.95]">
+            <div className="rise eyebrow !text-brand-400">Industries · {ind.short}</div>
+            <h1 className="rise rise-1 mt-4 text-5xl md:text-6xl font-semibold text-cream-50 leading-[0.95]">
               {ind.name}
             </h1>
-            <p className="mt-5 text-lg text-cream-100/85 leading-relaxed max-w-xl">
+            <p className="rise rise-2 mt-5 text-lg text-cream-100/85 leading-relaxed max-w-xl">
               {ind.description}
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="rise rise-3 mt-8 flex flex-wrap gap-3">
               <a href={`tel:${site.phone}`} className="btn btn-brand text-base">
                 <Phone className="w-4 h-4" /> Call Now
               </a>

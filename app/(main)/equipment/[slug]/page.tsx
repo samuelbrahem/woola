@@ -44,12 +44,12 @@ export default function EquipmentPage({ params }: { params: Params }) {
           </div>
           <div className="mt-6 grid lg:grid-cols-12 gap-10 items-center">
             <div className="lg:col-span-6">
-              <div className="eyebrow">{e.category}</div>
-              <h1 className="mt-3 text-4xl md:text-5xl font-semibold text-ink-800 leading-tight">
+              <div className="rise eyebrow">{e.category}</div>
+              <h1 className="rise rise-1 mt-3 text-4xl md:text-5xl font-semibold text-ink-800 leading-tight">
                 What is a {e.name.replace(/ \(.*\)$/, "")}?
               </h1>
-              <p className="mt-5 text-lg text-ink-600 leading-relaxed">{e.what}</p>
-              <div className="mt-7 flex flex-wrap gap-3">
+              <p className="rise rise-2 mt-5 text-lg text-ink-600 leading-relaxed">{e.what}</p>
+              <div className="rise rise-3 mt-7 flex flex-wrap gap-3">
                 <a href={`tel:${site.phone}`} className="btn btn-primary">
                   <Phone className="w-4 h-4" /> Call Now
                 </a>

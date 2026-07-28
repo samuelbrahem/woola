@@ -50,10 +50,10 @@ export default function BlogPost({ params }: { params: Params }) {
               <span className="text-ink-400">·</span>
               <span>{formatDate(post.date)}</span>
             </div>
-            <h1 className="mt-5 text-4xl md:text-5xl lg:text-6xl font-semibold text-ink-800 leading-[1.02]">
+            <h1 className="rise rise-1 mt-5 text-4xl md:text-5xl lg:text-6xl font-semibold text-ink-800 leading-[1.02]">
               {post.title}
             </h1>
-            <p className="mt-5 text-lg text-ink-500 leading-relaxed">{post.excerpt}</p>
+            <p className="rise rise-2 mt-5 text-lg text-ink-500 leading-relaxed">{post.excerpt}</p>
             <div className="mt-6 text-sm text-ink-500">
               {post.author.name} · {post.author.role}
             </div>

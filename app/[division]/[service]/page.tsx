@@ -211,7 +211,7 @@ export default function ServicePage({ params }: { params: Params }) {
         <div className="absolute inset-0 bg-gradient-to-r from-ink-900/90 via-ink-900/70 to-ink-900/40" />
         <div className="absolute inset-0 bg-gradient-to-t from-ink-900/70 via-transparent to-transparent" />
           <div className="relative container-x pt-20 pb-16 md:pt-24 md:pb-20">
-          <div className="text-sm text-cream-100/60">
+          <div className="rise text-sm text-cream-100/60">
             <Link href="/" className="hover:text-cream-50">Woola</Link>
             <span className="mx-1.5">/</span>
             <Link href={`/${division.slug}`} className="hover:text-cream-50">{division.name}</Link>
@@ -220,18 +220,18 @@ export default function ServicePage({ params }: { params: Params }) {
           </div>
           <div className="mt-6 grid lg:grid-cols-12 gap-10 items-end">
             <div className="lg:col-span-8">
-              <div className="flex items-center gap-3">
+              <div className="rise rise-1 flex items-center gap-3">
                 <div className="w-11 h-11 rounded-xl bg-brand-500 text-cream-50 flex items-center justify-center">
                   <Icon className="w-5 h-5" strokeWidth={1.5} />
                 </div>
                 <div className="eyebrow !text-[color:var(--brand-on-dark)]">{division.name} · {service.short}</div>
               </div>
-              <h1 className="mt-4 text-4xl md:text-5xl lg:text-6xl font-semibold leading-[0.98] text-cream-50">
+              <h1 className="rise rise-2 mt-4 text-4xl md:text-5xl lg:text-6xl font-semibold leading-[0.98] text-cream-50">
                 {service.name}
               </h1>
-              <p className="mt-5 text-lg text-cream-100/85 max-w-2xl leading-relaxed">{service.description}</p>
+              <p className="rise rise-3 mt-5 text-lg text-cream-100/85 max-w-2xl leading-relaxed">{service.description}</p>
             </div>
-            <div className="lg:col-span-4 card p-6">
+            <div className="rise rise-4 lg:col-span-4 card p-6">
               <div className="eyebrow">{division.name}</div>
               <a href={`tel:${division.contactPhone}`} className="btn btn-primary mt-3 w-full justify-center">
                 <Phone className="w-4 h-4" /> Call Now

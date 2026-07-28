@@ -13,18 +13,18 @@ export default function ContactClient() {
     <>
       <section className="bg-cream-50 border-b hairline">
         <div className="container-x pt-20 pb-16">
-          <div className="eyebrow">Contact</div>
-          <h1 className="mt-3 text-4xl md:text-5xl font-semibold text-ink-800 leading-tight">
+          <div className="rise eyebrow">Contact</div>
+          <h1 className="rise rise-1 mt-3 text-4xl md:text-5xl font-semibold text-ink-800 leading-tight">
             Talk to dispatch.
           </h1>
           <a
             href={`tel:${site.phone}`}
-            className="mt-6 block text-[13vw] md:text-8xl lg:text-9xl font-bold tracking-tight leading-none text-ink-800 hover:text-brand-500 transition-colors tabular-nums"
+            className="rise rise-2 mt-6 block text-[13vw] md:text-8xl lg:text-9xl font-bold tracking-tight leading-none text-ink-800 hover:text-brand-500 transition-colors tabular-nums"
           >
             {site.phone}
           </a>
-          <div aria-hidden className="mt-8 h-0.5 w-[min(420px,70vw)] bg-brand-500" />
-          <p className="mt-6 text-lg text-ink-500 max-w-2xl">
+          <div aria-hidden className="rise rise-3 mt-8 h-0.5 w-[min(420px,70vw)] bg-brand-500" />
+          <p className="rise rise-4 mt-6 text-lg text-ink-500 max-w-2xl">
             Dispatch answers live, Monday to Friday, 7 to 5. Contracted clients reach the
             same line 24/7. Prefer a callback? Thirty seconds of form below.
           </p>

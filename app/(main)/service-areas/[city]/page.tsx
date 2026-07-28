@@ -50,12 +50,12 @@ export default function CityPage({ params }: { params: Params }) {
           </div>
           <div className="mt-6 grid lg:grid-cols-12 gap-10 items-end">
             <div className="lg:col-span-8">
-              <div className="eyebrow !text-brand-400">{city.region}</div>
-              <h1 className="mt-3 text-5xl md:text-6xl lg:text-7xl font-semibold leading-[0.98] text-cream-50">
+              <div className="rise eyebrow !text-brand-400">{city.region}</div>
+              <h1 className="rise rise-1 mt-3 text-5xl md:text-6xl lg:text-7xl font-semibold leading-[0.98] text-cream-50">
                 Woola in {city.name}.
               </h1>
-              <p className="mt-5 text-lg md:text-xl text-cream-100/80 max-w-2xl leading-relaxed">{city.blurb}</p>
-              <div className="mt-6 flex flex-wrap gap-2 text-xs">
+              <p className="rise rise-2 mt-5 text-lg md:text-xl text-cream-100/80 max-w-2xl leading-relaxed">{city.blurb}</p>
+              <div className="rise rise-3 mt-6 flex flex-wrap gap-2 text-xs">
                 <span className="px-3 py-1 rounded-full bg-ink-800 border border-ink-600 text-cream-100">
                   Pop. {city.population.toLocaleString()}
                 </span>
