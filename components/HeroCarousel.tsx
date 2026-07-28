@@ -72,7 +72,7 @@ function HeroCircuit() {
       aria-hidden
       viewBox="0 0 600 700"
       preserveAspectRatio="xMaxYMid slice"
-      className="pointer-events-none absolute right-0 inset-y-0 h-full w-[58%] hidden md:block opacity-40"
+      className="pointer-events-none absolute right-0 inset-y-0 h-full w-[58%] hidden md:block opacity-60"
     >
       {paths.map((d, i) => (
         <path
@@ -174,7 +174,7 @@ export function HeroCarousel() {
 
             <div className="absolute inset-0 flex items-center">
               <div className="container-x w-full">
-                <div className="max-w-3xl mx-auto text-center">
+                <div className="max-w-3xl">
                   <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1] tracking-tight text-cream-50">
                     {s.id === "main" ? (
                       <>
@@ -192,10 +192,10 @@ export function HeroCarousel() {
                       </>
                     )}
                   </h1>
-                  <p className="mt-6 text-base md:text-lg text-cream-100/90 max-w-xl mx-auto leading-relaxed">
+                  <p className="mt-6 text-base md:text-lg text-cream-100/90 max-w-xl leading-relaxed">
                     {s.sub}
                   </p>
-                  <div className="mt-8 flex flex-wrap justify-center gap-3">
+                  <div className="mt-8 flex flex-wrap gap-3">
                     <Link href={s.cta.href} className="btn btn-brand text-base">
                       {s.cta.label} <ArrowRight className="w-4 h-4" />
                     </Link>
