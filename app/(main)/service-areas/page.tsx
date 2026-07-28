@@ -38,7 +38,7 @@ export default function ServiceAreasPage() {
       </section>
 
       <Section>
-        <ServiceMap />
+        <ServiceMap height={520} />
       </Section>
 
       <section className="bg-cream-100 border-y hairline">

@@ -10,11 +10,11 @@ const GOOGLE_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
 const CoverageMap = dynamic(() => import("./CoverageMap"), {
   ssr: false,
   loading: () => (
-    <div className="rounded-md border hairline bg-cream-100 animate-pulse" style={{ height: 520 }} />
+    <div className="rounded-md border hairline bg-cream-100 animate-pulse" style={{ height: 360 }} />
   ),
 });
 
-export function ServiceMap() {
+export function ServiceMap({ height = 360 }: { height?: number }) {
   return (
     <div className="card p-4 sm:p-6">
       <div className="flex items-end justify-between mb-4 flex-wrap gap-2">
@@ -26,7 +26,7 @@ export function ServiceMap() {
           {cities.length} municipalities · HQ in Coquitlam
         </div>
       </div>
-      {GOOGLE_KEY ? <GoogleCoverageMap height={520} apiKey={GOOGLE_KEY} /> : <CoverageMap height={520} />}
+      {GOOGLE_KEY ? <GoogleCoverageMap height={height} apiKey={GOOGLE_KEY} /> : <CoverageMap height={height} />}
       <div className="mt-3 flex items-center gap-4 text-xs text-ink-500 flex-wrap">
         <span className="flex items-center gap-1.5">
           <span className="w-2.5 h-2.5 rounded-full bg-brand-500 ring-2 ring-brand-500/20" /> Woola HQ
