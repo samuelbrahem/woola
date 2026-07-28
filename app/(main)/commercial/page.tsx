@@ -82,6 +82,45 @@ export default function CommercialPage() {
         </div>
       </section>
 
+      <section className="bg-cream-50 border-b hairline">
+        <div className="container-x py-10 md:py-12">
+          <div className="grid md:grid-cols-3 gap-5">
+            {[
+              {
+                label: "Fix",
+                title: "Something's down",
+                body: "A failed boiler, a dead panel, a generator that won't start, a leak working through three floors. Dispatch triages by phone, day or night.",
+                href: "/contact",
+                cta: "Request service",
+              },
+              {
+                label: "Replace",
+                title: "Equipment at end of life",
+                body: "Boilers, RTUs, chillers, switchgear, roofs. Replacements planned from maintenance history and delivered around occupancy, not emergencies.",
+                href: "/mechanical/retrofits",
+                cta: "Plan a capital project",
+              },
+              {
+                label: "Maintain",
+                title: "Stop the next failure",
+                body: "Fixed-price maintenance contracts across every trade, with condition reports your council or asset manager can actually audit.",
+                href: "/mechanical/preventative-maintenance",
+                cta: "See maintenance programs",
+              },
+            ].map((t) => (
+              <Link key={t.label} href={t.href} className="card p-7 group flex flex-col">
+                <div className="eyebrow !text-brand-500">{t.label}</div>
+                <h2 className="mt-2 text-xl font-semibold text-ink-800">{t.title}</h2>
+                <p className="mt-2 text-sm text-ink-500 leading-relaxed flex-1">{t.body}</p>
+                <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-brand-500 group-hover:gap-2.5 transition-all">
+                  {t.cta} <ArrowRight className="w-4 h-4" />
+                </span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <Section>
         <SectionHead
           eyebrow="Four divisions"
