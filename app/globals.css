@@ -100,6 +100,16 @@ html.intro-pending body::before {
   to { transform: scaleX(1); }
 }
 
+/* Header logo moment: van drives in, hands off to the wordmark. */
+@keyframes van-in {
+  from { transform: translate(-55vw, -50%); }
+  to { transform: translate(0, -50%); }
+}
+@keyframes van-out {
+  from { transform: translate(0, -50%); opacity: 1; }
+  to { transform: translate(30px, -50%); opacity: 0; }
+}
+
 /* Hero life: rotating noun, schematic trace-in, and flowing current. */
 @keyframes hero-word {
   from { opacity: 0; transform: translateY(0.6em); }
