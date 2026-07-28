@@ -1,9 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { Menu, X, ChevronDown, Phone } from "lucide-react";
-import { Logo } from "./Logo";
 import { AudienceSwitch } from "./AudienceSwitch";
 import { divisions, featuredServices, topLevelServices } from "@/lib/divisions";
 import { residentialServices } from "@/lib/residential";
@@ -119,7 +119,16 @@ export function Header() {
     <header className="sticky top-0 z-50 bg-cream-50/85 backdrop-blur border-b hairline">
       <div className="container-x">
         <div className="flex items-center justify-between h-20">
-          <Logo />
+          <Link href="/" className="inline-flex items-center shrink-0" aria-label="Woola home">
+            <Image
+              src="/brand/van-side.png"
+              alt="Woola"
+              width={340}
+              height={230}
+              priority
+              className="h-14 w-auto"
+            />
+          </Link>
 
           <nav className="hidden lg:flex items-center gap-1">
             <MegaItem
