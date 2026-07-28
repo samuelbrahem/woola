@@ -11,16 +11,46 @@ import Image from "next/image";
  * reduced-motion users get the wordmark immediately.
  */
 export function HeaderLogo() {
-  const [phase, setPhase] = useState<"drive" | "swap" | "logo">("drive");
+  const [phase, setPhase] = useState<"wait" | "drive" | "swap" | "logo">("wait");
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       setPhase("logo");
       return;
     }
-    const swap = setTimeout(() => setPhase("swap"), 1700);
-    const done = setTimeout(() => setPhase("logo"), 2250);
+    let started = false;
+    let swap: ReturnType<typeof setTimeout>;
+    let done: ReturnType<typeof setTimeout>;
+    const start = () => {
+      if (started) return;
+      started = true;
+      setPhase("drive");
+      swap = setTimeout(() => setPhase("swap"), 1700);
+      done = setTimeout(() => setPhase("logo"), 2250);
+    };
+    // Wait out the site intro when one is playing this load.
+    const introActive = () =>
+      document.documentElement.classList.contains("intro-pending") ||
+      document.body.classList.contains("intro-hold");
+    let poll: ReturnType<typeof setInterval> | undefined;
+    let failsafe: ReturnType<typeof setTimeout> | undefined;
+    if (!introActive()) {
+      start();
+    } else {
+      poll = setInterval(() => {
+        if (!introActive()) {
+          if (poll) clearInterval(poll);
+          start();
+        }
+      }, 100);
+      failsafe = setTimeout(() => {
+        if (poll) clearInterval(poll);
+        start();
+      }, 7000);
+    }
     return () => {
+      if (poll) clearInterval(poll);
+      if (failsafe) clearTimeout(failsafe);
       clearTimeout(swap);
       clearTimeout(done);
     };
@@ -32,7 +62,7 @@ export function HeaderLogo() {
       aria-label="Woola home"
       className="relative inline-flex items-center shrink-0 h-20 w-[150px]"
     >
-      {phase !== "logo" && (
+      {(phase === "drive" || phase === "swap") && (
         <Image
           src="/brand/van-side.png"
           alt=""
@@ -54,7 +84,7 @@ export function HeaderLogo() {
         height={84}
         priority
         className={`logo-mark transition-opacity duration-500 ${
-          phase === "drive" ? "opacity-0" : "opacity-100"
+          phase === "drive" || phase === "wait" ? "opacity-0" : "opacity-100"
         }`}
       />
     </Link>
