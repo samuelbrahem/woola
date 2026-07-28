@@ -15,8 +15,10 @@ import { site } from "@/lib/site";
 const INTRO_VIDEO: string | null = null;
 
 const SESSION_KEY = "woola-intro-seen";
-const HOLD_MS = INTRO_VIDEO ? 3600 : 1500;
+const HOLD_MS = INTRO_VIDEO ? 3600 : 2200;
 const SWEEP_MS = 700;
+
+const PROMISE_WORDS = ["OUT WORK.", "OUT PERFORM.", "OUT PLAY."];
 
 export function SiteIntro() {
   const [phase, setPhase] = useState<"hidden" | "playing" | "leaving">("hidden");
@@ -26,11 +28,16 @@ export function SiteIntro() {
     if (sessionStorage.getItem(SESSION_KEY)) return;
     sessionStorage.setItem(SESSION_KEY, "1");
     setPhase("playing");
-    const hold = setTimeout(() => setPhase("leaving"), HOLD_MS);
+    document.body.classList.add("intro-hold");
+    const hold = setTimeout(() => {
+      setPhase("leaving");
+      document.body.classList.remove("intro-hold");
+    }, HOLD_MS);
     const done = setTimeout(() => setPhase("hidden"), HOLD_MS + SWEEP_MS);
     return () => {
       clearTimeout(hold);
       clearTimeout(done);
+      document.body.classList.remove("intro-hold");
     };
   }, []);
 
@@ -60,10 +67,20 @@ export function SiteIntro() {
           width={300}
           height={168}
           priority
-          className="w-[220px] md:w-[300px] h-auto animate-[intro-in_0.8s_ease-out_both]"
+          className="w-[220px] md:w-[300px] h-auto animate-[intro-logo_0.9s_cubic-bezier(0.22,1,0.36,1)_both]"
         />
-        <p className="mt-5 text-cream-100/80 text-sm md:text-base tracking-[0.28em] uppercase animate-[intro-in_0.8s_ease-out_0.3s_both]">
-          {site.promise}
+        <p className="mt-6 flex flex-wrap items-baseline justify-center gap-x-4 gap-y-2 text-sm md:text-base uppercase">
+          {PROMISE_WORDS.map((word, i) => (
+            <span
+              key={word}
+              className={`inline-block tracking-[0.28em] animate-[intro-word_0.55s_cubic-bezier(0.22,1,0.36,1)_both] ${
+                i === PROMISE_WORDS.length - 1 ? "text-brand-400 font-semibold" : "text-cream-100/80"
+              }`}
+              style={{ animationDelay: `${0.55 + i * 0.22}s` }}
+            >
+              {word}
+            </span>
+          ))}
         </p>
       </div>
     </div>

@@ -18,7 +18,9 @@ export default function HomePage() {
   return (
     <>
       <SiteIntro />
-      <HeroCarousel />
+      <div className="hero-reveal overflow-hidden">
+        <HeroCarousel />
+      </div>
 
       <div className="bg-brand-500 text-white relative overflow-hidden">
         <div className="container-x py-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4 relative">
