@@ -132,7 +132,7 @@ export function ScrollyServices({ division: divisionSlug }: { division: string }
         >
           <div className="grain" />
           <div className="container-x h-full grid grid-cols-12 gap-10 items-center relative">
-            <div className="col-span-4 relative h-full">
+            <div className="col-span-4 relative h-full pr-6">
               {services.map((s, i) => (
                 <div
                   key={s.slug}
@@ -157,7 +157,7 @@ export function ScrollyServices({ division: divisionSlug }: { division: string }
                   </p>
                   <div className="mt-7">
                     <Link href={`/${division.slug}/${s.slug}`} className="btn btn-on-dark">
-                      Explore {s.name} <ArrowRight className="w-4 h-4" />
+                      Explore service <ArrowRight className="w-4 h-4" />
                     </Link>
                   </div>
                 </div>
@@ -258,7 +258,7 @@ export function ScrollyServices({ division: divisionSlug }: { division: string }
                   href={`/${division.slug}/${s.slug}`}
                   className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[color:var(--brand-on-dark)]"
                 >
-                  Explore {s.name} <ArrowRight className="w-4 h-4" />
+                  Explore service <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
             );
