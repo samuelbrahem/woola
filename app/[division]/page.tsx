@@ -106,7 +106,7 @@ import { DivisionFAQ } from "@/components/DivisionFAQ";
 import { LogoMarquee } from "@/components/LogoMarquee";
 import { CredentialsReveal } from "@/components/CredentialsReveal";
 import { CountUp } from "@/components/CountUp";
-import { ServiceRail } from "@/components/ServiceRail";
+import { DispatchBoard } from "@/components/DispatchBoard";
 import {
   ArrowRight,
   Phone,
@@ -316,7 +316,7 @@ export default function DivisionPage({ params }: { params: Params }) {
           title={`Every ${division.name.split(" ").slice(1).join(" ").toLowerCase()} service, one dispatcher.`}
           description="Each service ships with its own scope, certifications and reporting, but everything is coordinated and invoiced under a single PO."
         />
-        <ServiceRail division={division.slug} />
+        <DispatchBoard division={division.slug} />
       </Section>
 
       {/* Featured work */}
