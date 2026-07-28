@@ -88,19 +88,6 @@ function HeroCircuit() {
           style={{ animationDelay: `${0.3 + i * 0.25}s` }}
         />
       ))}
-      {paths.map((d, i) => (
-        <path
-          key={`f${i}`}
-          d={d}
-          fill="none"
-          stroke="#7FD4DF"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="hero-flow"
-          style={{ animationDelay: `${3 + i * 1.1}s` }}
-        />
-      ))}
       {[
         [600, 80],
         [600, 210],
@@ -117,30 +104,12 @@ function HeroCircuit() {
         <animate attributeName="r" values="12;22" dur="2.4s" repeatCount="indefinite" />
         <animate attributeName="opacity" values="0.5;0" dur="2.4s" repeatCount="indefinite" />
       </circle>
-      {/* The fleet, en route: top-down van sprites driving the lines to the node. */}
+      {/* One van, en route: the fleet sprite driving the longest line to the node. */}
       <g className="hero-vans">
-        {[
-          { path: paths[0], dur: "11s", begin: "0.8s" },
-          { path: paths[2], dur: "13s", begin: "4.5s" },
-          { path: paths[4], dur: "15s", begin: "8s" },
-        ].map((v, i) => (
-          <g key={i}>
-            <image
-              href="/brand/van-topdown.png"
-              width="42"
-              height="28.8"
-              x="-21"
-              y="-14.4"
-            />
-            <animateMotion
-              dur={v.dur}
-              begin={v.begin}
-              repeatCount="indefinite"
-              rotate="auto"
-              path={v.path}
-            />
-          </g>
-        ))}
+        <g>
+          <image href="/brand/van-topdown.png" width="46" height="30.9" x="-23" y="-15.5" />
+          <animateMotion dur="14s" begin="1s" repeatCount="indefinite" rotate="auto" path={paths[4]} />
+        </g>
       </g>
     </svg>
   );
