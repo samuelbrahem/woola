@@ -126,6 +126,11 @@ export default function HomePage() {
       </section>
 
       <Section>
+        <div
+          aria-hidden
+          data-reveal
+          className="edge-line mb-10 ml-[calc(50%-50vw)] w-[calc(50vw-50%+180px)]"
+        />
         <SectionHead
           eyebrow="What we do"
           title="Every system a building depends on. One team behind all of it."

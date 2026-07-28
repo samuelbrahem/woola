@@ -69,6 +69,10 @@ export function SiteIntro() {
           priority
           className="w-[220px] md:w-[300px] h-auto animate-[intro-logo_0.9s_cubic-bezier(0.22,1,0.36,1)_both]"
         />
+        <span
+          aria-hidden
+          className="block mt-6 h-0.5 w-[min(320px,60vw)] bg-brand-500 origin-left animate-[intro-line_0.9s_cubic-bezier(0.22,1,0.36,1)_0.85s_both]"
+        />
         <p className="mt-6 flex flex-wrap items-baseline justify-center gap-x-4 gap-y-2 text-sm md:text-base uppercase">
           {PROMISE_WORDS.map((word, i) => (
             <span
