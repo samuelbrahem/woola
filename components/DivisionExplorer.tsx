@@ -42,8 +42,8 @@ export function DivisionExplorer() {
               />
             </span>
             <span
-              className={`block text-sm text-ink-500 transition-all duration-300 overflow-hidden ${
-                i === active ? "mt-1.5 max-h-6 opacity-100" : "max-h-0 opacity-0"
+              className={`block text-sm text-ink-500 mt-1.5 h-5 transition-opacity duration-300 ${
+                i === active ? "opacity-100" : "opacity-0"
               }`}
             >
               {d.subtitle}
