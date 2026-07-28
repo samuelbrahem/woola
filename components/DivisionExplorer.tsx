@@ -5,18 +5,19 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Phone } from "lucide-react";
 import { divisions, featuredServices } from "@/lib/divisions";
+import { DivisionWordmark } from "./DivisionWordmark";
 
 /**
- * PCL-style division explorer: oversized division index on the left,
- * crossfading visual panel with pitch + CTA on the right.
+ * PCL-style division explorer: wordmark index on the left, large crossfading
+ * preview with the division's white wordmark, pitch, and CTA on the right.
  */
 export function DivisionExplorer() {
   const [active, setActive] = useState(0);
   const current = divisions[active];
 
   return (
-    <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-      <div className="lg:col-span-5">
+    <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
+      <div className="lg:col-span-4 flex flex-col justify-center">
         {divisions.map((d, i) => (
           <button
             key={d.slug}
@@ -24,25 +25,31 @@ export function DivisionExplorer() {
             onMouseEnter={() => setActive(i)}
             onFocus={() => setActive(i)}
             onClick={() => setActive(i)}
-            className="block w-full text-left py-5 border-b hairline group focus:outline-none"
+            className={`w-full text-left py-5 px-4 -mx-4 rounded-xl border-b hairline last:border-b-0 group focus:outline-none transition-colors duration-300 ${
+              i === active ? "bg-cream-100" : "hover:bg-cream-100/50"
+            }`}
             aria-pressed={i === active}
           >
-            <span className="flex items-baseline justify-between gap-4">
+            <span className="flex items-center justify-between gap-4">
               <span
-                className={`text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight transition-colors duration-300 ${
-                  i === active ? "text-ink-800" : "text-ink-300 group-hover:text-ink-500"
+                className={`transition-all duration-300 ${
+                  i === active
+                    ? "opacity-100"
+                    : "opacity-35 grayscale group-hover:opacity-60"
                 }`}
               >
-                {d.name.replace("Woola ", "")}
+                <DivisionWordmark division={d} size="sm" />
               </span>
               <ArrowRight
-                className={`w-6 h-6 shrink-0 transition-all duration-300 ${
-                  i === active ? "text-brand-500 translate-x-0 opacity-100" : "text-ink-300 -translate-x-2 opacity-0"
+                className={`w-5 h-5 shrink-0 transition-all duration-300 ${
+                  i === active
+                    ? "text-brand-500 translate-x-0 opacity-100"
+                    : "text-ink-300 -translate-x-2 opacity-0"
                 }`}
               />
             </span>
             <span
-              className={`block text-sm mt-1 transition-colors duration-300 ${
+              className={`block text-xs mt-2 transition-colors duration-300 ${
                 i === active ? "text-ink-500" : "text-ink-300"
               }`}
             >
@@ -52,38 +59,39 @@ export function DivisionExplorer() {
         ))}
       </div>
 
-      <div className="lg:col-span-7">
-        <div className="relative aspect-[4/3] md:aspect-[16/10] rounded-2xl overflow-hidden bg-ink-900">
+      <div className="lg:col-span-8">
+        <div className="relative rounded-2xl overflow-hidden bg-ink-900 aspect-[4/3] md:aspect-[16/9] lg:aspect-auto lg:h-[520px]">
           {divisions.map((d, i) => (
             <Image
               key={d.slug}
               src={d.heroImage}
               alt={d.heroImageAlt}
               fill
-              sizes="(min-width: 1024px) 55vw, 100vw"
+              sizes="(min-width: 1024px) 62vw, 100vw"
               className={`object-cover transition-opacity duration-500 ${
                 i === active ? "opacity-100" : "opacity-0"
               }`}
               priority={i === 0}
             />
           ))}
-          <div className="absolute inset-0 bg-gradient-to-t from-ink-900/90 via-ink-900/30 to-transparent" />
-          <div className="absolute inset-x-0 bottom-0 p-6 md:p-9 text-cream-50">
-            <p className="max-w-xl text-sm md:text-base text-cream-100/90 leading-relaxed">
+          <div className="absolute inset-0 bg-gradient-to-t from-ink-900/95 via-ink-900/40 to-ink-900/10" />
+          <div className="absolute inset-x-0 bottom-0 p-6 md:p-10 text-cream-50">
+            <DivisionWordmark division={current} size="md" invert />
+            <p className="mt-4 max-w-2xl text-base md:text-lg text-cream-100/90 leading-relaxed">
               {current.description}
             </p>
-            <div className="mt-4 flex flex-wrap gap-2">
+            <div className="mt-5 flex flex-wrap gap-2">
               {featuredServices(current).slice(0, 4).map((s) => (
                 <span
                   key={s.slug}
-                  className="text-[11px] px-2.5 py-1 rounded-full border border-cream-50/25 text-cream-100/90"
+                  className="text-xs px-3 py-1.5 rounded-full border border-cream-50/25 bg-ink-900/30 backdrop-blur-sm text-cream-100/90"
                 >
                   {s.name}
                 </span>
               ))}
             </div>
-            <div className="mt-5 flex flex-wrap items-center gap-4">
-              <Link href={`/${current.slug}`} className="btn btn-brand">
+            <div className="mt-6 flex flex-wrap items-center gap-5">
+              <Link href={`/${current.slug}`} className="btn btn-brand text-base">
                 Explore {current.name.replace("Woola ", "")} <ArrowRight className="w-4 h-4" />
               </Link>
               <a
