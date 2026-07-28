@@ -168,10 +168,10 @@ export default function CommercialPage() {
               Metro Vancouver, the Fraser Valley, and the Sea-to-Sky.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Link href="/book" className="btn btn-primary">
+              <Link href="/book" className="btn btn-brand">
                 Book a portfolio review <ArrowRight className="w-4 h-4" />
               </Link>
-              <Link href="/contact" className="btn btn-ghost">
+              <Link href="/contact" className="btn border border-cream-50/40 text-cream-50 hover:bg-cream-50 hover:text-ink-800">
                 Request a walk-through
               </Link>
             </div>

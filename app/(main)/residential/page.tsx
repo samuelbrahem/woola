@@ -58,10 +58,10 @@ export default function ResidentialPage() {
                 recommendations, upfront pricing, and rebate paperwork done in-house.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
-                <Link href="/contact" className="btn btn-primary">
+                <Link href="/contact" className="btn btn-brand">
                   Request a visit <ArrowRight className="w-4 h-4" />
                 </Link>
-                <a href={`tel:${site.phone}`} className="btn btn-ghost">
+                <a href={`tel:${site.phone}`} className="btn border border-cream-50/40 text-cream-50 hover:bg-cream-50 hover:text-ink-800">
                   Call {site.phone}
                 </a>
               </div>
