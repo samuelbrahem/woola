@@ -45,13 +45,11 @@ function RotatingWord() {
     return () => clearInterval(t);
   }, []);
   return (
-    <span className="inline-block overflow-hidden align-bottom">
-      <span
-        key={ROTATING_WORDS[i]}
-        className="inline-block text-brand-400 animate-[hero-word_0.5s_cubic-bezier(0.22,1,0.36,1)_both]"
-      >
-        {ROTATING_WORDS[i]}
-      </span>
+    <span
+      key={ROTATING_WORDS[i]}
+      className="inline-block text-brand-400 animate-[hero-word_0.5s_cubic-bezier(0.22,1,0.36,1)_both]"
+    >
+      {ROTATING_WORDS[i]}
     </span>
   );
 }
