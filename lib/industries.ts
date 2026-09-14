@@ -125,6 +125,29 @@ export const industries: Industry[] = [
     xrayType: "office",
   },
   {
+    slug: "hospitality",
+    name: "Hospitality & Hotels",
+    short: "Every room is a guest review",
+    image:
+      "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1600&q=80&auto=format&fit=crop",
+    imageAlt: "Hotel exterior at dusk",
+    description:
+      "Domestic hot water that never runs short, suite comfort, commercial kitchens, pool and spa plant, and work windows that respect occupancy.",
+    pressures: [
+      "Comfort complaints become public reviews",
+      "Hot water and kitchen gas can't go down",
+      "Work scheduled around occupancy, not trades",
+    ],
+    systems: [
+      { name: "Boilers & Hot Water", href: "/mechanical/gas" },
+      { name: "HVAC & Suite Comfort", href: "/mechanical/hvac" },
+      { name: "Kitchen Refrigeration", href: "/mechanical/refrigeration" },
+      { name: "Standby Generators", href: "/power/generators" },
+      { name: "Tenant Improvements", href: "/build/construction" },
+    ],
+    xrayType: "office",
+  },
+  {
     slug: "education",
     name: "Education & Institutional",
     short: "Budgets are public, failures are visible",

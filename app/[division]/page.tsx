@@ -3,7 +3,16 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { divisions, getDivision, topLevelServices } from "@/lib/divisions";
 
-type TriageOption = { label: string; title: string; body: string; href: string; cta: string };
+type TriageOption = {
+  label: string;
+  title: string;
+  body: string;
+  href: string;
+  cta: string;
+  /** Field photo behind the card. */
+  image: string;
+  alt: string;
+};
 
 const TRIAGE: Record<string, TriageOption[]> = {
   mechanical: [
@@ -13,6 +22,8 @@ const TRIAGE: Record<string, TriageOption[]> = {
       body: "No heat, a leak, a failed rooftop unit, a backed-up drain. Tell dispatch what's happening.",
       href: "/contact",
       cta: "Request a repair",
+      image: "/field/11-01-2024-woola-and-dispatch-5.jpg",
+      alt: "Woola technician diagnosing a rooftop condenser fan",
     },
     {
       label: "Replace",
@@ -20,6 +31,8 @@ const TRIAGE: Record<string, TriageOption[]> = {
       body: "Boilers, RTUs, chillers, piping. Replace on your schedule, not the equipment's.",
       href: "/mechanical/retrofits",
       cta: "Plan a replacement",
+      image: "/field/07-03-2024-crane-26.jpg",
+      alt: "Crane lifting a replacement rooftop unit",
     },
     {
       label: "Maintain",
@@ -27,6 +40,8 @@ const TRIAGE: Record<string, TriageOption[]> = {
       body: "Scheduled inspections and condition reports across every mechanical system.",
       href: "/mechanical/preventative-maintenance",
       cta: "See maintenance programs",
+      image: "/field/10-25-2024-mattmatt-22.jpg",
+      alt: "Woola technician reviewing a maintenance checklist on site",
     },
   ],
   power: [
@@ -36,6 +51,8 @@ const TRIAGE: Record<string, TriageOption[]> = {
       body: "No-start, alarm fault, failed test, or an outage running long. Get a technician on it.",
       href: "/power/repairs-troubleshooting",
       cta: "Get it diagnosed",
+      image: "/equipment/generators/batteries.jpg",
+      alt: "Generator starting batteries",
     },
     {
       label: "Replace",
@@ -43,6 +60,8 @@ const TRIAGE: Record<string, TriageOption[]> = {
       body: "Replacement, retrofit, or a new installation, managed from concrete pad to commissioning.",
       href: "/power/generators",
       cta: "Scope a replacement",
+      image: "/brand/field-generator-delivery.webp",
+      alt: "Standby generator being delivered to site",
     },
     {
       label: "Maintain",
@@ -50,6 +69,8 @@ const TRIAGE: Record<string, TriageOption[]> = {
       body: "Inspections, C282 testing, fuel care, and reporting that proves readiness.",
       href: "/power/maintenance-inspections",
       cta: "See maintenance programs",
+      image: "/equipment/generators/load-bank.jpg",
+      alt: "Portable load bank at a generator test",
     },
   ],
   electrical: [
@@ -59,6 +80,8 @@ const TRIAGE: Record<string, TriageOption[]> = {
       body: "Tripping breakers, dead circuits, common-area faults. Book a service call.",
       href: "/contact",
       cta: "Request a service call",
+      image: "/equipment/electrical/panelboard.jpg",
+      alt: "Commercial electrical panelboard",
     },
     {
       label: "Upgrade",
@@ -66,6 +89,8 @@ const TRIAGE: Record<string, TriageOption[]> = {
       body: "Panel and service upgrades, EV charging, LED retrofits, tenant fit-outs.",
       href: "/electrical/panel-upgrades",
       cta: "Plan an upgrade",
+      image: "/equipment/ev-chargers/networked-station.jpg",
+      alt: "Networked EV charging station in a parkade",
     },
     {
       label: "Maintain",
@@ -73,6 +98,8 @@ const TRIAGE: Record<string, TriageOption[]> = {
       body: "Inspection programs and infrared scans that find hot spots before they fail.",
       href: "/electrical/infrared-scanning",
       cta: "See inspection options",
+      image: "/equipment/electrical/switchgear.jpg",
+      alt: "Electrical switchgear inspection",
     },
   ],
   build: [
@@ -82,6 +109,8 @@ const TRIAGE: Record<string, TriageOption[]> = {
       body: "Doors, leaks, damage, and the small-jobs list that never shrinks. Same-week dispatch.",
       href: "/build/property-services",
       cta: "Send the list",
+      image: "/equipment/construction/door-hardware.jpg",
+      alt: "Commercial door hardware repair",
     },
     {
       label: "Build",
@@ -89,6 +118,8 @@ const TRIAGE: Record<string, TriageOption[]> = {
       body: "Tenant improvements, amenity rebuilds, and envelope projects with one PM.",
       href: "/build/construction",
       cta: "Start a project",
+      image: "/primers/construction.jpg",
+      alt: "Interior construction in progress",
     },
     {
       label: "Maintain",
@@ -96,12 +127,13 @@ const TRIAGE: Record<string, TriageOption[]> = {
       body: "Quarterly and annual packages covering roof, parkade, common areas, and life safety.",
       href: "/build/maintenance",
       cta: "See maintenance packages",
+      image: "/primers/envelope.jpg",
+      alt: "Building envelope and roof maintenance",
     },
   ],
 };
 import { Section, SectionHead } from "@/components/Section";
 import { CTABanner } from "@/components/CTABanner";
-import { FleetStrip } from "@/components/FleetStrip";
 import { DivisionFAQ } from "@/components/DivisionFAQ";
 import { LogoMarquee } from "@/components/LogoMarquee";
 import { CredentialsReveal } from "@/components/CredentialsReveal";
@@ -113,10 +145,7 @@ import {
   Mail,
   Check,
   Quote,
-  ShieldCheck,
-  Sparkles,
   Building2,
-  Clock,
   MapPin,
   Play,
 } from "lucide-react";
@@ -180,26 +209,40 @@ export default function DivisionPage({ params }: { params: Params }) {
               className="object-cover"
             />
           )}
-          <div className="absolute inset-0 bg-gradient-to-r from-ink-900/90 via-ink-900/70 to-ink-900/30" />
-          <div className="absolute inset-0 bg-gradient-to-t from-ink-900/80 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-ink-900/60" />
+          <div
+            aria-hidden
+            className="absolute inset-0"
+            style={{
+              background:
+                "radial-gradient(ellipse 60% 55% at 50% 45%, rgba(4,4,4,0.7) 0%, rgba(4,4,4,0.3) 55%, rgba(4,4,4,0) 100%)",
+            }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-ink-900/40 via-transparent to-ink-900/90" />
 
           {/* Content */}
-          <div className="relative container-x py-20 md:py-28 grid lg:grid-cols-12 gap-10 items-center min-h-[calc(100vh-5rem)]">
-            <div className="lg:col-span-7">
+          <div className="relative container-x py-20 md:py-28 flex items-center min-h-[calc(100vh-5rem)]">
+            <div className="max-w-3xl mx-auto text-center">
               <div className="rise eyebrow !text-[color:var(--brand-on-dark)]">Division · {division.subtitle}</div>
               <h1 className="rise rise-1 mt-4 text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-cream-50 leading-[1.05]">
                 {division.name}
               </h1>
-              <p className="rise rise-2 mt-4 script text-[color:var(--brand-on-dark)] text-3xl md:text-4xl leading-none">
+              <p className="rise rise-2 mt-4 script text-[color:var(--brand-on-dark)] text-2xl md:text-3xl lg:text-4xl leading-tight">
                 {division.tagline}
               </p>
-              <p className="rise rise-3 mt-6 text-lg text-cream-100/85 max-w-xl leading-relaxed">
+              <p className="rise rise-3 mt-6 text-lg text-cream-100/85 max-w-2xl mx-auto leading-relaxed">
                 {division.intro}
               </p>
-              <div className="rise rise-4 mt-9">
+              <div className="rise rise-4 mt-9 flex flex-wrap justify-center gap-3">
                 <Link href="/contact" className="btn btn-on-dark text-base">
                   Book a property assessment <ArrowRight className="w-4 h-4" />
                 </Link>
+                <a
+                  href={`tel:${division.contactPhone}`}
+                  className="btn text-base border border-cream-50/40 text-cream-50 hover:bg-cream-50 hover:text-ink-800"
+                >
+                  <Phone className="w-4 h-4" /> {division.contactPhone}
+                </a>
               </div>
               <div className="mt-4 text-sm text-cream-100/70">
                 Homeowner?{" "}
@@ -207,56 +250,6 @@ export default function DivisionPage({ params }: { params: Params }) {
                   Visit Woola Residential →
                 </Link>
               </div>
-            </div>
-
-            {/* Direct dispatch card */}
-            <div className="lg:col-span-5">
-              <div className="rise rise-4 card p-7 bg-white/95 backdrop-blur-md">
-                <div className="flex items-center gap-2 text-brand-500">
-                  <Sparkles className="w-4 h-4" />
-                  <div className="eyebrow !text-brand-500">Direct dispatch</div>
-                </div>
-                <div className="mt-3 text-3xl font-bold tracking-tight text-ink-800">
-                  {division.contactPhone}
-                </div>
-                <a
-                  href={`mailto:${division.contactEmail}`}
-                  className="mt-1 inline-flex items-center gap-1.5 text-sm text-ink-500 hover:text-ink-700"
-                >
-                  <Mail className="w-3.5 h-3.5" /> {division.contactEmail}
-                </a>
-                <div className="mt-5 grid grid-cols-2 gap-3">
-                  <a
-                    href={`tel:${division.contactPhone}`}
-                    className="btn btn-primary justify-center"
-                  >
-                    <Phone className="w-4 h-4" /> Call now
-                  </a>
-                  <a
-                    href={`mailto:${division.contactEmail}`}
-                    className="btn btn-ghost justify-center"
-                  >
-                    <Mail className="w-4 h-4" /> Email
-                  </a>
-                </div>
-                <div className="mt-6 pt-6 border-t hairline grid grid-cols-2 gap-4 text-sm">
-                  <div className="flex items-start gap-2">
-                    <Clock className="w-4 h-4 mt-0.5 text-brand-500" />
-                    <div>
-                      <div className="font-medium text-ink-800">Mon–Fri</div>
-                      <div className="text-ink-500 text-xs">7:00 AM – 5:00 PM</div>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-2">
-                    <ShieldCheck className="w-4 h-4 mt-0.5 text-brand-500" />
-                    <div>
-                      <div className="font-medium text-ink-800">24/7 emergency</div>
-                      <div className="text-ink-500 text-xs">Contracted clients</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
             </div>
           </div>
 
@@ -268,19 +261,44 @@ export default function DivisionPage({ params }: { params: Params }) {
         </div>
       </section>
 
-      {/* Fix / Replace / Maintain triage */}
+      {/* Fix / Replace / Maintain triage: photo-backed cards so the three
+          doors into the division carry the field, not just a label. */}
       {(TRIAGE[division.slug] ?? []).length > 0 && (
         <section className="bg-cream-50 border-b hairline">
-          <div className="container-x py-10 md:py-12">
-            <div className="grid md:grid-cols-3 gap-5">
-              {TRIAGE[division.slug].map((t) => (
-                <Link key={t.label} href={t.href} className="card p-7 group flex flex-col">
-                  <div className="eyebrow !text-brand-500">{t.label}</div>
-                  <h2 className="mt-2 text-xl font-semibold text-ink-800">{t.title}</h2>
-                  <p className="mt-2 text-sm text-ink-500 leading-relaxed flex-1">{t.body}</p>
-                  <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-brand-500 group-hover:gap-2.5 transition-all">
-                    {t.cta} <ArrowRight className="w-4 h-4" />
-                  </span>
+          <div className="container-x py-8 md:py-10">
+            <div className="grid md:grid-cols-3 gap-4 md:gap-5">
+              {TRIAGE[division.slug].map((t, i) => (
+                <Link
+                  key={t.label}
+                  href={t.href}
+                  className="group relative overflow-hidden rounded-2xl min-h-[300px] md:min-h-[360px] flex flex-col justify-end text-cream-50 bg-ink-800 ring-1 ring-ink-900/10 shadow-soft"
+                >
+                  <Image
+                    src={t.image}
+                    alt={t.alt}
+                    fill
+                    sizes="(min-width: 768px) 33vw, 100vw"
+                    className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05]"
+                  />
+                  <div
+                    aria-hidden
+                    className="absolute inset-0 bg-gradient-to-t from-ink-900/95 via-ink-900/55 to-ink-900/15"
+                  />
+                  <div className="absolute top-5 left-5 right-5 flex items-center justify-between">
+                    <span className="inline-flex items-center rounded-full bg-cream-50/95 text-ink-800 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em]">
+                      {t.label}
+                    </span>
+                    <span className="font-mono text-xs text-cream-100/70">0{i + 1}</span>
+                  </div>
+                  <div className="relative p-6 md:p-7">
+                    <h2 className="text-2xl md:text-[1.65rem] font-semibold tracking-tight leading-tight text-cream-50">
+                      {t.title}
+                    </h2>
+                    <p className="mt-2 text-sm text-cream-100/80 leading-relaxed max-w-sm">{t.body}</p>
+                    <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-[color:var(--brand-on-dark)] group-hover:gap-2.5 transition-all">
+                      {t.cta} <ArrowRight className="w-4 h-4" />
+                    </span>
+                  </div>
                 </Link>
               ))}
             </div>
@@ -288,10 +306,25 @@ export default function DivisionPage({ params }: { params: Params }) {
         </section>
       )}
 
+      {/* Brands we service: a slim bar high on the page so visitors can spot
+          their own equipment's manufacturer before they scroll. */}
+      <section className="bg-cream-100 border-b hairline">
+        <div id="brands" />
+        <div className="container-x py-4 md:py-5 flex flex-col md:flex-row md:items-center gap-3 md:gap-8">
+          <div className="shrink-0 md:w-56">
+            <div className="eyebrow">Brands we service</div>
+            <p className="mt-1 text-xs text-ink-500">Factory-trained. Not brand-loyal.</p>
+          </div>
+          <div className="flex-1 min-w-0">
+            <LogoMarquee items={division.brands} size="sm" />
+          </div>
+        </div>
+      </section>
+
       {/* Stats band */}
       <section className="bg-ink-800 text-cream-50 relative overflow-hidden">
         <div className="grain" />
-        <div className="container-x py-14 md:py-16 relative">
+        <div className="container-x py-10 md:py-12 relative">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
             {division.stats.map((s) => (
               <div key={s.label}>
@@ -364,26 +397,6 @@ export default function DivisionPage({ params }: { params: Params }) {
                 </div>
               </article>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Brands & equipment */}
-      <section className="bg-cream-50 border-y hairline relative overflow-hidden">
-        <div id="brands" />
-        <div className="container-x section relative">
-          <div className="max-w-2xl mx-auto text-center">
-            <div className="eyebrow">Brands we service</div>
-            <h2 className="mt-3 text-3xl md:text-4xl lg:text-5xl font-semibold text-ink-800">
-              Factory-trained. Not brand-loyal.
-            </h2>
-            <p className="mt-4 text-ink-500">
-              Our techs carry the training and diagnostic tools for the gear that actually shows up
-              in BC buildings. Don&apos;t see yours? Ask.
-            </p>
-          </div>
-          <div className="mt-12">
-            <LogoMarquee items={division.brands} />
           </div>
         </div>
       </section>
@@ -528,8 +541,6 @@ export default function DivisionPage({ params }: { params: Params }) {
           </div>
         </div>
       </section>
-
-      <FleetStrip />
 
       {/* Final CTA */}
       <div id="contact" />

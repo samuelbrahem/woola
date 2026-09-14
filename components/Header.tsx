@@ -9,6 +9,7 @@ import { divisions, featuredServices, topLevelServices } from "@/lib/divisions";
 import { residentialServices } from "@/lib/residential";
 import { cities, citiesByRegion } from "@/lib/cities";
 import { site } from "@/lib/site";
+import { industries } from "@/lib/industries";
 
 const regionOrder = [
   "Vancouver",
@@ -19,19 +20,24 @@ const regionOrder = [
   "Sea-to-Sky",
 ];
 
+/**
+ * "About Us" menu: seven items in two columns (Brett: 7-8 max). Careers has
+ * its own top-level nav item; Fleet & Branding lives under About (subnav);
+ * Second Opinion and the Equipment Library stay reachable from the footer,
+ * Know Your Building, and in-page CTAs.
+ */
 export const companyLinks: [string, string, string][] = [
   ["About Woola", "/about", "The model behind the four divisions"],
-  ["Credentials", "/about/credentials", "Associations and certifications we hold"],
-  ["Fleet & Branding", "/about/fleet", "The vans you keep seeing"],
-  ["Featured Work", "/work", "Recent projects across BC"],
   ["Our Process", "/process", "Four steps, every job"],
+  ["Credentials", "/about/credentials", "Associations and certifications we hold"],
   ["Why Woola", "/competitors", "How we compare"],
+  ["Featured Work", "/work", "Recent projects across BC"],
   ["Know Your Building", "/know-your-building", "Asset inventory & capital planning"],
-  ["Equipment Library", "/equipment", "What the machines in your building do"],
   ["Field Notes", "/blog", "Rebates, compliance, and stories from the field"],
-  ["Careers", "/careers", "Join the roster"],
-  ["Second Opinion", "/second-opinion", "Upload a quote, we'll review it free"],
 ];
+
+/** Sectors shown under "Who We Serve", in the same order on every Woola site. */
+const sectors = industries.filter((i) => i.slug !== "residential");
 
 export function ServiceAreasPanel({ onNavigate }: { onNavigate: () => void }) {
   return (
@@ -73,25 +79,41 @@ export function ServiceAreasPanel({ onNavigate }: { onNavigate: () => void }) {
 
 export function WhoWeServePanel({ onNavigate }: { onNavigate: () => void }) {
   return (
-    <div className="p-4 w-[300px] space-y-1">
-      <Link href="/property-managers" onClick={onNavigate} className="mega-link">
-        <div>
-          <div className="text-sm font-medium text-ink-800">Property Managers</div>
-          <div className="text-xs text-ink-400 mt-0.5">One-source accountability for portfolios</div>
+    <div className="w-[820px] grid grid-cols-5">
+      <div className="col-span-2 p-5 border-r hairline space-y-1">
+        <div className="eyebrow px-4 pt-2 pb-2">Audiences</div>
+        <Link href="/property-managers" onClick={onNavigate} className="mega-link">
+          <div>
+            <div className="text-sm font-medium text-ink-800">Property Managers</div>
+            <div className="text-xs text-ink-400 mt-0.5">One-source accountability for portfolios</div>
+          </div>
+        </Link>
+        <Link href="/commercial" onClick={onNavigate} className="mega-link">
+          <div>
+            <div className="text-sm font-medium text-ink-800">Commercial</div>
+            <div className="text-xs text-ink-400 mt-0.5">Owners, operators, and facility leads</div>
+          </div>
+        </Link>
+        <Link href="/residential" onClick={onNavigate} className="mega-link">
+          <div>
+            <div className="text-sm font-medium text-ink-800">Residential</div>
+            <div className="text-xs text-ink-400 mt-0.5">Homeowners and installs</div>
+          </div>
+        </Link>
+      </div>
+      <div className="col-span-3 p-5">
+        <div className="eyebrow px-4 pt-2 pb-2">Industries</div>
+        <div className="grid grid-cols-2 gap-x-1 gap-y-0.5">
+          {sectors.map((ind) => (
+            <Link key={ind.slug} href={`/industries/${ind.slug}`} onClick={onNavigate} className="mega-link !py-2.5">
+              <div>
+                <div className="text-sm font-medium text-ink-800">{ind.name}</div>
+                <div className="text-xs text-ink-400 mt-0.5">{ind.short}</div>
+              </div>
+            </Link>
+          ))}
         </div>
-      </Link>
-      <Link href="/commercial" onClick={onNavigate} className="mega-link">
-        <div>
-          <div className="text-sm font-medium text-ink-800">Commercial</div>
-          <div className="text-xs text-ink-400 mt-0.5">Strata, office, industrial, retail, healthcare, hospitality</div>
-        </div>
-      </Link>
-      <Link href="/residential" onClick={onNavigate} className="mega-link">
-        <div>
-          <div className="text-sm font-medium text-ink-800">Residential</div>
-          <div className="text-xs text-ink-400 mt-0.5">Homeowners and installs</div>
-        </div>
-      </Link>
+      </div>
     </div>
   );
 }
@@ -202,7 +224,7 @@ export function Header() {
             </MegaItem>
 
             <MegaItem
-              label="Company"
+              label="About Us"
               align="right"
               open={open === "company"}
               onOpen={() => setOpen(open === "company" ? null : "company")}

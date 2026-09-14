@@ -29,6 +29,7 @@ import {
   Droplet,
   KeyRound,
 } from "lucide-react";
+import { cities } from "./cities";
 import type { LucideIcon } from "lucide-react";
 
 export type ServicePrimer = {
@@ -231,11 +232,15 @@ export const divisions: Division[] = [
     heroImageAlt: "Woola Mechanical technicians working on copper piping in a mechanical room",
     accent: "from-brand-500/15 via-brand-400/5 to-transparent",
     heroKeywords: ["HVAC", "Plumbing", "Gas", "Refrigeration", "Heat Pumps", "Hydronics"],
+    // Only figures Woola can stand behind indefinitely: service-model facts and
+    // counts derived from site data (see lib/cities.ts). Headcount, assets under
+    // contract, response-time and first-visit-fix figures come back in here
+    // once Woola supplies audited numbers it is comfortable maintaining.
     stats: [
-      { value: "32", label: "Mechanical technicians", sub: "Red Seal & gas-ticketed" },
-      { value: "< 4 hr", label: "Emergency response", sub: "Contracted clients, Metro Van" },
-      { value: "2,400+", label: "Assets under contract", sub: "Boilers, RTUs, heat pumps" },
-      { value: "98%", label: "First-visit fix rate", sub: "12-month rolling average" },
+      { value: "24/7", label: "Emergency dispatch", sub: "Contracted clients, Metro Vancouver" },
+      { value: `${cities.length}+`, label: "Municipalities served", sub: "Abbotsford to Whistler" },
+      { value: "4", label: "Trades, one team", sub: "HVAC, plumbing, gas, refrigeration" },
+      { value: "1", label: "Point of contact", sub: "Your dispatcher, one text thread" },
     ],
     brands: [
       { name: "Mitsubishi Electric", domain: "mitsubishielectric.com", src: "/brand/logos/mitsubishi-electric.png" },
@@ -556,9 +561,8 @@ export const divisions: Division[] = [
     contactEmail: "service@woolapower.ca",
     intro:
       "Woola Power was built around the most demanding electrical asset in any building: the emergency standby generator. We are factory-authorized service providers for Generac, Kohler, and Cummins, own our own load banks, and dispatch 24/7 across BC.",
-    heroImage:
-      "https://images.unsplash.com/photo-1637296001293-43ec1ac4e5ed?w=1400&q=80&auto=format&fit=crop",
-    heroImageAlt: "Industrial diesel generator engine room",
+    heroImage: "/field/07-28-2026-power-1.jpg",
+    heroImageAlt: "Cummins standby diesel generator in a Woola-serviced generator room",
     accent: "from-ink-800/10 via-brand-500/10 to-transparent",
     heroKeywords: ["Generators", "Standby Power", "Load Bank", "CSA C282", "Transfer Switch", "Fuel Polishing"],
     stats: [
@@ -595,27 +599,24 @@ export const divisions: Division[] = [
         tag: "Generator program",
         summary:
           "Three 750 kW Generac units, CSA C282 annual load-bank testing, ATS overhauls, and a fuel-polishing rotation that's caught two contaminated batches in 18 months.",
-        image:
-          "https://images.unsplash.com/photo-1636867759143-c28c1e909bd3?w=1200&q=80&auto=format&fit=crop",
-        alt: "Containerized standby generators at an industrial power yard",
+        image: "/field/07-28-2026-power-3.jpg",
+        alt: "Woola Power technicians reviewing a generator inspection checklist at the control panel",
       },
       {
         title: "Fraser Valley hospital drill",
         tag: "Load bank testing",
         summary:
           "Full 850 kW resistive load bank test on a Kohler standby with parallel gear. Complete written report to satisfy CSA Z32 and health authority audit within 5 business days.",
-        image:
-          "https://images.unsplash.com/photo-1566417110090-6b15a06ec800?w=1200&q=80&auto=format&fit=crop",
-        alt: "Load bank testing setup at a hospital generator",
+        image: "/field/07-28-2026-power-2.jpg",
+        alt: "Woola Power technician servicing a Kohler standby generator engine",
       },
       {
         title: "Data centre transfer switch",
         tag: "ATS overhaul",
         summary:
           "In-place refurbishment of a 2500A ASCO ATS during a scheduled 4-hour window. New contacts, control board, and a fully documented commissioning packet handed back.",
-        image:
-          "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=1200&q=80&auto=format&fit=crop",
-        alt: "Automatic transfer switch inside an electrical enclosure",
+        image: "/field/07-28-2026-power-4.jpg",
+        alt: "Technician opening a transfer switch enclosure beside the generator",
       },
     ],
     faqs: [
@@ -886,9 +887,8 @@ export const divisions: Division[] = [
     contactEmail: "service@woolaelectrical.ca",
     intro:
       "Woola Electrical is our journeyman-led division for everything downstream of your main disconnect. FSR-certified for permit sign-off, BC Hydro Power Smart Alliance for rebate work, and a CleanBC EV Ready planner for strata charging rollouts.",
-    heroImage:
-      "https://images.unsplash.com/photo-1593941707874-ef25b8b4a92b?w=1400&q=80&auto=format&fit=crop",
-    heroImageAlt: "Electric vehicle charging at a Level 2 charging station",
+    heroImage: "/field/07-23-2026-electrical-4.jpg",
+    heroImageAlt: "Woola electrician working in a multi-unit meter bank room",
     accent: "from-brand-400/15 via-brand-500/5 to-transparent",
     heroKeywords: ["Electrical", "EV Charging", "LED Retrofit", "Low Voltage", "Power Smart", "FSR"],
     stats: [
@@ -934,18 +934,16 @@ export const divisions: Division[] = [
         tag: "Commercial electrical",
         summary:
           "1,200-amp service upgrade, arc-flash and coordination study, infrared thermography baseline, and a roll-forward maintenance plan executed during planned downtime windows.",
-        image:
-          "https://images.unsplash.com/photo-1566417110090-6b15a06ec800?w=1200&q=80&auto=format&fit=crop",
-        alt: "Industrial electrical panel and switchgear",
+        image: "/field/07-23-2026-electrical-3.jpg",
+        alt: "Woola electrician running a thermal imaging camera during an infrared scan",
       },
       {
         title: "Downtown office LED retrofit",
         tag: "Lighting",
         summary:
           "12,000 sq ft LED troffer swap across four floors with Lutron dimming controls. BC Hydro Power Smart rebate captured, 63% reduction in lighting energy, 18-month payback.",
-        image:
-          "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=80&auto=format&fit=crop",
-        alt: "Modern office with LED panel ceiling lighting",
+        image: "/field/08-05-2026-build-4.jpg",
+        alt: "Office ceiling opened up during an LED troffer retrofit",
       },
     ],
     faqs: [
@@ -1175,9 +1173,8 @@ export const divisions: Division[] = [
     contactEmail: "estimates@woolabuild.ca",
     intro:
       "Most property managers juggle a dozen vendors. Woola Build collapses that into one accountable partner, with maintenance packages, envelope work, interior and exterior trades, and construction project management coordinated by an in-house team.",
-    heroImage:
-      "https://images.unsplash.com/photo-1632862378069-4ad0348cea4f?w=1400&q=80&auto=format&fit=crop",
-    heroImageAlt: "Project team reviewing construction plans on site",
+    heroImage: "/field/08-12-2026-build-7.jpg",
+    heroImageAlt: "Crane lifting rooftop equipment over a Woola Build strata project",
     accent: "from-brand-400/10 via-ink-800/5 to-transparent",
     heroKeywords: ["Maintenance", "Envelope", "Renovations", "Property Services", "Roofing", "Construction PM"],
     stats: [
@@ -1214,27 +1211,24 @@ export const divisions: Division[] = [
         tag: "Building envelope",
         summary:
           "Full waterproofing membrane replacement on a two-level parkade (22,000 sq ft), completed in occupied condition over six weekend phases. Zero vehicle relocation required.",
-        image:
-          "https://images.unsplash.com/photo-1619335680796-54f13b88c6ba?w=1200&q=80&auto=format&fit=crop",
-        alt: "Concrete parking garage interior",
+        image: "/field/08-12-2026-build-5.jpg",
+        alt: "Woola crew member rigging a crane pick on a strata roof",
       },
       {
         title: "Yaletown amenity rebuild",
         tag: "Construction",
         summary:
           "Lobby, gym and party room reno for a 180-unit tower. Gold Seal PM, in-house mechanical and electrical coordination, fixed-price proposal honored within 1.8% variance.",
-        image:
-          "https://images.unsplash.com/photo-1668911128139-4db2cc34aa5f?w=1200&q=80&auto=format&fit=crop",
-        alt: "Modern condo lobby interior",
+        image: "/field/08-10-2026-build-1.jpg",
+        alt: "Occupied corridor opened up mid-renovation with ceiling access",
       },
       {
         title: "Coquitlam HQ campus maintenance",
         tag: "Recurring program",
         summary:
           "Quarterly maintenance contract across six buildings: roof, drainage, parkade, life-safety, exterior cleaning, and small carpentry. Single PO, single invoice, single dispatcher.",
-        image:
-          "https://images.unsplash.com/photo-1718152521364-b9655b8a7926?w=1200&q=80&auto=format&fit=crop",
-        alt: "Technician pressure washing a commercial walkway",
+        image: "/field/08-12-2026-build-8.jpg",
+        alt: "Woola Build crew staging material at a strata building",
       },
     ],
     faqs: [

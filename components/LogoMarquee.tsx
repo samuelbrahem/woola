@@ -10,19 +10,27 @@ export type MarqueeItem = {
   src?: string;
 };
 
-function LogoTile({ item, invert }: { item: MarqueeItem; invert: boolean }) {
+type Size = "md" | "sm";
+
+function LogoTile({ item, invert, size }: { item: MarqueeItem; invert: boolean; size: Size }) {
   const [broken, setBroken] = useState(false);
   if (!item.src || broken) return null;
   const filter = invert ? "brightness(0) invert(1)" : undefined;
 
   return (
-    <div className="flex items-center justify-center h-20 w-[160px] shrink-0">
+    <div
+      className={`flex items-center justify-center shrink-0 ${
+        size === "sm" ? "h-12 w-[128px]" : "h-20 w-[160px]"
+      }`}
+    >
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={item.src}
         alt={item.name}
         onError={() => setBroken(true)}
-        className="max-h-16 max-w-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity"
+        className={`max-w-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity ${
+          size === "sm" ? "max-h-9" : "max-h-16"
+        }`}
         style={{ filter }}
         loading="eager"
         decoding="async"
@@ -38,21 +46,24 @@ function LogoTile({ item, invert }: { item: MarqueeItem; invert: boolean }) {
 export function LogoMarquee({
   items,
   invert = false,
+  size = "md",
 }: {
   items: MarqueeItem[];
   invert?: boolean;
+  /** "sm" is the slim in-flow brand bar; "md" the full section marquee. */
+  size?: Size;
 }) {
   return (
     <div className="marquee">
-      <div className="marquee-track py-2">
+      <div className={`marquee-track ${size === "sm" ? "py-0" : "py-2"}`}>
         <div className="marquee-list">
           {items.map((it) => (
-            <LogoTile key={`a-${it.name}`} item={it} invert={invert} />
+            <LogoTile key={`a-${it.name}`} item={it} invert={invert} size={size} />
           ))}
         </div>
         <div className="marquee-list" aria-hidden="true">
           {items.map((it) => (
-            <LogoTile key={`b-${it.name}`} item={it} invert={invert} />
+            <LogoTile key={`b-${it.name}`} item={it} invert={invert} size={size} />
           ))}
         </div>
       </div>

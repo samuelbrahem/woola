@@ -13,7 +13,7 @@ export function DivisionFooter({ division }: { division: Division }) {
         <div className="grid md:grid-cols-12 gap-10 items-start">
           <div className="md:col-span-4">
             <DivisionWordmark division={division} size="md" />
-            <p className="mt-4 script text-brand-500 text-3xl leading-none">
+            <p className="mt-4 script text-brand-500 text-2xl leading-tight">
               {division.tagline}
             </p>
             <p className="mt-4 text-sm text-ink-500 max-w-sm leading-relaxed">

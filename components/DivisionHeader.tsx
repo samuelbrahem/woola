@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Menu, X, Phone, ArrowUpRight } from "lucide-react";
 import { divisions, topLevelServices } from "@/lib/divisions";
 import { residentialServices } from "@/lib/residential";
-import { DivisionWordmark } from "./DivisionWordmark";
+import { DivisionHeaderLogo } from "./DivisionHeaderLogo";
 import {
   MegaItem,
   ServiceAreasPanel,
@@ -42,9 +42,7 @@ export function DivisionHeader({ divisionSlug }: { divisionSlug: string }) {
       <header className="sticky top-0 z-50 bg-cream-50/85 backdrop-blur border-b hairline">
         <div className="container-x">
           <div className="flex items-center justify-between h-20">
-            <Link href={`/${division.slug}`} className="flex items-center shrink-0">
-              <DivisionWordmark division={division} size="sm" />
-            </Link>
+            <DivisionHeaderLogo division={division} />
 
             <nav className="hidden lg:flex items-center gap-1">
               <MegaItem
@@ -53,12 +51,12 @@ export function DivisionHeader({ divisionSlug }: { divisionSlug: string }) {
                 onOpen={() => setOpen(open === "services" ? null : "services")}
                 onClose={() => setOpen(null)}
               >
-                <div className={division.slug === "mechanical" ? "grid grid-cols-3 w-[960px]" : "w-[640px]"}>
-                  <div className={division.slug === "mechanical" ? "col-span-2 p-7" : "p-7"}>
+                <div className={division.slug === "mechanical" ? "grid grid-cols-7 w-[1180px]" : "w-[640px]"}>
+                  <div className={division.slug === "mechanical" ? "col-span-3 p-7 flex flex-col" : "p-7"}>
                     <div className="eyebrow mb-4">
                       {division.name} services{division.slug === "mechanical" ? " · Commercial" : ""}
                     </div>
-                    <div className="grid grid-cols-2 gap-2">
+                    <div className="grid grid-cols-2 gap-x-2 gap-y-0.5 flex-1 content-start">
                       {topLevelServices(division).map((s) => {
                         const Icon = s.icon;
                         return (
@@ -77,21 +75,39 @@ export function DivisionHeader({ divisionSlug }: { divisionSlug: string }) {
                         );
                       })}
                     </div>
+                    {division.slug === "mechanical" && (
+                      <Link
+                        href="/commercial"
+                        onClick={() => setOpen(null)}
+                        className="mt-3 pt-2.5 border-t hairline text-xs font-medium text-brand-500 hover:underline whitespace-nowrap"
+                      >
+                        All commercial services →
+                      </Link>
+                    )}
                   </div>
                   {division.slug === "mechanical" && (
-                    <div className="col-span-1 border-l hairline bg-brand-500/[0.04] p-7 flex flex-col">
-                      <div className="eyebrow mb-4">Residential</div>
-                      <div className="flex-1">
-                        {residentialServices.map((s) => (
-                          <Link
-                            key={s.slug}
-                            href={`/residential/${s.slug}`}
-                            onClick={() => setOpen(null)}
-                            className="block py-[4px] text-[13px] leading-snug text-ink-600 hover:text-ink-900 whitespace-nowrap"
-                          >
-                            {s.name}
-                          </Link>
-                        ))}
+                    // Same presentation as the Commercial column (icon, name,
+                    // one-line scope) so the two audiences read as one menu.
+                    <div className="col-span-4 border-l hairline bg-brand-500/[0.04] p-7 flex flex-col">
+                      <div className="eyebrow mb-4">{division.name} services · Residential</div>
+                      <div className="grid grid-cols-3 gap-x-2 gap-y-0.5 flex-1 content-start">
+                        {residentialServices.map((s) => {
+                          const Icon = s.icon;
+                          return (
+                            <Link
+                              key={s.slug}
+                              href={`/residential/${s.slug}`}
+                              onClick={() => setOpen(null)}
+                              className="mega-link"
+                            >
+                              <Icon className="w-5 h-5 mt-0.5 text-brand-500 shrink-0" strokeWidth={1.5} />
+                              <div>
+                                <div className="text-sm font-medium text-ink-800">{s.navName}</div>
+                                <div className="text-xs text-ink-400 mt-0.5">{s.short}</div>
+                              </div>
+                            </Link>
+                          );
+                        })}
                       </div>
                       <Link
                         href="/residential"
@@ -104,7 +120,7 @@ export function DivisionHeader({ divisionSlug }: { divisionSlug: string }) {
                   )}
                 </div>
                 <div className="border-t hairline bg-cream-100 px-8 py-4 flex items-center justify-between text-sm">
-                  <span className="script text-brand-500 text-xl leading-none">{division.tagline}</span>
+                  <span className="script text-brand-500 text-lg leading-none">{division.tagline}</span>
                   <Link
                     href={`/${division.slug}`}
                     onClick={() => setOpen(null)}
@@ -134,7 +150,7 @@ export function DivisionHeader({ divisionSlug }: { divisionSlug: string }) {
               </MegaItem>
 
               <MegaItem
-                label="Company"
+                label="About Us"
                 align="right"
                 open={open === "company"}
                 onOpen={() => setOpen(open === "company" ? null : "company")}
@@ -220,6 +236,7 @@ export function DivisionHeader({ divisionSlug }: { divisionSlug: string }) {
                     {label}
                   </Link>
                 ))}
+                <Link href="/careers" onClick={() => setMobileOpen(false)} className="block font-medium">Careers</Link>
                 <Link href="/contact" onClick={() => setMobileOpen(false)} className="block font-medium">Contact</Link>
                 <Link href="/" onClick={() => setMobileOpen(false)} className="block text-sm text-ink-500">
                   Woola Services Group →

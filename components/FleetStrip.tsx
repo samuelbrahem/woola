@@ -19,16 +19,16 @@ export function FleetStrip() {
         <div className="mt-10 grid md:grid-cols-3 gap-4 max-w-5xl mx-auto">
           {[
             {
-              src: "/field/10-25-2024-mattmatt-11.jpg",
-              alt: "Woola Mechanical van driving through a commercial district",
+              src: "/field/08-11-2026-van-1.jpg",
+              alt: "Wrapped Woola Mechanical van parked in a commercial district",
             },
             {
-              src: "/field/11-15-2024-paddy-riley-16.jpg",
-              alt: "Woola technician at the van before a service call",
+              src: "/field/08-11-2026-van-10.jpg",
+              alt: "Woola van at a lookout over Burrard Inlet",
             },
             {
-              src: "/field/10-25-2024-mattmatt-7.jpg",
-              alt: "Technician loading a ladder onto a Woola van",
+              src: "/field/08-11-2026-van-12.jpg",
+              alt: "Woola Mechanical van arriving at a service call",
             },
           ].map((p) => (
             <div key={p.src} className="relative aspect-[4/3] rounded-md overflow-hidden">

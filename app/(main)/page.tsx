@@ -2,17 +2,26 @@ import Link from "next/link";
 import { HeroCarousel } from "@/components/HeroCarousel";
 import { SiteIntro } from "@/components/SiteIntro";
 import { AudienceSplit } from "@/components/AudienceSplit";
-import { Section, SectionHead } from "@/components/Section";
+import { SectionHead } from "@/components/Section";
 import { DivisionExplorer } from "@/components/DivisionExplorer";
-import { Stats } from "@/components/Stats";
-import { ServiceMap } from "@/components/ServiceMap";
-import { Testimonials } from "@/components/Testimonials";
+import { CountUp } from "@/components/CountUp";
+import { Testimonials, GoogleG } from "@/components/Testimonials";
+import { googleListingUrl } from "@/lib/reviews";
 import { CTABanner } from "@/components/CTABanner";
 import { BuildingXray } from "@/components/BuildingXray";
 import { cities } from "@/lib/cities";
-import Image from "next/image";
 import { site } from "@/lib/site";
-import { ArrowRight, Building2, Wrench, Zap, MapPin } from "lucide-react";
+import Image from "next/image";
+import { ArrowRight, Building2, Wrench, Zap, MapPin, ClipboardCheck } from "lucide-react";
+
+const ACCREDITATIONS = [
+  { src: "logo-worksafe-bc", name: "WorkSafeBC" },
+  { src: "logo-teca", name: "TECA Quality First" },
+  { src: "logo-boma", name: "BOMA BC" },
+  { src: "logo-pama-member", name: "PAMA member" },
+  { src: "logo-cci-bc", name: "CCI British Columbia" },
+  { src: "logo-asttbc", name: "ASTTBC" },
+];
 
 export default function HomePage() {
   return (
@@ -28,143 +37,169 @@ export default function HomePage() {
         <HeroCarousel />
       </div>
 
-      <div className="bg-brand-500 text-white relative overflow-hidden">
-        <div className="container-x py-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4 relative">
-          <div className="flex items-baseline gap-3 md:gap-5 flex-wrap">
-            <span className="text-xl md:text-2xl font-bold tracking-tight">OUT WORK.</span>
-            <span className="text-xl md:text-2xl font-bold tracking-tight">OUT PERFORM.</span>
-            <span className="text-xl md:text-2xl font-bold tracking-tight text-ink-900">OUT PLAY.</span>
+      {/* Accreditation bar: logos large enough to recognize (Brett: the old
+          thumbnail strip was unreadable). */}
+      <section className="bg-cream-100 border-b hairline">
+        <div className="container-x py-7 md:py-8 flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-12">
+          <div className="shrink-0 lg:w-52">
+            <div className="eyebrow">Accredited &amp; certified</div>
+            <Link href="/about/credentials" className="mt-1 inline-block text-sm font-medium text-ink-800 hover:text-brand-500">
+              All credentials →
+            </Link>
           </div>
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-white/80">
-            <span className="inline-flex items-center gap-2">
-              {["logo-worksafe-bc", "logo-teca", "logo-boma"].map((l) => (
-                <span key={l} className="inline-flex items-center justify-center bg-white rounded px-2 py-1">
-                  <Image
-                    src={`/brand/${l}.png`}
-                    alt={`${l.replace("logo-", "").replace(/-/g, " ")} logo`}
-                    width={90}
-                    height={54}
-                    className="h-7 w-auto"
-                  />
-                </span>
-              ))}
-            </span>
-            <span className="inline-flex items-center gap-2">
-              <MapPin className="w-4 h-4" strokeWidth={1.5} />
-              20+ municipalities · HQ Coquitlam
-            </span>
-          </div>
+          <ul className="flex-1 flex flex-wrap items-center justify-between gap-x-8 gap-y-5">
+            {ACCREDITATIONS.map((l) => (
+              <li key={l.src} className="flex items-center">
+                <Image
+                  src={`/brand/accred/${l.src}.png`}
+                  alt={l.name}
+                  width={220}
+                  height={120}
+                  className="h-12 md:h-14 w-auto max-w-[200px] object-contain"
+                />
+              </li>
+            ))}
+          </ul>
         </div>
-      </div>
+      </section>
 
-      <section className="bg-cream-50 border-b hairline">
-        <div className="container-x section">
-          <div className="grid lg:grid-cols-12 gap-10 lg:gap-16">
-            <div className="lg:col-span-5">
+      {/* Who we are: photo-led, stats on the image, one paragraph + three
+          proof points instead of a wall of copy. Brett is supplying final text. */}
+      <section className="bg-cream-50 border-b hairline overflow-hidden">
+        <div className="container-x py-16 md:py-20">
+          <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+            <div className="lg:col-span-6">
+              <div className="relative aspect-[4/3] lg:aspect-[5/4] rounded-2xl overflow-hidden bg-ink-800 shadow-soft">
+                <Image
+                  src="/field/01-08-2025-surrey-mech-37.jpg"
+                  alt="Woola Mechanical technicians in a boiler room"
+                  fill
+                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  className="object-cover"
+                />
+                <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-ink-900/80 via-ink-900/10 to-transparent" />
+                <div className="absolute inset-x-4 bottom-4 md:inset-x-5 md:bottom-5 grid grid-cols-2 sm:grid-cols-4 gap-2">
+                  {site.stats.map((st) => (
+                    <div key={st.label} className="rounded-xl bg-brand-500/95 backdrop-blur text-white px-3.5 py-3">
+                      <div className="text-2xl md:text-[1.75rem] font-semibold leading-none">
+                        <CountUp value={st.value} />
+                      </div>
+                      <div className="mt-1.5 text-[10px] uppercase tracking-wider text-white/85 leading-tight">
+                        {st.label}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="lg:col-span-6">
               <div className="eyebrow">Who we are</div>
               <h2 className="mt-3 text-3xl md:text-4xl lg:text-5xl font-semibold text-ink-800 leading-tight">
                 Built to be the last contractor you hire.
               </h2>
-              <Link href="/about" className="btn btn-outline mt-8">
-                About Woola <ArrowRight className="w-4 h-4" />
-              </Link>
+              <p className="mt-2 script text-brand-500 text-2xl md:text-3xl leading-tight">
+                Out work. Out perform. Out play.
+              </p>
+              <p className="mt-5 text-lg text-ink-700 leading-relaxed">
+                Woola is a Coquitlam-based building services group with four divisions under one
+                roof: Mechanical, Power, Electrical, and Build. One dispatcher coordinates all of it,
+                one PO covers it, and one team carries the accountability most buildings spread
+                across a dozen vendors.
+              </p>
+              <ul className="mt-7 grid sm:grid-cols-3 gap-5">
+                {[
+                  {
+                    icon: Wrench,
+                    t: "Our own trades",
+                    b: "Red Seal, gas-ticketed, FSR-certified technicians on one roster, not a rotating cast of subs.",
+                  },
+                  {
+                    icon: ClipboardCheck,
+                    t: "Every visit documented",
+                    b: "Photos, asset histories, and condition data that make capital planning honest.",
+                  },
+                  {
+                    icon: Building2,
+                    t: "Towers to townhomes",
+                    b: "Strata, commercial portfolios, and the house you come home to.",
+                  },
+                ].map((it) => (
+                  <li key={it.t} className="border-l-2 border-brand-500 pl-4">
+                    <it.icon className="w-5 h-5 text-brand-500" strokeWidth={1.5} />
+                    <div className="mt-2 text-sm font-semibold text-ink-800">{it.t}</div>
+                    <p className="mt-1 text-sm text-ink-500 leading-relaxed">{it.b}</p>
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Link href="/about" className="btn btn-primary">
+                  About Woola <ArrowRight className="w-4 h-4" />
+                </Link>
+                <Link href="/about/credentials" className="btn btn-ghost">
+                  Our credentials
+                </Link>
+              </div>
             </div>
-            <div className="lg:col-span-7 space-y-5 text-ink-600 leading-relaxed">
-              <p className="text-lg text-ink-700">
-                Woola is a Coquitlam-based building services group with four divisions under
-                one roof: Mechanical, Power, Electrical, and Build. One dispatcher coordinates
-                all of it, one PO covers it, and one team carries the accountability most
-                buildings spread across a dozen vendors.
-              </p>
-              <p>
-                The trades are ours. Red Seal, gas-ticketed, and FSR-certified technicians on
-                a shared roster, not a rotating cast of subcontractors, backed by a
-                documentation habit that treats every visit as part of your building's
-                permanent record: photos, asset histories, and the condition data that makes
-                capital planning honest.
-              </p>
-              <p>
-                From strata towers and commercial portfolios to the house you come home to,
-                the promise on the side of our vans is the standard we hire, train, and
-                dispatch against. Out work. Out perform. Out play.
-              </p>
-            </div>
-          </div>
-          <div className="mt-14 pt-10 border-t hairline">
-            <Stats />
           </div>
         </div>
       </section>
 
       <AudienceSplit />
 
-      <Section>
-        <div
-          aria-hidden
-          data-reveal
-          className="edge-line mb-10 ml-[calc(50%-50vw)] w-[calc(50vw-50%+180px)]"
-        />
-        <SectionHead
-          eyebrow="What we do"
-          title="Every system a building depends on. One team behind all of it."
-        />
-        <div className="mt-12">
-          <DivisionExplorer />
-        </div>
-      </Section>
-
-      <Section>
-        <SectionHead
-          eyebrow="Interactive · Building X-Ray"
-          title="Every building is a countdown. See yours."
-          description="Drag the age slider and watch each system move toward renewal."
-        />
-        <div className="mt-12">
-          <BuildingXray />
-        </div>
-        <div className="mt-8 text-center">
-          <Link href="/know-your-building" className="btn btn-outline">
-            How we document real buildings <ArrowRight className="w-4 h-4" />
-          </Link>
-        </div>
-      </Section>
-
-      <section className="bg-brand-500 text-white relative overflow-hidden">
-        <div className="container-x py-14 md:py-16 relative">
-          <div className="grid lg:grid-cols-12 gap-8 items-center">
-            <div className="lg:col-span-8">
-              <div className="eyebrow !text-white/80">Built for property managers</div>
-              <h2 className="mt-3 text-3xl md:text-4xl font-semibold leading-tight">
-                Fewer vendors. Better visibility. One-source accountability.
-              </h2>
-            </div>
-            <div className="lg:col-span-4 lg:text-right">
-              <Link href="/property-managers" className="btn bg-ink-900 text-cream-50 hover:bg-ink-700 text-base">
-                For property managers <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
+      {/* What we do: its own tinted band so it reads as a new section
+          instead of running into the X-ray below. */}
+      <section className="bg-cream-100 border-b hairline">
+        <div className="container-x py-16 md:py-20">
+          <SectionHead
+            eyebrow="What we do"
+            title="Every system a building depends on. One team behind all of it."
+          />
+          <div className="mt-10">
+            <DivisionExplorer />
           </div>
         </div>
       </section>
 
+      <section className="bg-cream-50">
+        <div className="container-x py-16 md:py-20">
+          <SectionHead
+            eyebrow="Interactive · Building X-Ray"
+            title="Every building is a countdown. See yours."
+            description="Drag the age slider and watch each system move toward renewal."
+          />
+          <div className="mt-10">
+            <BuildingXray />
+          </div>
+          <div className="mt-8 text-center">
+            <Link href="/know-your-building" className="btn btn-outline">
+              How we document real buildings <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* The Woola model + property-manager CTA, one dark band. The coverage
+          map moved to /service-areas (linked below) to shorten the page. */}
       <section className="bg-ink-800 text-cream-50 relative overflow-hidden">
         <div className="grain" />
-        <div className="container-x section relative">
-          <SectionHead
-            eyebrow="The Woola model"
-            title="Every trade. One team. One call."
-            description="Four divisions. One dispatcher. One accountable PO across every job."
-            dark
-          />
-          <div className="mt-12">
-            <ServiceMap />
-            <div className="mt-4 text-right">
-              <Link href="/service-areas" className="text-sm font-medium text-brand-400 hover:underline">
-                All {cities.length} service areas →
+        <div className="container-x py-16 md:py-20 relative">
+          <div className="grid lg:grid-cols-12 gap-8 items-end">
+            <div className="lg:col-span-8">
+              <SectionHead
+                eyebrow="The Woola model"
+                title="Every trade. One team. One call."
+                description="Four divisions. One dispatcher. One accountable PO across every job."
+                dark
+              />
+            </div>
+            <div className="lg:col-span-4 lg:text-right">
+              <Link href="/property-managers" className="btn btn-brand text-base">
+                For property managers <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
           </div>
-          <div className="mt-12 grid md:grid-cols-3 gap-6">
+          <div className="mt-10 grid md:grid-cols-3 gap-6">
             {[
               {
                 icon: Wrench,
@@ -191,15 +226,19 @@ export default function HomePage() {
               </div>
             ))}
           </div>
-          <div className="mt-8">
+          <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
             <Link href="/about" className="btn border border-cream-50/40 text-cream-50 hover:bg-cream-50 hover:text-ink-800">
               How we run jobs <ArrowRight className="w-4 h-4" />
+            </Link>
+            <Link href="/service-areas" className="inline-flex items-center gap-1.5 text-sm font-medium text-brand-400 hover:underline">
+              <MapPin className="w-4 h-4" /> {cities.length} municipalities, Abbotsford to Whistler →
             </Link>
           </div>
         </div>
       </section>
 
-      <Section>
+      <section className="bg-cream-50">
+        <div className="container-x py-16 md:py-20">
         <div className="grid lg:grid-cols-2 gap-10 items-center">
           <div className="relative overflow-hidden rounded-md aspect-[4/3] bg-ink-100">
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -238,17 +277,28 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-      </Section>
+        </div>
+      </section>
 
       <section className="bg-brand-500 text-white">
-        <div className="container-x section">
-          <div className="max-w-3xl">
-            <div className="eyebrow !text-white/80">What clients say</div>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold mt-3 text-white">
-              The point of Woola is that you stop chasing trades.
-            </h2>
+        <div className="container-x py-16 md:py-20">
+          <div className="flex flex-wrap items-end justify-between gap-6">
+            <div className="max-w-3xl">
+              <div className="eyebrow !text-white/80">What clients say</div>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold mt-3 text-white">
+                The point of Woola is that you stop chasing trades.
+              </h2>
+            </div>
+            <a
+              href={googleListingUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full bg-white text-ink-800 pl-3 pr-4 py-2 text-sm font-medium hover:bg-cream-100 transition"
+            >
+              <GoogleG className="w-5 h-5" /> See our Google reviews →
+            </a>
           </div>
-          <div className="mt-12">
+          <div className="mt-10">
             <Testimonials />
           </div>
         </div>

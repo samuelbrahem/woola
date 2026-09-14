@@ -53,7 +53,7 @@ export default function CareersPage() {
             <h1 className="mt-3 text-5xl md:text-6xl font-semibold text-cream-50 leading-[0.98]">
               Out work. Out perform.
               <br />
-              <span className="script text-brand-500 text-6xl md:text-7xl leading-none">Out play.</span>
+              <span className="script text-brand-500 text-5xl md:text-6xl leading-[1.1]">Out play.</span>
             </h1>
             <p className="mt-5 text-lg text-cream-100/80 max-w-2xl">
               Four business units, one roster. We hire trades who take pride in the work,

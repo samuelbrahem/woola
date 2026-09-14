@@ -3,8 +3,9 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ChevronLeft, ChevronRight, Play, Phone } from "lucide-react";
-import { CircuitField } from "./CircuitField";
+import { ArrowRight, ChevronLeft, ChevronRight, Play, Phone, MapPin } from "lucide-react";
+import { cities } from "@/lib/cities";
+
 
 type Slide = {
   id: string;
@@ -110,14 +111,26 @@ export function HeroCarousel() {
                 className={`object-cover ${i === index ? "kenburns" : ""}`}
               />
             )}
-            <div className="absolute inset-0 bg-gradient-to-r from-ink-900/95 via-ink-900/70 to-ink-900/30" />
-            <div className="absolute inset-0 bg-gradient-to-t from-ink-900/85 via-ink-900/10 to-transparent" />
-            {s.id === "main" && i === index && <CircuitField withVan />}
+            <div className="absolute inset-0 bg-ink-900/60" />
+            <div
+              aria-hidden
+              className="absolute inset-0"
+              style={{
+                background:
+                  "radial-gradient(ellipse 60% 55% at 50% 42%, rgba(4,4,4,0.72) 0%, rgba(4,4,4,0.35) 55%, rgba(4,4,4,0) 100%)",
+              }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-ink-900/40 via-transparent to-ink-900/95" />
 
+            {/* Centered stack: eyebrow pill, headline, sub, CTAs */}
             <div className="absolute inset-0 flex items-center">
               <div className="container-x w-full">
-                <div className="max-w-3xl">
-                  <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1] tracking-tight text-cream-50">
+                <div className="max-w-3xl mx-auto text-center">
+                  <div className="rise inline-flex items-center gap-2 rounded-full border border-cream-50/20 bg-cream-50/10 backdrop-blur px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-cream-100/85">
+                    <MapPin className="w-3.5 h-3.5 text-brand-400" />
+                    Coquitlam HQ · 24/7 dispatch · {cities.length} municipalities
+                  </div>
+                  <h1 className="rise rise-1 mt-6 text-5xl md:text-6xl lg:text-7xl font-bold leading-[0.98] tracking-tight text-cream-50">
                     {s.id === "main" ? (
                       <>
                         Every <RotatingWord />.
@@ -128,16 +141,16 @@ export function HeroCarousel() {
                     {s.script && (
                       <>
                         <br />
-                        <span className="script text-brand-400 text-5xl md:text-6xl lg:text-7xl leading-[0.9]">
+                        <span className="script text-brand-400 text-5xl md:text-6xl lg:text-7xl leading-[1.1]">
                           {s.script}
                         </span>
                       </>
                     )}
                   </h1>
-                  <p className="mt-6 text-base md:text-lg text-cream-100/90 max-w-xl leading-relaxed">
+                  <p className="rise rise-2 mt-6 text-base md:text-lg text-cream-100/85 max-w-2xl mx-auto leading-relaxed">
                     {s.sub}
                   </p>
-                  <div className="mt-8 flex flex-wrap gap-3">
+                  <div className="rise rise-3 mt-8 flex flex-wrap justify-center gap-3">
                     <Link href={s.cta.href} className="btn btn-brand text-base">
                       {s.cta.label} <ArrowRight className="w-4 h-4" />
                     </Link>
@@ -161,6 +174,7 @@ export function HeroCarousel() {
                 </div>
               </div>
             </div>
+
           </div>
         ))}
 

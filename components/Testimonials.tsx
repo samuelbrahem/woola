@@ -1,38 +1,65 @@
-import { Quote } from "lucide-react";
+import { Star } from "lucide-react";
+import { googleReviews } from "@/lib/reviews";
 
-const testimonials = [
-  {
-    quote:
-      "We replaced three separate vendors with Woola. One dispatcher, one PO, and reporting that our strata council actually reads.",
-    author: "Strata Council Chair",
-    org: "Park Place Towers · Burnaby",
-  },
-  {
-    quote:
-      "Their heat-pump retrofit team handled CleanBC paperwork end-to-end. We collected $6,000 in stacked rebates without lifting a finger.",
-    author: "Residential client",
-    org: "North Vancouver",
-  },
-  {
-    quote:
-      "Generator service finally feels professional. Real load-bank tests, real reports, and they're at our retail sites the day we call.",
-    author: "Director of Facilities",
-    org: "Metro Vancouver retailer",
-  },
-];
+/** Google's four-colour "G" mark. */
+export function GoogleG({ className = "w-5 h-5" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 48 48" className={className} aria-hidden>
+      <path
+        fill="#EA4335"
+        d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"
+      />
+      <path
+        fill="#4285F4"
+        d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"
+      />
+      <path
+        fill="#FBBC05"
+        d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"
+      />
+      <path
+        fill="#34A853"
+        d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"
+      />
+    </svg>
+  );
+}
+
+function Stars({ rating, className = "w-4 h-4" }: { rating: number; className?: string }) {
+  return (
+    <span className="inline-flex items-center gap-0.5" aria-label={`${rating} out of 5 stars`}>
+      {[1, 2, 3, 4, 5].map((i) => (
+        <Star
+          key={i}
+          className={`${className} ${i <= Math.round(rating) ? "fill-[#FBBC05] text-[#FBBC05]" : "text-ink-300"}`}
+          strokeWidth={1.5}
+        />
+      ))}
+    </span>
+  );
+}
 
 export function Testimonials() {
   return (
     <div className="grid md:grid-cols-3 gap-6">
-      {testimonials.map((t, i) => (
-        <div key={i} className="card p-7 flex flex-col">
-          <Quote className="w-7 h-7 text-brand-500" strokeWidth={1.5} />
-          <p className="mt-4 text-ink-700 leading-relaxed">{t.quote}</p>
-          <div className="mt-6 pt-5 border-t hairline">
-            <div className="text-sm font-medium text-ink-800">{t.author}</div>
-            <div className="text-xs text-ink-400 mt-0.5">{t.org}</div>
+      {googleReviews.map((r, i) => (
+        <article key={i} className="card p-7 flex flex-col">
+          <div className="flex items-center justify-between">
+            <Stars rating={r.rating} />
+            <GoogleG className="w-5 h-5" />
           </div>
-        </div>
+          <p className="mt-4 text-ink-700 leading-relaxed flex-1">&ldquo;{r.text}&rdquo;</p>
+          <div className="mt-6 pt-5 border-t hairline flex items-end justify-between gap-4">
+            <div>
+              <div className="text-sm font-medium text-ink-800">{r.author}</div>
+              <div className="text-xs text-ink-400 mt-0.5">
+                {r.context ? `${r.context} · ` : ""}
+                {r.date}
+              </div>
+            </div>
+            <span className="shrink-0 text-[11px] text-ink-400 whitespace-nowrap">Google review</span>
+          </div>
+        </article>
       ))}
     </div>
   );

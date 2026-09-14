@@ -34,8 +34,8 @@ export default function FleetPage() {
         <div className="container-x pt-10 pb-4">
           <div className="relative aspect-[16/7] rounded-md overflow-hidden">
             <Image
-              src="/field/10-25-2024-mattmatt-11.jpg"
-              alt="Woola Mechanical van driving through a commercial district"
+              src="/field/08-11-2026-van-1.jpg"
+              alt="Wrapped Woola Mechanical van parked in a commercial district"
               fill
               priority
               sizes="100vw"
@@ -44,14 +44,14 @@ export default function FleetPage() {
           </div>
           <div className="mt-4 grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
-              { src: "/field/vehicle-22.jpg", alt: "Rear of a Woola van with roof ladder racks" },
-              { src: "/field/11-15-2024-paddy-riley-16.jpg", alt: "Technician at the van before a service call" },
-              { src: "/field/10-25-2024-mattmatt-7.jpg", alt: "Technician loading a ladder onto a Woola van" },
-              { src: "/field/10-25-2024-mattmatt-10.jpg", alt: "Technician securing equipment on the van roof" },
-              { src: "/field/12-03-2024-surrey-prep-22.jpg", alt: "Technician loading tools into the van" },
-              { src: "/field/01-08-2025-surrey-mech-37.jpg", alt: "Woola Mechanical crew in a mechanical room" },
-              { src: "/field/10-25-2024-mattmatt-32.jpg", alt: "Two Woola crew members overlooking the city" },
-              { src: "/field/10-25-2024-mattmatt-22.jpg", alt: "Woola technician reviewing a work order" },
+              { src: "/field/08-11-2026-van-2.jpg", alt: "Side profile of the wrapped Woola Mechanical van" },
+              { src: "/field/08-11-2026-van-9.jpg", alt: "Woola van beneath the SkyTrain line with Coquitlam towers behind" },
+              { src: "/field/08-11-2026-van-11.jpg", alt: "Woola van on the waterfront with the North Shore mountains" },
+              { src: "/field/08-11-2026-van-6.jpg", alt: "Woola van on a rural route in the Fraser Valley" },
+              { src: "/field/08-11-2026-van-7.jpg", alt: "Woola van arriving at a commercial building entrance" },
+              { src: "/field/08-11-2026-van-15.jpg", alt: "Woola van on a residential street" },
+              { src: "/field/08-11-2026-van-14.jpg", alt: "Front detail of a Woola fleet van" },
+              { src: "/field/08-11-2026-van-16.jpg", alt: "Woola van pulling up to a community facility" },
             ].map((p) => (
               <div key={p.src} className="relative aspect-[4/3] rounded-md overflow-hidden">
                 <Image

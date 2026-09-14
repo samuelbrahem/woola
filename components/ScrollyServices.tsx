@@ -50,6 +50,14 @@ const ELEVATION: Record<string, { order: number; level: string }> = {
   "turnkey-projects": { order: 6, level: "Site-wide" },
 };
 
+/** Section headline per division; the descent metaphor is worded for each. */
+const HEADLINES: Record<string, string> = {
+  mechanical: "Every mechanical system. Roof to below grade.",
+  power: "Every link in standby power. Generator room to site-wide.",
+  electrical: "Every circuit in the building. Ceilings to parkade.",
+  build: "Every part of the building. Roof to common areas.",
+};
+
 /** Prefer real photography over studio renders wherever a photo exists. */
 const PHOTO_OVERRIDES: Record<string, { src: string; alt: string }> = {
   hvac: { src: "/field/07-03-2024-crane-26.jpg", alt: "Rooftop unit being crane-lifted onto a roof" },
@@ -121,19 +129,48 @@ export function ScrollyServices({ division: divisionSlug }: { division: string }
     window.scrollTo({ top, behavior: "smooth" });
   };
 
+  const shortName = division.name.replace("Woola ", "");
+  const headline = HEADLINES[division.slug] ?? `Every ${shortName.toLowerCase()} system. Roof to below grade.`;
+  const blurb = `${division.name} services, in the order you'd meet them walking down through a building, with whole-building programs last. Each one opens to its own service page.`;
+
   return (
     <>
+      {/* Framing: says what the descent is before it starts. */}
+      <section className="bg-[rgb(14_22_33)] text-cream-50 border-t border-ink-700">
+        <div className="container-x pt-16 pb-10 md:pt-20 md:pb-12 grid lg:grid-cols-12 gap-6 lg:gap-10 items-end">
+          <div className="lg:col-span-7">
+            <div className="eyebrow !text-[color:var(--brand-on-dark)]">Services</div>
+            <h2 className="mt-3 text-3xl md:text-4xl lg:text-5xl font-semibold text-cream-50">{headline}</h2>
+          </div>
+          <p className="lg:col-span-5 text-base md:text-lg text-cream-100/75 leading-relaxed">
+            {blurb}
+            <span className="hidden lg:inline"> Scroll to descend, or jump to a level.</span>
+          </p>
+        </div>
+      </section>
+
       {/* Desktop: pinned descent */}
       <div
         ref={wrapRef}
         className="relative hidden lg:block"
-        style={{ height: `${services.length * 80 + 20}vh` }}
+        style={{ height: `${services.length * 60 + 20}vh` }}
       >
         <div
           className="sticky top-0 h-screen text-cream-50 overflow-hidden transition-colors duration-700"
           style={{ backgroundColor: stageColor(depth) }}
         >
           <div className="grain" />
+          {/* Persistent caption so the intent reads at any point in the ride. */}
+          <div className="absolute top-20 inset-x-0 z-10">
+            <div className="container-x h-12 flex items-center justify-between text-[11px] uppercase tracking-[0.2em] text-cream-100/55">
+              <span>
+                {shortName} services · <span className="text-cream-100/80">Rooftop to below grade</span>
+              </span>
+              <span className="font-mono tracking-wider">
+                {String(idx + 1).padStart(2, "0")} / {String(services.length).padStart(2, "0")}
+              </span>
+            </div>
+          </div>
           <div className="container-x h-full grid grid-cols-12 gap-10 items-center relative">
             <div className="col-span-4 relative h-full pr-6">
               {services.map((s, i) => (
@@ -167,7 +204,7 @@ export function ScrollyServices({ division: divisionSlug }: { division: string }
               ))}
             </div>
 
-            <div className="col-span-6 relative h-[72vh] self-center overflow-hidden rounded-2xl border border-ink-700">
+            <div className="col-span-5 relative h-[72vh] self-center overflow-hidden rounded-2xl border border-ink-700">
               {services.map((s, i) => {
                 const v = visualFor(s.slug);
                 if (!v) return null;
@@ -197,7 +234,7 @@ export function ScrollyServices({ division: divisionSlug }: { division: string }
             </div>
 
             {/* Elevation ruler */}
-            <div className="col-span-2 h-[64vh] self-center relative pl-6">
+            <div className="col-span-3 h-[64vh] self-center relative pl-6">
               <div className="absolute left-6 inset-y-0 w-px bg-cream-50/20" />
               <div
                 className="absolute -left-[3px] ml-6 w-[7px] h-[7px] rounded-full bg-[color:var(--brand-on-dark)] transition-[top] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
@@ -218,8 +255,11 @@ export function ScrollyServices({ division: divisionSlug }: { division: string }
                         i === idx ? "bg-[color:var(--brand-on-dark)]" : "bg-cream-50/30"
                       }`}
                     />
-                    <span className="font-mono text-[10px] uppercase tracking-wider truncate">
-                      {ELEVATION[s.slug]?.level ?? s.short}
+                    <span className="min-w-0">
+                      <span className="block text-xs font-medium leading-tight">{s.name}</span>
+                      <span className="block font-mono text-[10px] uppercase tracking-wider opacity-70 mt-0.5">
+                        {ELEVATION[s.slug]?.level ?? "On site"}
+                      </span>
                     </span>
                   </button>
                 ))}
@@ -231,8 +271,7 @@ export function ScrollyServices({ division: divisionSlug }: { division: string }
 
       {/* Mobile: stacked, no pinning */}
       <div className="lg:hidden bg-ink-900 text-cream-50">
-        <div className="container-x section space-y-10">
-          <div className="eyebrow !text-[color:var(--brand-on-dark)]">What we do</div>
+        <div className="container-x pb-16 pt-4 space-y-10">
           {services.map((s) => {
             const v = visualFor(s.slug);
             return (

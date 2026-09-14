@@ -1,3 +1,5 @@
+import { cities } from "./cities";
+
 export const site = {
   name: "Woola",
   fullName: "Woola Services Group",
@@ -14,11 +16,14 @@ export const site = {
   email: "services@woola.ca",
   hours: "Mon – Fri · 7:00 AM – 5:00 PM",
   emergency: "24/7 emergency dispatch for contracted clients",
+  // Only figures Woola can stand behind: service-model facts and counts
+  // derived from site data (lib/cities.ts). A technician headcount goes back
+  // in once Brett supplies a number he's comfortable maintaining.
   stats: [
-    { value: "20+", label: "Municipalities served" },
+    { value: `${cities.length}+`, label: "Municipalities served" },
     { value: "4", label: "Divisions, one PO" },
     { value: "24/7", label: "Emergency response" },
-    { value: "60+", label: "Certified technicians" },
+    { value: "1", label: "Dispatcher, one call" },
   ],
   certifications: [
     "TECA Quality First",

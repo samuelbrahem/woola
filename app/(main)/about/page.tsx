@@ -46,8 +46,8 @@ export default function AboutPage() {
           <div className="grid grid-cols-3 gap-3 -mt-2 pt-8">
             <div className="relative col-span-2 aspect-[16/9] rounded-md overflow-hidden">
               <Image
-                src="https://images.unsplash.com/photo-1587582423116-ec07293f0395?w=1200&q=80&auto=format&fit=crop"
-                alt="Construction and maintenance crew on a building site"
+                src="/field/08-12-2026-build-8.jpg"
+                alt="Woola crew on site at a strata building project"
                 fill
                 sizes="(min-width: 1024px) 60vw, 66vw"
                 className="object-cover"
@@ -56,8 +56,8 @@ export default function AboutPage() {
             <div className="grid grid-rows-2 gap-3">
               <div className="relative rounded-md overflow-hidden">
                 <Image
-                  src="https://images.unsplash.com/photo-1603516084021-1cfa399b64ca?w=1400&q=80&auto=format&fit=crop"
-                  alt="Rooftop HVAC equipment on a commercial building"
+                  src="/field/07-28-2026-mech-4.jpg"
+                  alt="High-pressure steam piping in a commercial mechanical room"
                   fill
                   sizes="33vw"
                   className="object-cover"
@@ -65,8 +65,8 @@ export default function AboutPage() {
               </div>
               <div className="relative rounded-md overflow-hidden">
                 <Image
-                  src="https://images.unsplash.com/photo-1668911128139-4db2cc34aa5f?w=1200&q=80&auto=format&fit=crop"
-                  alt="Modern condo lobby interior"
+                  src="/field/08-11-2026-van-7.jpg"
+                  alt="Woola van arriving at a commercial building entrance"
                   fill
                   sizes="33vw"
                   className="object-cover"

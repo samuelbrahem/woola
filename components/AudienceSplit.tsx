@@ -33,8 +33,8 @@ export function AudienceSplit() {
           style={{ clipPath: leftClip, transition: clipTransition }}
         >
           <Image
-            src="https://images.unsplash.com/photo-1527738697320-513f6648bc26?w=1600&q=80&auto=format&fit=crop"
-            alt="Aerial view of commercial rooftop HVAC units on a high-rise"
+            src="/field/07-28-2026-mech-3.jpg"
+            alt="Insulated piping and ductwork overhead in a commercial mechanical room"
             fill
             sizes="60vw"
             className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
@@ -65,8 +65,8 @@ export function AudienceSplit() {
           style={{ clipPath: rightClip, transition: clipTransition }}
         >
           <Image
-            src="https://images.unsplash.com/photo-1593941707874-ef25b8b4a92b?w=1600&q=80&auto=format&fit=crop"
-            alt="Electric vehicle charging at a home charging station"
+            src="/field/08-11-2026-van-15.jpg"
+            alt="Woola van parked on a leafy residential street"
             fill
             sizes="60vw"
             className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
@@ -93,8 +93,8 @@ export function AudienceSplit() {
         {[
           {
             href: "/commercial",
-            img: "https://images.unsplash.com/photo-1527738697320-513f6648bc26?w=1200&q=80&auto=format&fit=crop",
-            alt: "Aerial view of commercial rooftop HVAC units on a high-rise",
+            img: "/field/07-28-2026-mech-3.jpg",
+            alt: "Insulated piping and ductwork overhead in a commercial mechanical room",
             overlay: "bg-gradient-to-t from-ink-900/95 via-ink-900/70 to-ink-900/40",
             eyebrow: "Commercial · PMs, strata & owners",
             title: "One accountable partner for the whole building.",
@@ -103,8 +103,8 @@ export function AudienceSplit() {
           },
           {
             href: "/residential",
-            img: "https://images.unsplash.com/photo-1593941707874-ef25b8b4a92b?w=1200&q=80&auto=format&fit=crop",
-            alt: "Electric vehicle charging at a home charging station",
+            img: "/field/08-11-2026-van-15.jpg",
+            alt: "Woola van parked on a leafy residential street",
             overlay: "bg-gradient-to-t from-brand-600/95 via-brand-500/75 to-brand-500/40",
             eyebrow: "Residential · homeowners",
             title: "The same licensed trades, at your house.",
