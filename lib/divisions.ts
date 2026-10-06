@@ -72,7 +72,7 @@ export type Division = {
   description: string;
   heroImage: string;
   heroImageAlt: string;
-  /** Looping 20-30s promo film. Drop an MP4 in /public/videos and set the path here. */
+  /** Looping promo film (muted 1080p MP4 in /public/videos; poster is heroImage). */
   video?: string;
   contactPhone: string;
   contactEmail: string;
@@ -230,6 +230,7 @@ export const divisions: Division[] = [
       "We design, install, service and maintain the systems that keep buildings comfortable and code-compliant. Our technicians are certified across HVAC, hydronics, gas, and refrigeration, so one team handles what most companies split across four.",
     heroImage: "/field/01-08-2025-surrey-mech-1.jpg",
     heroImageAlt: "Woola Mechanical technicians working on copper piping in a mechanical room",
+    video: "/videos/mechanical.mp4",
     accent: "from-brand-500/15 via-brand-400/5 to-transparent",
     heroKeywords: ["HVAC", "Plumbing", "Gas", "Refrigeration", "Heat Pumps", "Hydronics"],
     // Only figures Woola can stand behind indefinitely: service-model facts and
@@ -563,6 +564,7 @@ export const divisions: Division[] = [
       "Woola Power was built around the most demanding electrical asset in any building: the emergency standby generator. We are factory-authorized service providers for Generac, Kohler, and Cummins, own our own load banks, and dispatch 24/7 across BC.",
     heroImage: "/field/07-28-2026-power-1.jpg",
     heroImageAlt: "Cummins standby diesel generator in a Woola-serviced generator room",
+    video: "/videos/power.mp4",
     accent: "from-ink-800/10 via-brand-500/10 to-transparent",
     heroKeywords: ["Generators", "Standby Power", "Load Bank", "CSA C282", "Transfer Switch", "Fuel Polishing"],
     stats: [
@@ -889,6 +891,7 @@ export const divisions: Division[] = [
       "Woola Electrical is our journeyman-led division for everything downstream of your main disconnect. FSR-certified for permit sign-off, BC Hydro Power Smart Alliance for rebate work, and a CleanBC EV Ready planner for strata charging rollouts.",
     heroImage: "/field/07-23-2026-electrical-4.jpg",
     heroImageAlt: "Woola electrician working in a multi-unit meter bank room",
+    video: "/videos/electrical.mp4",
     accent: "from-brand-400/15 via-brand-500/5 to-transparent",
     heroKeywords: ["Electrical", "EV Charging", "LED Retrofit", "Low Voltage", "Power Smart", "FSR"],
     stats: [
@@ -1175,6 +1178,7 @@ export const divisions: Division[] = [
       "Most property managers juggle a dozen vendors. Woola Build collapses that into one accountable partner, with maintenance packages, envelope work, interior and exterior trades, and construction project management coordinated by an in-house team.",
     heroImage: "/field/08-12-2026-build-7.jpg",
     heroImageAlt: "Crane lifting rooftop equipment over a Woola Build strata project",
+    video: "/videos/build.mp4",
     accent: "from-brand-400/10 via-ink-800/5 to-transparent",
     heroKeywords: ["Maintenance", "Envelope", "Renovations", "Property Services", "Roofing", "Construction PM"],
     stats: [

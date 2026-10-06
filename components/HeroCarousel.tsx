@@ -17,7 +17,7 @@ type Slide = {
   cta2?: { label: string; href: string };
   image: string;
   alt: string;
-  /** Drop a looping MP4 here when the promo films are produced. */
+  /** Looping promo film; `image` doubles as its poster frame. */
   video?: string;
 };
 
@@ -30,8 +30,9 @@ const SLIDES: Slide[] = [
     sub: "Mechanical, power, electrical, and building trades, coordinated by a single dispatcher for BC's most demanding buildings.",
     cta: { label: "Request Service", href: "/contact" },
     cta2: { label: "Call Now", href: "tel:604-800-3617" },
-    image: "/brand/field-generator-delivery.webp",
-    alt: "Woola technician receiving a standby generator delivery in the field",
+    image: "/videos/home.jpg",
+    alt: "Woola technicians across mechanical, electrical, and building trades in the field",
+    video: "/videos/home.mp4",
   },
 ];
 

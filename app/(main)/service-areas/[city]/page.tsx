@@ -41,6 +41,19 @@ export default function CityPage({ params }: { params: Params }) {
   return (
     <>
       <section className="bg-ink-900 text-cream-50 relative overflow-hidden">
+        {/* Drone flyover of the municipality; poster frame holds the space until it plays */}
+        <video
+          className="absolute inset-0 w-full h-full object-cover"
+          src={`/videos/cities/${city.slug}.mp4`}
+          poster={`/videos/cities/${city.slug}.jpg`}
+          autoPlay
+          muted
+          loop
+          playsInline
+          aria-hidden
+        />
+        <div className="absolute inset-0 bg-ink-900/65" />
+        <div className="absolute inset-0 bg-gradient-to-b from-ink-900/50 via-transparent to-ink-900/95" />
         <div className="grain" />
         <div className="container-x pt-20 pb-12 relative">
           <div className="text-sm text-ink-300">
