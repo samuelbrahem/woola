@@ -5,6 +5,7 @@ import { CTABanner } from "@/components/CTABanner";
 import { AboutSubnav } from "@/components/AboutSubnav";
 import { DivisionWordmark } from "@/components/DivisionWordmark";
 import { divisions } from "@/lib/divisions";
+import { getOpenings, bambooCareersUrl, bambooConfigured } from "@/lib/bamboo";
 import { ArrowRight, MapPin, Clock, Users, GraduationCap, HeartHandshake, TrendingUp, ImageIcon } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -13,19 +14,6 @@ export const metadata: Metadata = {
     "Join Woola Services Group. Open positions across Mechanical, Power, Electrical, and Build: Red Seal trades, apprenticeships, coordinators, and PMs in Metro Vancouver.",
   alternates: { canonical: "https://woola.ca/careers" },
 };
-
-// Postings will come from BambooHR once the integration is connected.
-const openings = [
-  { title: "HVAC Technician (Red Seal)", division: "mechanical", type: "Full-time", location: "Coquitlam + Metro Van routes" },
-  { title: "Refrigeration Mechanic", division: "mechanical", type: "Full-time", location: "Metro Vancouver" },
-  { title: "Plumber, 2nd-4th Year Apprentice", division: "mechanical", type: "Apprenticeship", location: "Coquitlam HQ" },
-  { title: "Generator Technician", division: "power", type: "Full-time", location: "BC-wide routes" },
-  { title: "Electrician (FSR-B an asset)", division: "electrical", type: "Full-time", location: "Metro Vancouver" },
-  { title: "EV Charging Installer", division: "electrical", type: "Full-time", location: "Metro Vancouver" },
-  { title: "Building Maintenance Technician", division: "build", type: "Full-time", location: "Tri-Cities" },
-  { title: "Construction Project Coordinator", division: "build", type: "Full-time", location: "Coquitlam HQ" },
-  { title: "Service Dispatcher", division: "all", type: "Full-time", location: "Coquitlam HQ" },
-];
 
 // Placeholder slots until real crew photography is shot. Swap each for an <Image>.
 const photoSlots = [
@@ -43,7 +31,9 @@ const perks = [
   { icon: Users, title: "The Out Play culture", body: "Team events, shop barbecues, and a crew that actually likes each other." },
 ];
 
-export default function CareersPage() {
+export default async function CareersPage() {
+  const openings = await getOpenings();
+  const boardUrl = bambooCareersUrl();
   return (
     <>
       <section className="bg-ink-900 text-cream-50 relative overflow-hidden">
@@ -109,15 +99,32 @@ export default function CareersPage() {
             <SectionHead
               eyebrow="Open positions"
               title="Where we're hiring right now."
-              description="Roles span all four business units. Applications and postings are managed through BambooHR."
+              description="Postings and applications run through BambooHR. Apply takes you to the posting."
             />
+            {boardUrl && (
+              <a href={boardUrl} target="_blank" rel="noopener" className="text-sm font-medium text-ink-800 hover:underline">
+                View all on BambooHR →
+              </a>
+            )}
           </div>
+          {openings.length === 0 && (
+            <div className="mt-10 card p-6 md:p-8 bg-white">
+              <div className="font-semibold text-ink-800">No open postings right now.</div>
+              <p className="mt-2 text-sm text-ink-600">
+                {bambooConfigured
+                  ? "New roles are posted here as soon as they open in BambooHR."
+                  : "Postings will appear here once the BambooHR job board is connected."}{" "}
+                In the meantime, send a resume to{" "}
+                <a href="mailto:careers@woola.ca" className="font-medium text-brand-500 hover:underline">careers@woola.ca</a>.
+              </p>
+            </div>
+          )}
           <div className="mt-10 space-y-3">
             {openings.map((o) => {
               const d = divisions.find((dv) => dv.slug === o.division);
               return (
                 <div
-                  key={o.title}
+                  key={o.id}
                   className="card p-5 md:p-6 bg-white flex flex-col md:flex-row md:items-center gap-4 md:gap-6"
                 >
                   <div className="md:w-40 shrink-0">
@@ -135,7 +142,9 @@ export default function CareersPage() {
                     </div>
                   </div>
                   <a
-                    href="mailto:careers@woola.ca?subject=Application"
+                    href={o.applyUrl}
+                    target="_blank"
+                    rel="noopener"
                     className="btn btn-outline shrink-0 self-start md:self-auto"
                   >
                     Apply <ArrowRight className="w-4 h-4" />
