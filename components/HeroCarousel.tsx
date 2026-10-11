@@ -26,7 +26,7 @@ const SLIDES: Slide[] = [
     eyebrow: "Based in Coquitlam, serving Abbotsford to Whistler",
     title: "Every system.",
     script: "One partner.",
-    sub: "Mechanical, power, electrical, and building trades, coordinated by a single dispatcher for BC's most demanding buildings.",
+    sub: "Mechanical, power, electrical and building trades for commercial and strata properties, booked through one dispatch desk.",
     cta: { label: "Request Service", href: "/contact" },
     cta2: { label: "Call Now", href: "tel:604-800-3617" },
     image: "/videos/home.jpg",
