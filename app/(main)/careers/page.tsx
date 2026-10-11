@@ -5,7 +5,7 @@ import { CTABanner } from "@/components/CTABanner";
 import { AboutSubnav } from "@/components/AboutSubnav";
 import { DivisionWordmark } from "@/components/DivisionWordmark";
 import { divisions } from "@/lib/divisions";
-import { getOpenings, bambooCareersUrl, bambooConfigured } from "@/lib/bamboo";
+import { getOpenings, bambooCareersUrl } from "@/lib/bamboo";
 import { ArrowRight, MapPin, Clock, Users, GraduationCap, HeartHandshake, TrendingUp, ImageIcon } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -33,7 +33,6 @@ const perks = [
 
 export default async function CareersPage() {
   const openings = await getOpenings();
-  const boardUrl = bambooCareersUrl();
   return (
     <>
       <section className="bg-ink-900 text-cream-50 relative overflow-hidden">
@@ -101,19 +100,15 @@ export default async function CareersPage() {
               title="Where we're hiring right now."
               description="Postings and applications run through BambooHR. Apply takes you to the posting."
             />
-            {boardUrl && (
-              <a href={boardUrl} target="_blank" rel="noopener" className="text-sm font-medium text-ink-800 hover:underline">
-                View all on BambooHR →
-              </a>
-            )}
+            <a href={bambooCareersUrl} target="_blank" rel="noopener" className="text-sm font-medium text-ink-800 hover:underline">
+              View all on BambooHR →
+            </a>
           </div>
           {openings.length === 0 && (
             <div className="mt-10 card p-6 md:p-8 bg-white">
               <div className="font-semibold text-ink-800">No open postings right now.</div>
               <p className="mt-2 text-sm text-ink-600">
-                {bambooConfigured
-                  ? "New roles are posted here as soon as they open in BambooHR."
-                  : "Postings will appear here once the BambooHR job board is connected."}{" "}
+                New roles are posted here when they open in BambooHR.{" "}
                 In the meantime, send a resume to{" "}
                 <a href="mailto:careers@woola.ca" className="font-medium text-brand-500 hover:underline">careers@woola.ca</a>.
               </p>

@@ -4,8 +4,8 @@
  * key, no auth); applicants are sent to the BambooHR posting itself, so
  * applications land in Woola's ATS.
  *
- * The subdomain is the first part of Woola's BambooHR login URL
- * (https://<subdomain>.bamboohr.com). Set BAMBOOHR_SUBDOMAIN in .env.
+ * Woola's board is public at https://woolacapital.bamboohr.com/careers, so
+ * no key or env var is needed. The list is re-fetched once a week.
  */
 
 import type { Division } from "./divisions";
@@ -29,13 +29,9 @@ type BambooJob = {
   isRemote?: boolean | null;
 };
 
-const SUBDOMAIN = process.env.BAMBOOHR_SUBDOMAIN?.trim();
+const SUBDOMAIN = "woolacapital";
 
-export const bambooConfigured = Boolean(SUBDOMAIN);
-
-export function bambooCareersUrl() {
-  return SUBDOMAIN ? `https://${SUBDOMAIN}.bamboohr.com/careers` : null;
-}
+export const bambooCareersUrl = `https://${SUBDOMAIN}.bamboohr.com/careers`;
 
 /** Map a posting to a division from its department, then its title. */
 function guessDivision(job: BambooJob): Division["slug"] | null {
@@ -55,13 +51,12 @@ function formatLocation(job: BambooJob) {
   return parts.join(", ") || "Metro Vancouver";
 }
 
-/** Open postings, newest first as BambooHR orders them. Empty when not configured or unreachable. */
+/** Open postings as BambooHR orders them. Empty when the board is unreachable. */
 export async function getOpenings(): Promise<Opening[]> {
-  if (!SUBDOMAIN) return [];
   try {
     const res = await fetch(`https://${SUBDOMAIN}.bamboohr.com/careers/list`, {
       headers: { Accept: "application/json" },
-      next: { revalidate: 600 },
+      next: { revalidate: 60 * 60 * 24 * 7 },
     });
     if (!res.ok) return [];
     const data = (await res.json()) as { result?: BambooJob[] };
