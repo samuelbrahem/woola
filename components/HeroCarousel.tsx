@@ -4,7 +4,6 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ChevronLeft, ChevronRight, Play, Phone, MapPin } from "lucide-react";
-import { cities } from "@/lib/cities";
 
 
 type Slide = {
@@ -24,7 +23,7 @@ type Slide = {
 const SLIDES: Slide[] = [
   {
     id: "main",
-    eyebrow: "24/7 dispatch · Coquitlam HQ",
+    eyebrow: "Based in Coquitlam, serving Abbotsford to Whistler",
     title: "Every system.",
     script: "One partner.",
     sub: "Mechanical, power, electrical, and building trades, coordinated by a single dispatcher for BC's most demanding buildings.",
@@ -123,7 +122,7 @@ export function HeroCarousel() {
                 <div className="max-w-3xl text-left">
                   <div className="rise inline-flex items-center gap-2 rounded-full border border-cream-50/20 bg-ink-900/40 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-cream-100/85">
                     <MapPin className="w-3.5 h-3.5 text-brand-400" />
-                    Coquitlam HQ · 24/7 dispatch · {cities.length} municipalities
+                    {s.eyebrow}
                   </div>
                   <h1 className="rise rise-1 mt-6 text-5xl md:text-6xl lg:text-7xl font-bold leading-[0.98] tracking-tight text-cream-50">
                     {s.id === "main" ? (
