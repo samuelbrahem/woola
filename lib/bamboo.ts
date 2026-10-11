@@ -43,7 +43,7 @@ function guessDivision(job: BambooJob): Division["slug"] | null {
   if (/\bbuild|construction|carpent|envelope|renovat|maintenance tech/.test(text)) return "build";
   if (/\bpower|generator|ups\b|battery/.test(text)) return "power";
   if (/electric|\bev\b|lighting|panel/.test(text)) return "electrical";
-  if (/mechanical|hvac|plumb|refrigerat|gas ?fit|sheet metal|boiler/.test(text)) return "mechanical";
+  if (/\bmech(anical)?\b|hvac|plumb|refrigerat|gas ?fit|sheet metal|boiler/.test(text)) return "mechanical";
   return null;
 }
 
