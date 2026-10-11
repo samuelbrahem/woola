@@ -32,7 +32,7 @@ export const plumbing: ServiceContent = {
     },
   ],
   closing: {
-    heading: "Plumbing you stop thinking about",
+    heading: "Residential plumbing service",
     paragraphs: [
       "Good plumbing is invisible. Water arrives, drains carry it away, and none of it crosses your mind. That is the standard we work to on every call.",
     ],

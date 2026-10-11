@@ -27,11 +27,11 @@ export default function ServiceAreasPage() {
           <div className="max-w-3xl">
             <div className="eyebrow">Coverage</div>
             <h1 className="mt-3 text-5xl md:text-6xl font-semibold text-cream-50 leading-[0.98]">
-              From the river delta to the snow line.
+              Service area.
             </h1>
             <p className="mt-5 text-lg text-cream-100/80">
-              {cities.length} municipalities. Six regions. A dispatch model that matches truck stock and
-              technician routing to where the work actually is.
+              We service properties from Abbotsford to Whistler, {cities.length} municipalities in all,
+              with our shop and dispatch team based in Coquitlam.
             </p>
           </div>
         </div>

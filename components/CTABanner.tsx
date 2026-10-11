@@ -4,7 +4,7 @@ import { site } from "@/lib/site";
 
 export function CTABanner({
   title = "Book a property assessment.",
-  description = "We'll walk the building, document conditions, and propose a maintenance plan that covers mechanical, electrical and envelope under a single PO.",
+  description = "We walk the building, document conditions, and propose a maintenance plan that covers mechanical, electrical, and envelope.",
 }: {
   title?: string;
   description?: string;
@@ -13,7 +13,7 @@ export function CTABanner({
     <section className="bg-cream-50 border-t hairline">
       <div className="container-x py-20">
         <div data-reveal className="max-w-3xl mx-auto text-center">
-          <div className="eyebrow">{site.promise}</div>
+          <div className="eyebrow">Next step</div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold mt-3 text-ink-800">
             {title}
           </h2>

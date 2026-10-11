@@ -14,7 +14,7 @@ export const industries: Industry[] = [
   {
     slug: "strata",
     name: "Strata & Multi-Family",
-    short: "Towers, townhomes, and the councils that run them",
+    short: "Towers, townhomes and strata councils",
     image:
       "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1600&q=80&auto=format&fit=crop",
     imageAlt: "Residential high-rise strata towers",
@@ -37,7 +37,7 @@ export const industries: Industry[] = [
   {
     slug: "office",
     name: "Office & Mixed-Use",
-    short: "Tenant comfort is lease renewal",
+    short: "Office buildings and mixed-use",
     image:
       "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&q=80&auto=format&fit=crop",
     imageAlt: "Glass commercial office building",
@@ -60,7 +60,7 @@ export const industries: Industry[] = [
   {
     slug: "industrial",
     name: "Industrial & Warehouse",
-    short: "Uptime is the product",
+    short: "Plants, warehouses and distribution",
     image:
       "https://images.unsplash.com/photo-1565610222536-ef125c59da2e?w=1600&q=80&auto=format&fit=crop",
     imageAlt: "Industrial warehouse facility",
@@ -83,7 +83,7 @@ export const industries: Industry[] = [
   {
     slug: "retail",
     name: "Retail & Restaurant",
-    short: "Open doors, comfortable customers",
+    short: "Stores, restaurants and commercial kitchens",
     image:
       "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1600&q=80&auto=format&fit=crop",
     imageAlt: "Retail storefront interior",
@@ -105,7 +105,7 @@ export const industries: Industry[] = [
   {
     slug: "healthcare",
     name: "Healthcare & Care Facilities",
-    short: "No margin for downtime",
+    short: "Clinics, labs and care homes",
     image:
       "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=1600&q=80&auto=format&fit=crop",
     imageAlt: "Healthcare facility corridor",
@@ -127,7 +127,7 @@ export const industries: Industry[] = [
   {
     slug: "hospitality",
     name: "Hospitality & Hotels",
-    short: "Every room is a guest review",
+    short: "Hotels and hospitality",
     image:
       "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1600&q=80&auto=format&fit=crop",
     imageAlt: "Hotel exterior at dusk",
@@ -150,7 +150,7 @@ export const industries: Industry[] = [
   {
     slug: "education",
     name: "Education & Institutional",
-    short: "Budgets are public, failures are visible",
+    short: "Schools, campuses and public buildings",
     image:
       "https://images.unsplash.com/photo-1562774053-701939374585?w=1600&q=80&auto=format&fit=crop",
     imageAlt: "Institutional campus building",
@@ -172,7 +172,7 @@ export const industries: Industry[] = [
   {
     slug: "residential",
     name: "Residential",
-    short: "Homeowners and installs",
+    short: "Homes and residential installs",
     image:
       "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=1600&q=80&auto=format&fit=crop",
     imageAlt: "Modern single-family home",

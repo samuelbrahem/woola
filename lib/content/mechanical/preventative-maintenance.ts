@@ -60,7 +60,7 @@ export const preventativeMaintenance: ServiceContent = {
       ],
     },
     {
-      heading: "One partner across every mechanical trade",
+      heading: "Every mechanical trade on the same program",
       paragraphs: [
         "Splitting a building between an HVAC contractor, a plumber, a gas fitter, and a refrigeration company means four service histories, four points of contact, and nobody holding the complete picture. With one integrated partner you get consistency of service, better coordination between trades, and a single record of your building's mechanical health. When a problem crosses system boundaries, and the interesting ones usually do, the same team sees both sides of it.",
       ],
@@ -73,7 +73,7 @@ export const preventativeMaintenance: ServiceContent = {
     },
   ],
   closing: {
-    heading: "The cheapest breakdown is the one that never happens",
+    heading: "Planned maintenance gives you fewer surprises",
     paragraphs: [
       "A maintenance program will not make your building exciting, and that is the point. Fewer emergencies, documented condition, and capital decisions made on your schedule: that is what property managers and owners keep programs running year after year for.",
       "Tell us about your building and we will put together a program proposal based on its actual equipment, not a template.",

@@ -37,7 +37,7 @@ export const installations: ServiceContent = {
     },
   ],
   closing: {
-    heading: "An install you never have to think about",
+    heading: "What a proper installation includes",
     paragraphs: [
       "The best compliment an installation can receive is silence: no callbacks, no odd noises, no surprises on the utility bill. That is the finish line we work toward on every project.",
     ],

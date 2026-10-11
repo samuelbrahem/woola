@@ -32,7 +32,7 @@ export const emergencyService: ServiceContent = {
       ],
     },
     {
-      heading: "The best emergency is the one that never happens",
+      heading: "Most emergencies show up in the inspection first",
       paragraphs: [
         "Almost every emergency call we run traces back to something a maintenance visit would have caught: a tired battery, degraded fuel, a transfer switch that hadn't been exercised properly. Buildings on a structured maintenance program make these calls rarely, and when they do, we arrive already knowing the unit's history.",
       ],

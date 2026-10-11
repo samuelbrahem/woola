@@ -113,7 +113,7 @@ export function Footer() {
 
         <div className="mt-12 pt-6 border-t border-ink-600 flex flex-col md:flex-row items-start md:items-center justify-between gap-3 text-xs text-ink-300">
           <span>© {new Date().getFullYear()} Woola Services Group. All rights reserved.</span>
-          <span>{site.promise}</span>
+          <span>Coquitlam, BC</span>
         </div>
       </div>
     </footer>

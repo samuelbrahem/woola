@@ -27,7 +27,7 @@ export const integratedContracting: ServiceContent = {
       ],
     },
     {
-      heading: "What one accountable partner changes",
+      heading: "What changes when one contractor runs the project",
       paragraphs: [
         "You get one proposal with integrated scopes, which simplifies procurement and makes the real project cost visible up front. You get one project manager standing between the trades, the consultants, and ownership, instead of a chain of subcontractor phone calls. Scheduling is coordinated inside one company, so the concrete crew isn't waiting on an electrician who works for someone else, and quality control is enforced by teams who work together daily and will see each other again on the next job.",
         "Accountability is the quiet advantage. When something needs resolving, there's no gap between contractors for responsibility to fall into. It's our scope, all of it.",

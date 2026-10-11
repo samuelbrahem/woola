@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Section, SectionHead } from "@/components/Section";
 import { CTABanner } from "@/components/CTABanner";
+import { AboutSubnav } from "@/components/AboutSubnav";
 import { DivisionWordmark } from "@/components/DivisionWordmark";
 import { divisions } from "@/lib/divisions";
 import { ArrowRight, MapPin, Clock, Users, GraduationCap, HeartHandshake, TrendingUp, ImageIcon } from "lucide-react";
@@ -67,6 +68,7 @@ export default function CareersPage() {
           </div>
         </div>
       </section>
+      <AboutSubnav active="/careers" />
 
       <Section>
         <SectionHead
@@ -153,8 +155,8 @@ export default function CareersPage() {
       </section>
 
       <CTABanner
-        title="Bring your ticket. We'll bring the runway."
-        description="Apprentices, journeymen, dispatchers, and PMs: if the work above sounds like you, we want the conversation."
+        title="Interested in working at Woola?"
+        description="Apprentices, journeymen, dispatchers, and project managers: send us a note and tell us what you do."
       />
     </>
   );

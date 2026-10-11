@@ -20,11 +20,11 @@ export default function FleetPage() {
         <div className="container-x pt-20 pb-14">
           <div className="eyebrow !text-brand-400">About Woola</div>
           <h1 className="mt-3 text-5xl md:text-6xl font-semibold text-cream-50 leading-[0.95]">
-            You&apos;ll know us when we pull up.
+            Our crews in the field.
           </h1>
           <p className="mt-5 text-lg text-cream-100/80 max-w-2xl leading-relaxed">
-            Woola is earning a reputation for its vehicle branding, and we lean into it. A marked
-            van in your parkade tells residents and councils exactly who is on site, and why.
+            Marked vehicles, uniformed technicians, and documented service on every visit. A marked
+            van in your parkade tells residents and councils who is on site.
           </p>
         </div>
       </section>

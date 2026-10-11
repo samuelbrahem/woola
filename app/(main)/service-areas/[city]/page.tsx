@@ -54,7 +54,6 @@ export default function CityPage({ params }: { params: Params }) {
         />
         <div className="absolute inset-0 bg-ink-900/65" />
         <div className="absolute inset-0 bg-gradient-to-b from-ink-900/50 via-transparent to-ink-900/95" />
-        <div className="grain" />
         <div className="container-x pt-20 pb-12 relative">
           <div className="text-sm text-ink-300">
             <Link href="/service-areas" className="hover:text-cream-50">Service Areas</Link>

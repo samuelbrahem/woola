@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Section, SectionHead } from "@/components/Section";
 import { CTABanner } from "@/components/CTABanner";
+import { AboutSubnav } from "@/components/AboutSubnav";
 import { divisions } from "@/lib/divisions";
 import { ArrowRight, AlertTriangle, Lightbulb, Users2, CheckCircle2 } from "lucide-react";
 
@@ -20,7 +21,7 @@ const CASE_STUDIES: CaseStudy[] = [
     title: "120-ton heat pump / chiller retrofit",
     tag: "Mechanical modernization",
     challenge:
-      "An aging chiller plant at end of life, with rising energy costs and a council wary of a months-long disruption to cooling.",
+      "An aging chiller plant with rising energy costs and a council wary of a months-long disruption to cooling.",
     solution:
       "Engineered and installed a 120-ton heat pump/chiller replacement, with the electrical service work handled by our own division instead of a second contractor.",
     teams: ["Mechanical", "Electrical"],
@@ -78,24 +79,24 @@ export default function WorkPage() {
           <div className="max-w-3xl">
             <div className="eyebrow">Featured work</div>
             <h1 className="mt-3 text-5xl md:text-6xl font-semibold text-ink-800 leading-[0.98]">
-              The work speaks first.
+              Recent projects.
             </h1>
             <p className="mt-5 text-lg text-ink-500 max-w-2xl">
-              A cross-section of projects our four divisions have shipped in the past 18
-              months: retrofits, rollouts, rehabs, and the recurring programs that keep
-              buildings out of trouble.
+              Projects completed by our four divisions in the past 18 months: retrofits,
+              generator installations, repipes, and underground work.
             </p>
           </div>
         </div>
       </section>
+      <AboutSubnav active="/work" />
 
       <section className="bg-ink-800 text-cream-50 relative overflow-hidden">
         <div className="grain" />
         <div className="container-x section relative">
           <SectionHead
             eyebrow="Case studies"
-            title="Multi-trade projects, one accountable team."
-            description="The proof of the integrated model: real projects where divisions worked the same site under one PO."
+            title="Case studies."
+            description="Projects where more than one Woola division worked the same site."
             dark
           />
           <div className="mt-12 grid md:grid-cols-2 gap-6">

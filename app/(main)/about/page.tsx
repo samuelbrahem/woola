@@ -22,18 +22,19 @@ export default function AboutPage() {
             <div className="lg:col-span-7">
               <div className="eyebrow">About Woola</div>
               <h1 className="mt-3 text-5xl md:text-6xl lg:text-7xl font-semibold text-ink-800 leading-[0.95]">
-                We were built like a sports team for a reason.
+                Built in Coquitlam. Built around the people who run buildings.
               </h1>
             </div>
             <div className="lg:col-span-5 lg:pt-10">
               <p className="text-lg text-ink-500 leading-relaxed">
-                Most building services companies inherited their structure from a single trade and bolted
-                others on as customers demanded them. Woola was set up differently. From day one we organized
-                around the property manager's problem, not the trade union's.
+                Woola is a building services company based at 42 Fawcett Road in Coquitlam. Most
+                companies in this trade grew out of a single ticket and added others as customers
+                asked. We set up around the property manager's job instead, so the trades a building
+                needs sit under one roof.
               </p>
               <p className="mt-4 text-lg text-ink-500 leading-relaxed">
-                The result is four sister divisions, Mechanical, Power, Electrical, and Build,
-                sharing one operations spine, one dispatcher, and one accountable PO across every job.
+                Today that is four divisions, Mechanical, Power, Electrical, and Build, sharing one
+                dispatch desk, one service history, and one PO per job.
               </p>
             </div>
           </div>
@@ -87,7 +88,7 @@ export default function AboutPage() {
           <SectionHead
             dark
             eyebrow="The model"
-            title="One company. Four divisions. Built around the property."
+            title="How the company is organized."
             description="Each division has a dedicated phone number, dispatcher, and trade qualifications, and shares the back office, reporting platform, and 24/7 emergency line."
           />
           <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -110,14 +111,14 @@ export default function AboutPage() {
         <SectionHead
           eyebrow="Operating principles"
           title="Out work. Out perform. Out play."
-          description="Three short statements that decide what we'll take on and what we'll walk away from."
+          description="The three phrases the team actually uses. They decide what we take on and how we run it."
         />
         <div className="mt-12 grid md:grid-cols-3 gap-6">
           {[
             {
               icon: Activity,
               title: "Out Work",
-              body: "Show up early. Document everything. Close the loop the same day. The simple stuff most companies stopped doing.",
+              body: "Show up when we say we will. Document the work. Follow up when it is complete.",
             },
             {
               icon: Award,
@@ -143,8 +144,8 @@ export default function AboutPage() {
         <div className="container-x section">
           <SectionHead
             eyebrow="Credentials"
-            title="What we hold."
-            description="Every credential below is current and verifiable. Ask us for proof and we'll send the certificates same day."
+            title="Certifications and memberships."
+            description="Every credential below is current. Ask and we will send the certificates."
             align="center"
           />
           <div className="mt-12 flex flex-wrap items-center justify-center gap-x-14 gap-y-10">

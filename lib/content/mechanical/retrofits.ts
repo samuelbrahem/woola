@@ -61,7 +61,7 @@ export const retrofits: ServiceContent = {
     },
   ],
   closing: {
-    heading: "The best capital project is the one you saw coming",
+    heading: "Planning replacements before they become emergencies",
     paragraphs: [
       "If a major asset in your building is getting old, expensive, or unreliable, the window for planning is open right now. An assessment gives you the condition picture, the options, and the timeline to act deliberately instead of reacting later.",
     ],

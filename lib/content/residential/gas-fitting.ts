@@ -37,7 +37,7 @@ export const gasFitting: ServiceContent = {
     },
   ],
   closing: {
-    heading: "Done right, then proven right",
+    heading: "Tested and documented before we leave",
     paragraphs: [
       "Gas fitting has no room for good enough. We test what we install, document the results, and hand you back a system you can trust without a second thought.",
     ],

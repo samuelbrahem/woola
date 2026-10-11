@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Section, SectionHead } from "@/components/Section";
 import { CTABanner } from "@/components/CTABanner";
+import { AboutSubnav } from "@/components/AboutSubnav";
 import {
   ArrowRight,
   ClipboardList,
@@ -102,6 +103,7 @@ export default function ProcessPage() {
           </div>
         </div>
       </section>
+      <AboutSubnav active="/process" />
 
       <Section>
         <SectionHead

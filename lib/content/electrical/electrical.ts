@@ -44,7 +44,7 @@ export const electrical: ServiceContent = {
     },
   ],
   closing: {
-    heading: "The cheapest repair is the early one",
+    heading: "Why early repairs cost less",
     paragraphs: [
       "Reactive electrical work is the most expensive kind there is, because it arrives with an outage attached. Put your building on a schedule and most of those calls never happen. Start with a single inspection and see what your panels have been hiding.",
     ],

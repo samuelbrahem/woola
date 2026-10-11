@@ -5,7 +5,7 @@ import { AudienceSplit } from "@/components/AudienceSplit";
 import { SectionHead } from "@/components/Section";
 import { DivisionExplorer } from "@/components/DivisionExplorer";
 import { CountUp } from "@/components/CountUp";
-import { Testimonials, GoogleG } from "@/components/Testimonials";
+import { GoogleG } from "@/components/Testimonials";
 import { googleListingUrl } from "@/lib/reviews";
 import { CTABanner } from "@/components/CTABanner";
 import { BuildingXray } from "@/components/BuildingXray";
@@ -96,28 +96,24 @@ export default function HomePage() {
             <div className="lg:col-span-6">
               <div className="eyebrow">Who we are</div>
               <h2 className="mt-3 text-3xl md:text-4xl lg:text-5xl font-semibold text-ink-800 leading-tight">
-                Built to be the last contractor you hire.
+                Four divisions, working as one team.
               </h2>
-              <p className="mt-2 script text-brand-500 text-2xl md:text-3xl leading-tight">
-                Out work. Out perform. Out play.
-              </p>
               <p className="mt-5 text-lg text-ink-700 leading-relaxed">
                 Woola is a Coquitlam-based building services group with four divisions under one
-                roof: Mechanical, Power, Electrical, and Build. One dispatcher coordinates all of it,
-                one PO covers it, and one team carries the accountability most buildings spread
-                across a dozen vendors.
+                roof: Mechanical, Power, Electrical, and Build. Your property manager calls one
+                dispatcher, the work goes on one PO, and the same team is answerable for all of it.
               </p>
               <ul className="mt-7 grid sm:grid-cols-3 gap-5">
                 {[
                   {
                     icon: Wrench,
                     t: "Our own trades",
-                    b: "Red Seal, gas-ticketed, FSR-certified technicians on one roster, not a rotating cast of subs.",
+                    b: "Red Seal, gas-ticketed, and FSR-certified technicians on our own payroll.",
                   },
                   {
                     icon: ClipboardCheck,
                     t: "Every visit documented",
-                    b: "Photos, asset histories, and condition data that make capital planning honest.",
+                    b: "Photos, asset histories, and condition notes you can use for capital planning.",
                   },
                   {
                     icon: Building2,
@@ -165,8 +161,8 @@ export default function HomePage() {
         <div className="container-x py-16 md:py-20">
           <SectionHead
             eyebrow="Interactive · Building X-Ray"
-            title="Every building is a countdown. See yours."
-            description="Drag the age slider and watch each system move toward renewal."
+            title="See what typically wears out first."
+            description="Adjust the building age to see typical equipment lifespans and when major systems may need attention."
           />
           <div className="mt-10">
             <BuildingXray />
@@ -251,14 +247,14 @@ export default function HomePage() {
           <div>
             <SectionHead
               eyebrow="Comprehensive maintenance"
-              title="The cheapest repair is the one that never happens."
-              description="Planned, not reactive. Comprehensive maintenance feeds the service history that drives smarter capital planning."
+              title="Planned maintenance gives you fewer surprises."
+              description="A maintenance program keeps a service history for every asset, which is what makes capital planning possible."
             />
             <ul className="mt-6 space-y-3">
               {[
                 "Custom maintenance calendar per building and asset",
                 "Compliance handled: backflow, CSA C282, fire-safety coordination",
-                "Photo-documented visits your council can audit",
+                "Photo-documented visits your council can review",
                 "Priority emergency response included",
               ].map((line) => (
                 <li key={line} className="flex items-start gap-3 text-ink-700">
@@ -284,9 +280,9 @@ export default function HomePage() {
         <div className="container-x py-16 md:py-20">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <div className="max-w-3xl">
-              <div className="eyebrow !text-white/80">What clients say</div>
+              <div className="eyebrow !text-white/80">Reviews</div>
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold mt-3 text-white">
-                The point of Woola is that you stop chasing trades.
+                Read what clients say on Google.
               </h2>
             </div>
             <a
@@ -297,9 +293,6 @@ export default function HomePage() {
             >
               <GoogleG className="w-5 h-5" /> See our Google reviews →
             </a>
-          </div>
-          <div className="mt-10">
-            <Testimonials />
           </div>
         </div>
       </section>

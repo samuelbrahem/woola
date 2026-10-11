@@ -7,13 +7,12 @@ export function FleetStrip() {
     <section className="bg-cream-100 border-y hairline">
       <div className="container-x py-14 md:py-16">
         <div className="max-w-2xl mx-auto text-center">
-          <div className="eyebrow">The Woola fleet</div>
+          <div className="eyebrow">In the field</div>
           <h2 className="mt-3 text-3xl md:text-4xl font-semibold text-ink-800 leading-tight">
-            You&apos;ll know us when we pull up.
+            Our crews in the field.
           </h2>
           <p className="mt-4 text-ink-600 leading-relaxed">
-            Marked vans, uniformed crews, and photo-documented work orders on every visit. If it
-            doesn&apos;t carry the Woola mark, it isn&apos;t us.
+            Marked vehicles, uniformed technicians, and documented service on every visit.
           </p>
         </div>
         <div className="mt-10 grid md:grid-cols-3 gap-4 max-w-5xl mx-auto">

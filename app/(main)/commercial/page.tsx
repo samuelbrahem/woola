@@ -55,12 +55,12 @@ export default function CommercialPage() {
           <div className="max-w-3xl">
             <div className="rise eyebrow !text-brand-400">Commercial</div>
             <h1 className="rise rise-1 mt-3 text-5xl md:text-6xl font-semibold text-cream-50 leading-[0.98]">
-              Every kind of commercial. One accountable partner.
+              Building services for commercial properties.
             </h1>
             <p className="rise rise-2 mt-5 text-lg text-cream-100/80 max-w-2xl">
-              Strata towers, office buildings, warehouses, restaurants, care facilities,
-              and hotels each run differently. Woola runs programs for all of them across
-              Metro Vancouver, the Fraser Valley, and the Sea-to-Sky.
+              Mechanical, electrical, backup power, and building maintenance coordinated
+              through one team, for strata towers, offices, warehouses, restaurants, care
+              facilities, and hotels across Metro Vancouver, the Fraser Valley, and the Sea-to-Sky.
             </p>
             <div className="rise rise-3 mt-8 flex flex-wrap gap-3">
               <Link href="/book" className="btn btn-brand">
@@ -80,22 +80,22 @@ export default function CommercialPage() {
             {[
               {
                 label: "Fix",
-                title: "Something's down",
+                title: "Need something repaired?",
                 body: "A failed boiler, a dead panel, a generator that won't start, a leak working through three floors. Dispatch triages by phone, day or night.",
                 href: "/contact",
                 cta: "Request service",
               },
               {
                 label: "Replace",
-                title: "Equipment at end of life",
-                body: "Boilers, RTUs, chillers, switchgear, roofs. Replacements planned from maintenance history and delivered around occupancy, not emergencies.",
+                title: "Planning a replacement?",
+                body: "Boilers, RTUs, chillers, switchgear, roofs. Replacements scoped from the maintenance history and scheduled around occupancy.",
                 href: "/know-your-building",
                 cta: "Plan capital renewal",
               },
               {
                 label: "Maintain",
-                title: "Stop the next failure",
-                body: "Fixed-price maintenance contracts across every trade, with condition reports your council or asset manager can actually audit.",
+                title: "Looking for ongoing maintenance?",
+                body: "Fixed-price maintenance contracts across every trade, with condition reports written for a council or asset manager.",
                 href: "/book",
                 cta: "Book a portfolio review",
               },
@@ -116,7 +116,7 @@ export default function CommercialPage() {
       <Section>
         <SectionHead
           eyebrow="Four divisions"
-          title="The trades your building depends on. One accountable partner."
+          title="The four divisions."
           description="Commercial clients understand divisions, and ours are built to work together: mechanical, power, electrical, and build under one PO, one dispatcher, and one standard of reporting. Stop refereeing contractors; start holding one partner to account."
         />
         <div className="mt-12 grid md:grid-cols-2 xl:grid-cols-4 gap-6">

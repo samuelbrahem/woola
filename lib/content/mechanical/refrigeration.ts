@@ -42,7 +42,7 @@ export const refrigeration: ServiceContent = {
     },
   ],
   closing: {
-    heading: "Equipment that never sleeps needs a partner who checks on it",
+    heading: "Refrigeration runs around the clock, so inspections matter",
     paragraphs: [
       "Refrigeration is the one system in your building running at full duty every hour of the year. Put it on a maintenance schedule that matches that workload, and the emergency calls get rarer and cheaper.",
     ],

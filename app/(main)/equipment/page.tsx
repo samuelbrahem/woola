@@ -21,9 +21,9 @@ export default function EquipmentIndexPage() {
         <div className="grain" />
         <div className="container-x pt-20 pb-16 relative">
           <div className="max-w-3xl">
-            <div className="eyebrow !text-brand-400">Equipment Library</div>
+            <div className="eyebrow !text-brand-400">Reference</div>
             <h1 className="mt-3 text-5xl md:text-6xl font-semibold leading-[0.95]">
-              The machines behind your building.
+              Equipment Library.
             </h1>
             <p className="mt-5 text-lg text-cream-100/80 max-w-2xl">
               When a quote names a piece of equipment, look it up here first. What it does, how it

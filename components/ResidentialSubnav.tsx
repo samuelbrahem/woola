@@ -20,7 +20,7 @@ export function ResidentialSubnav() {
   };
 
   return (
-    <div className="sticky top-20 z-40 bg-cream-50/90 backdrop-blur border-b hairline">
+    <div className="sticky top-20 z-40 bg-cream-50/95 border-b hairline">
       <div className="container-x flex items-center gap-4 py-2">
         <div className="flex min-w-0 flex-1 items-center gap-1 overflow-x-auto scrollbar-none">
           <Link href="/residential" className={linkClass("/residential")}>

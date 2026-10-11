@@ -205,7 +205,7 @@ export const cities: City[] = [
     lat: 49.2849,
     lng: -122.8678,
     blurb:
-      "Brewery row mechanical, Suter Brook and Klahanie strata, and the waterfront commercial stretch along St. Johns.",
+      "Suter Brook and Klahanie strata, Moody Centre commercial, and the waterfront stretch along St. Johns.",
     hooks: [
       "Brewery glycol and steam systems",
       "Strata maintenance Suter Brook to Klahanie",

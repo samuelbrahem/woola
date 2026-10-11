@@ -221,13 +221,13 @@ export const divisions: Division[] = [
     name: "Woola Mechanical",
     subtitle: "HVAC, Plumbing & Gas",
     homepageChips: ["HVAC", "Plumbing", "Gas Services", "Refrigeration", "Commercial", "Residential"],
-    tagline: "Engineered comfort. Verified reliability.",
+    tagline: "HVAC, plumbing, gas and refrigeration.",
     description:
       "Full-spectrum mechanical services for strata, commercial and high-end residential properties, from heat-pump retrofits to industrial refrigeration.",
     contactPhone: "604-732-1441",
     contactEmail: "dispatch@woolamech.ca",
     intro:
-      "We design, install, service and maintain the systems that keep buildings comfortable and code-compliant. Our technicians are certified across HVAC, hydronics, gas, and refrigeration, so one team handles what most companies split across four.",
+      "We service HVAC, hydronic, plumbing, gas, and refrigeration systems in strata, commercial, and residential buildings across Metro Vancouver. Our technicians hold the tickets for all four, so the same crew can work the rooftop, the boiler room, and the risers.",
     heroImage: "/field/01-08-2025-surrey-mech-1.jpg",
     heroImageAlt: "Woola Mechanical technicians working on copper piping in a mechanical room",
     video: "/videos/mechanical.mp4",
@@ -555,7 +555,7 @@ export const divisions: Division[] = [
       "Emergency Service",
       "Electrical Contracting",
     ],
-    tagline: "We protect critical infrastructure.",
+    tagline: "Generator service, testing and backup power.",
     description:
       "Commercial critical power partner: generator maintenance and inspections, CSA C282 testing, repairs, fuel services, replacements, and 24/7 emergency response for BC's most critical facilities.",
     contactPhone: "604-829-9156",
@@ -568,9 +568,9 @@ export const divisions: Division[] = [
     accent: "from-ink-800/10 via-brand-500/10 to-transparent",
     heroKeywords: ["Generators", "Standby Power", "Load Bank", "CSA C282", "Transfer Switch", "Fuel Polishing"],
     stats: [
-      { value: "180+", label: "Generators under contract", sub: "Annual CSA C282 inspections" },
-      { value: "850 kW", label: "On-site load bank capacity", sub: "Resistive + reactive testing" },
       { value: "3", label: "OEMs factory-authorized", sub: "Generac, Kohler, Cummins" },
+      { value: "CSA C282", label: "Annual testing and reporting", sub: "Inspections, load bank, fuel" },
+      { value: "Own", label: "Load banks", sub: "No third-party rental or scheduling" },
       { value: "24/7", label: "Emergency generator response", sub: "Every day of the year" },
     ],
     brands: [
@@ -882,22 +882,22 @@ export const divisions: Division[] = [
       "Panel & Service Upgrades",
       "Infrared Scanning",
     ],
-    tagline: "Every circuit accounted for.",
+    tagline: "Commercial electrical service, upgrades and EV charging.",
     description:
       "Full-service commercial and strata electrical: service upgrades, panel work, EV charger installations, LED lighting retrofits, and low-voltage data and security cabling.",
     contactPhone: "604-829-9160",
     contactEmail: "service@woolaelectrical.ca",
     intro:
-      "Woola Electrical is our journeyman-led division for everything downstream of your main disconnect. FSR-certified for permit sign-off, BC Hydro Power Smart Alliance for rebate work, and a CleanBC EV Ready planner for strata charging rollouts.",
+      "Journeyman-led electrical work for everything downstream of your main disconnect: service and panel upgrades, EV charging, LED retrofits, and low-voltage. FSR-certified for permit sign-off, BC Hydro Power Smart Alliance for rebate work, and a CleanBC EV Ready planner for strata charging rollouts.",
     heroImage: "/field/07-23-2026-electrical-4.jpg",
     heroImageAlt: "Woola electrician working in a multi-unit meter bank room",
     video: "/videos/electrical.mp4",
     accent: "from-brand-400/15 via-brand-500/5 to-transparent",
     heroKeywords: ["Electrical", "EV Charging", "LED Retrofit", "Low Voltage", "Power Smart", "FSR"],
     stats: [
-      { value: "1,200+", label: "EV chargers commissioned", sub: "L2 + DCFC across BC" },
-      { value: "18", label: "Licensed electricians", sub: "FSR-B and FSR-A on staff" },
-      { value: "$1.6M", label: "Rebates captured for clients", sub: "BC Hydro + CleanBC in 2025" },
+      { value: "FSR", label: "Field Safety Representatives on staff", sub: "Permit sign-off in house" },
+      { value: "EV Ready", label: "CleanBC planner", sub: "Strata charging rollouts" },
+      { value: "Power Smart", label: "BC Hydro Alliance member", sub: "Rebate paperwork handled" },
       { value: "24/7", label: "Emergency electrical", sub: "Contracted clients" },
     ],
     brands: [
@@ -1169,23 +1169,23 @@ export const divisions: Division[] = [
       "Property Services",
       "Turnkey Project Solutions",
     ],
-    tagline: "Prevent problems before they cost you.",
+    tagline: "Repairs, building maintenance, renovations and construction support.",
     description:
       "A single trade-coordinated partner for strata and commercial property maintenance, building envelope, interior renovations and small-cap construction.",
     contactPhone: "604-800-3617",
     contactEmail: "estimates@woolabuild.ca",
     intro:
-      "Most property managers juggle a dozen vendors. Woola Build collapses that into one accountable partner, with maintenance packages, envelope work, interior and exterior trades, and construction project management coordinated by an in-house team.",
+      "From leak repairs and common-area work to envelope projects and tenant improvements, Woola Build handles the building work that sits outside the mechanical and electrical rooms. Maintenance packages, trades, and construction project management run through one in-house team.",
     heroImage: "/field/08-12-2026-build-7.jpg",
     heroImageAlt: "Crane lifting rooftop equipment over a Woola Build strata project",
     video: "/videos/build.mp4",
     accent: "from-brand-400/10 via-ink-800/5 to-transparent",
     heroKeywords: ["Maintenance", "Envelope", "Renovations", "Property Services", "Roofing", "Construction PM"],
     stats: [
-      { value: "120+", label: "Buildings under maintenance", sub: "Quarterly + annual programs" },
       { value: "Same week", label: "Service dispatch", sub: "Routine work, contracted clients" },
-      { value: "$8.4M", label: "Annual construction volume", sub: "Tenant improvements & renos" },
-      { value: "Gold Seal", label: "Certified project managers", sub: "On every $250k+ project" },
+      { value: "Gold Seal", label: "Certified project managers", sub: "Construction and envelope projects" },
+      { value: "4", label: "Divisions on one PO", sub: "Mechanical and electrical in house" },
+      { value: "24/7", label: "Emergency building response", sub: "Contracted clients" },
     ],
     brands: [
       { name: "Soprema", domain: "soprema.com", src: "/brand/logos/soprema.png" },
@@ -1411,7 +1411,7 @@ export const divisions: Division[] = [
       {
         slug: "turnkey-projects",
         name: "Turnkey Project Solutions",
-        short: "Multi-trade, one partner",
+        short: "Multi-trade projects",
         featured: true,
         description:
           "Projects that span trades: mechanical, electrical, civil, concrete, and finishing delivered under one contract, one schedule, and one project manager.",

@@ -52,10 +52,10 @@ const ELEVATION: Record<string, { order: number; level: string }> = {
 
 /** Section headline per division; the descent metaphor is worded for each. */
 const HEADLINES: Record<string, string> = {
-  mechanical: "Every mechanical system. Roof to below grade.",
-  power: "Every link in standby power. Generator room to site-wide.",
-  electrical: "Every circuit in the building. Ceilings to parkade.",
-  build: "Every part of the building. Roof to common areas.",
+  mechanical: "Mechanical services, rooftop to below grade.",
+  power: "Power services, generator room to site-wide.",
+  electrical: "Electrical services, ceilings to parkade.",
+  build: "Building services, roof to parkade.",
 };
 
 /** Prefer real photography over studio renders wherever a photo exists. */
@@ -130,8 +130,8 @@ export function ScrollyServices({ division: divisionSlug }: { division: string }
   };
 
   const shortName = division.name.replace("Woola ", "");
-  const headline = HEADLINES[division.slug] ?? `Every ${shortName.toLowerCase()} system. Roof to below grade.`;
-  const blurb = `${division.name} services, in the order you'd meet them walking down through a building, with whole-building programs last. Each one opens to its own service page.`;
+  const headline = HEADLINES[division.slug] ?? `${shortName} services, roof to below grade.`;
+  const blurb = `Each service opens to its own page with scope, equipment, and pricing notes.`;
 
   return (
     <>

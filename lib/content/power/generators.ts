@@ -43,7 +43,7 @@ export const generators: ServiceContent = {
       ],
     },
     {
-      heading: "One project, one schedule, one accountable partner",
+      heading: "One contractor for the whole installation",
       paragraphs: [
         "Generator projects are multi-trade by nature. Through Woola's in-house divisions we coordinate the electrical infrastructure, mechanical modifications, concrete foundations, underground civil work, rigging and equipment removal, fuel systems, site restoration, and commissioning under a single contract. You deal with one project manager and one schedule instead of refereeing between contractors.",
         "For new construction, tenant improvements, and facility expansions, the same team handles equipment placement, electrical integration, fuel systems, and final testing, so the standby system is proven before the building depends on it.",

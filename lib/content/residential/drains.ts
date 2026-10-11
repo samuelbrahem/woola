@@ -37,7 +37,7 @@ export const drains: ServiceContent = {
     },
   ],
   closing: {
-    heading: "Stop clearing the same drain twice",
+    heading: "Finding the cause, not just clearing the blockage",
     paragraphs: [
       "A recurring backup is your plumbing trying to tell you something. We help you read the message, deal with the cause, and get back to never thinking about your drains.",
     ],

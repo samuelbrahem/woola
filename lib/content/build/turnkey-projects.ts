@@ -30,7 +30,7 @@ export const turnkeyProjects: ServiceContent = {
       ],
     },
     {
-      heading: "One place responsibility lives",
+      heading: "Who is responsible for what",
       paragraphs: [
         "Turnkey is really a question of where responsibility sits. On a conventional project it is spread across a stack of contracts; on a Woola project it sits with the PM whose name is on your schedule. Gold Seal certified project managers run our larger projects, and the same documentation discipline (change orders, deficiency lists, closeout packages) applies at every size.",
       ],

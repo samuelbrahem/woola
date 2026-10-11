@@ -162,7 +162,7 @@ export const equipmentLibrary: EquipmentEntry[] = [
     category: "Power",
     image: "/equipment-renders/transfer-switch.webp",
     imageAlt: "3D cutaway render of an automatic transfer switch",
-    what: "Decides when the building runs on grid or generator, and makes the swap automatically. A generator with a failed ATS is a very expensive lawn ornament.",
+    what: "Decides when the building runs on grid or generator, and makes the swap automatically.",
     signs: ["Failure to transfer during tests", "Chatter or hum from the cabinet", "Obsolete controller with no parts support"],
     maintenance: ["Transfer-time testing annually", "Infrared scan of lugs and contacts", "Exercise clock verification"],
     lifespan: "20–30 years",

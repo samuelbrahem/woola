@@ -300,7 +300,7 @@ export default function ServicePage({ params }: { params: Params }) {
           <div className="container-x section">
             <SectionHead
               eyebrow="Equipment we know"
-              title="The gear we service."
+              title="Equipment we service."
               description="Each unit links to a plain-English walkthrough of what it does, what fails, and what to keep an eye on."
             />
 
@@ -394,7 +394,7 @@ export default function ServicePage({ params }: { params: Params }) {
           <div className="container-x section relative">
           <SectionHead
             eyebrow="Our services"
-            title={`${service.short} services we offer.`}
+            title={`What is included.`}
             description="What we book, deliver, and stand behind under this service line. If your scope isn't listed, ask. We probably do it."
             dark
           />
@@ -422,7 +422,7 @@ export default function ServicePage({ params }: { params: Params }) {
       <section className="bg-cream-100 border-y hairline">
         <div className="container-x section">
           <div className="flex items-end justify-between flex-wrap gap-6">
-            <SectionHead eyebrow="Recent projects" title={`${division.name} in the field.`} />
+            <SectionHead eyebrow="Recent projects" title="Recent projects." />
             <Link
               href="/work"
               className="text-sm font-medium text-ink-800 hover:text-brand-500 inline-flex items-center gap-1.5"
@@ -470,7 +470,7 @@ export default function ServicePage({ params }: { params: Params }) {
       </section>
 
       <Section>
-        <SectionHead eyebrow="Why Woola" title="What makes this service different." />
+        <SectionHead eyebrow="Why Woola" title="How we handle it." />
         <ul className="mt-6 grid sm:grid-cols-2 gap-x-10 gap-y-3 max-w-4xl">
           {service.highlights.map((h) => (
             <li key={h} className="flex gap-3 items-start">

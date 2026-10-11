@@ -124,9 +124,9 @@ export default function PropertyManagersPage() {
 
       <Section>
         <SectionHead
-          eyebrow="We get the job"
-          title="Your day is coordination. Ours is too."
-          description="Most contractors understand their trade. Fewer understand the pressures on the person hiring them."
+          eyebrow="Your job"
+          title="What we take off your plate."
+          description="The parts of a property manager's week that a contractor can make easier, or harder."
         />
         <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {pressures.map((p) => (

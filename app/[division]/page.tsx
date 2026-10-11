@@ -18,7 +18,7 @@ const TRIAGE: Record<string, TriageOption[]> = {
   mechanical: [
     {
       label: "Fix",
-      title: "Something's down",
+      title: "Need something repaired?",
       body: "No heat, a leak, a failed rooftop unit, a backed-up drain. Tell dispatch what's happening.",
       href: "/contact",
       cta: "Request a repair",
@@ -27,8 +27,8 @@ const TRIAGE: Record<string, TriageOption[]> = {
     },
     {
       label: "Replace",
-      title: "Equipment at end of life",
-      body: "Boilers, RTUs, chillers, piping. Replace on your schedule, not the equipment's.",
+      title: "Planning a replacement?",
+      body: "Boilers, RTUs, chillers, piping. We scope, price, and schedule the replacement with the building's calendar in mind.",
       href: "/mechanical/retrofits",
       cta: "Plan a replacement",
       image: "/field/07-03-2024-crane-26.jpg",
@@ -36,8 +36,8 @@ const TRIAGE: Record<string, TriageOption[]> = {
     },
     {
       label: "Maintain",
-      title: "Stop the next failure",
-      body: "Scheduled inspections and condition reports across every mechanical system.",
+      title: "Looking for ongoing maintenance?",
+      body: "Scheduled inspections and condition reports for every mechanical system in the building.",
       href: "/mechanical/preventative-maintenance",
       cta: "See maintenance programs",
       image: "/field/10-25-2024-mattmatt-22.jpg",
@@ -47,7 +47,7 @@ const TRIAGE: Record<string, TriageOption[]> = {
   power: [
     {
       label: "Fix",
-      title: "Generator trouble",
+      title: "Generator not starting or in alarm?",
       body: "No-start, alarm fault, failed test, or an outage running long. Get a technician on it.",
       href: "/power/repairs-troubleshooting",
       cta: "Get it diagnosed",
@@ -56,7 +56,7 @@ const TRIAGE: Record<string, TriageOption[]> = {
     },
     {
       label: "Replace",
-      title: "Aging or failed unit",
+      title: "Replacing or adding a generator?",
       body: "Replacement, retrofit, or a new installation, managed from concrete pad to commissioning.",
       href: "/power/generators",
       cta: "Scope a replacement",
@@ -65,8 +65,8 @@ const TRIAGE: Record<string, TriageOption[]> = {
     },
     {
       label: "Maintain",
-      title: "Keep it start-ready",
-      body: "Inspections, C282 testing, fuel care, and reporting that proves readiness.",
+      title: "Need annual testing and inspections?",
+      body: "CSA C282 inspections, load-bank testing, fuel care, and the annual report your insurer asks for.",
       href: "/power/maintenance-inspections",
       cta: "See maintenance programs",
       image: "/equipment/generators/load-bank.jpg",
@@ -76,7 +76,7 @@ const TRIAGE: Record<string, TriageOption[]> = {
   electrical: [
     {
       label: "Fix",
-      title: "Electrical problem",
+      title: "Have an electrical fault?",
       body: "Tripping breakers, dead circuits, common-area faults. Book a service call.",
       href: "/contact",
       cta: "Request a service call",
@@ -85,7 +85,7 @@ const TRIAGE: Record<string, TriageOption[]> = {
     },
     {
       label: "Upgrade",
-      title: "More capacity or better light",
+      title: "Upgrading service, lighting, or adding EV charging?",
       body: "Panel and service upgrades, EV charging, LED retrofits, tenant fit-outs.",
       href: "/electrical/panel-upgrades",
       cta: "Plan an upgrade",
@@ -94,7 +94,7 @@ const TRIAGE: Record<string, TriageOption[]> = {
     },
     {
       label: "Maintain",
-      title: "Catch faults early",
+      title: "Want an inspection program?",
       body: "Inspection programs and infrared scans that find hot spots before they fail.",
       href: "/electrical/infrared-scanning",
       cta: "See inspection options",
@@ -105,8 +105,8 @@ const TRIAGE: Record<string, TriageOption[]> = {
   build: [
     {
       label: "Fix",
-      title: "Building repairs",
-      body: "Doors, leaks, damage, and the small-jobs list that never shrinks. Same-week dispatch.",
+      title: "Need a repair done?",
+      body: "Doors, leaks, damage, and the running small-jobs list. Same-week dispatch for contracted buildings.",
       href: "/build/property-services",
       cta: "Send the list",
       image: "/equipment/construction/door-hardware.jpg",
@@ -114,7 +114,7 @@ const TRIAGE: Record<string, TriageOption[]> = {
     },
     {
       label: "Build",
-      title: "Renovate or fit out",
+      title: "Planning a renovation or fit-out?",
       body: "Tenant improvements, amenity rebuilds, and envelope projects with one PM.",
       href: "/build/construction",
       cta: "Start a project",
@@ -123,7 +123,7 @@ const TRIAGE: Record<string, TriageOption[]> = {
     },
     {
       label: "Maintain",
-      title: "Planned building care",
+      title: "Looking for a building maintenance package?",
       body: "Quarterly and annual packages covering roof, parkade, common areas, and life safety.",
       href: "/build/maintenance",
       cta: "See maintenance packages",
@@ -209,31 +209,25 @@ export default function DivisionPage({ params }: { params: Params }) {
               className="object-cover"
             />
           )}
-          <div className="absolute inset-0 bg-ink-900/60" />
-          <div
-            aria-hidden
-            className="absolute inset-0"
-            style={{
-              background:
-                "radial-gradient(ellipse 60% 55% at 50% 45%, rgba(4,4,4,0.7) 0%, rgba(4,4,4,0.3) 55%, rgba(4,4,4,0) 100%)",
-            }}
-          />
+          {/* Shade the left where the copy sits; leave the right side open so the footage (crews, Woola shirts) reads. */}
+          <div className="absolute inset-0 bg-ink-900/35" />
+          <div className="absolute inset-0 bg-gradient-to-r from-ink-900/85 via-ink-900/45 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-b from-ink-900/40 via-transparent to-ink-900/90" />
 
           {/* Content */}
           <div className="relative container-x py-20 md:py-28 flex items-center min-h-[calc(100vh-5rem)]">
-            <div className="max-w-3xl mx-auto text-center">
+            <div className="max-w-3xl text-left">
               <div className="rise eyebrow !text-[color:var(--brand-on-dark)]">Division · {division.subtitle}</div>
               <h1 className="rise rise-1 mt-4 text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-cream-50 leading-[1.05]">
                 {division.name}
               </h1>
-              <p className="rise rise-2 mt-4 script text-[color:var(--brand-on-dark)] text-2xl md:text-3xl lg:text-4xl leading-tight">
+              <p className="rise rise-2 mt-4 text-xl md:text-2xl font-medium text-cream-100/90 leading-snug">
                 {division.tagline}
               </p>
-              <p className="rise rise-3 mt-6 text-lg text-cream-100/85 max-w-2xl mx-auto leading-relaxed">
+              <p className="rise rise-3 mt-6 text-lg text-cream-100/85 max-w-2xl leading-relaxed">
                 {division.intro}
               </p>
-              <div className="rise rise-4 mt-9 flex flex-wrap justify-center gap-3">
+              <div className="rise rise-4 mt-9 flex flex-wrap gap-3">
                 <Link href="/contact" className="btn btn-on-dark text-base">
                   Book a property assessment <ArrowRight className="w-4 h-4" />
                 </Link>
@@ -312,8 +306,7 @@ export default function DivisionPage({ params }: { params: Params }) {
         <div id="brands" />
         <div className="container-x py-4 md:py-5 flex flex-col md:flex-row md:items-center gap-3 md:gap-8">
           <div className="shrink-0 md:w-56">
-            <div className="eyebrow">Brands we service</div>
-            <p className="mt-1 text-xs text-ink-500">Factory-trained. Not brand-loyal.</p>
+            <div className="eyebrow">{division.slug === "build" ? "Products and systems we work with" : "Brands we service"}</div>
           </div>
           <div className="flex-1 min-w-0">
             <LogoMarquee items={division.brands} size="sm" />
@@ -352,8 +345,8 @@ export default function DivisionPage({ params }: { params: Params }) {
           <div className="flex items-end justify-between flex-wrap gap-6">
             <SectionHead
               eyebrow="Recent work"
-              title="Signature projects."
-              description={`A snapshot of ${division.name.split(" ").slice(1).join(" ").toLowerCase()} jobs we've shipped in the past 18 months.`}
+              title="Recent projects."
+              description={`${division.name.split(" ").slice(1).join(" ")} work completed in the past 18 months.`}
             />
             <Link
               href="/contact"
@@ -408,8 +401,8 @@ export default function DivisionPage({ params }: { params: Params }) {
           <div id="process" />
           <SectionHead
             eyebrow="How we run it"
-            title={`The ${division.name.split(" ").slice(1).join(" ")} delivery model.`}
-            description="Every contract follows the same four-step rhythm so property managers know what to expect, and so our techs don't waste a truck-roll."
+            title="How a job runs."
+            description="The same four steps on every contract, so you know what to expect before the truck arrives."
             dark
           />
           <div className="mt-12">
@@ -454,8 +447,8 @@ export default function DivisionPage({ params }: { params: Params }) {
       <Section>
         <SectionHead
           eyebrow="Credentials"
-          title="Audited, ticketed, and on the list."
-          description={`The ${division.name.split(" ").slice(1).join(" ")} team carries the certifications property managers, strata councils and insurers look for.`}
+          title="Certifications and memberships."
+          description={`What the ${division.name.split(" ").slice(1).join(" ")} team holds, and who we are registered with.`}
           align="center"
         />
         <CredentialsReveal items={division.certLogos} />
@@ -494,8 +487,8 @@ export default function DivisionPage({ params }: { params: Params }) {
         <div id="faq" />
         <SectionHead
           eyebrow="Frequently asked"
-          title={`Quick answers about ${division.name.split(" ").slice(1).join(" ").toLowerCase()}.`}
-          description="Don't see your question? Email the division directly."
+          title="Common questions."
+          description="Not covered here? Email the division directly."
         />
         <a
           href={`mailto:${division.contactEmail}`}
