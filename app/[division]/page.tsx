@@ -151,6 +151,8 @@ import {
 } from "lucide-react";
 import { cities } from "@/lib/cities";
 import type { Metadata } from "next";
+import { JsonLd } from "@/components/JsonLd";
+import { breadcrumbs, faqPage } from "@/lib/schema";
 
 type Params = { division: string };
 
@@ -185,6 +187,15 @@ export default function DivisionPage({ params }: { params: Params }) {
 
   return (
     <>
+      <JsonLd
+        data={[
+          faqPage(division.faqs),
+          breadcrumbs([
+            { name: "Woola", path: "" },
+            { name: division.name, path: `/${division.slug}` },
+          ]),
+        ]}
+      />
       {/* Hero: dark, full-height image/video background, matches main-site style */}
       <section className="relative w-full overflow-hidden bg-ink-900 text-cream-50">
         <div className="relative min-h-[calc(100vh-5rem)]">

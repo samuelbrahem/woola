@@ -8,6 +8,8 @@ import { divisions } from "@/lib/divisions";
 import { site } from "@/lib/site";
 import { Phone, Check, ArrowRight } from "lucide-react";
 import type { Metadata } from "next";
+import { JsonLd } from "@/components/JsonLd";
+import { breadcrumbs, cityService } from "@/lib/schema";
 
 type Params = { city: string };
 
@@ -40,6 +42,16 @@ export default function CityPage({ params }: { params: Params }) {
 
   return (
     <>
+      <JsonLd
+        data={[
+          cityService(city),
+          breadcrumbs([
+            { name: "Woola", path: "" },
+            { name: "Service Areas", path: "/service-areas" },
+            { name: city.name, path: `/service-areas/${city.slug}` },
+          ]),
+        ]}
+      />
       <section className="bg-ink-900 text-cream-50 relative overflow-hidden">
         {/* Drone flyover of the municipality; poster frame holds the space until it plays */}
         <video

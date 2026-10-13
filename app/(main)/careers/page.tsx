@@ -6,6 +6,8 @@ import { AboutSubnav } from "@/components/AboutSubnav";
 import { DivisionWordmark } from "@/components/DivisionWordmark";
 import { divisions } from "@/lib/divisions";
 import { getOpenings, bambooCareersUrl } from "@/lib/bamboo";
+import { JsonLd } from "@/components/JsonLd";
+import { jobPostings } from "@/lib/schema";
 import { ArrowRight, MapPin, Clock, Users, GraduationCap, HeartHandshake, TrendingUp, ImageIcon } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -35,6 +37,7 @@ export default async function CareersPage() {
   const openings = await getOpenings();
   return (
     <>
+      {openings.length > 0 && <JsonLd data={jobPostings(openings)} />}
       <section className="bg-ink-900 text-cream-50 relative overflow-hidden">
         <div aria-hidden className="aurora -z-0" />
         <div className="container-x pt-24 pb-16 relative">

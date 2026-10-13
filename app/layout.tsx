@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { site } from "@/lib/site";
+import { googleListingUrl } from "@/lib/reviews";
 
 export const metadata: Metadata = {
   title: {
@@ -64,7 +65,8 @@ export const metadata: Metadata = {
 
 const orgJsonLd = {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
+  "@type": ["LocalBusiness", "HVACBusiness", "Electrician", "Plumber", "GeneralContractor"],
+  "@id": "https://woola.ca/#business",
   name: site.fullName,
   legalName: site.fullName,
   description: site.description,
@@ -107,7 +109,19 @@ const orgJsonLd = {
     opens: "07:00",
     closes: "17:00",
   },
-  sameAs: ["https://woola.ca"],
+  hasMap: googleListingUrl,
+  sameAs: [googleListingUrl],
+  knowsAbout: ["Commercial HVAC", "Plumbing", "Gas fitting", "Refrigeration", "Standby generators", "CSA C282 testing", "Commercial electrical", "EV charging", "Building maintenance", "Building envelope"],
+};
+
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://woola.ca/#website",
+  url: "https://woola.ca",
+  name: site.fullName,
+  publisher: { "@id": "https://woola.ca/#business" },
+  inLanguage: "en-CA",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -119,6 +133,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
       </body>
     </html>

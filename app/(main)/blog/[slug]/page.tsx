@@ -6,6 +6,8 @@ import { ArrowLeft, ArrowRight, Clock } from "lucide-react";
 import { Section } from "@/components/Section";
 import { CTABanner } from "@/components/CTABanner";
 import { getPost, posts } from "@/lib/posts";
+import { JsonLd } from "@/components/JsonLd";
+import { article, breadcrumbs } from "@/lib/schema";
 
 type Params = { slug: string };
 
@@ -37,6 +39,16 @@ export default function BlogPost({ params }: { params: Params }) {
 
   return (
     <>
+      <JsonLd
+        data={[
+          article(post),
+          breadcrumbs([
+            { name: "Woola", path: "" },
+            { name: "Field Notes", path: "/blog" },
+            { name: post.title, path: `/blog/${post.slug}` },
+          ]),
+        ]}
+      />
       <section className="bg-cream-50 border-b hairline">
         <div className="container-x pt-14 pb-16">
           <Link href="/blog" className="inline-flex items-center gap-1.5 text-sm text-ink-500 hover:text-ink-800">

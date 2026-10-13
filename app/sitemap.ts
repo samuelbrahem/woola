@@ -9,7 +9,9 @@ import { equipmentLibrary } from "@/lib/equipment-library";
 const BASE = "https://woola.ca";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
+  // A fixed date per content set; bump when that content changes. "now" on
+  // every build tells crawlers everything changed, which they learn to ignore.
+  const lastModified = new Date("2026-10-12");
   const staticPaths = [
     "",
     "/about",
@@ -55,7 +57,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return all.map((path) => ({
     url: `${BASE}${path}`,
-    lastModified: now,
+    lastModified: path.startsWith("/blog/")
+      ? new Date(posts.find((p) => `/blog/${p.slug}` === path)?.date ?? lastModified)
+      : lastModified,
     changeFrequency: path === "" ? "weekly" : "monthly",
     priority: path === "" ? 1 : path.includes("/") ? 0.7 : 0.9,
   }));

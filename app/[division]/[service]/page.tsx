@@ -13,6 +13,8 @@ import { EquipmentSlider } from "@/components/EquipmentSlider";
 import { getServiceContent } from "@/lib/content";
 import { ServiceLongform } from "@/components/ServiceLongform";
 import { PhotoPlaceholder } from "@/components/PhotoPlaceholder";
+import { JsonLd } from "@/components/JsonLd";
+import { breadcrumbs, serviceSchema } from "@/lib/schema";
 
 const SERVICE_EQUIPMENT: Record<string, string[]> = {
   hvac: ["rooftop-unit", "heat-pump", "air-handler", "cooling-tower", "fan-coil"],
@@ -198,6 +200,16 @@ export default function ServicePage({ params }: { params: Params }) {
 
   return (
     <>
+      <JsonLd
+        data={[
+          serviceSchema(division, service),
+          breadcrumbs([
+            { name: "Woola", path: "" },
+            { name: division.name, path: `/${division.slug}` },
+            { name: service.name, path: `/${division.slug}/${service.slug}` },
+          ]),
+        ]}
+      />
       <section className="relative overflow-hidden bg-ink-800 border-b hairline">
         <Image
           src={heroImage}
