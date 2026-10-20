@@ -3,12 +3,11 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ChevronLeft, ChevronRight, Play, Phone, MapPin } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight, Play, Phone } from "lucide-react";
 
 
 type Slide = {
   id: string;
-  eyebrow: string;
   title: string;
   script?: string;
   sub: string;
@@ -23,8 +22,7 @@ type Slide = {
 const SLIDES: Slide[] = [
   {
     id: "main",
-    eyebrow: "Based in Coquitlam, serving Abbotsford to Whistler",
-    title: "Every system.",
+    title: "We keep your building running.",
     script: "One partner.",
     sub: "Mechanical, power, electrical and building trades for commercial and strata properties, booked through one dispatch desk.",
     cta: { label: "Request Service", href: "/contact" },
@@ -37,13 +35,13 @@ const SLIDES: Slide[] = [
 
 const INTERVAL = 6500;
 
-const ROTATING_WORDS = ["system", "boiler", "rooftop", "generator", "panel", "parkade"];
+const ROTATING_WORDS = ["building", "boiler", "rooftop unit", "generator", "switchgear", "parkade"];
 
 function RotatingWord() {
   const [i, setI] = useState(0);
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const t = setInterval(() => setI((v) => (v + 1) % ROTATING_WORDS.length), 2200);
+    const t = setInterval(() => setI((v) => (v + 1) % ROTATING_WORDS.length), 2400);
     return () => clearInterval(t);
   }, []);
   return (
@@ -116,18 +114,14 @@ export function HeroCarousel() {
             <div className="absolute inset-0 bg-gradient-to-r from-ink-900/85 via-ink-900/45 to-transparent" />
             <div className="absolute inset-0 bg-gradient-to-b from-ink-900/40 via-transparent to-ink-900/95" />
 
-            {/* Left-aligned stack: eyebrow pill, headline, sub, CTAs */}
+            {/* Left-aligned stack: headline, sub, CTAs */}
             <div className="absolute inset-0 flex items-center">
               <div className="container-x w-full">
                 <div className="max-w-3xl text-left">
-                  <div className="rise inline-flex items-center gap-2 rounded-full border border-cream-50/20 bg-ink-900/40 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-cream-100/85">
-                    <MapPin className="w-3.5 h-3.5 text-brand-400" />
-                    {s.eyebrow}
-                  </div>
-                  <h1 className="rise rise-1 mt-6 text-5xl md:text-6xl lg:text-7xl font-bold leading-[0.98] tracking-tight text-cream-50">
+                  <h1 className="rise text-5xl md:text-6xl lg:text-7xl font-bold leading-[0.98] tracking-tight text-cream-50">
                     {s.id === "main" ? (
                       <>
-                        Every <RotatingWord />.
+                        We keep your <RotatingWord /> running.
                       </>
                     ) : (
                       s.title
@@ -141,10 +135,10 @@ export function HeroCarousel() {
                       </>
                     )}
                   </h1>
-                  <p className="rise rise-2 mt-6 text-base md:text-lg text-cream-100/85 max-w-2xl leading-relaxed">
+                  <p className="rise rise-1 mt-6 text-base md:text-lg text-cream-100/85 max-w-2xl leading-relaxed">
                     {s.sub}
                   </p>
-                  <div className="rise rise-3 mt-8 flex flex-wrap gap-3">
+                  <div className="rise rise-2 mt-8 flex flex-wrap gap-3">
                     <Link href={s.cta.href} className="btn btn-brand text-base">
                       {s.cta.label} <ArrowRight className="w-4 h-4" />
                     </Link>
