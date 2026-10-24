@@ -36,27 +36,21 @@ const sectors = industries.filter((i) => i.slug !== "residential");
  * place for every tab on the main site and all four division sites.
  */
 export function MegaPanel({
-  eyebrow,
-  title,
-  body,
   actions,
   children,
 }: {
-  eyebrow: string;
-  title: string;
-  body: string;
-  actions: React.ReactNode;
+  eyebrow?: string;
+  title?: string;
+  body?: string;
+  actions?: React.ReactNode;
   children: React.ReactNode;
 }) {
   return (
-    <div className="grid grid-cols-12">
-      <div className="col-span-3 bg-cream-100/70 border-r hairline p-7 flex flex-col">
-        <div className="eyebrow">{eyebrow}</div>
-        <div className="mt-3 text-xl font-semibold text-ink-800 leading-snug">{title}</div>
-        <p className="mt-2 text-sm text-ink-600 leading-relaxed">{body}</p>
-        <div className="mt-auto pt-6 flex flex-col items-start gap-2">{actions}</div>
-      </div>
-      <div className="col-span-9 p-7">{children}</div>
+    <div className="p-5 md:p-6">
+      {children}
+      {actions && (
+        <div className="mt-4 pt-4 border-t hairline flex flex-wrap items-center gap-x-6 gap-y-2">{actions}</div>
+      )}
     </div>
   );
 }
@@ -234,17 +228,7 @@ export function DivisionServicesPanel({
           ? "Commercial service, maintenance and retrofits, plus a residential crew for homes."
           : "Service, maintenance and projects. Request service and dispatch books the crew."
       }
-      actions={
-        <>
-          <Link href="/contact" onClick={onNavigate} className="btn btn-brand">
-            Request Service
-          </Link>
-          <a href={`tel:${division.contactPhone}`} className="text-sm font-medium text-ink-800 hover:text-brand-500 transition">
-            {division.contactPhone}
-          </a>
-          <RailLink href={`/${division.slug}`} onClick={onNavigate}>Division overview</RailLink>
-        </>
-      }
+      actions={<RailLink href={`/${division.slug}`} onClick={onNavigate}>Division overview</RailLink>}
     >
       {isMech ? (
         <div className="grid grid-cols-3 gap-x-8">

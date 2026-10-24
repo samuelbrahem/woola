@@ -28,8 +28,8 @@ const photoSlots = [
 
 const perks = [
   { icon: TrendingUp, title: "Real progression", body: "Apprentice to journeyman to lead, with hour sponsorship and exam prep paid." },
-  { icon: GraduationCap, title: "Factory training", body: "OEM certifications across Generac, Kohler, Cummins, Mitsubishi, Daikin, and more." },
-  { icon: HeartHandshake, title: "Extended benefits", body: "Health, dental, RRSP matching, boot and tool allowances, and take-home vans for leads." },
+  { icon: GraduationCap, title: "Paid training", body: "Manufacturer and code training on the equipment we service, with course time and exam fees covered." },
+  { icon: HeartHandshake, title: "Extended benefits", body: "Health, dental, boot and tool allowances, and take-home vans for leads." },
   { icon: Users, title: "The Out Play culture", body: "Team events, shop barbecues, and a crew that actually likes each other." },
 ];
 

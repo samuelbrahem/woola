@@ -170,6 +170,28 @@ export const industries: Industry[] = [
     xrayType: "office",
   },
   {
+    slug: "municipal",
+    name: "Municipal & Public",
+    short: "Civic buildings, recreation centres and public works",
+    image: "/field/08-11-2026-van-16.jpg",
+    imageAlt: "Woola van pulling up to a community facility",
+    description:
+      "City halls, recreation centres, fire halls, works yards, and the standby power and mechanical plants behind them, serviced under procurement-ready reporting.",
+    pressures: [
+      "Procurement rules and vendor prequalification",
+      "Public buildings that cannot close for repairs",
+      "Standby power that must pass every annual test",
+    ],
+    systems: [
+      { name: "Standby Generators", href: "/power/generators" },
+      { name: "Commercial HVAC", href: "/mechanical/hvac" },
+      { name: "Electrical Service", href: "/electrical/electrical" },
+      { name: "LED Retrofits", href: "/electrical/led-lighting" },
+      { name: "Building Maintenance", href: "/build/maintenance" },
+    ],
+    xrayType: "office",
+  },
+  {
     slug: "residential",
     name: "Residential",
     short: "Homes and residential installs",

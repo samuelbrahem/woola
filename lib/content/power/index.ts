@@ -5,6 +5,7 @@ import { fuelSystems } from "./fuel-systems";
 import { generators } from "./generators";
 import { emergencyService } from "./emergency-service";
 import { integratedContracting } from "./integrated-contracting";
+import { dataCentres } from "./data-centres";
 
 export const powerContent: Record<string, ServiceContent> = {
   "maintenance-inspections": maintenanceInspections,
@@ -13,4 +14,5 @@ export const powerContent: Record<string, ServiceContent> = {
   generators,
   "emergency-service": emergencyService,
   "integrated-contracting": integratedContracting,
+  "data-centres": dataCentres,
 };

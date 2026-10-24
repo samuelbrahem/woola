@@ -3,20 +3,17 @@ import Link from "next/link";
 import { Section, SectionHead } from "@/components/Section";
 import { CTABanner } from "@/components/CTABanner";
 import { FleetStrip } from "@/components/FleetStrip";
-import { CircuitField } from "@/components/CircuitField";
-import { CountUp } from "@/components/CountUp";
+import Image from "next/image";
 import { site } from "@/lib/site";
 import {
   ArrowRight,
   PhoneCall,
-  Users,
   FolderClock,
   ShieldCheck,
-  ClipboardList,
   AlarmClock,
   FileCheck2,
-  Landmark,
-  Building2,
+  Check,
+  X,
 } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -26,37 +23,16 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://woola.ca/property-managers" },
 };
 
-const pressures = [
-  {
-    icon: Building2,
-    title: "Multiple properties, multiple vendors",
-    body: "Every extra contractor is another COI to chase, another invoice format, another phone number that may not answer.",
-  },
-  {
-    icon: AlarmClock,
-    title: "Emergencies at the worst hours",
-    body: "Floods, power failures, and no-heat calls don't respect business hours, and neither do your residents.",
-  },
-  {
-    icon: Landmark,
-    title: "Council and board communication",
-    body: "Every repair needs an explanation a non-technical council can understand and approve with confidence.",
-  },
-  {
-    icon: ClipboardList,
-    title: "Budget approvals and quotes",
-    body: "Depreciation reports age fast. You need current numbers, options, and honest advice on what can wait.",
-  },
-  {
-    icon: FolderClock,
-    title: "Documentation that disappears",
-    body: "When vendors change, service history walks out the door with them, and the next contractor starts blind.",
-  },
-  {
-    icon: Users,
-    title: "Tenant and resident disruption",
-    body: "Every visit is someone's home or business. Scheduling, notice, and site conduct matter as much as the fix.",
-  },
+/** Woola versus running separate vendors for each trade. Each Woola division
+ *  carries its own COI, so insurance paperwork is deliberately not a row. */
+const comparison: { item: string; woola: string; others: string; othersOk?: boolean }[] = [
+  { item: "Who you call", woola: "One dispatch desk for mechanical, power, electrical, and build", others: "A different number for each trade" },
+  { item: "Who shows up", woola: "Woola crews on our own team", others: "Subcontractors you have not vetted" },
+  { item: "Emergencies", woola: "One 24/7 line, any trade, for contracted buildings", others: "Whichever vendor answers after hours" },
+  { item: "Service history", woola: "Kept against the building, with photos and serial numbers", others: "Spread across each vendor's inbox" },
+  { item: "Council and board paperwork", woola: "Photo-documented reports written so a council can approve them", others: "A work order and an invoice", othersOk: true },
+  { item: "Pricing", woola: "Fixed price where the scope is defined, published unit rates where it is not", others: "Varies by vendor", othersOk: true },
+  { item: "Scaling up", woola: "One building or fifty, same point of contact", others: "A new vendor search for each building" },
 ];
 
 const promises = [
@@ -81,19 +57,27 @@ const promises = [
 export default function PropertyManagersPage() {
   return (
     <>
-      <section className="bg-ink-900 text-cream-50 relative overflow-hidden">
-        <div className="grain" />
-        <CircuitField withVan />
-        <div className="container-x pt-20 pb-16 relative">
+      <section className="relative overflow-hidden bg-ink-900 text-cream-50">
+        <Image
+          src="/field/08-11-2026-van-7.jpg"
+          alt="Woola van arriving at a commercial building entrance"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-ink-900/35" />
+        <div className="absolute inset-0 bg-gradient-to-r from-ink-900/85 via-ink-900/45 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-ink-900/40 via-transparent to-ink-900/90" />
+        <div className="container-x pt-24 pb-20 relative">
           <div className="max-w-3xl">
             <div className="rise eyebrow !text-brand-400">Who we serve · Property Managers</div>
             <h1 className="rise rise-1 mt-3 text-5xl md:text-6xl font-semibold text-cream-50 leading-[0.95]">
               Built for property managers.
             </h1>
-            <p className="rise rise-2 mt-5 text-lg text-cream-100/80 leading-relaxed">
-              Fewer service providers. Better visibility. Clearer accountability. Woola brings the
-              mission-critical building services under one streamlined partner, built around the way
-              you actually manage a portfolio.
+            <p className="rise rise-2 mt-5 text-lg text-cream-100/85 leading-relaxed max-w-2xl">
+              Mechanical, power, electrical, and build crews for your portfolio, booked through one
+              dispatch desk and reported in a format your council can read.
             </p>
             <div className="rise rise-3 mt-8 flex flex-wrap gap-3">
               <Link href="/contact" className="btn btn-brand text-base">
@@ -104,38 +88,40 @@ export default function PropertyManagersPage() {
               </a>
             </div>
           </div>
-          <div className="rise rise-5 mt-14 pt-8 border-t border-ink-700 grid grid-cols-2 md:grid-cols-4 gap-8">
-            {[
-              { value: "120+", label: "Buildings under maintenance" },
-              { value: "< 4 hr", label: "Emergency response, contracted" },
-              { value: "98%", label: "First-visit fix rate" },
-              { value: "24/7", label: "One number, any trade" },
-            ].map((s) => (
-              <div key={s.label}>
-                <div className="text-3xl md:text-4xl font-bold tracking-tight text-cream-50">
-                  <CountUp value={s.value} />
-                </div>
-                <div className="mt-1.5 text-sm text-cream-100/70">{s.label}</div>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
       <Section>
         <SectionHead
-          eyebrow="Your job"
-          title="What we take off your plate."
-          description="The parts of a property manager's week that a contractor can make easier, or harder."
+          eyebrow="How we work with property managers"
+          title="How we work with property managers."
+          description="What changes for you when the trades sit under one roof, compared with running a separate vendor for each."
         />
-        <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {pressures.map((p) => (
-            <div key={p.title} className="card p-7">
-              <p.icon className="w-6 h-6 text-brand-500" strokeWidth={1.5} />
-              <h3 className="mt-4 text-lg font-semibold text-ink-800">{p.title}</h3>
-              <p className="mt-2 text-sm text-ink-600 leading-relaxed">{p.body}</p>
-            </div>
-          ))}
+        <div className="mt-10 card overflow-hidden">
+          <div className="hidden md:grid grid-cols-12 bg-ink-800 text-cream-50 text-xs uppercase tracking-wider">
+            <div className="col-span-3 px-6 py-4">&nbsp;</div>
+            <div className="col-span-5 px-6 py-4 bg-brand-500 font-semibold">With Woola</div>
+            <div className="col-span-4 px-6 py-4">Separate vendors</div>
+          </div>
+          <ul>
+            {comparison.map((row) => (
+              <li key={row.item} className="grid md:grid-cols-12 border-t hairline">
+                <div className="md:col-span-3 px-6 pt-5 md:py-5 text-sm font-semibold text-ink-800">{row.item}</div>
+                <div className="md:col-span-5 px-6 py-3 md:py-5 bg-brand-500/5 flex items-start gap-3">
+                  <span className="mt-0.5 w-5 h-5 rounded-full bg-brand-500 text-white flex items-center justify-center shrink-0">
+                    <Check className="w-3 h-3" strokeWidth={3} />
+                  </span>
+                  <span className="text-sm text-ink-800 leading-relaxed">{row.woola}</span>
+                </div>
+                <div className="md:col-span-4 px-6 pb-5 md:py-5 flex items-start gap-3">
+                  <span className={`mt-0.5 w-5 h-5 rounded-full flex items-center justify-center shrink-0 ${row.othersOk ? "bg-ink-200 text-ink-600" : "bg-ink-200 text-ink-700"}`}>
+                    {row.othersOk ? <span className="text-[10px] font-bold">~</span> : <X className="w-3 h-3" strokeWidth={3} />}
+                  </span>
+                  <span className="text-sm text-ink-500 leading-relaxed">{row.others}</span>
+                </div>
+              </li>
+            ))}
+          </ul>
         </div>
       </Section>
 
@@ -148,12 +134,9 @@ export default function PropertyManagersPage() {
             dark
           />
           <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {promises.map((p, i) => (
+            {promises.map((p) => (
               <div key={p.title} className="rounded-md border border-white/25 bg-white/10 p-7">
-                <div className="text-4xl font-semibold text-white/70" style={{ fontFamily: "'Poppins', system-ui, sans-serif" }}>
-                  0{i + 1}
-                </div>
-                <h3 className="mt-4 text-xl font-semibold text-white">{p.title}</h3>
+                <h3 className="text-xl font-semibold text-white">{p.title}</h3>
                 <p className="mt-2 text-sm text-white/85 leading-relaxed">{p.body}</p>
               </div>
             ))}

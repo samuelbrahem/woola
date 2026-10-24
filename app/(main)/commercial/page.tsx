@@ -3,7 +3,6 @@ import Link from "next/link";
 import { Section, SectionHead } from "@/components/Section";
 import { CTABanner } from "@/components/CTABanner";
 import { FleetStrip } from "@/components/FleetStrip";
-import { CircuitField } from "@/components/CircuitField";
 import { divisions } from "@/lib/divisions";
 import { DivisionCard } from "@/components/DivisionCard";
 import { IndustryExplorer } from "@/components/IndustryExplorer";
@@ -30,8 +29,8 @@ const pillars = [
   },
   {
     icon: Clock,
-    title: "Contracted response windows",
-    body: "Sub-4-hour emergency response in Metro Vancouver for contracted clients, with dispatch answering 24/7.",
+    title: "Contracted one-hour emergency response",
+    body: "Guaranteed one-hour emergency response in Metro Vancouver for contract clients, with dispatch answering 24/7.",
   },
   {
     icon: ShieldCheck,
@@ -50,7 +49,6 @@ export default function CommercialPage() {
     <>
       <section className="bg-ink-900 text-cream-50 relative overflow-hidden">
         <div aria-hidden className="aurora -z-0" />
-        <CircuitField />
         <div className="container-x pt-24 pb-20 relative">
           <div className="max-w-3xl">
             <div className="rise eyebrow !text-brand-400">Commercial</div>
@@ -94,7 +92,7 @@ export default function CommercialPage() {
               },
               {
                 label: "Maintain",
-                title: "Looking for ongoing maintenance?",
+                title: "Looking for preventative maintenance?",
                 body: "Fixed-price maintenance contracts across every trade, with condition reports written for a council or asset manager.",
                 href: "/book",
                 cta: "Book a portfolio review",
@@ -102,8 +100,8 @@ export default function CommercialPage() {
             ].map((t) => (
               <Link key={t.label} href={t.href} className="card p-7 group flex flex-col">
                 <div className="eyebrow !text-brand-500">{t.label}</div>
-                <h2 className="mt-2 text-xl font-semibold text-ink-800">{t.title}</h2>
-                <p className="mt-2 text-sm text-ink-500 leading-relaxed flex-1">{t.body}</p>
+                <h2 className="mt-2 text-xl font-semibold text-ink-800 min-h-[2.6em]">{t.title}</h2>
+                <p className="mt-2 text-sm text-ink-500 leading-relaxed flex-1 min-h-[6em]">{t.body}</p>
                 <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-brand-500 group-hover:gap-2.5 transition-all">
                   {t.cta} <ArrowRight className="w-4 h-4" />
                 </span>

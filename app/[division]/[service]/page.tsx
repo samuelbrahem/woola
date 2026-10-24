@@ -36,7 +36,6 @@ const SERVICE_EQUIPMENT: Record<string, string[]> = {
   "cooling-systems": ["rooftop-unit", "cooling-tower", "compressor"],
   "ventilation-iaq": ["air-handler", "fan-coil"],
   drainage: ["pump"],
-  "preventative-maintenance": ["boiler", "rooftop-unit", "generator"],
   retrofits: ["boiler", "rooftop-unit", "cooling-tower"],
   "maintenance-inspections": ["generator", "transfer-switch"],
   "repairs-troubleshooting": ["generator"],
@@ -47,6 +46,14 @@ const SERVICE_EQUIPMENT: Record<string, string[]> = {
   "infrared-scanning": ["electrical-panel"],
   "waterline-repiping": ["pump", "water-heater"],
   "turnkey-projects": ["loading-dock"],
+};
+
+/** Field photo beside the longform copy, for pages that should not lead with a render. */
+const SIDE_PHOTO: Record<string, { src: string; alt: string }> = {
+  "preventative-maintenance": {
+    src: "/field/10-25-2024-mattmatt-22.jpg",
+    alt: "Woola technician reviewing a maintenance checklist on site",
+  },
 };
 
 type Params = { division: string; service: string };
@@ -99,7 +106,7 @@ const scopeDeepDive: Record<string, { name: string; lines: string[] }[]> = {
   ],
   generators: [
     { name: "Annual service", lines: ["Oil, filter, coolant, battery on schedule.", "Coolant heater and block heater checks.", "Minor repairs quoted and closed same visit."] },
-    { name: "Installations", lines: ["Generac, Kohler, Cummins authorized installer.", "Permit, ESA, and gas connections.", "Commissioning to manufacturer spec."] },
+    { name: "Installations", lines: ["Generac, Kohler, and Cummins installations.", "Permit, ESA, and gas connections.", "Commissioning to manufacturer spec."] },
     { name: "Emergency", lines: ["24/7 emergency response after outages.", "Spare parts stocked for top units.", "Priority dispatch for contracted sites."] },
   ],
   "c282-testing": [
@@ -118,7 +125,7 @@ const scopeDeepDive: Record<string, { name: string; lines: string[] }[]> = {
     { name: "Programs", lines: ["Annual sample-and-polish contracts.", "Biocide treatment dosing.", "Runtime capacity verification to C282."] },
   ],
   "ups-battery": [
-    { name: "Service & PM", lines: ["APC, Eaton, Vertiv factory-trained service.", "Annual runtime and capacity testing.", "Firmware and alarm audits."] },
+    { name: "Service & PM", lines: ["APC, Eaton, and Vertiv service.", "Annual runtime and capacity testing.", "Firmware and alarm audits."] },
     { name: "Battery programs", lines: ["VRLA string replacement on 3–5 year cycles.", "Lithium upgrade options with payback math.", "Old batteries recycled with documentation."] },
     { name: "Critical loads", lines: ["Server room and network closet UPS sizing.", "Fire panel and access-control backup.", "Elevator recall power coordination."] },
   ],
@@ -192,7 +199,9 @@ export default function ServicePage({ params }: { params: Params }) {
     .filter((e): e is NonNullable<typeof e> => Boolean(e));
 
   const heroImage = service.primer?.image ?? division.heroImage;
-  const sideImage = equipmentForService[0]
+  const sideImage = SIDE_PHOTO[service.slug]
+    ? { ...SIDE_PHOTO[service.slug], contain: false }
+    : equipmentForService[0]
     ? { src: equipmentForService[0].image, alt: equipmentForService[0].imageAlt, contain: true }
     : service.primer
       ? { src: service.primer.image, alt: service.primer.imageAlt, contain: false }

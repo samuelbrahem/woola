@@ -30,14 +30,6 @@ export function IndustryExplorer() {
                   className="group flex items-baseline gap-5 py-5 lg:py-6"
                 >
                   <span
-                    className={`text-sm font-semibold tabular-nums transition-colors ${
-                      isActive ? "text-brand-400" : "text-ink-500"
-                    }`}
-                    style={{ fontFamily: "'Poppins', system-ui, sans-serif" }}
-                  >
-                    0{i + 1}
-                  </span>
-                  <span
                     className={`text-2xl md:text-3xl lg:text-4xl font-semibold tracking-tight transition-all duration-300 ${
                       isActive
                         ? "text-cream-50 lg:translate-x-2"

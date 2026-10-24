@@ -1,9 +1,6 @@
 import Image from "next/image";
 import { SectionHead } from "@/components/Section";
-import { CTABanner } from "@/components/CTABanner";
 import { AboutSubnav } from "@/components/AboutSubnav";
-import { site } from "@/lib/site";
-import { Check } from "lucide-react";
 
 export const metadata = {
   title: "Credentials & Associations | About Woola",
@@ -93,11 +90,10 @@ export default function CredentialsPage() {
         <div className="container-x pt-20 pb-14">
           <div className="eyebrow !text-brand-400">About Woola</div>
           <h1 className="mt-3 text-5xl md:text-6xl font-semibold text-cream-50 leading-[0.95]">
-            The paperwork.
+            Our credentials and associations.
           </h1>
           <p className="mt-5 text-lg text-cream-100/80 max-w-2xl leading-relaxed">
-            Every association, ticket, and safety program below is current. Ask for a certificate and
-            it&apos;s in your inbox the same day.
+            Every association, ticket, and safety program below is current.
           </p>
         </div>
       </section>
@@ -108,7 +104,7 @@ export default function CredentialsPage() {
           <SectionHead
             align="center"
             eyebrow="Associations"
-            title="Who we answer to."
+            title="Associations and programs."
           />
           <div className="mt-14 max-w-4xl mx-auto">
             {associations.map((a) => (
@@ -136,33 +132,6 @@ export default function CredentialsPage() {
         </div>
       </section>
 
-      <section className="bg-ink-800 text-cream-50 relative overflow-hidden">
-        <div className="container-x section">
-          <SectionHead
-            align="center"
-            dark
-            eyebrow="Certifications"
-            title="Tickets we carry."
-            description="Held at the company or technician level. Kept current on our own compliance calendar."
-          />
-          <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 max-w-4xl mx-auto">
-            {site.certifications.map((c) => (
-              <div
-                key={c}
-                className="flex items-center gap-3 px-4 py-3 rounded-lg bg-ink-700/60 border border-ink-600"
-              >
-                <Check className="w-4 h-4 text-brand-400 shrink-0" strokeWidth={2.5} />
-                <span className="text-sm font-medium text-cream-50">{c}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <CTABanner
-        title="Need proof?"
-        description="Ask. We'll email the certificates today."
-      />
     </>
   );
 }

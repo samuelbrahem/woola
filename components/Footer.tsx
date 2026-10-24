@@ -33,7 +33,7 @@ export function Footer() {
             <div className="mt-5 space-y-2 text-sm text-ink-200">
               <div className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 mt-0.5 shrink-0" strokeWidth={1.5} />
-                <span>{site.hq.line1}, {site.hq.line2}</span>
+                <span>{site.hq.line1}<br />{site.hq.line2}</span>
               </div>
               <div className="flex items-center gap-3">
                 <Mail className="w-4 h-4" strokeWidth={1.5} />

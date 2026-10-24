@@ -42,9 +42,9 @@ export default function HomePage() {
       <section className="bg-cream-100 border-b hairline">
         <div className="container-x py-7 md:py-8 flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-12">
           <div className="shrink-0 lg:w-52">
-            <div className="eyebrow">Accredited &amp; certified</div>
+            <div className="eyebrow">Associations</div>
             <Link href="/about/credentials" className="mt-1 inline-block text-sm font-medium text-ink-800 hover:text-brand-500">
-              All credentials →
+              All associations →
             </Link>
           </div>
           <ul className="flex-1 flex flex-wrap items-center justify-between gap-x-8 gap-y-5">
@@ -108,7 +108,7 @@ export default function HomePage() {
                   {
                     icon: Wrench,
                     t: "Our own trades",
-                    b: "Red Seal, gas-ticketed, and FSR-certified technicians on our own payroll.",
+                    b: "Red Seal, gas-ticketed, and FSR-certified technicians on our own team.",
                   },
                   {
                     icon: ClipboardCheck,

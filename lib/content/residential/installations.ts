@@ -32,7 +32,7 @@ export const installations: ServiceContent = {
     {
       heading: "Already have a quote?",
       paragraphs: [
-        "If another contractor has quoted you a replacement, we are happy to give you a free second opinion. Sometimes we confirm the quote is fair. Sometimes we find the proposed equipment is oversized, undersized, or more than the situation calls for. Either way you decide with better information.",
+        "If another contractor has quoted you a replacement, we are happy to give you a second opinion, no obligation. Sometimes we confirm the quote is fair. Sometimes we find the proposed equipment is oversized, undersized, or more than the situation calls for. Either way you decide with better information.",
       ],
     },
   ],
@@ -44,7 +44,7 @@ export const installations: ServiceContent = {
   },
   cta: { label: "Request a quote", href: "/contact" },
   related: [
-    { label: "Get a free second opinion", href: "/second-opinion", note: "Already have a quote? Have us check it" },
+    { label: "Get a second opinion", href: "/second-opinion", note: "Already have a quote? Have us check it" },
     { label: "Heating systems", href: "/residential/heating", note: "Furnaces, boilers, and heat pumps" },
     { label: "Air conditioning and cooling", href: "/residential/cooling", note: "Cooling equipment done right" },
     { label: "Hot water systems", href: "/residential/hot-water", note: "Tanks and tankless heaters" },

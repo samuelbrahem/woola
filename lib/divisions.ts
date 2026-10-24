@@ -28,6 +28,9 @@ import {
   ScanLine,
   Droplet,
   KeyRound,
+  Vault,
+  House,
+  Server,
 } from "lucide-react";
 import { cities } from "./cities";
 import type { LucideIcon } from "lucide-react";
@@ -227,7 +230,7 @@ export const divisions: Division[] = [
     contactPhone: "604-732-1441",
     contactEmail: "dispatch@woolamech.ca",
     intro:
-      "We service HVAC, hydronic, plumbing, gas, and refrigeration systems in strata, commercial, and residential buildings across Metro Vancouver. Our technicians hold the tickets for all four, so the same crew can work the rooftop, the boiler room, and the risers.",
+      "HVAC, hydronic, plumbing, gas, and refrigeration service for strata, commercial, and residential buildings across Metro Vancouver.",
     heroImage: "/field/01-08-2025-surrey-mech-1.jpg",
     heroImageAlt: "Woola Mechanical technicians working on copper piping in a mechanical room",
     video: "/videos/mechanical.mp4",
@@ -561,7 +564,7 @@ export const divisions: Division[] = [
     contactPhone: "604-829-9156",
     contactEmail: "service@woolapower.ca",
     intro:
-      "Woola Power was built around the most demanding electrical asset in any building: the emergency standby generator. We are factory-authorized service providers for Generac, Kohler, and Cummins, own our own load banks, and dispatch 24/7 across BC.",
+      "Woola Power was built around the most demanding electrical asset in any building: the emergency standby generator.",
     heroImage: "/field/07-28-2026-power-1.jpg",
     heroImageAlt: "Cummins standby diesel generator in a Woola-serviced generator room",
     video: "/videos/power.mp4",
@@ -623,12 +626,12 @@ export const divisions: Division[] = [
     ],
     faqs: [
       {
-        q: "Which generator OEMs are you authorized for?",
-        a: "We're factory-authorized service providers for Generac, Kohler, and Cummins, and routinely service Caterpillar and Onan units as well. Our techs carry brand-specific diagnostic software.",
+        q: "Which generator brands do you service?",
+        a: "Generac, Kohler, and Cummins make up most of our work, and we routinely service Caterpillar and Onan units as well. Our techs carry brand-specific diagnostic software.",
       },
       {
         q: "Do you do load-bank testing in-house?",
-        a: "Yes. We own and operate resistive and reactive load banks up to 850 kW. We can run annual CSA C282 testing without subcontracting, which keeps schedules tight and costs predictable.",
+        a: "Yes. We own and operate our own resistive and reactive load banks and bring in larger units when a site calls for it, so annual CSA C282 testing runs on our schedule, not a rental company's.",
       },
       {
         q: "What's included in a standard generator maintenance package?",
@@ -670,7 +673,7 @@ export const divisions: Division[] = [
         highlights: [
           "Structured diagnostics before parts swapping",
           "Engine, electrical, ATS, and controls repair",
-          "Factory diagnostic software for major OEMs",
+          "Diagnostic software for the major generator brands",
           "Functional testing after every repair",
         ],
       },
@@ -868,6 +871,20 @@ export const divisions: Division[] = [
           "Ongoing service after commissioning",
         ],
       },
+      {
+        slug: "data-centres",
+        name: "Data Centre Power",
+        short: "Generators, UPS, and fuel for data halls",
+        description:
+          "Standby generator, transfer switch, UPS, and fuel system service for data centres and server rooms, with the testing and reporting an uptime commitment depends on.",
+        icon: Server,
+        highlights: [
+          "Multi-unit and paralleled generator plants",
+          "CSA C282 and load-bank testing at scale",
+          "UPS and battery string programs",
+          "Fuel polishing and runtime verification",
+        ],
+      },
     ],
   },
   {
@@ -888,7 +905,7 @@ export const divisions: Division[] = [
     contactPhone: "604-829-9160",
     contactEmail: "service@woolaelectrical.ca",
     intro:
-      "Journeyman-led electrical work for everything downstream of your main disconnect: service and panel upgrades, EV charging, LED retrofits, and low-voltage. FSR-certified for permit sign-off, BC Hydro Power Smart Alliance for rebate work, and a CleanBC EV Ready planner for strata charging rollouts.",
+      "Electrical service, panel and service upgrades, EV charging, lighting, and low voltage for buildings across Metro Vancouver.",
     heroImage: "/field/07-23-2026-electrical-4.jpg",
     heroImageAlt: "Woola electrician working in a multi-unit meter bank room",
     video: "/videos/electrical.mp4",
@@ -1155,6 +1172,51 @@ export const divisions: Division[] = [
           "Repairs quoted from findings",
         ],
       },
+      {
+        slug: "vault-cleaning",
+        name: "Electrical Vault Cleaning & Maintenance",
+        short: "High-voltage rooms and vaults",
+        featured: true,
+        description:
+          "Scheduled cleaning, inspection, and maintenance of electrical vaults and high-voltage rooms in commercial and strata buildings, coordinated with BC Hydro shutdowns where required.",
+        icon: Vault,
+        highlights: [
+          "Shutdown planning and utility coordination",
+          "Vacuuming, degreasing, and debris removal",
+          "Bus, insulator, and termination inspection",
+          "Written report with photos after every visit",
+        ],
+      },
+      {
+        slug: "residential-electrical",
+        name: "Residential Electrical",
+        short: "Homes, suites, and townhomes",
+        featured: true,
+        description:
+          "Panel upgrades, EV charger installs, lighting, and repairs for houses, suites, and townhomes across Metro Vancouver, permitted and inspected.",
+        icon: House,
+        highlights: [
+          "Permits pulled and inspections booked by us",
+          "EV charger and heat pump circuits",
+          "Panel and service upgrades to 200 A",
+          "Clean finish: concealed runs, patched and tidy",
+        ],
+      },
+      {
+        slug: "restoration",
+        name: "Electrical Restoration",
+        short: "After fire, flood, or failure",
+        featured: true,
+        description:
+          "Electrical restoration after fire, water, or equipment failure: make-safe, damage assessment, temporary power, and rebuild of the affected systems with insurer-ready documentation.",
+        icon: RefreshCw,
+        highlights: [
+          "Same-day make-safe and temporary power",
+          "Damage assessment with photos and scope",
+          "Coordination with restoration contractors and adjusters",
+          "Permitted rebuild and final inspection",
+        ],
+      },
     ],
   },
   {
@@ -1175,7 +1237,7 @@ export const divisions: Division[] = [
     contactPhone: "604-800-3617",
     contactEmail: "estimates@woolabuild.ca",
     intro:
-      "From leak repairs and common-area work to envelope projects and tenant improvements, Woola Build handles the building work that sits outside the mechanical and electrical rooms. Maintenance packages, trades, and construction project management run through one in-house team.",
+      "Repairs, building maintenance, envelope work, renovations, and construction project management from one in-house team.",
     heroImage: "/field/08-12-2026-build-7.jpg",
     heroImageAlt: "Crane lifting rooftop equipment over a Woola Build strata project",
     video: "/videos/build.mp4",
@@ -1457,6 +1519,11 @@ export function lowerName(name: string) {
     .split(" ")
     .map((w) => (/[A-Z]{2,}/.test(w) ? w : w.toLowerCase()))
     .join(" ");
+}
+
+/** Division name without the "Woola " prefix, for headings that already sit under the brand. */
+export function shortName(d: Division) {
+  return d.name.replace(/^Woola\s+/, "");
 }
 
 export function getDivision(slug: string) {

@@ -48,10 +48,10 @@ export default function FleetPage() {
               { src: "/field/08-11-2026-van-9.jpg", alt: "Woola van beneath the SkyTrain line with Coquitlam towers behind" },
               { src: "/field/08-11-2026-van-11.jpg", alt: "Woola van on the waterfront with the North Shore mountains" },
               { src: "/field/08-11-2026-van-6.jpg", alt: "Woola van on a rural route in the Fraser Valley" },
-              { src: "/field/08-11-2026-van-7.jpg", alt: "Woola van arriving at a commercial building entrance" },
-              { src: "/field/08-11-2026-van-15.jpg", alt: "Woola van on a residential street" },
-              { src: "/field/08-11-2026-van-14.jpg", alt: "Front detail of a Woola fleet van" },
-              { src: "/field/08-11-2026-van-16.jpg", alt: "Woola van pulling up to a community facility" },
+              { src: "/field/07-28-2026-mech-2.jpg", alt: "Woola Mechanical technician at work in a mechanical room" },
+              { src: "/field/07-23-2026-electrical-2.jpg", alt: "Woola electrician working in an electrical room" },
+              { src: "/field/07-28-2026-power-3.jpg", alt: "Woola Power technician servicing a standby generator" },
+              { src: "/field/08-12-2026-build-8.jpg", alt: "Woola Build crew on site at a strata building project" },
             ].map((p) => (
               <div key={p.src} className="relative aspect-[4/3] rounded-md overflow-hidden">
                 <Image

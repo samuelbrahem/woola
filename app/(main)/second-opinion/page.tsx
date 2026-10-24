@@ -6,7 +6,7 @@ import { FileSearch, Scale, Clock } from "lucide-react";
 export const metadata: Metadata = {
   title: "Get a Second Opinion",
   description:
-    "Upload your existing quote, inspection report, photos, or plans. Woola's estimating team reviews everything and comes back with an honest second opinion, free.",
+    "Upload your existing quote, inspection report, photos, or plans. Woola's estimating team reviews everything and comes back with an honest second opinion, no obligation.",
   alternates: { canonical: "https://woola.ca/second-opinion" },
 };
 
@@ -35,7 +35,7 @@ export default function SecondOpinionPage() {
         <div className="grain" />
         <div className="container-x pt-20 pb-16 relative">
           <div className="max-w-3xl">
-            <div className="eyebrow !text-brand-400">Free · No obligation</div>
+            <div className="eyebrow !text-brand-400">No obligation</div>
             <h1 className="mt-3 text-5xl md:text-6xl font-semibold leading-[0.95]">
               Get a second opinion.
             </h1>

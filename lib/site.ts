@@ -33,7 +33,6 @@ export const site = {
     "CleanBC Better Homes Contractor",
     "FortisBC Trade Ally",
     "BC Hydro Power Smart Alliance",
-    "Generac Authorized Service",
     "Gold Seal Certified PMs",
     "Cross Connection Control Certified",
     "Class A & B Gas Fitters",

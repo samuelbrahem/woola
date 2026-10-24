@@ -41,15 +41,15 @@ const steps = [
     icon: CalendarClock,
     step: "03",
     title: "Scheduled work with one coordinator",
-    body: "Your dispatcher handles permits, parts, sub-trades, and timing. You get a single text thread and a named coordinator, not five phone numbers.",
+    body: "Your dispatcher handles permits, parts, all trades, and timing. You get a single text thread and a named coordinator, not five phone numbers.",
     deliverable: "One schedule, one contact, live updates",
   },
   {
     icon: Camera,
     step: "04",
-    title: "Photo-documented closeout",
-    body: "Every job closes with before-and-after photos, equipment serial numbers, and renewal dates, all stored in your asset registry for the next visit.",
-    deliverable: "Closeout package in your asset registry",
+    title: "Photo-documented closeout and end report",
+    body: "Every job closes with before-and-after photos, equipment serial numbers, renewal dates, and a written end report, all stored in your asset registry for the next visit.",
+    deliverable: "Closeout package and end report in your asset registry",
   },
 ];
 
@@ -57,12 +57,12 @@ const standards = [
   {
     icon: PhoneCall,
     title: "One number, answered",
-    body: "Dispatch picks up weekdays 7 to 5 and runs a 24/7 emergency line for contracted clients. No call trees.",
+    body: "Dispatch picks up weekdays 7 to 5 and runs a 24/7 emergency line for contracted clients.",
   },
   {
     icon: Wrench,
     title: "Our own trades",
-    body: "Red Seal, gas-ticketed, and FSR-certified technicians on our payroll. Specialty trades come from a vetted partner bench we have used for years.",
+    body: "Red Seal, gas-ticketed, and FSR-certified technicians on our team.",
   },
   {
     icon: FileCheck2,
@@ -72,7 +72,7 @@ const standards = [
   {
     icon: Repeat,
     title: "Plans that renew themselves",
-    body: "Maintenance contracts carry renewal calendars, so filters, tests, and inspections happen on schedule without anyone chasing.",
+    body: "Maintenance contracts carry renewal calendars, so filters, tests, and inspections happen on schedule.",
   },
 ];
 
@@ -109,16 +109,13 @@ export default function ProcessPage() {
         <SectionHead
           eyebrow="The delivery model"
           title="Four steps, each with a deliverable."
-          description="Every step hands you something concrete. If a vendor cannot tell you what you get at each stage, that is the finger-pointing starting early."
+          description="Every step hands you something concrete."
         />
         <ol className="mt-12 grid md:grid-cols-2 gap-6">
           {steps.map((s) => (
             <li key={s.step} className="card p-8 flex flex-col">
-              <div className="flex items-center justify-between">
-                <div className="w-12 h-12 rounded-full bg-brand-500 text-cream-50 flex items-center justify-center">
-                  <s.icon className="w-5 h-5" strokeWidth={1.5} />
-                </div>
-                <span className="text-4xl font-bold text-ink-100 tracking-tight">{s.step}</span>
+              <div className="w-12 h-12 rounded-full bg-brand-500 text-cream-50 flex items-center justify-center">
+                <s.icon className="w-5 h-5" strokeWidth={1.5} />
               </div>
               <h3 className="mt-5 text-xl font-semibold text-ink-800">{s.title}</h3>
               <p className="mt-2 text-sm text-ink-500 leading-relaxed flex-1">{s.body}</p>

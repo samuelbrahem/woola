@@ -44,3 +44,16 @@ export const googleReviews: GoogleReview[] = [
     text: "Generator service finally feels professional. Real load-bank tests, real reports, and they're at our retail sites the day we call.",
   },
 ];
+
+/**
+ * Per-division Google listing links. Only Mechanical's share link is on file;
+ * the others fall back to it until Woola supplies each division's listing
+ * (Woola Power has its own listing with 11 reviews).
+ */
+const listingByDivision: Partial<Record<string, string>> = {
+  mechanical: googleListingUrl,
+};
+
+export function googleListingFor(division: string) {
+  return listingByDivision[division] ?? googleListingUrl;
+}

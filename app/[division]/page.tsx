@@ -36,7 +36,7 @@ const TRIAGE: Record<string, TriageOption[]> = {
     },
     {
       label: "Maintain",
-      title: "Looking for ongoing maintenance?",
+      title: "Looking for preventative maintenance?",
       body: "Scheduled inspections and condition reports for every mechanical system in the building.",
       href: "/mechanical/preventative-maintenance",
       cta: "See maintenance programs",
@@ -137,14 +137,15 @@ import { CTABanner } from "@/components/CTABanner";
 import { DivisionFAQ } from "@/components/DivisionFAQ";
 import { LogoMarquee } from "@/components/LogoMarquee";
 import { CredentialsReveal } from "@/components/CredentialsReveal";
-import { CountUp } from "@/components/CountUp";
+import { GoogleG } from "@/components/Testimonials";
+import { googleListingFor } from "@/lib/reviews";
+import { ServiceMap } from "@/components/ServiceMap";
 import { ScrollyServices } from "@/components/ScrollyServices";
 import {
   ArrowRight,
   Phone,
   Mail,
   Check,
-  Quote,
   Building2,
   MapPin,
   Play,
@@ -272,7 +273,7 @@ export default function DivisionPage({ params }: { params: Params }) {
         <section className="bg-cream-50 border-b hairline">
           <div className="container-x py-8 md:py-10">
             <div className="grid md:grid-cols-3 gap-4 md:gap-5">
-              {TRIAGE[division.slug].map((t, i) => (
+              {TRIAGE[division.slug].map((t) => (
                 <Link
                   key={t.label}
                   href={t.href}
@@ -289,17 +290,16 @@ export default function DivisionPage({ params }: { params: Params }) {
                     aria-hidden
                     className="absolute inset-0 bg-gradient-to-t from-ink-900/95 via-ink-900/55 to-ink-900/15"
                   />
-                  <div className="absolute top-5 left-5 right-5 flex items-center justify-between">
+                  <div className="absolute top-5 left-5 right-5">
                     <span className="inline-flex items-center rounded-full bg-cream-50/95 text-ink-800 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em]">
                       {t.label}
                     </span>
-                    <span className="font-mono text-xs text-cream-100/70">0{i + 1}</span>
                   </div>
                   <div className="relative p-6 md:p-7">
-                    <h2 className="text-2xl md:text-[1.65rem] font-semibold tracking-tight leading-tight text-cream-50">
+                    <h2 className="text-2xl md:text-[1.65rem] font-semibold tracking-tight leading-tight text-cream-50 min-h-[2.4em] flex items-end">
                       {t.title}
                     </h2>
-                    <p className="mt-2 text-sm text-cream-100/80 leading-relaxed max-w-sm">{t.body}</p>
+                    <p className="mt-2 text-sm text-cream-100/80 leading-relaxed max-w-sm min-h-[4.5em] line-clamp-3">{t.body}</p>
                     <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-[color:var(--brand-on-dark)] group-hover:gap-2.5 transition-all">
                       {t.cta} <ArrowRight className="w-4 h-4" />
                     </span>
@@ -321,26 +321,6 @@ export default function DivisionPage({ params }: { params: Params }) {
           </div>
           <div className="flex-1 min-w-0">
             <LogoMarquee items={division.brands} size="sm" />
-          </div>
-        </div>
-      </section>
-
-      {/* Stats band */}
-      <section className="bg-ink-800 text-cream-50 relative overflow-hidden">
-        <div className="grain" />
-        <div className="container-x py-10 md:py-12 relative">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
-            {division.stats.map((s) => (
-              <div key={s.label}>
-                <div className="text-4xl md:text-5xl font-bold tracking-tight text-cream-50">
-                  <CountUp value={s.value} />
-                </div>
-                <div className="mt-2 text-sm font-medium text-cream-100">{s.label}</div>
-                {s.sub && (
-                  <div className="mt-1 text-xs text-cream-100/60">{s.sub}</div>
-                )}
-              </div>
-            ))}
           </div>
         </div>
       </section>
@@ -429,21 +409,18 @@ export default function DivisionPage({ params }: { params: Params }) {
                   },
                   {
                     t: "Scheduled work with one coordinator",
-                    b: "Your dispatcher handles permits, parts, sub-trades and timing. You get a single text thread, not five.",
+                    b: "Your dispatcher handles permits, parts, all trades and timing. You get a single text thread and a named coordinator, not five phone numbers.",
                   },
                   {
-                    t: "Photo-documented close-out",
+                    t: "Photo-documented close-out and end report",
                     b: "Every job closes with before/after photos, equipment serial numbers, and renewal dates, all stored in the asset registry.",
                   },
-              ].map((step, i) => (
+              ].map((step) => (
                 <li
                   key={step.t}
                   className="rounded-md border border-ink-600 p-6 bg-ink-700/40 hover:border-[color:var(--brand-on-dark)] transition flex flex-col"
                 >
-                  <div className="text-3xl font-mono text-[color:var(--brand-on-dark)] leading-none">
-                    {String(i + 1).padStart(2, "0")}
-                  </div>
-                  <div className="mt-5 text-base font-semibold text-cream-50">
+                  <div className="text-base font-semibold text-cream-50">
                     {step.t}
                   </div>
                   <p className="mt-2 text-sm text-ink-200 leading-relaxed">{step.b}</p>
@@ -459,36 +436,29 @@ export default function DivisionPage({ params }: { params: Params }) {
         <SectionHead
           eyebrow="Credentials"
           title="Certifications and memberships."
-          description={`What the ${division.name.split(" ").slice(1).join(" ")} team holds, and who we are registered with.`}
           align="center"
         />
         <CredentialsReveal items={division.certLogos} />
       </Section>
 
-      {/* Testimonial */}
-      <section className="bg-cream-100 border-y hairline">
-        <div className="container-x section">
-          <div className="max-w-4xl mx-auto text-center">
-            <Quote className="w-10 h-10 text-brand-500 mx-auto" strokeWidth={1.5} />
-            <p className="mt-6 text-2xl md:text-3xl lg:text-4xl font-medium text-ink-800 leading-snug tracking-tight">
-              &ldquo;{division.testimonial.quote}&rdquo;
-            </p>
-            <div className="mt-8 inline-flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-ink-800 text-cream-50 flex items-center justify-center font-semibold text-sm">
-                {division.testimonial.author
-                  .split(" ")
-                  .map((n) => n[0])
-                  .join("")}
-              </div>
-              <div className="text-left">
-                <div className="text-sm font-semibold text-ink-800">
-                  {division.testimonial.author}
-                </div>
-                <div className="text-xs text-ink-500">
-                  {division.testimonial.role} · {division.testimonial.org}
-                </div>
-              </div>
+      {/* Reviews: link to the division's Google listing instead of placeholder quotes */}
+      <section className="bg-brand-500 text-white">
+        <div className="container-x py-14 md:py-16">
+          <div className="flex flex-wrap items-end justify-between gap-6">
+            <div className="max-w-3xl">
+              <div className="eyebrow !text-white/80">Reviews</div>
+              <h2 className="text-3xl md:text-4xl font-semibold mt-3 text-white">
+                Read what clients say about {division.name} on Google.
+              </h2>
             </div>
+            <a
+              href={googleListingFor(division.slug)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full bg-white text-ink-800 pl-3 pr-4 py-2 text-sm font-medium hover:bg-cream-100 transition"
+            >
+              <GoogleG className="w-5 h-5" /> See our Google reviews →
+            </a>
           </div>
         </div>
       </section>
@@ -542,6 +512,9 @@ export default function DivisionPage({ params }: { params: Params }) {
             <span className="text-xs px-3 py-1.5 text-cream-100/60">
               + {cities.length - featuredCities.length} more
             </span>
+          </div>
+          <div className="mt-8">
+            <ServiceMap height={380} />
           </div>
         </div>
       </section>

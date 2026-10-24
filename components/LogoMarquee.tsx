@@ -20,7 +20,7 @@ function LogoTile({ item, invert, size }: { item: MarqueeItem; invert: boolean; 
   return (
     <div
       className={`flex items-center justify-center shrink-0 ${
-        size === "sm" ? "h-12 w-[128px]" : "h-20 w-[160px]"
+        size === "sm" ? "h-9 w-[112px]" : "h-20 w-[160px]"
       }`}
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -29,7 +29,7 @@ function LogoTile({ item, invert, size }: { item: MarqueeItem; invert: boolean; 
         alt={item.name}
         onError={() => setBroken(true)}
         className={`max-w-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity ${
-          size === "sm" ? "max-h-9" : "max-h-16"
+          size === "sm" ? "max-h-7" : "max-h-16"
         }`}
         style={{ filter }}
         loading="eager"

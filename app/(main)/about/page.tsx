@@ -5,7 +5,8 @@ import { Stats } from "@/components/Stats";
 import { CTABanner } from "@/components/CTABanner";
 import { AboutSubnav } from "@/components/AboutSubnav";
 import { site } from "@/lib/site";
-import { divisions } from "@/lib/divisions";
+import { divisions, shortName } from "@/lib/divisions";
+import { LeadershipTeam } from "@/components/LeadershipTeam";
 import { Award, Users, Layers, Activity } from "lucide-react";
 
 export const metadata = {
@@ -88,19 +89,16 @@ export default function AboutPage() {
           <SectionHead
             dark
             eyebrow="The model"
-            title="How the company is organized."
+            title="What we do."
             description="Each division has a dedicated phone number, dispatcher, and trade qualifications, and shares the back office, reporting platform, and 24/7 emergency line."
           />
           <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {divisions.map((d, i) => (
-              <Link key={d.slug} href={`/${d.slug}`} className="card p-7">
-                <div className="text-5xl font-semibold text-brand-500" style={{ fontFamily: "'Poppins', system-ui, sans-serif" }}>
-                  0{i + 1}
-                </div>
-                <div className="mt-4 eyebrow">{d.subtitle}</div>
-                <h3 className="text-2xl font-semibold mt-1 text-ink-800">{d.name}</h3>
-                <p className="mt-2 text-sm text-ink-500">{d.description}</p>
-                <div className="mt-4 text-sm font-medium text-ink-800">{d.contactPhone}</div>
+            {divisions.map((d) => (
+              <Link key={d.slug} href={`/${d.slug}`} className="card p-7 flex flex-col">
+                <h3 className="text-3xl font-semibold text-brand-500 leading-none">{shortName(d)}</h3>
+                <div className="mt-3 eyebrow min-h-[2.6em]">{d.subtitle}</div>
+                <p className="mt-2 text-sm text-ink-500 line-clamp-3 min-h-[4.5em]">{d.description}</p>
+                <div className="mt-auto pt-4 text-sm font-medium text-ink-800">{d.contactPhone}</div>
               </Link>
             ))}
           </div>
@@ -145,7 +143,6 @@ export default function AboutPage() {
           <SectionHead
             eyebrow="Credentials"
             title="Certifications and memberships."
-            description="Every credential below is current. Ask and we will send the certificates."
             align="center"
           />
           <div className="mt-12 flex flex-wrap items-center justify-center gap-x-14 gap-y-10">
@@ -184,10 +181,9 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <CTABanner
-        title="Tour our shop."
-        description="42 Fawcett Road in Coquitlam. We host property managers, councils, and developers. Bring the buildings you're worried about and we'll walk through the work."
-      />
+      <LeadershipTeam />
+
+      <CTABanner />
     </>
   );
 }

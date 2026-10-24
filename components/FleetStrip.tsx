@@ -7,7 +7,7 @@ export function FleetStrip() {
     <section className="bg-cream-100 border-y hairline">
       <div className="container-x py-14 md:py-16">
         <div className="max-w-2xl mx-auto text-center">
-          <div className="eyebrow">In the field</div>
+          <div className="eyebrow">Our crews</div>
           <h2 className="mt-3 text-3xl md:text-4xl font-semibold text-ink-800 leading-tight">
             Our crews in the field.
           </h2>
@@ -22,8 +22,8 @@ export function FleetStrip() {
               alt: "Wrapped Woola Mechanical van parked in a commercial district",
             },
             {
-              src: "/field/08-11-2026-van-10.jpg",
-              alt: "Woola van at a lookout over Burrard Inlet",
+              src: "/field/07-28-2026-mech-2.jpg",
+              alt: "Woola Mechanical technician at work in a mechanical room",
             },
             {
               src: "/field/08-11-2026-van-12.jpg",

@@ -166,9 +166,6 @@ export function ScrollyServices({ division: divisionSlug }: { division: string }
               <span>
                 {shortName} services · <span className="text-cream-100/80">Rooftop to below grade</span>
               </span>
-              <span className="font-mono tracking-wider">
-                {String(idx + 1).padStart(2, "0")} / {String(services.length).padStart(2, "0")}
-              </span>
             </div>
           </div>
           <div className="container-x h-full grid grid-cols-12 gap-10 items-center relative">

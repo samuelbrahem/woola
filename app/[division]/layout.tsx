@@ -1,6 +1,6 @@
 import { getDivision } from "@/lib/divisions";
 import { DivisionHeader } from "@/components/DivisionHeader";
-import { DivisionFooter } from "@/components/DivisionFooter";
+import { Footer } from "@/components/Footer";
 
 export default function DivisionLayout({
   children,
@@ -13,10 +13,10 @@ export default function DivisionLayout({
   if (!division) return <>{children}</>;
 
   return (
-    <div className={`theme-${division.slug}`}>
+    <div>
       <DivisionHeader divisionSlug={division.slug} />
       <main>{children}</main>
-      <DivisionFooter division={division} />
+      <Footer />
     </div>
   );
 }

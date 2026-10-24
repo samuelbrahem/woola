@@ -10,7 +10,7 @@ export const emergencyService: ServiceContent = {
       heading: "What happens when you call",
       paragraphs: [
         "Every emergency starts with triage on the phone. We confirm what the system is doing, what alarms are showing, and what the building has lost, because those few minutes of questions often let a technician arrive with the right parts and a working theory instead of starting cold. From there we dispatch a commercial generator technician to your site.",
-        "On arrival, the priority is a structured diagnosis: controls, batteries and charging, fuel supply, engine, and transfer switch, in an order driven by the symptoms. Because our technicians are factory-authorized for Generac, Kohler, and Cummins, they carry OEM diagnostic procedures for the platforms most commercial buildings run.",
+        "On arrival, the priority is a structured diagnosis: controls, batteries and charging, fuel supply, engine, and transfer switch, in an order driven by the symptoms. Our technicians carry diagnostic tools and procedures for Generac, Kohler, and Cummins, the platforms most commercial buildings run.",
       ],
     },
     {

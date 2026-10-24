@@ -5,6 +5,9 @@ import { ledLighting } from "./led-lighting";
 import { evChargers } from "./ev-chargers";
 import { panelUpgrades } from "./panel-upgrades";
 import { infraredScanning } from "./infrared-scanning";
+import { vaultCleaning } from "./vault-cleaning";
+import { residentialElectrical } from "./residential-electrical";
+import { restoration } from "./restoration";
 
 export const electricalContent: Record<string, ServiceContent> = {
   electrical,
@@ -13,4 +16,7 @@ export const electricalContent: Record<string, ServiceContent> = {
   "ev-chargers": evChargers,
   "panel-upgrades": panelUpgrades,
   "infrared-scanning": infraredScanning,
+  "vault-cleaning": vaultCleaning,
+  "residential-electrical": residentialElectrical,
+  restoration,
 };

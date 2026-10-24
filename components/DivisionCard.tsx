@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
-import { topLevelServices, featuredServices } from "@/lib/divisions";
+import { featuredServices } from "@/lib/divisions";
 import type { Division } from "@/lib/divisions";
 import { DivisionWordmark } from "./DivisionWordmark";
 
@@ -40,9 +40,8 @@ export function DivisionCard({ division }: { division: Division }) {
             </span>
           ))}
         </div>
-        <div className="mt-6 pt-5 border-t hairline flex items-center justify-between text-sm">
+        <div className="mt-6 pt-5 border-t hairline text-sm">
           <span className="font-medium text-ink-800">{division.contactPhone}</span>
-          <span className="text-ink-500">{topLevelServices(division).length} services</span>
         </div>
       </div>
     </Link>
