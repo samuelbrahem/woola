@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600&family=Yellowtail&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600&family=Pacifico&display=swap');
 
 :root {
   --ink-900: #040404;
@@ -153,19 +153,17 @@ h1, h2, h3, h4 {
   letter-spacing: -0.02em;
 }
 
-/* Brand script: a heavier brush script in the family of the Woola wordmark.
-   Replaced the thin Sacramento, which read weak and was hard to scan at
-   tagline sizes. Yellowtail carries real stroke weight, so sizes one step
-   below the old Sacramento sizes land at the same visual footprint. */
+/* Brand script: Pacifico carries the wordmark's heavy, rounded brush strokes.
+   The wordmark leans harder than Pacifico does, so the span is skewed a few
+   degrees to match. No text-stroke: it rendered ragged in WebKit (Oct 2026). */
 .script {
-  font-family: 'Yellowtail', 'Brush Script MT', cursive;
+  font-family: 'Pacifico', 'Brush Script MT', cursive;
   font-weight: 400;
   letter-spacing: 0.005em;
-  /* Yellowtail shares the wordmark's letterforms and slant but is drawn
-     lighter. A 3% outline stroke in the text colour brings it to the
-     wordmark's weight (Brett, Oct 2026 review). */
-  -webkit-text-stroke: 0.03em currentColor;
-  paint-order: stroke fill;
+  display: inline-block;
+  transform: skewX(-8deg);
+  transform-origin: left bottom;
+  padding-right: 0.08em; /* room for the skewed terminal */
 }
 
 .eyebrow {
@@ -300,11 +298,16 @@ input, select, textarea {
 .mega-link {
   display: flex;
   align-items: flex-start;
-  gap: 0.875rem;
-  padding: 0.875rem 1rem;
-  border-radius: 6px;
+  gap: 0.75rem;
+  padding: 0.625rem 0.75rem;
+  border-radius: 8px;
   transition: background 0.15s ease;
 }
+@keyframes mega-in {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.mega-in { animation: mega-in 0.18s cubic-bezier(0.22, 1, 0.36, 1) both; }
 .mega-link:hover { background: rgba(15,15,15,0.04); }
 
 .divider-line {

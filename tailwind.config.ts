@@ -45,7 +45,7 @@ const config: Config = {
       fontFamily: {
         sans: ["Poppins", "system-ui", "sans-serif"],
         display: ["Poppins", "system-ui", "sans-serif"],
-        script: ["'Yellowtail'", "'Brush Script MT'", "cursive"],
+        script: ["'Pacifico'", "'Brush Script MT'", "cursive"],
       },
       maxWidth: {
         container: "1280px",

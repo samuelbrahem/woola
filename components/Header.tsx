@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { Menu, X, ChevronDown, Phone, type LucideIcon } from "lucide-react";
 import { HeaderLogo } from "./HeaderLogo";
 import { AudienceSwitch } from "./AudienceSwitch";
-import { divisions, featuredServices, topLevelServices } from "@/lib/divisions";
+import { divisions, featuredServices, topLevelServices, shortName } from "@/lib/divisions";
 import { residentialServices } from "@/lib/residential";
 import { site } from "@/lib/site";
 import { industries } from "@/lib/industries";
@@ -46,10 +46,10 @@ export function MegaPanel({
   children: React.ReactNode;
 }) {
   return (
-    <div className="p-5 md:p-6">
+    <div className="p-5">
       {children}
       {actions && (
-        <div className="mt-4 pt-4 border-t hairline flex flex-wrap items-center gap-x-6 gap-y-2">{actions}</div>
+        <div className="mt-4 pt-3 border-t hairline flex flex-wrap items-center gap-x-6 gap-y-2 text-sm">{actions}</div>
       )}
     </div>
   );
@@ -80,7 +80,7 @@ function MenuLink({
 }) {
   return (
     <Link href={href} onClick={onClick} className="mega-link">
-      {Icon && <Icon className="w-5 h-5 mt-0.5 text-brand-500 shrink-0" strokeWidth={1.5} />}
+      {Icon && <Icon className="w-4 h-4 mt-0.5 text-brand-500 shrink-0" strokeWidth={1.75} />}
       <div>
         <div className="text-sm font-medium text-ink-800">{name}</div>
         {note && <div className="text-xs text-ink-500 mt-0.5">{note}</div>}
@@ -96,56 +96,41 @@ function ColumnHead({ children }: { children: React.ReactNode }) {
 
 export function ServicesPanel({ onNavigate }: { onNavigate: () => void }) {
   return (
-    <MegaPanel
-      eyebrow="Services"
-      title="Four divisions, one dispatch desk."
-      body="Mechanical, Power, Electrical and Build. Call one number and dispatch sends the right crew."
-      actions={
-        <>
-          <Link href="/contact" onClick={onNavigate} className="btn btn-primary">
-            Request Service
-          </Link>
-          <a href={`tel:${site.phone}`} className="text-sm font-medium text-ink-800 hover:text-brand-500 transition">
-            {site.phone}
-          </a>
-        </>
-      }
-    >
-      <div className="grid grid-cols-4 gap-x-8">
+    <MegaPanel>
+      <div className="grid grid-cols-4 divide-x divide-[color:rgba(15,15,15,0.08)] w-[1000px] max-w-full">
         {divisions.map((d) => (
-          <div key={d.slug} className="flex flex-col">
+          <div key={d.slug} className="px-5 first:pl-1 last:pr-1 flex flex-col">
             <Link
               href={`/${d.slug}`}
               onClick={onNavigate}
-              className="text-base font-semibold text-ink-800 hover:text-brand-500 transition whitespace-nowrap"
+              className="group inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-500"
             >
-              {d.name}
+              <span className="w-1.5 h-1.5 rounded-full bg-brand-500" />
+              {shortName(d)}
             </Link>
-            <div className="mt-1 mb-3 pb-3 border-b hairline text-xs text-ink-500 leading-snug h-[3.75rem]">
-              {d.tagline}
-            </div>
-            <div className="flex-1">
+            <ul className="mt-3 flex-1">
               {featuredServices(d).map((s) => (
-                <Link
-                  key={s.slug}
-                  href={`/${d.slug}/${s.slug}`}
-                  onClick={onNavigate}
-                  className="block py-1.5 text-sm text-ink-700 hover:text-brand-500 transition"
-                >
-                  {s.slug === "generators"
-                    ? "Generator Replacement"
-                    : s.slug === "electrical"
-                      ? "Service & Maintenance"
-                      : s.name}
-                </Link>
+                <li key={s.slug}>
+                  <Link
+                    href={`/${d.slug}/${s.slug}`}
+                    onClick={onNavigate}
+                    className="block py-[5px] text-[13.5px] text-ink-700 hover:text-brand-500 hover:translate-x-0.5 transition"
+                  >
+                    {s.slug === "generators"
+                      ? "Generator Replacement"
+                      : s.slug === "electrical"
+                        ? "Service & Maintenance"
+                        : s.name}
+                  </Link>
+                </li>
               ))}
-            </div>
+            </ul>
             <Link
               href={`/${d.slug}`}
               onClick={onNavigate}
-              className="mt-3 pt-3 border-t hairline text-xs font-medium text-brand-500 hover:underline whitespace-nowrap"
+              className="mt-3 pt-3 border-t hairline text-xs font-medium text-ink-800 hover:text-brand-500 whitespace-nowrap"
             >
-              All {d.name.replace("Woola ", "")} services →
+              All {shortName(d)} services →
             </Link>
           </div>
         ))}
@@ -162,8 +147,8 @@ export function WhoWeServePanel({ onNavigate }: { onNavigate: () => void }) {
       body="Start with the page that matches your role. The industry pages list the systems we service most in each type of building."
       actions={<RailLink href="/property-managers" onClick={onNavigate}>Property managers</RailLink>}
     >
-      <div className="grid grid-cols-12 gap-x-8">
-        <div className="col-span-4 border-r hairline pr-6">
+      <div className="grid grid-cols-12 gap-x-6 w-[900px] max-w-full">
+        <div className="col-span-4 border-r hairline pr-4">
           <ColumnHead>By role</ColumnHead>
           <MenuLink href="/property-managers" onClick={onNavigate} name="Property Managers" note="Portfolios, stratas and rental buildings" />
           <MenuLink href="/commercial" onClick={onNavigate} name="Commercial" note="Owners, operators and facility leads" />
@@ -196,7 +181,7 @@ export function CompanyPanel({ onNavigate }: { onNavigate: () => void }) {
       body="Who we are, how a job runs from call to invoice, and the work we have done."
       actions={<RailLink href="/about" onClick={onNavigate}>About Woola</RailLink>}
     >
-      <div className="grid grid-cols-3 gap-x-2">
+      <div className="grid grid-cols-3 gap-x-2 w-[820px] max-w-full">
         {companyLinks.map(([label, href, sub]) => (
           <MenuLink key={href} href={href} onClick={onNavigate} name={label} note={sub} />
         ))}
@@ -231,8 +216,8 @@ export function DivisionServicesPanel({
       actions={<RailLink href={`/${division.slug}`} onClick={onNavigate}>Division overview</RailLink>}
     >
       {isMech ? (
-        <div className="grid grid-cols-3 gap-x-8">
-          <div className="col-span-2 border-r hairline pr-6 flex flex-col">
+        <div className="grid grid-cols-5 gap-x-6 w-[1040px] max-w-full">
+          <div className="col-span-3 border-r hairline pr-6 flex flex-col">
             <ColumnHead>Commercial</ColumnHead>
             <div className="grid grid-cols-2 gap-x-2 content-start flex-1">
               {services.map((s) => (
@@ -256,13 +241,13 @@ export function DivisionServicesPanel({
           </div>
           <div className="flex flex-col">
             <ColumnHead>Residential</ColumnHead>
-            <div className="flex-1">
+            <div className="flex-1 grid grid-cols-2 gap-x-4 content-start">
               {residentialServices.map((s) => (
                 <Link
                   key={s.slug}
                   href={`/residential/${s.slug}`}
                   onClick={onNavigate}
-                  className="block py-1.5 text-sm text-ink-700 hover:text-brand-500 transition"
+                  className="block py-[5px] text-[13.5px] text-ink-700 hover:text-brand-500 transition"
                 >
                   {s.navName}
                 </Link>
@@ -278,7 +263,7 @@ export function DivisionServicesPanel({
           </div>
         </div>
       ) : (
-        <div className="grid grid-cols-3 gap-x-2">
+        <div className="grid grid-cols-3 gap-x-2 w-[880px] max-w-full">
           {services.map((s) => (
             <MenuLink
               key={s.slug}
@@ -495,8 +480,8 @@ export function MegaItem({
         <ChevronDown className={`w-4 h-4 transition-transform ${open ? "rotate-180" : ""}`} />
       </button>
       {open && (
-        <div className="absolute left-0 right-0 top-full pt-2 px-6">
-          <div className="bg-white rounded-2xl shadow-soft border hairline overflow-hidden">
+        <div className="absolute left-1/2 -translate-x-1/2 top-full pt-2 w-max max-w-[calc(100vw-3rem)]">
+          <div className="mega-in bg-white rounded-xl shadow-[0_24px_60px_-20px_rgba(4,4,4,0.35)] border hairline overflow-hidden">
             {children}
           </div>
         </div>

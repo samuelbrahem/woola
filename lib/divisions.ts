@@ -1176,7 +1176,7 @@ export const divisions: Division[] = [
         slug: "vault-cleaning",
         name: "Electrical Vault Cleaning & Maintenance",
         short: "High-voltage rooms and vaults",
-        featured: true,
+        featured: false,
         description:
           "Scheduled cleaning, inspection, and maintenance of electrical vaults and high-voltage rooms in commercial and strata buildings, coordinated with BC Hydro shutdowns where required.",
         icon: Vault,
@@ -1191,7 +1191,7 @@ export const divisions: Division[] = [
         slug: "residential-electrical",
         name: "Residential Electrical",
         short: "Homes, suites, and townhomes",
-        featured: true,
+        featured: false,
         description:
           "Panel upgrades, EV charger installs, lighting, and repairs for houses, suites, and townhomes across Metro Vancouver, permitted and inspected.",
         icon: House,
@@ -1206,7 +1206,7 @@ export const divisions: Division[] = [
         slug: "restoration",
         name: "Electrical Restoration",
         short: "After fire, flood, or failure",
-        featured: true,
+        featured: false,
         description:
           "Electrical restoration after fire, water, or equipment failure: make-safe, damage assessment, temporary power, and rebuild of the affected systems with insurer-ready documentation.",
         icon: RefreshCw,
