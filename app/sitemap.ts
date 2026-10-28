@@ -3,6 +3,7 @@ import { divisions } from "@/lib/divisions";
 import { cities } from "@/lib/cities";
 import { residentialServices } from "@/lib/residential";
 import { posts } from "@/lib/posts";
+import { news } from "@/lib/news";
 import { industries } from "@/lib/industries";
 import { equipmentLibrary } from "@/lib/equipment-library";
 
@@ -25,6 +26,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/contact",
     "/equipment",
     "/know-your-building",
+    "/news",
     "/portal",
     "/process",
     "/property-managers",
@@ -41,6 +43,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const residentialPaths = residentialServices.map((s) => `/residential/${s.slug}`);
   const cityPaths = cities.map((c) => `/service-areas/${c.slug}`);
   const postPaths = posts.map((p) => `/blog/${p.slug}`);
+  const newsPaths = news.map((n) => `/news/${n.slug}`);
   const equipmentPaths = equipmentLibrary.map((e) => `/equipment/${e.slug}`);
   const industryPaths = industries.map((i) => `/industries/${i.slug}`);
 
@@ -51,6 +54,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...residentialPaths,
     ...cityPaths,
     ...postPaths,
+    ...newsPaths,
     ...equipmentPaths,
     ...industryPaths,
   ];
@@ -59,7 +63,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${BASE}${path}`,
     lastModified: path.startsWith("/blog/")
       ? new Date(posts.find((p) => `/blog/${p.slug}` === path)?.date ?? lastModified)
-      : lastModified,
+      : path.startsWith("/news/")
+        ? new Date(news.find((n) => `/news/${n.slug}` === path)?.date ?? lastModified)
+        : lastModified,
     changeFrequency: path === "" ? "weekly" : "monthly",
     priority: path === "" ? 1 : path.includes("/") ? 0.7 : 0.9,
   }));

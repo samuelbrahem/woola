@@ -138,8 +138,10 @@ import { DivisionFAQ } from "@/components/DivisionFAQ";
 import { LogoMarquee } from "@/components/LogoMarquee";
 import { CredentialsReveal } from "@/components/CredentialsReveal";
 import { GoogleG } from "@/components/Testimonials";
+import { GoogleReviews } from "@/components/GoogleReviews";
 import { googleListingFor } from "@/lib/reviews";
 import { ServiceMap } from "@/components/ServiceMap";
+import { CityChips } from "@/components/CityChips";
 import { ScrollyServices } from "@/components/ScrollyServices";
 import {
   ArrowRight,
@@ -184,7 +186,6 @@ export default function DivisionPage({ params }: { params: Params }) {
   const division = getDivision(params.division);
   if (!division) return notFound();
 
-  const featuredCities = cities.slice(0, 16);
 
   return (
     <>
@@ -441,7 +442,7 @@ export default function DivisionPage({ params }: { params: Params }) {
         <CredentialsReveal items={division.certLogos} />
       </Section>
 
-      {/* Reviews: link to the division's Google listing instead of placeholder quotes */}
+      {/* Reviews: live from the division's Google listing (five-star, detailed) */}
       <section className="bg-brand-500 text-white">
         <div className="container-x py-14 md:py-16">
           <div className="flex flex-wrap items-end justify-between gap-6">
@@ -460,6 +461,7 @@ export default function DivisionPage({ params }: { params: Params }) {
               <GoogleG className="w-5 h-5" /> See our Google reviews →
             </a>
           </div>
+          <GoogleReviews division={division.slug} />
         </div>
       </section>
 
@@ -499,20 +501,7 @@ export default function DivisionPage({ params }: { params: Params }) {
               <MapPin className="w-4 h-4" /> See coverage map →
             </Link>
           </div>
-          <div className="mt-8 flex flex-wrap gap-2">
-            {featuredCities.map((c) => (
-              <Link
-                key={c.slug}
-                href={`/service-areas/${c.slug}`}
-                className="text-xs px-3 py-1.5 rounded-full border border-ink-600 text-cream-100 hover:border-[color:var(--brand-on-dark)] hover:text-[color:var(--brand-on-dark)] transition"
-              >
-                {c.name}
-              </Link>
-            ))}
-            <span className="text-xs px-3 py-1.5 text-cream-100/60">
-              + {cities.length - featuredCities.length} more
-            </span>
-          </div>
+          <CityChips cities={cities} initial={6} className="mt-8" />
           <div className="mt-8">
             <ServiceMap height={380} />
           </div>

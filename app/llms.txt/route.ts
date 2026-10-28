@@ -3,6 +3,7 @@ import { residentialServices } from "@/lib/residential";
 import { cities } from "@/lib/cities";
 import { industries } from "@/lib/industries";
 import { posts } from "@/lib/posts";
+import { newsSorted } from "@/lib/news";
 import { site } from "@/lib/site";
 
 const BASE = "https://woola.ca";
@@ -47,6 +48,8 @@ export function GET() {
 
   lines.push("", "## Field Notes (articles)", "");
   for (const p of posts) lines.push(`- [${p.title}](${BASE}/blog/${p.slug}): ${p.excerpt}`);
+  lines.push("", "## Company news", "");
+  for (const n of newsSorted) lines.push(`- [${n.title}](${BASE}/news/${n.slug}) (${n.date.slice(0, 7)}): ${n.excerpt}`);
 
   return new Response(lines.join("\n") + "\n", {
     headers: { "Content-Type": "text/plain; charset=utf-8", "Cache-Control": "public, max-age=86400" },

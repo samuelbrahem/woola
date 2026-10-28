@@ -18,6 +18,7 @@ const quickLinks = [
   { label: "Projects", href: "/work" },
   { label: "Equipment Library", href: "/equipment" },
   { label: "Second Opinion", href: "/second-opinion" },
+  { label: "News", href: "/news" },
   { label: "Careers", href: "/careers" },
   { label: "Service Areas", href: "/service-areas" },
 ];

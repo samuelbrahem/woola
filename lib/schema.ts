@@ -94,3 +94,16 @@ export function jobPostings(openings: Opening[]) {
     },
   }));
 }
+
+export function newsArticle(n: { slug: string; title: string; excerpt: string; date: string; cover: string }) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    headline: n.title,
+    description: n.excerpt,
+    datePublished: n.date,
+    image: `${BASE}${n.cover}`,
+    mainEntityOfPage: `${BASE}/news/${n.slug}`,
+    publisher: { "@type": "Organization", name: site.fullName, logo: { "@type": "ImageObject", url: `${BASE}/brand/favicon-w-512.png` } },
+  };
+}

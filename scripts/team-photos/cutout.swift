@@ -1,5 +1,7 @@
 // Person cut-out + uniform headshot treatment using Apple Vision.
-// usage: cutout <in.jpg> <out.jpg> [size]
+// usage: cutout <in.jpg> <out.jpg> [size] [circle]
+//   "circle": the source is a circular avatar export (white corners); treat
+//   everything outside the inscribed circle as background.
 // Output: square, centred on the face when one is found, person isolated on a
 // flat light-grey backdrop, desaturated, so a set of mixed LinkedIn photos reads as one.
 import Foundation
@@ -12,6 +14,7 @@ guard args.count >= 3, let src = CIImage(contentsOf: URL(fileURLWithPath: args[1
   FileHandle.standardError.write("usage: cutout in out [size]\n".data(using: .utf8)!); exit(1)
 }
 let outSize = args.count > 3 ? CGFloat(Int(args[3]) ?? 800) : 800
+let circular = args.count > 4 && args[4] == "circle"
 let ctx = CIContext()
 
 // 1. Person segmentation mask
@@ -29,6 +32,15 @@ if let buf = seg.results?.first?.pixelBuffer {
   maskImage = m.transformed(by: CGAffineTransform(scaleX: sx, y: sy))
     .applyingFilter("CIGaussianBlur", parameters: [kCIInputRadiusKey: 1.5])
     .cropped(to: src.extent)
+}
+if circular {
+  let r = min(src.extent.width, src.extent.height) / 2
+  let c = CIVector(x: src.extent.midX, y: src.extent.midY)
+  let disc = CIFilter(name: "CIRadialGradient", parameters: [
+    "inputCenter": c, "inputRadius0": r - 6, "inputRadius1": r - 1,
+    "inputColor0": CIColor.white, "inputColor1": CIColor.black,
+  ])!.outputImage!.cropped(to: src.extent)
+  maskImage = maskImage.applyingFilter("CIMultiplyCompositing", parameters: [kCIInputBackgroundImageKey: disc])
 }
 
 // 2. Desaturate subject slightly and lift contrast so skin tones match across sources
@@ -48,7 +60,7 @@ if let f = (face.results as? [VNFaceObservation])?.max(by: { $0.boundingBox.widt
   let bb = f.boundingBox
   cx = (bb.midX) * W
   cy = (bb.midY + bb.height * 0.08) * H   // nudge up so there is more room below the chin
-  side = min(min(W, H), max(bb.width * W, bb.height * H) * 3.2)
+  side = min(min(W, H), max(bb.width * W, bb.height * H) * (circular ? 2.5 : 3.2))
 }
 var x = cx - side / 2, y = cy - side / 2
 x = max(0, min(x, W - side)); y = max(0, min(y, H - side))

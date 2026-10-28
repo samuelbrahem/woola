@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { Menu, X, ChevronDown, Phone, type LucideIcon } from "lucide-react";
+import { Menu, X, ChevronDown, Phone } from "lucide-react";
 import { HeaderLogo } from "./HeaderLogo";
 import { AudienceSwitch } from "./AudienceSwitch";
 import { divisions, featuredServices, topLevelServices, shortName } from "@/lib/divisions";
@@ -22,6 +22,7 @@ export const companyLinks: [string, string, string][] = [
   ["Credentials", "/about/credentials", "Associations and certifications we hold"],
   ["Why Woola", "/competitors", "How we compare"],
   ["Featured Work", "/work", "Recent projects across BC"],
+  ["News", "/news", "Company news and milestones"],
   ["Know Your Building", "/know-your-building", "Asset inventory & capital planning"],
   ["Field Notes", "/blog", "Rebates, compliance, and stories from the field"],
 ];
@@ -55,84 +56,96 @@ export function MegaPanel({
   );
 }
 
-/** Rail link: the section's main page. */
-export function RailLink({ href, onClick, children }: { href: string; onClick: () => void; children: React.ReactNode }) {
-  return (
-    <Link href={href} onClick={onClick} className="text-sm font-medium text-ink-800 hover:text-brand-500 transition">
-      {children} →
+type PanelLink = { label: string; href: string };
+
+/** Column label: small teal caps with a dot, as on the Services menu. */
+function ColumnHead({ href, onClick, children }: { href?: string; onClick?: () => void; children: React.ReactNode }) {
+  const cls = "inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-500";
+  const inner = (
+    <>
+      <span className="w-1.5 h-1.5 rounded-full bg-brand-500" />
+      {children}
+    </>
+  );
+  return href ? (
+    <Link href={href} onClick={onClick} className={cls}>
+      {inner}
     </Link>
+  ) : (
+    <div className={cls}>{inner}</div>
   );
 }
 
-/** Link row with a name and a one-line note underneath. */
-function MenuLink({
-  href,
-  onClick,
-  name,
-  note,
-  icon: Icon,
+/** Plain link list under a column head, with an optional footer link. */
+function PanelColumn({
+  head,
+  headHref,
+  links,
+  footer,
+  onNavigate,
+  columns = 1,
+  className = "",
 }: {
-  href: string;
-  onClick: () => void;
-  name: string;
-  note?: string;
-  icon?: LucideIcon;
+  head: string;
+  headHref?: string;
+  links: PanelLink[];
+  footer?: PanelLink;
+  onNavigate: () => void;
+  columns?: 1 | 2;
+  className?: string;
 }) {
   return (
-    <Link href={href} onClick={onClick} className="mega-link">
-      {Icon && <Icon className="w-4 h-4 mt-0.5 text-brand-500 shrink-0" strokeWidth={1.75} />}
-      <div>
-        <div className="text-sm font-medium text-ink-800">{name}</div>
-        {note && <div className="text-xs text-ink-500 mt-0.5">{note}</div>}
-      </div>
-    </Link>
+    <div className={`px-5 first:pl-1 last:pr-1 flex flex-col ${className}`}>
+      <ColumnHead href={headHref} onClick={onNavigate}>{head}</ColumnHead>
+      <ul className={`mt-3 flex-1 ${columns === 2 ? "grid grid-cols-2 gap-x-6 content-start" : ""}`}>
+        {links.map((l) => (
+          <li key={l.href}>
+            <Link
+              href={l.href}
+              onClick={onNavigate}
+              className="block py-[5px] text-[13.5px] text-ink-700 hover:text-brand-500 hover:translate-x-0.5 transition"
+            >
+              {l.label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+      {footer && (
+        <Link
+          href={footer.href}
+          onClick={onNavigate}
+          className="mt-3 pt-3 border-t hairline text-xs font-medium text-ink-800 hover:text-brand-500 whitespace-nowrap"
+        >
+          {footer.label} →
+        </Link>
+      )}
+    </div>
   );
 }
 
-/** Column heading inside a panel. */
-function ColumnHead({ children }: { children: React.ReactNode }) {
-  return <div className="eyebrow mb-3">{children}</div>;
-}
+const PANEL_GRID = "grid divide-x divide-[color:rgba(15,15,15,0.08)] max-w-full";
 
 export function ServicesPanel({ onNavigate }: { onNavigate: () => void }) {
   return (
     <MegaPanel>
-      <div className="grid grid-cols-4 divide-x divide-[color:rgba(15,15,15,0.08)] w-[1000px] max-w-full">
+      <div className={`${PANEL_GRID} grid-cols-4 w-[1000px]`}>
         {divisions.map((d) => (
-          <div key={d.slug} className="px-5 first:pl-1 last:pr-1 flex flex-col">
-            <Link
-              href={`/${d.slug}`}
-              onClick={onNavigate}
-              className="group inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-500"
-            >
-              <span className="w-1.5 h-1.5 rounded-full bg-brand-500" />
-              {shortName(d)}
-            </Link>
-            <ul className="mt-3 flex-1">
-              {featuredServices(d).map((s) => (
-                <li key={s.slug}>
-                  <Link
-                    href={`/${d.slug}/${s.slug}`}
-                    onClick={onNavigate}
-                    className="block py-[5px] text-[13.5px] text-ink-700 hover:text-brand-500 hover:translate-x-0.5 transition"
-                  >
-                    {s.slug === "generators"
-                      ? "Generator Replacement"
-                      : s.slug === "electrical"
-                        ? "Service & Maintenance"
-                        : s.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-            <Link
-              href={`/${d.slug}`}
-              onClick={onNavigate}
-              className="mt-3 pt-3 border-t hairline text-xs font-medium text-ink-800 hover:text-brand-500 whitespace-nowrap"
-            >
-              All {shortName(d)} services →
-            </Link>
-          </div>
+          <PanelColumn
+            key={d.slug}
+            head={shortName(d)}
+            headHref={`/${d.slug}`}
+            onNavigate={onNavigate}
+            links={featuredServices(d).map((s) => ({
+              href: `/${d.slug}/${s.slug}`,
+              label:
+                s.slug === "generators"
+                  ? "Generator Replacement"
+                  : s.slug === "electrical"
+                    ? "Service & Maintenance"
+                    : s.name,
+            }))}
+            footer={{ label: `All ${shortName(d)} services`, href: `/${d.slug}` }}
+          />
         ))}
       </div>
     </MegaPanel>
@@ -141,50 +154,49 @@ export function ServicesPanel({ onNavigate }: { onNavigate: () => void }) {
 
 export function WhoWeServePanel({ onNavigate }: { onNavigate: () => void }) {
   return (
-    <MegaPanel
-      eyebrow="Who we serve"
-      title="Property managers, owners and homeowners."
-      body="Start with the page that matches your role. The industry pages list the systems we service most in each type of building."
-      actions={<RailLink href="/property-managers" onClick={onNavigate}>Property managers</RailLink>}
-    >
-      <div className="grid grid-cols-12 gap-x-6 w-[900px] max-w-full">
-        <div className="col-span-4 border-r hairline pr-4">
-          <ColumnHead>By role</ColumnHead>
-          <MenuLink href="/property-managers" onClick={onNavigate} name="Property Managers" note="Portfolios, stratas and rental buildings" />
-          <MenuLink href="/commercial" onClick={onNavigate} name="Commercial" note="Owners, operators and facility leads" />
-          <MenuLink href="/residential" onClick={onNavigate} name="Residential" note="Homeowners" />
-        </div>
-        <div className="col-span-8">
-          <ColumnHead>By building type</ColumnHead>
-          <div className="grid grid-cols-2 gap-x-2">
-            {sectors.map((ind) => (
-              <MenuLink
-                key={ind.slug}
-                href={`/industries/${ind.slug}`}
-                onClick={onNavigate}
-                name={ind.name}
-                note={ind.short}
-              />
-            ))}
-          </div>
-        </div>
+    <MegaPanel>
+      <div className={`${PANEL_GRID} grid-cols-3 w-[780px]`}>
+        <PanelColumn
+          head="By role"
+          onNavigate={onNavigate}
+          links={[
+            { label: "Property Managers", href: "/property-managers" },
+            { label: "Commercial", href: "/commercial" },
+            { label: "Residential", href: "/residential" },
+          ]}
+          footer={{ label: "For property managers", href: "/property-managers" }}
+        />
+        <PanelColumn
+          className="col-span-2"
+          head="By building type"
+          onNavigate={onNavigate}
+          columns={2}
+          links={sectors.map((ind) => ({ label: ind.name, href: `/industries/${ind.slug}` }))}
+          footer={{ label: "All commercial services", href: "/commercial" }}
+        />
       </div>
     </MegaPanel>
   );
 }
 
 export function CompanyPanel({ onNavigate }: { onNavigate: () => void }) {
+  const [company, resources] = [companyLinks.slice(0, 4), companyLinks.slice(4)];
   return (
-    <MegaPanel
-      eyebrow="About Us"
-      title="Based in Coquitlam."
-      body="Who we are, how a job runs from call to invoice, and the work we have done."
-      actions={<RailLink href="/about" onClick={onNavigate}>About Woola</RailLink>}
-    >
-      <div className="grid grid-cols-3 gap-x-2 w-[820px] max-w-full">
-        {companyLinks.map(([label, href, sub]) => (
-          <MenuLink key={href} href={href} onClick={onNavigate} name={label} note={sub} />
-        ))}
+    <MegaPanel>
+      <div className={`${PANEL_GRID} grid-cols-2 w-[560px]`}>
+        <PanelColumn
+          head="Company"
+          headHref="/about"
+          onNavigate={onNavigate}
+          links={company.map(([label, href]) => ({ label, href }))}
+          footer={{ label: "About Woola", href: "/about" }}
+        />
+        <PanelColumn
+          head="Resources"
+          onNavigate={onNavigate}
+          links={resources.map(([label, href]) => ({ label, href }))}
+          footer={{ label: "Careers", href: "/careers" }}
+        />
       </div>
     </MegaPanel>
   );
@@ -203,77 +215,40 @@ export function DivisionServicesPanel({
   onNavigate: () => void;
 }) {
   const isMech = division.slug === "mechanical";
-  const services = topLevelServices(division);
+  const services = topLevelServices(division).map((s) => ({ label: s.name, href: `/${division.slug}/${s.slug}` }));
   return (
-    <MegaPanel
-      eyebrow={`${division.name} services`}
-      title={division.tagline}
-      body={
-        isMech
-          ? "Commercial service, maintenance and retrofits, plus a residential crew for homes."
-          : "Service, maintenance and projects. Request service and dispatch books the crew."
-      }
-      actions={<RailLink href={`/${division.slug}`} onClick={onNavigate}>Division overview</RailLink>}
-    >
+    <MegaPanel>
       {isMech ? (
-        <div className="grid grid-cols-5 gap-x-6 w-[1040px] max-w-full">
-          <div className="col-span-3 border-r hairline pr-6 flex flex-col">
-            <ColumnHead>Commercial</ColumnHead>
-            <div className="grid grid-cols-2 gap-x-2 content-start flex-1">
-              {services.map((s) => (
-                <MenuLink
-                  key={s.slug}
-                  href={`/${division.slug}/${s.slug}`}
-                  onClick={onNavigate}
-                  name={s.name}
-                  note={s.short}
-                  icon={s.icon}
-                />
-              ))}
-            </div>
-            <Link
-              href="/commercial"
-              onClick={onNavigate}
-              className="mt-3 pt-3 border-t hairline text-xs font-medium text-brand-500 hover:underline"
-            >
-              All commercial services →
-            </Link>
-          </div>
-          <div className="flex flex-col">
-            <ColumnHead>Residential</ColumnHead>
-            <div className="flex-1 grid grid-cols-2 gap-x-4 content-start">
-              {residentialServices.map((s) => (
-                <Link
-                  key={s.slug}
-                  href={`/residential/${s.slug}`}
-                  onClick={onNavigate}
-                  className="block py-[5px] text-[13.5px] text-ink-700 hover:text-brand-500 transition"
-                >
-                  {s.navName}
-                </Link>
-              ))}
-            </div>
-            <Link
-              href="/residential"
-              onClick={onNavigate}
-              className="mt-3 pt-3 border-t hairline text-xs font-medium text-brand-500 hover:underline"
-            >
-              All residential services →
-            </Link>
-          </div>
+        <div className={`${PANEL_GRID} grid-cols-5 w-[1000px]`}>
+          <PanelColumn
+            className="col-span-3"
+            head="Commercial"
+            headHref="/commercial"
+            onNavigate={onNavigate}
+            columns={2}
+            links={services}
+            footer={{ label: "All commercial services", href: "/commercial" }}
+          />
+          <PanelColumn
+            className="col-span-2"
+            head="Residential"
+            headHref="/residential"
+            onNavigate={onNavigate}
+            columns={2}
+            links={residentialServices.map((s) => ({ label: s.navName, href: `/residential/${s.slug}` }))}
+            footer={{ label: "All residential services", href: "/residential" }}
+          />
         </div>
       ) : (
-        <div className="grid grid-cols-3 gap-x-2 w-[880px] max-w-full">
-          {services.map((s) => (
-            <MenuLink
-              key={s.slug}
-              href={`/${division.slug}/${s.slug}`}
-              onClick={onNavigate}
-              name={s.name}
-              note={s.short}
-              icon={s.icon}
-            />
-          ))}
+        <div className={`${PANEL_GRID} grid-cols-1 w-[620px]`}>
+          <PanelColumn
+            head={`${shortName(division)} services`}
+            headHref={`/${division.slug}`}
+            onNavigate={onNavigate}
+            columns={2}
+            links={services}
+            footer={{ label: "Division overview", href: `/${division.slug}` }}
+          />
         </div>
       )}
     </MegaPanel>
@@ -453,7 +428,7 @@ export function MegaItem({
   };
   const scheduleClose = () => {
     cancelClose();
-    closeTimer.current = setTimeout(onClose, 160);
+    closeTimer.current = setTimeout(onClose, 350);
   };
 
   useEffect(() => {
@@ -472,8 +447,8 @@ export function MegaItem({
         onMouseEnter={onOpen}
         aria-expanded={open}
         aria-haspopup="true"
-        className={`flex items-center gap-1 px-4 py-2 text-sm font-medium text-ink-800 rounded-full whitespace-nowrap transition ${
-          open ? "bg-ink-50" : "hover:bg-ink-50"
+        className={`relative flex items-center gap-1 px-4 py-2 text-sm font-medium text-ink-800 rounded-full whitespace-nowrap transition ${
+          open ? "bg-ink-50 after:absolute after:inset-x-0 after:top-full after:h-8 after:content-['']" : "hover:bg-ink-50"
         }`}
       >
         {label}

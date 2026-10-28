@@ -6,8 +6,10 @@ import { SectionHead } from "@/components/Section";
 import { DivisionExplorer } from "@/components/DivisionExplorer";
 import { CountUp } from "@/components/CountUp";
 import { GoogleG } from "@/components/Testimonials";
+import { GoogleReviews } from "@/components/GoogleReviews";
 import { googleListingUrl } from "@/lib/reviews";
 import { CTABanner } from "@/components/CTABanner";
+import { NewsStrip } from "@/components/NewsStrip";
 import { BuildingXray } from "@/components/BuildingXray";
 import { cities } from "@/lib/cities";
 import { site } from "@/lib/site";
@@ -276,6 +278,8 @@ export default function HomePage() {
         </div>
       </section>
 
+      <NewsStrip />
+
       <section className="bg-brand-500 text-white">
         <div className="container-x py-16 md:py-20">
           <div className="flex flex-wrap items-end justify-between gap-6">
@@ -294,6 +298,7 @@ export default function HomePage() {
               <GoogleG className="w-5 h-5" /> See our Google reviews →
             </a>
           </div>
+          <GoogleReviews division="mechanical" />
         </div>
       </section>
 

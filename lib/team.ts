@@ -1,7 +1,8 @@
 /**
- * Leadership shown on /about. Photos live in public/team/ and are run
- * through scripts/team-photos (same crop, same grey treatment) so they read
- * as one set. Titles marked TODO still need Woola's confirmation.
+ * Leadership shown on /about. Photos are run through scripts/team-photos/cutout
+ * (person cut-out, same grey backdrop, desaturated, face-centred square) so they
+ * read as one set; public/team/placeholder.jpg is the stand-in for anyone
+ * without a photo. Titles marked TODO still need Woola's confirmation.
  */
 export type TeamMember = {
   name: string;
@@ -29,6 +30,6 @@ export const team: TeamMember[] = [
     name: "Graham McVeigh",
     title: "Leadership team", // TODO: confirm title with Woola
     linkedin: "https://www.linkedin.com/in/graham-mcveigh-b5957459/",
-    photo: "/team/graham-mcveigh.jpg",
+    photo: "/team/graham-mcveigh.jpg", // 200px LinkedIn thumbnail upscaled; replace with a full-size shot
   },
 ];

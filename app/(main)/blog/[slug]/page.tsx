@@ -153,5 +153,5 @@ export default function BlogPost({ params }: { params: Params }) {
 
 function formatDate(iso: string) {
   const d = new Date(iso);
-  return d.toLocaleDateString("en-CA", { year: "numeric", month: "long", day: "numeric" });
+  return d.toLocaleDateString("en-CA", { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" });
 }

@@ -1,6 +1,3 @@
-import { Star } from "lucide-react";
-import { googleReviews } from "@/lib/reviews";
-
 /** Google's four-colour "G" mark. */
 export function GoogleG({ className = "w-5 h-5" }: { className?: string }) {
   return (
@@ -22,45 +19,5 @@ export function GoogleG({ className = "w-5 h-5" }: { className?: string }) {
         d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"
       />
     </svg>
-  );
-}
-
-function Stars({ rating, className = "w-4 h-4" }: { rating: number; className?: string }) {
-  return (
-    <span className="inline-flex items-center gap-0.5" aria-label={`${rating} out of 5 stars`}>
-      {[1, 2, 3, 4, 5].map((i) => (
-        <Star
-          key={i}
-          className={`${className} ${i <= Math.round(rating) ? "fill-[#FBBC05] text-[#FBBC05]" : "text-ink-300"}`}
-          strokeWidth={1.5}
-        />
-      ))}
-    </span>
-  );
-}
-
-export function Testimonials() {
-  return (
-    <div className="grid md:grid-cols-3 gap-6">
-      {googleReviews.map((r, i) => (
-        <article key={i} className="card p-7 flex flex-col">
-          <div className="flex items-center justify-between">
-            <Stars rating={r.rating} />
-            <GoogleG className="w-5 h-5" />
-          </div>
-          <p className="mt-4 text-ink-700 leading-relaxed flex-1">&ldquo;{r.text}&rdquo;</p>
-          <div className="mt-6 pt-5 border-t hairline flex items-end justify-between gap-4">
-            <div>
-              <div className="text-sm font-medium text-ink-800">{r.author}</div>
-              <div className="text-xs text-ink-400 mt-0.5">
-                {r.context ? `${r.context} · ` : ""}
-                {r.date}
-              </div>
-            </div>
-            <span className="shrink-0 text-[11px] text-ink-400 whitespace-nowrap">Google review</span>
-          </div>
-        </article>
-      ))}
-    </div>
   );
 }

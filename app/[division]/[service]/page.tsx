@@ -507,14 +507,19 @@ export default function ServicePage({ params }: { params: Params }) {
         </Link>
         <p className="mt-10 pt-6 border-t hairline text-xs text-ink-400 leading-relaxed max-w-4xl">
           {service.short} across{" "}
-          {cities.map((c, i) => (
+          {cities.slice(0, 6).map((c) => (
             <span key={c.slug}>
               <Link href={`/service-areas/${c.slug}`} className="hover:text-ink-700 hover:underline">
                 {c.name}
               </Link>
-              {i < cities.length - 1 ? ", " : "."}
+              {", "}
             </span>
           ))}
+          and{" "}
+          <Link href="/service-areas" className="hover:text-ink-700 hover:underline">
+            {cities.length - 6} more municipalities
+          </Link>
+          .
         </p>
       </Section>
 

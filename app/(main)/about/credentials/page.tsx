@@ -40,6 +40,12 @@ const associations = [
       "A vetted network of contractors qualified to deliver BC Hydro's efficiency programs. It's what lets us access Power Smart rebates on lighting and electrical retrofits and file the paperwork on your behalf, instead of you chasing the incentive yourself.",
   },
   {
+    file: "logo-fortisbc",
+    name: "FortisBC Trade Ally Network",
+    about:
+      "FortisBC's registered contractor network for its gas and electric efficiency programs. Membership is what lets us file FortisBC rebates on boilers, furnaces, water heaters, and heat pumps for you, directly from the job.",
+  },
+  {
     file: "logo-asttbc",
     name: "ASTTBC · Applied Science Technologists & Technicians of BC",
     about:

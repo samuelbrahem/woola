@@ -4,10 +4,9 @@ import { Section, SectionHead } from "@/components/Section";
 import { Stats } from "@/components/Stats";
 import { CTABanner } from "@/components/CTABanner";
 import { AboutSubnav } from "@/components/AboutSubnav";
-import { site } from "@/lib/site";
 import { divisions, shortName } from "@/lib/divisions";
 import { LeadershipTeam } from "@/components/LeadershipTeam";
-import { Award, Users, Layers, Activity } from "lucide-react";
+import { Award, Users, Activity } from "lucide-react";
 
 export const metadata = {
   title: "About Woola",
@@ -152,6 +151,7 @@ export default function AboutPage() {
               "logo-boma",
               "logo-pama-member",
               "logo-bc-hydro",
+              "logo-fortisbc",
               "logo-asttbc",
               "logo-cci-bc",
               "logo-egsa",
@@ -163,19 +163,11 @@ export default function AboutPage() {
               <Image
                 key={c}
                 src={`/brand/${c}.png`}
-                alt={c.replace("logo-", "").replace(/-/g, " ").replace(/\b\w/g, (m) => m.toUpperCase())}
+                alt={c === "logo-fortisbc" ? "FortisBC Trade Ally" : c.replace("logo-", "").replace(/-/g, " ").replace(/\b\w/g, (m) => m.toUpperCase())}
                 width={220}
                 height={140}
                 className="max-h-20 w-auto object-contain grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition"
               />
-            ))}
-          </div>
-          <div className="mt-10 max-w-4xl mx-auto grid sm:grid-cols-2 md:grid-cols-3 gap-2">
-            {site.certifications.slice(0, 6).map((c) => (
-              <div key={c} className="flex items-center gap-3 p-3 bg-white rounded-xl border hairline">
-                <Layers className="w-4 h-4 text-brand-500 shrink-0" strokeWidth={1.5} />
-                <span className="text-sm font-medium text-ink-800">{c}</span>
-              </div>
             ))}
           </div>
         </div>
