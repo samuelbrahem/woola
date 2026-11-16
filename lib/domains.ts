@@ -35,6 +35,15 @@ export const DIVISION_HOSTS: Record<DivisionSlug, string> = {
 
 export const DIVISIONS_CANONICAL_ON_OWN_DOMAIN = true;
 
+/** Hostnames that only redirect (whole domain, path kept) to a real site.
+ *  netlify.toml does this at the edge; middleware repeats it as a fallback. */
+export const ALIAS_HOSTS: Record<string, string> = {
+  "woolamech.com": "woolamech.ca",
+  "woolapower.com": "woolapower.ca",
+  "woolabuild.com": "woolabuild.ca",
+  "woolafire.ca": MAIN_HOST, // no Fire division on the site yet; lands on the group home
+};
+
 export const DIVISION_SLUGS = Object.keys(DIVISION_HOSTS) as DivisionSlug[];
 
 /** Top-level routes of the corporate site. On a division host these are served
@@ -61,7 +70,14 @@ export function divisionForHost(host: string | null | undefined): DivisionSlug |
 
 export function isProductionHost(host: string) {
   const h = host.toLowerCase().split(":")[0].replace(/^www\./, "");
-  return h === MAIN_HOST || divisionForHost(h) !== null;
+  return h === MAIN_HOST || divisionForHost(h) !== null || h in ALIAS_HOSTS;
+}
+
+/** Target host for a redirect-only hostname (www. tolerated), else null. */
+export function aliasTarget(host: string | null | undefined): string | null {
+  if (!host) return null;
+  const h = host.toLowerCase().split(":")[0].replace(/^www\./, "");
+  return ALIAS_HOSTS[h] ?? null;
 }
 
 /** The division's own site root, e.g. https://woolamech.ca */

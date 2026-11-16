@@ -1,5 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { CORPORATE_ROUTES, DIVISION_HOSTS, divisionForHost, isDivisionSlug, isProductionHost } from "@/lib/domains";
+import { CORPORATE_ROUTES, DIVISION_HOSTS, aliasTarget, divisionForHost, isDivisionSlug, isProductionHost } from "@/lib/domains";
 
 /**
  * Hostname routing for the division domains (see lib/domains.ts for the map).
@@ -21,6 +21,10 @@ export function middleware(req: NextRequest) {
   const simulated = req.headers.get("x-woola-host")?.toLowerCase().split(":")[0];
   const host = simulated && !isProductionHost(rawHost) ? simulated : rawHost;
   const { pathname, search } = req.nextUrl;
+
+  // woolamech.com, woolafire.ca, ... -> their real site (netlify.toml does this first in production)
+  const alias = aliasTarget(host);
+  if (alias) return NextResponse.redirect(`https://${alias}${alias === "woola.ca" ? "/" : pathname + search}`, 301);
 
   const division = divisionForHost(host);
   if (!division) return NextResponse.next();

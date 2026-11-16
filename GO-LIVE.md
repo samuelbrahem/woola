@@ -27,13 +27,28 @@ Status legend: [x] done · [ ] to do · (who)
 - Netlify issues Let's Encrypt certificates for every hostname automatically once DNS resolves to it.
 
 ## 3. DNS (GoDaddy, via the Ancell reseller login for "email and domain")
-All five domains use GoDaddy nameservers (domaincontrol.com). For each domain change ONLY these two records:
+Every domain below uses GoDaddy nameservers (domaincontrol.com). All of them point at the one Netlify site; Netlify decides what each hostname shows. For each domain change ONLY these two records and leave everything else:
 
-    A      @     75.2.60.5                      (replace the current 68.66.226.82)
-    CNAME  www   woolaservices.netlify.app.     (replace/add)
+    A      @     75.2.60.5
+    CNAME  www   woolaservices.netlify.app.
 
-Do NOT touch: MX (Microsoft 365 mail), TXT `v=spf1 …`, TXT `google-site-verification=…`, TXT `MS=…`, `apple-domain-verification`, autodiscover CNAMEs. Email keeps working only if those stay.
-Propagation is usually minutes to an hour. Netlify → Domain management shows a green check per hostname when it resolves, then provisions HTTPS.
+| Domain | What visitors get | Current A record |
+|---|---|---|
+| woola.ca | corporate site (primary) | 68.66.226.82 (cPanel) |
+| woolamech.ca | Mechanical section, domain stays visible | 68.66.226.82 |
+| woolapower.ca | Power section | 68.66.226.82 |
+| woolabuild.ca | Build section | 68.66.226.82 |
+| woolaelectrical.ca | Electrical section | 13.248.213.45 (GoDaddy parking) |
+| woolamech.com | 301 → woolamech.ca, path kept | 3.33.152.147 (GoDaddy forwarding) |
+| woolapower.com | 301 → woolapower.ca, path kept | 15.197.225.128 (GoDaddy forwarding) |
+| woolabuild.com | 301 → woolabuild.ca, path kept | 3.33.251.168 (GoDaddy forwarding) |
+| woolafire.ca | 301 → woola.ca home (no Fire division yet) | 76.223.67.189 (GoDaddy parking) |
+
+Notes:
+- If a domain currently uses GoDaddy "Domain forwarding" (the .com ones do), turn forwarding OFF for that domain first, then set the A and CNAME records. Forwarding and an A record fight each other.
+- Do NOT touch: MX (Microsoft 365 mail; woolamech.com and woolapower.com have MX too), TXT `v=spf1 …`, TXT `google-site-verification=…`, TXT `MS=…`, `apple-domain-verification`, autodiscover CNAMEs. Email keeps working only if those stay.
+- Netlify → Domain management shows a green check per hostname when it resolves, then provisions HTTPS for it. Propagation is usually minutes to an hour.
+- Not in scope: jetclassic.ca, pamaspringsymposium.com.
 
 ## 4. Cutover checks (same day)
 - [ ] https://woola.ca loads the new site over HTTPS; http:// and www redirect to it.

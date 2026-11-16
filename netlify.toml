@@ -11,6 +11,56 @@
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
+# Redirect-only domains: .com -> .ca (path kept); woolafire.ca -> group home.
+
+[[redirects]]
+  from = "https://woolamech.com/*"
+  to = "https://woolamech.ca/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.woolamech.com/*"
+  to = "https://woolamech.ca/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://woolapower.com/*"
+  to = "https://woolapower.ca/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.woolapower.com/*"
+  to = "https://woolapower.ca/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://woolabuild.com/*"
+  to = "https://woolabuild.ca/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.woolabuild.com/*"
+  to = "https://woolabuild.ca/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://woolafire.ca/*"
+  to = "https://woola.ca/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.woolafire.ca/*"
+  to = "https://woola.ca/"
+  status = 301
+  force = true
+
 # www.<division>.ca -> <division>.ca (Netlify only does this automatically for the primary domain).
 
 [[redirects]]
