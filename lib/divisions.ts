@@ -43,7 +43,6 @@ export type ServicePrimer = {
   parts: { term: string; def: string }[];
 };
 
-export type EquipmentItem = { name: string; image: string; alt: string };
 
 export type Service = {
   slug: string;
@@ -53,7 +52,6 @@ export type Service = {
   icon: LucideIcon;
   highlights: string[];
   primer?: ServicePrimer;
-  equipment?: EquipmentItem[];
   /** Surfaced in the mega menu and division-card six-item lists. */
   featured?: boolean;
   /** Slug of a parent service. Child pages are hidden from top-level grids and menus. */
@@ -87,132 +85,6 @@ export type Division = {
   services: Service[];
 };
 
-const EQUIPMENT = {
-  hvac: [
-    { name: "RTUs", image: "/equipment-renders/rooftop-unit.webp", alt: "Rooftop packaged HVAC units on a commercial roof" },
-    { name: "VRF / VRV", image: "/equipment-renders/compressor.webp", alt: "Daikin variable refrigerant flow outdoor condenser" },
-    { name: "Water-source heat pumps", image: "/equipment-renders/heat-pump.webp", alt: "Water-to-air heat pump" },
-    { name: "Fan coil units", image: "/equipment-renders/fan-coil.webp", alt: "Carrier fan coil unit" },
-    { name: "ERVs / HRVs", image: "/equipment/hvac/erv-hrv.jpg", alt: "Heat recovery ventilator with heat exchanger" },
-    { name: "AHUs", image: "/equipment-renders/air-handler.webp", alt: "Commercial air handling unit" },
-    { name: "Boilers", image: "/equipment-renders/boiler.webp", alt: "Commercial boiler in a mechanical room" },
-    { name: "Cooling towers", image: "/equipment-renders/cooling-tower.webp", alt: "Induced-draft cooling tower on a rooftop" },
-    { name: "Fans", image: "/equipment/hvac/fans.jpg", alt: "Belt-driven industrial exhaust fan" },
-    { name: "Controls", image: "/equipment-renders/controls.webp", alt: "Building smart thermostat" },
-    { name: "Ductwork", image: "/equipment/hvac/ductwork.jpg", alt: "Galvanized HVAC ductwork in a ceiling" },
-  ],
-  plumbing: [
-    { name: "Tank water heaters", image: "/equipment-renders/water-heater.webp", alt: "Residential gas tank water heater" },
-    { name: "Tankless water heaters", image: "/equipment-renders/water-heater.webp", alt: "Wall-hung tankless water heaters" },
-    { name: "Backflow preventers", image: "/equipment/plumbing/backflow-preventer.jpg", alt: "Backflow preventer assembly" },
-    { name: "Sump pumps", image: "/equipment-renders/pump.webp", alt: "AC-powered sump pump" },
-    { name: "Water softeners", image: "/equipment/plumbing/water-softener.jpg", alt: "Residential water softener" },
-  ],
-  gas: [
-    { name: "Condensing boilers", image: "/equipment-renders/boiler.webp", alt: "Wall-hung gas condensing boiler" },
-    { name: "Gas furnaces", image: "/equipment-renders/gas-heater.webp", alt: "High-efficiency forced-air gas furnace" },
-    { name: "Gas fireplaces", image: "/equipment/gas/gas-fireplace.jpg", alt: "Gas log fireplace" },
-    { name: "Gas ranges", image: "/equipment/gas/gas-range.jpg", alt: "Gas cooking range" },
-    { name: "Gas meters", image: "/equipment/gas/gas-meter.jpg", alt: "Residential natural gas meter" },
-    { name: "Regulators & valves", image: "/equipment/gas/gas-regulator.jpg", alt: "Gas pressure regulator valve" },
-  ],
-  refrigeration: [
-    { name: "Walk-in coolers", image: "/equipment/refrigeration/walk-in-cooler.jpg", alt: "Insulated walk-in cooler room" },
-    { name: "Walk-in freezers", image: "/equipment/refrigeration/walk-in-freezer.jpg", alt: "Interior of a walk-in freezer" },
-    { name: "Ice machines", image: "/equipment/refrigeration/ice-machine.jpg", alt: "Commercial Hoshizaki ice machine" },
-    { name: "Display cases", image: "/equipment/refrigeration/display-case.jpg", alt: "Retail refrigerated display case" },
-  ],
-  generators: [
-    { name: "Diesel generators", image: "/equipment-renders/generator.webp", alt: "Enclosed 200 kW diesel standby generator" },
-    { name: "Natural gas generators", image: "/equipment-renders/generator.webp", alt: "Enclosed natural gas standby generator" },
-    { name: "Automatic transfer switches", image: "/equipment-renders/transfer-switch.webp", alt: "Automatic transfer switch in a power room" },
-    { name: "Load banks", image: "/equipment/generators/load-bank.jpg", alt: "Portable 200 kW resistive load bank" },
-    { name: "Fuel tanks", image: "/equipment/generators/fuel-tank.jpg", alt: "Aboveground diesel fuel storage tank" },
-    { name: "Batteries & chargers", image: "/equipment/generators/batteries.jpg", alt: "UPS backup batteries" },
-  ],
-  "c282-testing": [
-    { name: "Load banks", image: "/equipment/generators/load-bank.jpg", alt: "Portable 200 kW resistive load bank" },
-    { name: "Diesel generators", image: "/equipment-renders/generator.webp", alt: "Enclosed 200 kW diesel standby generator" },
-    { name: "Automatic transfer switches", image: "/equipment-renders/transfer-switch.webp", alt: "Automatic transfer switch in a power room" },
-    { name: "Batteries & chargers", image: "/equipment/generators/batteries.jpg", alt: "Starting batteries and chargers" },
-  ],
-  "transfer-switches": [
-    { name: "Automatic transfer switches", image: "/equipment-renders/transfer-switch.webp", alt: "Automatic transfer switch in a power room" },
-    { name: "Switchgear", image: "/equipment-renders/electrical-panel.webp", alt: "Industrial electrical switchgear" },
-    { name: "Panelboards", image: "/equipment-renders/electrical-panel.webp", alt: "Open commercial circuit breaker panel" },
-    { name: "Generator controllers", image: "/equipment-renders/generator.webp", alt: "Standby generator with onboard controller" },
-  ],
-  "fuel-systems": [
-    { name: "Fuel storage tanks", image: "/equipment/generators/fuel-tank.jpg", alt: "Aboveground diesel fuel storage tank" },
-    { name: "Diesel gensets", image: "/equipment-renders/generator.webp", alt: "Enclosed diesel standby generator" },
-    { name: "Natural gas gensets", image: "/equipment-renders/generator.webp", alt: "Enclosed natural gas standby generator" },
-    { name: "Meters & regulators", image: "/equipment/gas/gas-meter.jpg", alt: "Natural gas meter and regulator" },
-  ],
-  "ups-battery": [
-    { name: "UPS systems", image: "/equipment/ups-battery/ups-unit.jpg", alt: "Commercial rack-mounted uninterruptible power supply" },
-    { name: "Battery banks & chargers", image: "/equipment/generators/batteries.jpg", alt: "Backup battery bank" },
-    { name: "Automatic transfer switches", image: "/equipment-renders/transfer-switch.webp", alt: "Automatic transfer switch in a power room" },
-    { name: "Panelboards", image: "/equipment-renders/electrical-panel.webp", alt: "Open commercial circuit breaker panel" },
-  ],
-  electrical: [
-    { name: "Panelboards", image: "/equipment-renders/electrical-panel.webp", alt: "Open Eaton circuit breaker panel" },
-    { name: "Switchgear", image: "/equipment-renders/electrical-panel.webp", alt: "Industrial electrical switchgear" },
-    { name: "Meter bases", image: "/equipment/electrical/meter-base.jpg", alt: "Electric utility meter on a wall" },
-    { name: "VFDs", image: "/equipment/electrical/vfd.jpg", alt: "Variable frequency drive for a three-phase motor" },
-  ],
-  "ev-chargers": [
-    { name: "Level 2 chargers", image: "/equipment-renders/ev-charger.webp", alt: "Wall-mounted ChargePoint Level 2 EVSE" },
-    { name: "DC fast chargers", image: "/equipment-renders/ev-charger.webp", alt: "EVgo DC fast charging station" },
-    { name: "Networked stations", image: "/equipment-renders/ev-charger.webp", alt: "ChargePoint networked Level 2 station" },
-    { name: "Parking pedestals", image: "/equipment-renders/ev-charger.webp", alt: "EV charging pedestal in a parking lot" },
-  ],
-  "led-lighting": [
-    { name: "LED troffers", image: "/equipment/led-lighting/led-troffer.jpg", alt: "LED troffer ceiling fixture" },
-    { name: "High-bay LEDs", image: "/equipment/led-lighting/high-bay.jpeg", alt: "Industrial LED high-bay fixture" },
-    { name: "Exit signs", image: "/equipment/led-lighting/exit-sign.jpg", alt: "Illuminated red LED exit sign" },
-    { name: "Emergency lights", image: "/equipment/led-lighting/emergency-light.jpg", alt: "Ceiling emergency lighting fixture" },
-    { name: "Occupancy sensors", image: "/equipment/led-lighting/occupancy-sensor.jpg", alt: "Wall switch with PIR occupancy sensor" },
-    { name: "Area lights", image: "/equipment/led-lighting/area-light.jpg", alt: "Pole-mounted parking lot area lights" },
-  ],
-  "low-voltage": [
-    { name: "Structured cabling", image: "/equipment/low-voltage/patch-panel.jpg", alt: "Rack-mounted patch panels and Ethernet switches" },
-    { name: "Cat 6 / 6A cable", image: "/equipment/low-voltage/cat6-cable.jpg", alt: "Category 6 twisted pair Ethernet cable" },
-    { name: "Fiber optics", image: "/equipment/low-voltage/fiber.jpg", alt: "Illuminated fiber optic cable" },
-    { name: "Wi-Fi access points", image: "/equipment/low-voltage/wifi-ap.jpg", alt: "Ubiquiti UniFi wireless access point" },
-    { name: "Security cameras", image: "/equipment/low-voltage/security-camera.jpg", alt: "Axis brand IP CCTV security cameras" },
-    { name: "Network switches", image: "/equipment/low-voltage/network-switch.jpg", alt: "Rack-mounted network switches" },
-  ],
-  maintenance: [
-    { name: "Fire extinguishers", image: "/equipment/maintenance/fire-extinguisher.jpg", alt: "Wall-mounted fire extinguisher" },
-    { name: "Emergency lighting", image: "/equipment/maintenance/emergency-light.jpg", alt: "Emergency ceiling light" },
-    { name: "Sprinkler heads", image: "/equipment/maintenance/sprinkler-head.jpg", alt: "Fire sprinkler head in a ceiling" },
-    { name: "HVAC filters", image: "/equipment/maintenance/hvac-filter.webp", alt: "Pleated HVAC air filter" },
-    { name: "Building signage", image: "/equipment/maintenance/signage.jpg", alt: "Exterior monument sign" },
-  ],
-  envelope: [
-    { name: "EPDM membrane", image: "/equipment/envelope/epdm-membrane.jpg", alt: "EPDM rubber membrane on a flat roof" },
-    { name: "Asphalt shingles", image: "/equipment/envelope/asphalt-shingle.jpg", alt: "Asphalt shingle roofing close-up" },
-    { name: "Sealant joints", image: "/equipment/envelope/sealant-joint.jpg", alt: "Caulking between concrete panels" },
-    { name: "Downspouts", image: "/equipment/envelope/downspout.jpg", alt: "Rain gutter downspouts" },
-    { name: "Skylights", image: "/equipment/envelope/skylight.jpg", alt: "Residential roof skylight" },
-  ],
-  construction: [
-    { name: "Drywall", image: "/equipment/construction/drywall.jpg", alt: "Drywall installation on interior framing" },
-    { name: "Steel stud framing", image: "/equipment/construction/steel-stud-framing.jpg", alt: "Light-gauge steel stud interior framing" },
-    { name: "Drop ceilings", image: "/equipment/construction/drop-ceiling.jpg", alt: "Suspended office drop ceiling tiles" },
-    { name: "Door hardware", image: "/equipment/construction/door-hardware.jpg", alt: "Overhead door closer hardware" },
-    { name: "Commercial flooring", image: "/equipment/construction/flooring.jpg", alt: "Vinyl plank commercial flooring" },
-    { name: "Insulation", image: "/equipment/construction/insulation.jpg", alt: "Fiberglass batt insulation installed" },
-    { name: "Interior painting", image: "/equipment/construction/painting.jpg", alt: "Interior wall painting with rollers" },
-  ],
-  "property-services": [
-    { name: "Interior painting", image: "/equipment/property-services/painting.jpg", alt: "Interior wall painting" },
-    { name: "Fencing", image: "/equipment/property-services/fencing.jpg", alt: "Chain-link fence" },
-    { name: "Signage", image: "/equipment/property-services/signage.jpg", alt: "Exterior building signage" },
-    { name: "Power washing", image: "/equipment/property-services/power-washing.jpg", alt: "Power washing a building facade" },
-    { name: "Door hardware", image: "/equipment/property-services/door-hardware.jpg", alt: "Door closer hardware" },
-  ],
-} satisfies Record<string, EquipmentItem[]>;
 
 export const divisions: Division[] = [
   {
@@ -297,8 +169,8 @@ export const divisions: Division[] = [
         primer: {
           what:
             "HVAC stands for Heating, Ventilation, and Air Conditioning. It's the equipment that heats, cools, and moves fresh air through your building. In a strata that might be a rooftop unit on top of the building, a furnace in a mechanical room, or a heat pump on your balcony. A ductless mini-split is the small wall-mounted unit you see in newer suites. It heats and cools without any ductwork.",
-          image: "/primers/hvac.jpg",
-          imageAlt: "Wall-mounted indoor head of a ductless mini-split heat pump",
+          image: "/field/07-03-2024-crane-26.jpg",
+          imageAlt: "Rooftop unit being crane-lifted onto a roof",
           imageCredit: "Wikimedia Commons",
           parts: [
             { term: "Heat pump", def: "A single box that heats in winter and cools in summer by moving heat, not burning fuel." },
@@ -313,7 +185,6 @@ export const divisions: Division[] = [
             { term: "Refrigerant", def: "The fluid that moves heat through the system. Older R-22 setups are being phased out for cleaner types." },
           ],
         },
-        equipment: EQUIPMENT.hvac,
       },
       {
         slug: "heating-systems",
@@ -377,8 +248,8 @@ export const divisions: Division[] = [
         primer: {
           what:
             "Plumbing is the network of pipes and fixtures that brings clean water into your building and takes waste water out. It covers your water heater (either a tank in a closet or a tankless unit on the wall), your drains, and the shut-offs behind every sink and toilet. A backflow preventer is a small brass valve that stops dirty water from flowing backwards into the drinking supply. Cities require them to be tested every year.",
-          image: "/primers/plumbing.jpg",
-          imageAlt: "Wall-mounted tankless (on-demand) gas water heaters",
+          image: "/field/01-08-2025-surrey-mech-13.jpg",
+          imageAlt: "Technician working on copper water piping",
           imageCredit: "Wikimedia Commons",
           parts: [
             { term: "Tank water heater", def: "The tall cylinder in a closet that stores 40–75 gallons of hot water." },
@@ -393,7 +264,6 @@ export const divisions: Division[] = [
             { term: "Water hammer", def: "The bang in the walls when a valve slams shut. A small arrestor absorbs the shock." },
           ],
         },
-        equipment: EQUIPMENT.plumbing,
       },
       {
         slug: "drainage",
@@ -427,8 +297,8 @@ export const divisions: Division[] = [
         primer: {
           what:
             "Gas services install and maintain natural gas lines and everything that burns them: boilers, fireplaces, ranges, patio hookups, and rooftop heaters. A condensing boiler is a wall-hung box that heats water for hot-water heating loops; the newer models are up to 96% efficient. Only licensed Class A and Class B gas fitters can legally do this work in BC.",
-          image: "/primers/gas.jpg",
-          imageAlt: "Viessmann Vitodens 200 wall-hung condensing gas boiler",
+          image: "/field/01-08-2025-surrey-mech-10.jpg",
+          imageAlt: "Technician at a boiler's copper and gas piping",
           imageCredit: "Wikimedia Commons",
           parts: [
             { term: "Condensing boiler", def: "A high-efficiency wall-hung box that burns gas to heat water for hot-water heat loops." },
@@ -442,7 +312,6 @@ export const divisions: Division[] = [
             { term: "Snowmelt system", def: "A heated glycol loop under a driveway or ramp that keeps it ice-free in winter." },
           ],
         },
-        equipment: EQUIPMENT.gas,
       },
       {
         slug: "refrigeration",
@@ -461,8 +330,8 @@ export const divisions: Division[] = [
         primer: {
           what:
             "Commercial refrigeration is the cooling equipment used by grocers, restaurants, and labs. A walk-in cooler is exactly what it sounds like: a room-sized insulated box, usually with the compressor rack on the roof or in a back room. Newer systems use A2L or natural refrigerants that are less harmful to the atmosphere than the older R-22 refrigerant, which is being phased out.",
-          image: "/primers/refrigeration.jpg",
-          imageAlt: "Interior of a walk-in cooler with insulated walls",
+          image: "/field/02-24-2025-dan-new-west-9.jpg",
+          imageAlt: "Overhead grooved glycol piping in an industrial facility",
           imageCredit: "Wikimedia Commons",
           parts: [
             { term: "Walk-in", def: "A room-sized insulated cooler or freezer with a heavy door and a separate compressor." },
@@ -476,7 +345,6 @@ export const divisions: Division[] = [
             { term: "R-22 phase-out", def: "The old refrigerant is banned from new supply, so aging systems either retrofit or replace." },
           ],
         },
-        equipment: EQUIPMENT.refrigeration,
       },
       {
         slug: "preventative-maintenance",
@@ -624,8 +492,8 @@ export const divisions: Division[] = [
         primer: {
           what:
             "A standby generator is the backup power system that automatically starts when the utility grid drops. It runs on diesel or natural gas and keeps life-safety systems, elevators, refrigeration, and life-critical equipment running until the grid comes back. In BC, hospitals, high-rises, and any building with an occupied basement are required to have one, and required by CSA C282 to test it annually with a load bank.",
-          image: "/primers/generators.jpg",
-          imageAlt: "Commercial standby diesel generator in a weatherproof enclosure outside a building",
+          image: "/field/07-28-2026-power-1.jpg",
+          imageAlt: "Commercial Cummins standby generator in a generator room",
           imageCredit: "Wikimedia Commons",
           parts: [
             { term: "ATS", def: "Automatic Transfer Switch: the brain that senses grid loss and starts the generator in seconds." },
@@ -640,7 +508,6 @@ export const divisions: Division[] = [
             { term: "Weekly exercise", def: "A short automatic self-test run, so problems show up on a Tuesday morning, not during an outage." },
           ],
         },
-        equipment: EQUIPMENT.generators,
       },
       {
         slug: "c282-testing",
@@ -658,8 +525,8 @@ export const divisions: Division[] = [
         primer: {
           what:
             "CSA C282 is the Canadian standard for emergency power in buildings. If your building has an emergency generator, the standard requires a full annual test under real load, not just letting it idle. A load bank is a portable resistor pack that safely fakes your building's electrical demand so the generator can be pushed to full output and proven, without touching your live power. Skip the test and you risk failed insurance claims, AHJ orders, and a generator that dies the one night it matters.",
-          image: "/primers/c282-testing.jpg",
-          imageAlt: "Portable resistive load bank used for annual generator testing",
+          image: "/field/07-28-2026-power-9.jpg",
+          imageAlt: "Woola Power technician testing a standby generator",
           imageCredit: "Wikimedia Commons",
           parts: [
             { term: "CSA C282", def: "The Canadian standard for emergency electrical power supply in buildings. It mandates annual full-load testing." },
@@ -672,7 +539,6 @@ export const divisions: Division[] = [
             { term: "Deficiency report", def: "The written list of anything that failed or drifted out of spec, with a repair quote attached." },
           ],
         },
-        equipment: EQUIPMENT["c282-testing"],
       },
       {
         slug: "transfer-switches",
@@ -690,8 +556,8 @@ export const divisions: Division[] = [
         primer: {
           what:
             "The automatic transfer switch, or ATS, is the decision-maker of your backup power system. It watches utility power around the clock; the moment the grid drops, it signals the generator to start and flips the building's critical circuits over, usually in under ten seconds. When power returns, it transfers back and cools the generator down. Most backup power failures we investigate turn out to be a transfer switch problem, not a generator problem, which is why it deserves its own inspection.",
-          image: "/primers/transfer-switches.jpg",
-          imageAlt: "Automatic transfer switch cabinet in a building power room",
+          image: "/field/07-28-2026-electrical-10.jpg",
+          imageAlt: "Woola technician testing wiring inside an automatic transfer switch",
           imageCredit: "Wikimedia Commons",
           parts: [
             { term: "ATS", def: "Automatic Transfer Switch. It senses grid loss, starts the generator, and moves the load over." },
@@ -704,7 +570,6 @@ export const divisions: Division[] = [
             { term: "Retransfer delay", def: "The wait after utility power returns before switching back, so a flickering grid doesn't bounce your building." },
           ],
         },
-        equipment: EQUIPMENT["transfer-switches"],
       },
       {
         slug: "fuel-systems",
@@ -723,8 +588,8 @@ export const divisions: Division[] = [
         primer: {
           what:
             "Diesel goes bad. Sitting in a tank for a year or two, it absorbs water, grows microbial sludge, and oxidizes, and the first time anyone finds out is when the generator starves mid-outage. Fuel polishing pumps the tank contents through fine filters and water separators until the fuel meets spec again, without replacing it. For buildings that depend on stored diesel, an annual sample-and-polish program costs a fraction of one emergency fuel swap, or one failed outage.",
-          image: "/primers/fuel-systems.jpg",
-          imageAlt: "Aboveground diesel storage tank for a standby generator",
+          image: "/field/07-28-2026-power-5.jpg",
+          imageAlt: "Woola Power technician beside a standby generator",
           imageCredit: "Wikimedia Commons",
           parts: [
             { term: "Fuel polishing", def: "Circulating stored diesel through filters and water separators until it's clean enough to burn reliably." },
@@ -737,7 +602,6 @@ export const divisions: Division[] = [
             { term: "Runtime capacity", def: "How many hours your stored fuel actually buys you at full load. C282 sets the minimum for your building class." },
           ],
         },
-        equipment: EQUIPMENT["fuel-systems"],
       },
       {
         slug: "ups-battery",
@@ -755,8 +619,8 @@ export const divisions: Division[] = [
         primer: {
           what:
             "A generator takes about ten seconds to start. For servers, access control, cameras, and fire panels, ten seconds of dead power is a crash, a locked door, or a false alarm. A UPS (uninterruptible power supply) is a battery system that carries those critical loads through the gap instantly, then hands off to the generator or shuts equipment down gracefully. The batteries inside are consumables: they quietly age out in three to five years, which is why UPS units fail exactly when they're needed unless someone is testing them.",
-          image: "/primers/ups-battery.jpg",
-          imageAlt: "Commercial rack-mounted uninterruptible power supply system",
+          image: "/field/07-28-2026-power-11.jpg",
+          imageAlt: "Generator battery bank under inspection",
           imageCredit: "Wikimedia Commons",
           parts: [
             { term: "UPS", def: "Uninterruptible power supply: a battery unit that holds critical loads up with zero interruption." },
@@ -769,7 +633,6 @@ export const divisions: Division[] = [
             { term: "Graceful shutdown", def: "The UPS telling servers to save and power off cleanly before the batteries run dry." },
           ],
         },
-        equipment: EQUIPMENT["ups-battery"],
       },
       {
         slug: "emergency-service",
@@ -902,8 +765,8 @@ export const divisions: Division[] = [
         primer: {
           what:
             "Electrical services cover everything downstream of your main disconnect: the panel with the breakers, the wiring in the walls, and the outlets, switches, and lights it feeds. In a commercial building it also means the big grey cabinets called switchgear, which take utility voltage in and split it out to sub-panels around the building.",
-          image: "/primers/electrical.jpg",
-          imageAlt: "Open commercial electrical panelboard showing circuit breakers",
+          image: "/field/07-23-2026-electrical-1.jpg",
+          imageAlt: "Woola electrician at a commercial distribution panel",
           imageCredit: "Wikimedia Commons",
           parts: [
             { term: "Panel", def: "The metal box holding your breakers. Each breaker feeds one circuit." },
@@ -919,7 +782,6 @@ export const divisions: Division[] = [
             { term: "Aluminum wiring", def: "Common in 1960s–70s buildings. Safe when maintained, but connections need periodic inspection." },
           ],
         },
-        equipment: EQUIPMENT.electrical,
       },
       {
         slug: "ev-chargers",
@@ -938,8 +800,8 @@ export const divisions: Division[] = [
         primer: {
           what:
             "An EV charger is a box that plugs into your building's electrical system and delivers power to a car. Level 2 (240 volts, the same as your dryer) is what almost every home and strata uses; it fills a car overnight. DC fast charging is what you see at highway rest stops; it costs a lot more to install but tops a car up in 30 minutes. For strata buildings, the trick is load management: spreading power fairly across many stalls so the building doesn't need a costly service upgrade.",
-          image: "/primers/ev-chargers.jpg",
-          imageAlt: "Wall-mounted Level 2 EV charging station outside a residence",
+          image: "/field/07-23-2026-electrical-4.jpg",
+          imageAlt: "Woola electrician at a commercial meter bank",
           imageCredit: "Wikimedia Commons",
           parts: [
             { term: "Level 2", def: "240-volt AC charging. About 40 km of range per hour." },
@@ -953,7 +815,6 @@ export const divisions: Division[] = [
             { term: "Sub-meter", def: "A small meter on each charger so the strata bills each owner for exactly the power they used." },
           ],
         },
-        equipment: EQUIPMENT["ev-chargers"],
       },
       {
         slug: "led-lighting",
@@ -972,8 +833,8 @@ export const divisions: Division[] = [
         primer: {
           what:
             "An LED lighting retrofit swaps older fluorescent or incandescent fixtures for LEDs. The math is simple: LEDs use 50–70% less energy for the same brightness and last 3–5x longer, so most jobs pay back in 18 to 36 months. BC Hydro Power Smart offers cash rebates that reduce the up-front cost by 30–50%. The most common commercial retrofit is a troffer: the rectangular panel light you see in office and hallway ceilings.",
-          image: "/primers/led-lighting.jpg",
-          imageAlt: "Retrofit LED troffer panel installed in a suspended commercial ceiling",
+          image: "/field/08-05-2026-build-4.jpg",
+          imageAlt: "Ceiling work in a commercial corridor",
           imageCredit: "Wikimedia Commons",
           parts: [
             { term: "Troffer", def: "The rectangular panel light in a drop ceiling, the most common commercial fixture." },
@@ -987,7 +848,6 @@ export const divisions: Division[] = [
             { term: "Emergency & exit lighting", def: "Battery-backed lights and EXIT signs, tested annually by code." },
           ],
         },
-        equipment: EQUIPMENT["led-lighting"],
       },
       {
         slug: "low-voltage",
@@ -1005,8 +865,8 @@ export const divisions: Division[] = [
         primer: {
           what:
             "Low-voltage covers the wiring that carries data, video, and small control signals rather than lighting or power: Cat 6 network cable, security camera runs, door access wiring, fibre-optic backbones. It sits inside walls and ceilings but usually terminates at a data rack (the tall cabinet in a small server closet). PoE means Power over Ethernet: one cable that carries data and just enough power to run a camera or access point.",
-          image: "/primers/low-voltage.jpg",
-          imageAlt: "Server rack with structured cabling and patch cords",
+          image: "/field/07-28-2026-electrical-12.jpg",
+          imageAlt: "Woola electrician pulling cable in an electrical room",
           imageCredit: "Wikimedia Commons",
           parts: [
             { term: "Cat 6 / 6A", def: "The blue or white network cable behind every wall jack. Cat 6A handles 10 Gbps." },
@@ -1021,7 +881,6 @@ export const divisions: Division[] = [
             { term: "Enterphone", def: "The lobby intercom that calls a suite and unlocks the front door." },
           ],
         },
-        equipment: EQUIPMENT["low-voltage"],
       },
       {
         slug: "tenant-improvements",
@@ -1200,8 +1059,8 @@ export const divisions: Division[] = [
         primer: {
           what:
             "Building maintenance is planned, recurring work that keeps a property in good shape: inspections, cleaning, small repairs, and life-safety checks. Most strata and commercial buildings sign an annual PM (preventative maintenance) contract with a fixed scope and price. The alternative, waiting until something breaks, always costs more and shows up at the worst time.",
-          image: "/primers/maintenance.jpg",
-          imageAlt: "A professional trade painter performing interior building maintenance",
+          image: "/field/08-12-2026-build-8.jpg",
+          imageAlt: "Woola Build crew at a wood-frame residential building",
           imageCredit: "Wikimedia Commons",
           parts: [
             { term: "PM", def: "Preventative maintenance: scheduled inspections and small repairs done before failures." },
@@ -1215,7 +1074,6 @@ export const divisions: Division[] = [
             { term: "Depreciation report", def: "BC's long-range strata planning document. Good maintenance records make yours accurate." },
           ],
         },
-        equipment: EQUIPMENT.maintenance,
       },
       {
         slug: "envelope",
@@ -1234,8 +1092,8 @@ export const divisions: Division[] = [
         primer: {
           what:
             "The building envelope is the outer shell (roof, walls, windows, and sealants) that keeps water and air where they belong. On flat commercial roofs the surface is usually a rubbery membrane like EPDM or TPO. When a joint or a membrane fails, water gets in and finds framing, insulation, and drywall to ruin. Envelope work is finding those failures before they turn into a $200k restoration.",
-          image: "/primers/envelope.jpg",
-          imageAlt: "Flat commercial roof covered with EPDM membrane roofing",
+          image: "/field/08-12-2026-build-5.jpg",
+          imageAlt: "Woola Build crew member on a townhome roof",
           imageCredit: "Wikimedia Commons",
           parts: [
             { term: "EPDM / TPO", def: "Two common rubbery membranes for flat roofs. EPDM is black; TPO is usually white." },
@@ -1249,7 +1107,6 @@ export const divisions: Division[] = [
             { term: "Water ingress", def: "The engineer's term for a leak. A small stain usually means a bigger path behind the wall." },
           ],
         },
-        equipment: EQUIPMENT.envelope,
       },
       {
         slug: "construction",
@@ -1268,8 +1125,8 @@ export const divisions: Division[] = [
         primer: {
           what:
             "Construction and renovation work covers new or reconfigured interior space: tenant improvements in a leased office, an amenity rebuild in a tower, or a suite reno. Most of the work happens after framing and drywall go up. A tenant improvement (TI) is when a landlord finishes bare shell space to a tenant's spec. Every project we run at $250k+ has a Gold Seal Certified project manager coordinating trades, permits, and inspections.",
-          image: "/primers/construction.jpg",
-          imageAlt: "Interior construction: installing drywall on framed walls",
+          image: "/field/08-10-2026-build-2.jpg",
+          imageAlt: "Corridor ceiling opened for repiping and restoration",
           imageCredit: "Wikimedia Commons",
           parts: [
             { term: "TI", def: "Tenant Improvement: the fit-out of a leased space to a tenant's requirements." },
@@ -1283,7 +1140,6 @@ export const divisions: Division[] = [
             { term: "Strata alteration approval", def: "Council sign-off, and often an alteration agreement, required before suite renovations start." },
           ],
         },
-        equipment: EQUIPMENT.construction,
       },
       {
         slug: "property-services",
@@ -1302,8 +1158,8 @@ export const divisions: Division[] = [
         primer: {
           what:
             "Property services is the catch-all for the small stuff: painting a hallway, fixing a lobby door closer, replacing a fence board, hanging new numerals on suite doors. These are the jobs too small to bid as a project but too many to ignore. We dispatch them same-week and close each one with a photo-documented work order that shows before, during, and after.",
-          image: "/primers/property-services.jpg",
-          imageAlt: "Worker pressure-washing an exterior building surface",
+          image: "/field/08-12-2026-build-6.jpg",
+          imageAlt: "Crane lifting materials over a residential site",
           imageCredit: "Wikimedia Commons",
           parts: [
             { term: "Work order", def: "A single dispatched task with a scope, price, and closeout photos." },
@@ -1316,7 +1172,6 @@ export const divisions: Division[] = [
             { term: "Photo closeout", def: "Every job ends with before, during, and after photos attached to the work order." },
           ],
         },
-        equipment: EQUIPMENT["property-services"],
       },
       {
         slug: "waterline-repiping",

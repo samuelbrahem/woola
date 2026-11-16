@@ -58,27 +58,9 @@ const HEADLINES: Record<string, string> = {
   build: "Building services, roof to parkade.",
 };
 
-/** Prefer real photography over studio renders wherever a photo exists. */
-const PHOTO_OVERRIDES: Record<string, { src: string; alt: string }> = {
-  hvac: { src: "/field/07-03-2024-crane-26.jpg", alt: "Rooftop unit being crane-lifted onto a roof" },
-  gas: { src: "/field/01-08-2025-surrey-mech-10.jpg", alt: "Technician at a boiler's copper and gas piping" },
-  plumbing: { src: "/field/01-08-2025-surrey-mech-13.jpg", alt: "Technician working on copper water piping" },
-  drainage: { src: "/equipment/plumbing/backflow-preventer.jpg", alt: "Backflow preventer piping" },
-  "preventative-maintenance": { src: "/field/11-01-2024-woola-and-dispatch-5.jpg", alt: "Technician servicing a pump motor" },
-  retrofits: { src: "/field/08-07-2024-crane-hotel-1.jpg", alt: "Crane over a high-rise during equipment replacement" },
-  "repairs-troubleshooting": { src: "/equipment/generators/batteries.jpg", alt: "Generator starting batteries" },
-  "emergency-service": { src: "/equipment/generators/load-bank.jpg", alt: "Portable load bank at a generator" },
-  "waterline-repiping": { src: "/primers/plumbing.jpg", alt: "Domestic water piping" },
-  "panel-upgrades": { src: "/primers/electrical.jpg", alt: "Commercial electrical panel" },
-  "infrared-scanning": { src: "/equipment/electrical/vfd.jpg", alt: "Electrical equipment inspection" },
-  "tenant-improvements": { src: "/primers/construction.jpg", alt: "Interior fit-out in progress" },
-  "turnkey-projects": { src: "/primers/construction.jpg", alt: "Construction project in progress" },
-  "integrated-contracting": { src: "/equipment/generators/fuel-tank.jpg", alt: "Generator fuel infrastructure" },
-};
+
 
 function visualFor(slug: string) {
-  const photo = PHOTO_OVERRIDES[slug];
-  if (photo) return { ...photo, contain: false };
   return VISUALS[slug];
 }
 
