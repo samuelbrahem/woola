@@ -3,8 +3,8 @@
 Status legend: [x] done · [ ] to do · (who)
 
 ## 1. Hosting (Vercel)
-- [x] Project linked and preview deployed from this repo (`vercel`).
-- [ ] (Samuel) Connect GitHub so `main` auto-deploys: Vercel dashboard → Project → Settings → Git → Connect `samuelbrahem/woola`.
+- [x] Project `woola` created in the Vercel team that also hosts houseup.ca; production build live at https://woola.vercel.app (deployed with `vercel deploy`).
+- [ ] (Samuel) Auto-deploy from GitHub: install the Vercel GitHub App on the `samuelbrahem` account with access to `woola` (https://github.com/apps/vercel/installations/new), then `vercel git connect`. Until then, ship with `vercel deploy --prod` from this folder.
 - [ ] (Samuel) Environment variables, Production scope:
   - `ESTIMATING_EMAIL` = services@woola.ca (set)
   - `RESEND_API_KEY` — create at resend.com, add domain woola.ca (Resend gives DKIM TXT + a `send.woola.ca` MX/TXT; these do NOT touch the main MX). Powers /contact and /second-opinion. Until set, both forms tell visitors to phone dispatch.
@@ -14,10 +14,8 @@ Status legend: [x] done · [ ] to do · (who)
 - [ ] (Samuel) `vercel --prod` once env vars are in, or push to `main` after Git is connected.
 
 ## 2. Domains
-Add in Vercel → Project → Settings → Domains, apex as primary:
-- woola.ca (primary), www.woola.ca (redirects to apex)
-- woolamech.ca, www.woolamech.ca, woolapower.ca, www.woolapower.ca, woolabuild.ca, www.woolabuild.ca
-  (next.config.js redirects these to the matching division pages, preserving the old URLs)
+- [x] All eight hostnames are attached to the project (apex + www for woola.ca, woolamech.ca, woolapower.ca, woolabuild.ca). They show "invalid configuration" until DNS below points at Vercel.
+- next.config.js redirects the three division domains to the matching division pages, preserving the old URLs.
 
 ## 3. DNS (GoDaddy, via the Ancell reseller account for "email and domain")
 Nameservers are GoDaddy (domaincontrol.com). Change ONLY these records, per domain:
