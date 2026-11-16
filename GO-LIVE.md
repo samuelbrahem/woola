@@ -60,3 +60,6 @@ Notes:
 ## 5. After cutover
 - Keep the Ancell cPanel/WordPress accounts for 30 days as a rollback (switch the A records back), then cancel hosting for the four sites. Keep the Ancell domain/email account.
 - If the live review cards ever show the wrong listing, pin it with `GOOGLE_PLACE_ID_<DIVISION>`.
+
+## Index policy (2026-11-16)
+Measured on the launch build: the 18 city pages share 86% of their text (worst pairs 96%), the 9 industry pages ~70% at ~275 words, and the 19 equipment definitions average ~200 words. Templated or thin pages are what Google's helpful-content system demotes a whole domain for, so these 46 pages are `noindex, follow`, out of the sitemaps and llms.txt, but still live for visitors and linked from menus. Hubs (/service-areas, /equipment) stay indexed. To bring a page back: give it distinct content (local projects, local permit/utility facts, its own FAQs, case-study links), remove the `robots` line in its page.tsx, and restore it in app/sitemap.ts. Indexed set after this: home, 4 division homes + 44 services (on the division domains), 14 case studies, residential, blog, news, corporate pages.

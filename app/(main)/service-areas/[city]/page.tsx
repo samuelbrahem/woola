@@ -27,6 +27,9 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   return {
     title,
     description,
+    // Templated per city (86% shared text): kept for visitors, out of the index
+    // until each page carries distinct local content. See GO-LIVE.md "Index policy".
+    robots: { index: false, follow: true },
     alternates: { canonical },
     openGraph: {
       title,

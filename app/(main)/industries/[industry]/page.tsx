@@ -77,6 +77,8 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   return {
     title,
     description,
+    // ~275 words, 65-74% shared between industries: noindex until expanded.
+    robots: { index: false, follow: true },
     alternates: { canonical },
     openGraph: { title, description, url: canonical, type: "website", images: [{ url: ind.image, width: 1600, height: 1067, alt: ind.imageAlt }] },
   };

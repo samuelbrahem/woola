@@ -25,6 +25,8 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   return {
     title,
     description,
+    // ~200-word definitions: useful to visitors, too thin to rank. The /equipment hub stays indexed.
+    robots: { index: false, follow: true },
     alternates: { canonical },
     openGraph: { title, description, url: canonical, type: "article", images: [{ url: "/brand/og-image.png", width: 1200, height: 630, alt: `${e.name}, explained by Woola` }] },
   };

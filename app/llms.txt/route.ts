@@ -41,7 +41,7 @@ export function GET() {
   for (const i of industries) lines.push(`- [${i.name}](${BASE}/industries/${i.slug}): ${i.short}`);
 
   lines.push("", "## Service area", "", `${cities.length} municipalities from Abbotsford to Whistler. Coverage map: ${BASE}/service-areas`, "");
-  for (const c of cities) lines.push(`- [${c.name}](${BASE}/service-areas/${c.slug})`);
+  lines.push(cities.map((c) => c.name).join(", ") + ".");
 
   lines.push("", "## Company", "",
     `- [About](${BASE}/about)`, `- [Credentials](${BASE}/about/credentials)`, `- [Our process](${BASE}/process)`,

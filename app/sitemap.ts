@@ -46,12 +46,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ? []
     : divisions.flatMap((d) => d.services.map((s) => `/${d.slug}/${s.slug}`));
   const residentialPaths = residentialServices.map((s) => `/residential/${s.slug}`);
-  const cityPaths = cities.map((c) => `/service-areas/${c.slug}`);
+  // City, industry and equipment detail pages are noindex (templated or thin) and
+  // therefore not advertised here; their hubs (/service-areas, /equipment) are.
+  const cityPaths: string[] = [];
   const postPaths = posts.map((p) => `/blog/${p.slug}`);
   const newsPaths = news.map((n) => `/news/${n.slug}`);
   const workPaths = caseStudies.map((c) => `/work/${c.slug}`);
-  const equipmentPaths = equipmentLibrary.map((e) => `/equipment/${e.slug}`);
-  const industryPaths = industries.map((i) => `/industries/${i.slug}`);
+  const equipmentPaths: string[] = [];
+  const industryPaths: string[] = [];
 
   const all = [
     ...staticPaths,
