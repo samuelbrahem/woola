@@ -50,6 +50,8 @@ export function GET() {
 
   lines.push("", "## Field Notes (articles)", "");
   for (const p of posts) lines.push(`- [${p.title}](${BASE}/blog/${p.slug}): ${p.excerpt}`);
+  lines.push("", "## Frequently asked questions", "");
+  for (const d of divisions) for (const f of d.faqs.slice(0, 3)) lines.push(`- **${f.q}** ${f.a}`);
   lines.push("", "## Case studies (project stories)", "");
   for (const c of caseStudies) lines.push(`- [${c.title}](${BASE}/work/${c.slug}) (${divisionLabel[c.division]}, ${c.location}): ${c.highlights.join("; ")}`);
   lines.push("", "## Company news", "");

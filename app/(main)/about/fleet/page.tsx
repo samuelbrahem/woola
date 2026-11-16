@@ -8,9 +8,10 @@ import { divisions } from "@/lib/divisions";
 import { Truck, MapPin, ShieldCheck } from "lucide-react";
 
 export const metadata = {
-  title: "Fleet & Branding | About Woola",
+  title: "Fleet & Branding",
   description:
     "Woola's branded vans are becoming a fixture across the Lower Mainland. Every vehicle, uniform, and work order carries the same mark.",
+  alternates: { canonical: "https://woola.ca/about/fleet" },
 };
 
 export default function FleetPage() {

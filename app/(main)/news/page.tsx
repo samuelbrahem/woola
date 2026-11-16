@@ -9,7 +9,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbs } from "@/lib/schema";
 
 export const metadata: Metadata = {
-  title: "News | Woola",
+  title: "News",
   description: "Company news from Woola Services Group: new partners, fleet, divisions, and milestones from the Coquitlam shop.",
   alternates: { canonical: "https://woola.ca/news" },
 };

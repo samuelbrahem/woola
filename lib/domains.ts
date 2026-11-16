@@ -56,6 +56,10 @@ export const CORPORATE_ROUTES = new Set([
   "division-sitemap", "division-robots", "llms.txt",
 ]);
 
+/** Divisions that also have a service with the division's own slug, so
+ *  woolaelectrical.ca/electrical is a page, not the home. */
+export const SELF_NAMED_SERVICE = new Set<DivisionSlug>(["electrical"]);
+
 export function isDivisionSlug(s: string): s is DivisionSlug {
   return (DIVISION_SLUGS as string[]).includes(s);
 }

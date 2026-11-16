@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/seo";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -18,7 +19,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const c = getCaseStudy(params.slug);
   if (!c) return {};
-  const description = `${divisionLabel[c.division]} case study, ${c.location}. ${c.highlights.join(". ")}.`;
+  const description = metaDescription(`${divisionLabel[c.division]} case study, ${c.location}. ${c.highlights.join(". ")}.`);
   return {
     title: `${c.title} | Case Study`,
     description,

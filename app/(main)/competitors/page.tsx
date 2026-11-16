@@ -1,12 +1,14 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Section, SectionHead } from "@/components/Section";
 import { CTABanner } from "@/components/CTABanner";
 import { competitors } from "@/lib/competitors";
 import { Check, X, ExternalLink, ArrowRight } from "lucide-react";
 
-export const metadata = {
-  title: "Why Woola: Comparison",
+export const metadata: Metadata = {
+  title: { absolute: "Why Woola | One Partner vs. Separate Vendors" },
   description: "How Woola compares to the multi-vendor stack most property managers run today.",
+  alternates: { canonical: "https://woola.ca/competitors" },
 };
 
 const woolaRow = {

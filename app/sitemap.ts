@@ -14,7 +14,7 @@ const BASE = "https://woola.ca";
 export default function sitemap(): MetadataRoute.Sitemap {
   // A fixed date per content set; bump when that content changes. "now" on
   // every build tells crawlers everything changed, which they learn to ignore.
-  const lastModified = new Date("2026-10-12");
+  const lastModified = new Date("2026-11-16");
   const staticPaths = [
     "",
     "/about",

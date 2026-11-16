@@ -8,6 +8,7 @@ import { divisions } from "@/lib/divisions";
 import { site } from "@/lib/site";
 import { Phone, Check, ArrowRight } from "lucide-react";
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/seo";
 import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbs, cityService } from "@/lib/schema";
 
@@ -21,14 +22,15 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   const c = getCity(params.city);
   if (!c) return {};
   const canonical = `https://woola.ca/service-areas/${c.slug}`;
-  const title = `${c.name} | Mechanical, Electrical & Building Services`;
+  const title = `${c.name} Building Services`;
+  const description = metaDescription(c.blurb);
   return {
     title,
-    description: c.blurb,
+    description,
     alternates: { canonical },
     openGraph: {
       title,
-      description: c.blurb,
+      description,
       url: canonical,
       type: "website",
       images: [{ url: "/brand/og-image.png", width: 1200, height: 630, alt: `Woola services in ${c.name}` }],

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/seo";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -70,12 +71,14 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const ind = getIndustry(params.industry);
   if (!ind) return {};
-  const title = `${ind.name} Building Services | Woola`;
+  const title = `${ind.name} Building Services`;
+  const description = metaDescription(ind.description);
+  const canonical = `https://woola.ca/industries/${ind.slug}`;
   return {
     title,
-    description: ind.description,
-    alternates: { canonical: `https://woola.ca/industries/${ind.slug}` },
-    openGraph: { title, description: ind.description },
+    description,
+    alternates: { canonical },
+    openGraph: { title, description, url: canonical, type: "website", images: [{ url: ind.image, width: 1600, height: 1067, alt: ind.imageAlt }] },
   };
 }
 

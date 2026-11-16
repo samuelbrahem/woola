@@ -6,7 +6,7 @@ import { ArrowRight, Clock } from "lucide-react";
 import { posts } from "@/lib/posts";
 
 export const metadata: Metadata = {
-  title: "Field Notes | Woola",
+  title: "Field Notes",
   description:
     "Building operations, rebates, and field notes from Woola's mechanical, power, electrical, and build divisions.",
   alternates: { canonical: "https://woola.ca/blog" },

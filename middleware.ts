@@ -1,5 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { CORPORATE_ROUTES, DIVISION_HOSTS, aliasTarget, divisionForHost, isDivisionSlug, isProductionHost } from "@/lib/domains";
+import { CORPORATE_ROUTES, DIVISION_HOSTS, SELF_NAMED_SERVICE, aliasTarget, divisionForHost, isDivisionSlug, isProductionHost } from "@/lib/domains";
 
 /**
  * Hostname routing for the division domains (see lib/domains.ts for the map).
@@ -48,7 +48,11 @@ export function middleware(req: NextRequest) {
 
   const [first, ...rest] = segs;
   // woolamech.ca/mechanical/plumbing -> woolamech.ca/plumbing (one URL per page)
-  if (first === division) return redirect(`https://${bareHost}/${rest.join("/")}${search}`);
+  if (first === division) {
+    // woolaelectrical.ca/electrical is the "Electrical Service & Maintenance" page
+    if (rest.length === 0 && SELF_NAMED_SERVICE.has(division)) return rewrite(`/${division}/${division}`);
+    return redirect(`https://${bareHost}/${rest.join("/")}${search}`);
+  }
   // woolamech.ca/power/generators -> woolapower.ca/generators
   if (isDivisionSlug(first)) return redirect(`https://${DIVISION_HOSTS[first]}/${rest.join("/")}${search}`);
   // Corporate pages are served on the division host, unchanged.

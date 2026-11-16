@@ -4,11 +4,13 @@ import { ScrollReveal } from "@/components/ScrollReveal";
 import { Analytics } from "@/components/Analytics";
 import { site } from "@/lib/site";
 import { googleListingUrl } from "@/lib/reviews";
+import { divisions } from "@/lib/divisions";
+import { divisionSiteUrl } from "@/lib/domains";
 
 export const metadata: Metadata = {
   title: {
     default: "Woola | Strata & Commercial Property Services",
-    template: "%s · Woola",
+    template: "%s | Woola",
   },
   description:
     "Mechanical, electrical, and building services for strata and commercial properties across Metro Vancouver, the Fraser Valley, and the Sea-to-Sky.",
@@ -111,7 +113,16 @@ const orgJsonLd = {
     closes: "17:00",
   },
   hasMap: googleListingUrl,
-  sameAs: [googleListingUrl],
+  sameAs: [googleListingUrl, "https://www.instagram.com/woola.ca/"],
+  geo: { "@type": "GeoCoordinates", latitude: 49.2245, longitude: -122.8341 },
+  subOrganization: divisions.map((d) => ({
+    "@type": "LocalBusiness",
+    name: d.name,
+    url: divisionSiteUrl(d.slug),
+    telephone: d.contactPhone,
+    email: d.contactEmail,
+    parentOrganization: { "@id": "https://woola.ca/#business" },
+  })),
   knowsAbout: ["Commercial HVAC", "Plumbing", "Gas fitting", "Refrigeration", "Standby generators", "CSA C282 testing", "Commercial electrical", "EV charging", "Building maintenance", "Building envelope"],
 };
 

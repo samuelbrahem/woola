@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/seo";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -19,8 +20,8 @@ export function generateMetadata({ params }: { params: Params }): Metadata {
   const n = getNews(params.slug);
   if (!n) return {};
   return {
-    title: `${n.title} | Woola News`,
-    description: n.excerpt,
+    title: { absolute: `${n.title} | Woola` },
+    description: metaDescription(n.excerpt),
     alternates: { canonical: `https://woola.ca/news/${n.slug}` },
     openGraph: { title: n.title, description: n.excerpt, type: "article", publishedTime: n.date, images: [{ url: n.cover, alt: n.coverAlt }] },
   };

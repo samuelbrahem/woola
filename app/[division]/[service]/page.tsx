@@ -8,6 +8,7 @@ import { SecondOpinionCTA } from "@/components/SecondOpinionCTA";
 import { ArrowRight, Check, Phone } from "lucide-react";
 import type { Metadata } from "next";
 import { divisionUrl } from "@/lib/domains";
+import { metaDescription } from "@/lib/seo";
 import { CaseStudyCard } from "@/components/CaseStudyCard";
 import { caseStudiesFor } from "@/lib/case-studies";
 import { cities } from "@/lib/cities";
@@ -79,13 +80,14 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   if (!found) return {};
   const canonical = divisionUrl(found.division.slug, `/${found.service.slug}`);
   const title = `${found.service.name} | ${found.division.name}`;
+  const description = metaDescription(found.service.description);
   return {
-    title,
-    description: found.service.description,
+    title: { absolute: title },
+    description,
     alternates: { canonical },
     openGraph: {
       title,
-      description: found.service.description,
+      description,
       url: canonical,
       type: "article",
       images: [{ url: "/brand/og-image.png", width: 1200, height: 630, alt: found.service.name }],

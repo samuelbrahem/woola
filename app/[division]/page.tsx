@@ -159,6 +159,7 @@ import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbs, faqPage } from "@/lib/schema";
 import { divisionUrl } from "@/lib/domains";
+import { metaDescription } from "@/lib/seo";
 
 type Params = { division: string };
 
@@ -171,13 +172,14 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   if (!d) return {};
   const canonical = divisionUrl(d.slug);
   const title = `${d.name} | ${d.subtitle}`;
+  const description = metaDescription(d.description);
   return {
-    title,
-    description: d.description,
+    title: { absolute: title },
+    description,
     alternates: { canonical },
     openGraph: {
       title,
-      description: d.description,
+      description,
       url: canonical,
       type: "website",
       images: [{ url: "/brand/og-image.png", width: 1200, height: 630, alt: d.name }],

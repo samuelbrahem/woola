@@ -3,9 +3,10 @@ import { SectionHead } from "@/components/Section";
 import { AboutSubnav } from "@/components/AboutSubnav";
 
 export const metadata = {
-  title: "Credentials & Associations | About Woola",
+  title: "Credentials & Associations",
   description:
     "The certifications, memberships, and safety programs behind every Woola dispatch. All current, all verifiable.",
+  alternates: { canonical: "https://woola.ca/about/credentials" },
 };
 
 const associations = [

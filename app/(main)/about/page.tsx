@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { Section, SectionHead } from "@/components/Section";
@@ -8,9 +9,10 @@ import { divisions, shortName } from "@/lib/divisions";
 import { LeadershipTeam } from "@/components/LeadershipTeam";
 import { Award, Users, Activity } from "lucide-react";
 
-export const metadata = {
-  title: "About Woola",
+export const metadata: Metadata = {
+  title: { absolute: "About Woola | Mechanical, Electrical, Power & Build" },
   description: "Four divisions. One operations spine. Built for property managers, owners, and developers across BC.",
+  alternates: { canonical: "https://woola.ca/about" },
 };
 
 export default function AboutPage() {

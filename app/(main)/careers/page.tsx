@@ -12,7 +12,7 @@ import { jobPostings } from "@/lib/schema";
 import { ArrowRight, MapPin, Clock, Users, GraduationCap, HeartHandshake, TrendingUp } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Careers at Woola",
+  title: { absolute: "Careers at Woola | Trades Jobs in Coquitlam, BC" },
   description:
     "Join Woola Services Group. Open positions across Mechanical, Power, Electrical, and Build: Red Seal trades, apprenticeships, coordinators, and PMs in Metro Vancouver.",
   alternates: { canonical: "https://woola.ca/careers" },

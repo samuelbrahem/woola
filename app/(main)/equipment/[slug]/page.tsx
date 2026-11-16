@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/seo";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -18,12 +19,14 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const e = getEquipment(params.slug);
   if (!e) return {};
-  const title = `What is a ${e.name}? | Woola Equipment Library`;
+  const title = `What is a ${e.name}? Equipment Library`;
+  const description = metaDescription(e.what);
+  const canonical = `https://woola.ca/equipment/${e.slug}`;
   return {
     title,
-    description: e.what,
-    alternates: { canonical: `https://woola.ca/equipment/${e.slug}` },
-    openGraph: { title, description: e.what },
+    description,
+    alternates: { canonical },
+    openGraph: { title, description, url: canonical, type: "article", images: [{ url: "/brand/og-image.png", width: 1200, height: 630, alt: `${e.name}, explained by Woola` }] },
   };
 }
 
