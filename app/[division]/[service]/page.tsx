@@ -82,8 +82,9 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   // Geography in the title: the body already names the cities, the title is what
   // Google weighs for "<service> metro vancouver" and "<service> coquitlam".
   const title = `${found.service.name} in Metro Vancouver | ${found.division.name}`;
+  // Cities first so the snippet says where, then what; metaDescription trims the rest.
   const description = metaDescription(
-    `${found.service.description} Serving strata and commercial buildings in Coquitlam, Vancouver, Burnaby, Surrey and across Metro Vancouver.`
+    `${found.service.name} for strata and commercial buildings in Coquitlam, Vancouver, Burnaby, Surrey and across Metro Vancouver. ${found.service.description}`
   );
   return {
     title: { absolute: title },
