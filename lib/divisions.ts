@@ -62,7 +62,6 @@ export type Service = {
 
 export type DivisionStat = { value: string; label: string; sub?: string };
 export type DivisionFAQ = { q: string; a: string };
-export type Testimonial = { quote: string; author: string; role: string; org: string };
 
 export type Division = {
   slug: "mechanical" | "power" | "electrical" | "build";
@@ -84,7 +83,6 @@ export type Division = {
   stats: DivisionStat[];
   brands: { name: string; domain?: string; src?: string }[];
   certLogos: string[];
-  testimonial: Testimonial;
   faqs: DivisionFAQ[];
   services: Service[];
 };
@@ -259,13 +257,6 @@ export const divisions: Division[] = [
       { name: "Grundfos", domain: "grundfos.com", src: "/brand/logos/grundfos.png" },
     ],
     certLogos: ["logo-teca", "logo-worksafe-bc", "logo-asttbc", "logo-hpcn", "logo-pama-member", "logo-interprovincial-standard"],
-    testimonial: {
-      quote:
-        "We had three vendors for HVAC, plumbing and boilers, and three sets of finger-pointing. Woola Mechanical took over our whole portfolio in 90 days, and I have one phone number now.",
-      author: "Marisa Chen",
-      role: "Senior Property Manager",
-      org: "Pacific Coast Strata Group",
-    },
     faqs: [
       {
         q: "Do you service residential or only commercial mechanical systems?",
@@ -563,13 +554,6 @@ export const divisions: Division[] = [
       { name: "Murphy", domain: "fwmurphy.com", src: "/brand/logos/murphy.png" },
     ],
     certLogos: ["logo-egsa", "logo-worksafe-bc", "logo-asttbc", "logo-isn", "logo-comply-works", "logo-contractor-check"],
-    testimonial: {
-      quote:
-        "After a fire alarm test failed our annual standby drill, Woola Power had load-bank trucks on site the next morning. They isolated a fuel-polishing issue our previous vendor missed for three years.",
-      author: "Daniel Akande",
-      role: "Director of Facilities",
-      org: "Cascade Healthcare Properties",
-    },
     faqs: [
       {
         q: "Which generator brands do you service?",
@@ -878,13 +862,6 @@ export const divisions: Division[] = [
       { name: "Philips", domain: "philips.com", src: "/brand/logos/philips.png" },
     ],
     certLogos: ["logo-bc-hydro", "logo-worksafe-bc", "logo-asttbc", "logo-isn", "logo-comply-works", "logo-contractor-check"],
-    testimonial: {
-      quote:
-        "We needed a 240-stall strata EV rollout to work under a single meter: load managed, sub-billed, and rebate-eligible. Woola Electrical ran the whole thing including the BC Hydro paperwork.",
-      author: "Ravi Sandhu",
-      role: "Strata Council President",
-      org: "Elmbridge Park Strata",
-    },
     faqs: [
       {
         q: "Are your electricians FSR-certified?",
@@ -1183,13 +1160,6 @@ export const divisions: Division[] = [
       { name: "Schlage", domain: "schlage.com", src: "/brand/logos/schlage.png" },
     ],
     certLogos: ["logo-boma", "logo-pama-member", "logo-cci-bc", "logo-worksafe-bc", "logo-contractor-check", "logo-comply-works"],
-    testimonial: {
-      quote:
-        "Three years ago we tracked twenty-two trades for a portfolio of nine buildings. Woola Build is now our single line item for maintenance, envelope and reno work. Budgeting got obvious.",
-      author: "Sandra Polizzi",
-      role: "Portfolio Manager",
-      org: "Westcoast Real Estate Council",
-    },
     faqs: [
       {
         q: "What size project does Woola Build handle?",

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Logo } from "./Logo";
 import { divisions } from "@/lib/divisions";
 import { site } from "@/lib/site";
-import { Phone, Mail, MapPin, Instagram, Facebook, Linkedin, Youtube, LockKeyhole, Wrench, BatteryCharging, Zap, Hammer } from "lucide-react";
+import { Phone, Mail, MapPin, Instagram, Facebook, Linkedin, LockKeyhole, Wrench, BatteryCharging, Zap, Hammer } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 const divisionIcons: Record<string, LucideIcon> = {
@@ -43,10 +43,9 @@ export function Footer() {
             </div>
             <div className="mt-5 flex items-center gap-3">
               {[
-                { icon: Instagram, href: "https://instagram.com/woolaservices", label: "Instagram" },
+                { icon: Instagram, href: "https://www.instagram.com/woola.ca/", label: "Instagram" },
                 { icon: Facebook, href: "https://facebook.com/woolaservices", label: "Facebook" },
                 { icon: Linkedin, href: "https://linkedin.com/company/woola-services-group", label: "LinkedIn" },
-                { icon: Youtube, href: "https://youtube.com/@woolaservices", label: "YouTube" },
               ].map((s) => (
                 <a
                   key={s.label}

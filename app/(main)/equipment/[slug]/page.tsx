@@ -7,7 +7,7 @@ import { equipmentLibrary, getEquipment } from "@/lib/equipment-library";
 import { equipmentInteractive } from "@/lib/equipment-parts";
 import { EquipmentHotspotFigure } from "@/components/EquipmentHotspotFigure";
 import { site } from "@/lib/site";
-import { ArrowRight, Phone, AlertTriangle, Wrench, Clock3, Play, FileSearch } from "lucide-react";
+import { ArrowRight, Phone, AlertTriangle, Wrench, Clock3, FileSearch } from "lucide-react";
 
 type Params = { slug: string };
 
@@ -128,27 +128,6 @@ export default function EquipmentPage({ params }: { params: Params }) {
         </div>
       </section>
 
-      <section className="bg-ink-800 text-cream-50 relative overflow-hidden">
-        <div className="grain" />
-        <div className="container-x py-14 relative">
-          <div className="grid lg:grid-cols-12 gap-8 items-center">
-            <div className="lg:col-span-8">
-              <div className="flex items-center gap-2 text-brand-400">
-                <Play className="w-4 h-4" />
-                <div className="eyebrow !text-brand-400">Woola video · coming soon</div>
-              </div>
-              <h2 className="mt-3 text-2xl md:text-3xl font-semibold">
-                Watch a Woola tech walk through a real {e.name.replace(/ \(.*\)$/, "").toLowerCase()}.
-              </h2>
-            </div>
-            <div className="lg:col-span-4 lg:text-right">
-              <Link href={e.serviceHref} className="btn btn-brand text-base">
-                {e.serviceLabel} services <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {related.length > 0 && (
         <Section>

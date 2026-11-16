@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { Section, SectionHead } from "@/components/Section";
 import { CTABanner } from "@/components/CTABanner";
 import { AboutSubnav } from "@/components/AboutSubnav";
@@ -8,7 +9,7 @@ import { divisions } from "@/lib/divisions";
 import { getOpenings, bambooCareersUrl } from "@/lib/bamboo";
 import { JsonLd } from "@/components/JsonLd";
 import { jobPostings } from "@/lib/schema";
-import { ArrowRight, MapPin, Clock, Users, GraduationCap, HeartHandshake, TrendingUp, ImageIcon } from "lucide-react";
+import { ArrowRight, MapPin, Clock, Users, GraduationCap, HeartHandshake, TrendingUp } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Careers at Woola",
@@ -17,13 +18,14 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://woola.ca/careers" },
 };
 
-// Placeholder slots until real crew photography is shot. Swap each for an <Image>.
-const photoSlots = [
-  { label: "Crew on site", wide: true },
-  { label: "Shop barbecue", wide: false },
-  { label: "Fleet at HQ", wide: false },
-  { label: "Apprentice training", wide: false },
-  { label: "Generator field work", wide: true },
+const photos = [
+  { src: "/field/01-08-2025-surrey-mech-37.jpg", alt: "Woola Mechanical crew together in a boiler room", wide: true },
+  { src: "/social/quarterly-breakfast.jpg", alt: "The team at a long table during the quarterly meeting breakfast", wide: false },
+  { src: "/social/woola-yeti-roadtrip.jpg", alt: "A Woola Yeti mug held up in front of red canyon cliffs on a road trip", wide: false },
+  { src: "/social/pama-conference-2026.jpg", alt: "Woola team member at the Woola photobooth during the PAMA conference", wide: false },
+  { src: "/field/08-11-2026-van-1.jpg", alt: "Wrapped Woola Mechanical van parked in a commercial district", wide: false },
+  { src: "/field/07-28-2026-power-2.jpg", alt: "Woola Power technician servicing a generator engine", wide: true },
+  { src: "/field/06-26-2024-9.jpg", alt: "Woola technician at work outdoors", wide: false },
 ];
 
 const perks = [
@@ -79,17 +81,13 @@ export default async function CareersPage() {
           ))}
         </div>
 
-        <div className="mt-12 grid grid-cols-2 md:grid-cols-3 gap-4">
-          {photoSlots.map((slot) => (
+        <div className="mt-12 grid grid-cols-2 md:grid-cols-3 grid-flow-dense gap-4">
+          {photos.map((p) => (
             <div
-              key={slot.label}
-              className={`rounded-2xl border-2 border-dashed border-ink-200 bg-cream-100 flex flex-col items-center justify-center gap-2 aspect-[4/3] ${
-                slot.wide ? "col-span-2 md:aspect-auto" : ""
-              }`}
+              key={p.src}
+              className={`relative rounded-2xl overflow-hidden bg-ink-100 aspect-[4/3] ${p.wide ? "col-span-2 md:aspect-auto md:min-h-[260px]" : ""}`}
             >
-              <ImageIcon className="w-6 h-6 text-ink-300" strokeWidth={1.5} />
-              <span className="text-xs uppercase tracking-wider text-ink-400">{slot.label}</span>
-              <span className="text-[10px] text-ink-300">Photo coming soon</span>
+              <Image src={p.src} alt={p.alt} fill sizes="(min-width: 768px) 33vw, 50vw" className="object-cover" />
             </div>
           ))}
         </div>

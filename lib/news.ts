@@ -20,6 +20,78 @@ export type NewsItem = {
 
 export const news: NewsItem[] = [
   {
+    slug: "quarterly-team-breakfast-november-2026",
+    title: "Quarterly meeting, served as a team breakfast",
+    excerpt:
+      "Woola's November quarterly meeting moved to Pur & Simple in Port Coquitlam: a sit-down breakfast for the whole team, a colouring contest, and a parking lot full of Woola vehicles.",
+    date: "2026-11-13",
+    cover: "/social/quarterly-breakfast.jpg",
+    coverAlt: "The Woola team at a long breakfast table during the November 2026 quarterly meeting",
+    body: [
+      {
+        paragraphs: [
+          "This quarter's company meeting felt more like a family breakfast. The team took a break from the daily dispatch rush to catch up over a sit-down meal at Pur & Simple in Port Coquitlam, with a colouring contest run by Graham thrown in for good measure.",
+          "The parking lot told its own story: enough Woola vehicles to fill it, a reminder of how much the team and the fleet have grown together since the first vans went on the road.",
+        ],
+      },
+    ],
+    source: { label: "Woola on Instagram", href: "https://www.instagram.com/p/DfsfadbEXgJ/" },
+  },
+  {
+    slug: "coquitlam-firefighters-mayors-charity-gala-2026",
+    title: "Supporting the Coquitlam Fire Fighters' Mayor's Charity Gala",
+    excerpt:
+      "Woola joined the 6th Annual Mayor's Charity Gala hosted by the Coquitlam Fire Fighters Charitable Society, raising money for the SD43 Feeding Futures Program.",
+    date: "2026-11-09",
+    cover: "/social/firefighters-gala.jpg",
+    coverAlt: "A Coquitlam fire truck parked outside the venue of the Mayor's Charity Gala",
+    body: [
+      {
+        paragraphs: [
+          "Woola was back at the Coquitlam Fire Fighters Charitable Society's Mayor's Charity Gala for another year. The sixth edition took over a Willy Wonka-themed room at Great Canadian Casino Coquitlam and brought together people who show up for the community year after year.",
+          "Every dollar raised goes to the SD43 Feeding Futures Program and the Charitable Society, helping make sure kids in the Tri-Cities have access to healthy meals. Thanks to Steph for representing Woola on the night, and to everyone who stopped by the Woola photo setup.",
+        ],
+      },
+    ],
+    source: { label: "Woola on Instagram", href: "https://www.instagram.com/p/DfiIZoFDPdG/" },
+  },
+  {
+    slug: "pama-fall-education-conference-2026",
+    title: "Media sponsor at the PAMA Fall Education Conference 2026",
+    excerpt:
+      "Woola returned to the Professional Association of Managing Agents' Fall Education Conference as media sponsor, with the Woola photobooth back by popular demand.",
+    date: "2026-10-25",
+    cover: "/social/pama-conference-2026.jpg",
+    coverAlt: "A Woola team member beside the Woola photobooth at the PAMA Fall Education Conference 2026",
+    body: [
+      {
+        paragraphs: [
+          "Another good year at the PAMA Fall Education Conference. Woola took part as the event's media sponsor, catching up with familiar faces from the strata management world, meeting new ones, and hearing first-hand about the pressures strata communities and their managers are dealing with day to day.",
+          "The Woola photobooth made its usual appearance and stayed busy all day. Thanks to PAMA for having us, and to everyone who stopped by.",
+        ],
+      },
+    ],
+    source: { label: "Woola on Instagram", href: "https://www.instagram.com/p/De7fGwikmS1/" },
+  },
+  {
+    slug: "canucks-alumni-video-shoot",
+    title: "On set with the Canucks Alumni",
+    excerpt:
+      "Woola teamed up with Vancouver Canucks alumni Kirk McLean and Dave Babych for a video shoot about what the Woola team is all about.",
+    date: "2025-11-06",
+    cover: "/social/canucks-alumni-shoot.jpg",
+    coverAlt: "Woola team members with Canucks alumni Kirk McLean and Dave Babych on set at the shop",
+    body: [
+      {
+        paragraphs: [
+          "Woola had the chance to team up with the Canucks Alumni, including Kirk McLean and Dave Babych, for a video shoot highlighting what the Woola team is about: the trades, the people, and the buildings they look after across the Lower Mainland.",
+          "The shoot took place at the Woola shop with crews from the mechanical, electrical and power teams on camera alongside the two Canucks legends.",
+        ],
+      },
+    ],
+    source: { label: "Woola on Instagram", href: "https://www.instagram.com/p/DQuOZihj2Af/" },
+  },
+  {
     slug: "sterling-fleet-outfitters-four-vans",
     title: "Four Woola service vans fitted out by Sterling Fleet Outfitters",
     excerpt:

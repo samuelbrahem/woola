@@ -15,9 +15,8 @@ export const industries: Industry[] = [
     slug: "strata",
     name: "Strata & Multi-Family",
     short: "Towers, townhomes and strata councils",
-    image:
-      "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1600&q=80&auto=format&fit=crop",
-    imageAlt: "Residential high-rise strata towers",
+    image: "/field/08-12-2026-build-8.jpg",
+    imageAlt: "Woola Build crew at a wood-frame strata building",
     description:
       "Woola's home turf. Boiler plants, parkades, envelopes, standby power, and the council reporting that keeps assessments boring.",
     pressures: [
@@ -38,9 +37,8 @@ export const industries: Industry[] = [
     slug: "office",
     name: "Office & Mixed-Use",
     short: "Office buildings and mixed-use",
-    image:
-      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&q=80&auto=format&fit=crop",
-    imageAlt: "Glass commercial office building",
+    image: "/field/10-25-2024-mattmatt-28.jpg",
+    imageAlt: "Woola technician on an office rooftop above the city",
     description:
       "Comfort complaints, tenant improvements, and base-building systems that must never interrupt business hours.",
     pressures: [
@@ -61,9 +59,8 @@ export const industries: Industry[] = [
     slug: "industrial",
     name: "Industrial & Warehouse",
     short: "Plants, warehouses and distribution",
-    image:
-      "https://images.unsplash.com/photo-1565610222536-ef125c59da2e?w=1600&q=80&auto=format&fit=crop",
-    imageAlt: "Industrial warehouse facility",
+    image: "/field/01-21-2025-lift-langley-7.jpg",
+    imageAlt: "Woola technician on a lift inside a warehouse",
     description:
       "Process cooling, heavy electrical distribution, gas heating, and dock-to-roof maintenance for facilities that can't stop.",
     pressures: [
@@ -84,9 +81,8 @@ export const industries: Industry[] = [
     slug: "retail",
     name: "Retail & Restaurant",
     short: "Stores, restaurants and commercial kitchens",
-    image:
-      "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1600&q=80&auto=format&fit=crop",
-    imageAlt: "Retail storefront interior",
+    image: "/field/10-25-2024-mattmatt-11.jpg",
+    imageAlt: "Woola van outside a row of street-front shops",
     description:
       "Kitchen gas, walk-in refrigeration, storefront comfort, and after-hours service windows that don't cost you customers.",
     pressures: [
@@ -106,9 +102,8 @@ export const industries: Industry[] = [
     slug: "healthcare",
     name: "Healthcare & Care Facilities",
     short: "Clinics, labs and care homes",
-    image:
-      "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=1600&q=80&auto=format&fit=crop",
-    imageAlt: "Healthcare facility corridor",
+    image: "/field/07-28-2026-mech-4.jpg",
+    imageAlt: "High-pressure steam and heating piping in a facility plant room",
     description:
       "Life-safety power, air quality, and redundancy for facilities where the occupants can't simply go home during an outage.",
     pressures: [
@@ -128,9 +123,8 @@ export const industries: Industry[] = [
     slug: "hospitality",
     name: "Hospitality & Hotels",
     short: "Hotels and hospitality",
-    image:
-      "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1600&q=80&auto=format&fit=crop",
-    imageAlt: "Hotel exterior at dusk",
+    image: "/field/08-07-2024-crane-hotel-1.jpg",
+    imageAlt: "Crane lifting rooftop equipment onto a hotel tower",
     description:
       "Domestic hot water that never runs short, suite comfort, commercial kitchens, pool and spa plant, and work windows that respect occupancy.",
     pressures: [
@@ -151,9 +145,8 @@ export const industries: Industry[] = [
     slug: "education",
     name: "Education & Institutional",
     short: "Schools, campuses and public buildings",
-    image:
-      "https://images.unsplash.com/photo-1562774053-701939374585?w=1600&q=80&auto=format&fit=crop",
-    imageAlt: "Institutional campus building",
+    image: "/field/08-05-2026-build-4.jpg",
+    imageAlt: "Ceiling work in an institutional corridor",
     description:
       "Campus boilers, summer shutdown windows, and capital planning that has to survive a public budget process.",
     pressures: [
@@ -195,9 +188,8 @@ export const industries: Industry[] = [
     slug: "residential",
     name: "Residential",
     short: "Homes and residential installs",
-    image:
-      "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=1600&q=80&auto=format&fit=crop",
-    imageAlt: "Modern single-family home",
+    image: "/field/10-25-2024-mattmatt-7.jpg",
+    imageAlt: "Woola Mechanical van with ladders on a residential street",
     description:
       "Heat pumps, hot water, gas, EV chargers, and standby power for your home, with rebates filed for you.",
     pressures: [

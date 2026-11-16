@@ -180,9 +180,6 @@ export function HeroCarousel() {
                     }`}
                   />
                 ))}
-                <span className="ml-3 hidden md:inline-flex items-center gap-1.5 text-[10px] uppercase tracking-widest text-cream-100/50">
-                  <Play className="w-3 h-3" /> Video banners coming soon
-                </span>
               </div>
               <div className="flex items-center gap-2">
                 <button

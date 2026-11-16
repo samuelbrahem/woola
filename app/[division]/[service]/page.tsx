@@ -15,7 +15,6 @@ import { equipmentLibrary } from "@/lib/equipment-library";
 import { EquipmentSlider } from "@/components/EquipmentSlider";
 import { getServiceContent } from "@/lib/content";
 import { ServiceLongform } from "@/components/ServiceLongform";
-import { PhotoPlaceholder } from "@/components/PhotoPlaceholder";
 import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbs, serviceSchema } from "@/lib/schema";
 
@@ -60,6 +59,14 @@ const SIDE_PHOTO: Record<string, { src: string; alt: string }> = {
 };
 
 type Params = { division: string; service: string };
+
+/** Shown beside a service's longform when it has no photo of its own. */
+const DIVISION_FALLBACK_PHOTO: Record<string, { src: string; alt: string }> = {
+  mechanical: { src: "/field/07-28-2026-mech-3.jpg", alt: "Insulated mechanical piping in a Woola-serviced plant room" },
+  power: { src: "/field/07-28-2026-power-5.jpg", alt: "Woola Power technician beside a standby generator" },
+  electrical: { src: "/field/07-23-2026-electrical-4.jpg", alt: "Woola electrician at a commercial meter bank" },
+  build: { src: "/field/08-12-2026-build-7.jpg", alt: "Crane lift during a Woola Build exterior project" },
+};
 
 export async function generateStaticParams() {
   return divisions.flatMap((d) =>
@@ -299,7 +306,17 @@ export default function ServicePage({ params }: { params: Params }) {
                   </div>
                 </figure>
               ) : (
-                <PhotoPlaceholder label="Field photo slot" className="aspect-[4/3]" />
+                <figure className="card overflow-hidden bg-cream-100">
+                  <div className="relative aspect-[4/3]">
+                    <Image
+                      src={DIVISION_FALLBACK_PHOTO[division.slug].src}
+                      alt={DIVISION_FALLBACK_PHOTO[division.slug].alt}
+                      fill
+                      sizes="(min-width: 1024px) 40vw, 100vw"
+                      className="object-cover"
+                    />
+                  </div>
+                </figure>
               )}
               <div className="card p-6 bg-ink-800 text-cream-50">
                 <div className="eyebrow !text-[color:var(--brand-on-dark)]">Talk it through first</div>

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Section } from "@/components/Section";
-import { LockKeyhole, FileText, CalendarClock, Camera, Receipt, ArrowRight } from "lucide-react";
+import { FileText, CalendarClock, Camera, Receipt, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Client Portal",
@@ -33,10 +33,7 @@ export default function PortalPage() {
               and maintenance calendars. Powered by our ServiceTitan platform.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <span className="btn btn-primary opacity-60 cursor-not-allowed select-none">
-                <LockKeyhole className="w-4 h-4" /> Sign in (coming soon)
-              </span>
-              <Link href="/contact" className="btn btn-ghost">
+              <Link href="/contact" className="btn btn-primary">
                 Request portal access <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
