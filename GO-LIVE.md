@@ -8,10 +8,9 @@ Status legend: [x] done · [ ] to do · (who)
 ## 1. Hosting
 - [x] Netlify site connected to GitHub `main`; every push deploys. Latest production deploy is green.
 - [x] Repo folder linked (`netlify link`); `netlify open` opens the dashboard.
-- [x] Environment variable `ESTIMATING_EMAIL` = services@woola.ca.
+- [x] Environment variables: `ESTIMATING_EMAIL` = services@woola.ca, `NEXT_PUBLIC_GA_ID` = G-QRD8THQV60 (GA4 live 2026-11-16).
 - [ ] (Samuel) Remaining env vars, set with `netlify env:set NAME value` and then redeploy (`netlify deploy --build --prod` or push):
-  - `RESEND_API_KEY` — create at resend.com, add domain woola.ca (Resend's DKIM TXT + `send.woola.ca` records do not touch the main MX). Powers /contact and /second-opinion. Until set, both forms tell visitors to phone dispatch.
-  - `NEXT_PUBLIC_GA_ID` — GA4 measurement ID (G-…) for the woola.ca property.
+  - `RESEND_API_KEY` — optional. Forms already deliver through Netlify Forms (notification to services@woola.ca). Resend only adds branded no-reply@woola.ca delivery and unlimited attachments.
   - `NEXT_PUBLIC_GOOGLE_MAPS_API_KEY` — Maps JavaScript API, HTTP-referrer restricted to woola.ca. Optional (Leaflet fallback).
   - `GOOGLE_PLACES_API_KEY` — Places API (New), server key. Optional (review cards hidden without it).
 
