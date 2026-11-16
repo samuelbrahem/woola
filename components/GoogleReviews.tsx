@@ -1,6 +1,6 @@
 import { fetchListing, REVIEW_FILTER_NOTICE } from "@/lib/google-reviews";
 import { ReviewRotator, type RotatorReview } from "@/components/ReviewRotator";
-import { divisions } from "@/lib/divisions";
+import { divisions as allDivisions } from "@/lib/divisions";
 
 /**
  * Live Google reviews, rotating: five-star, with written detail, newest first
@@ -26,7 +26,7 @@ export async function GoogleReviews({
   listings.forEach((l, i) => {
     if (!l) return;
     // Short division name ("Woola Power") rather than the full listing title.
-    const label = divisions.find((d) => d.slug === slugs[i])?.name ?? l.name;
+    const label = allDivisions.find((d) => d.slug === slugs[i])?.name ?? l.name;
     for (const r of l.reviews) {
       if (seen.has(r.id)) continue;
       seen.add(r.id);
