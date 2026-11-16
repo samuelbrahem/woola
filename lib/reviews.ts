@@ -4,10 +4,10 @@
  */
 export const googleListingUrl = "https://share.google/cxDSLCU1BzkhDk2nF";
 
-/** Per-division Google Business Profile share links (from Brett, 2026-11-16).
- *  Power's listing link is still outstanding and falls back to Mechanical's. */
+/** Per-division Google Business Profile share links (from Brett, 2026-11-16). */
 const listingByDivision: Partial<Record<string, string>> = {
   mechanical: googleListingUrl,
+  power: "https://share.google/0dbFTMoi0nBPx25c2",
   electrical: "https://share.google/cqyHtFyrJqbeCfZNZ",
   build: "https://share.google/XAsMIEjYAB1topl0F",
 };
