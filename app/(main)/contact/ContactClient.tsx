@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { divisions } from "@/lib/divisions";
+import { CONTACT_OPTIONS } from "@/lib/contact-options";
 import { site } from "@/lib/site";
 import { Mail, MapPin, Clock, CheckCircle2, CalendarCheck, Handshake, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
@@ -142,13 +143,19 @@ export default function ContactClient() {
               <div>
                 <div className="eyebrow">Callback</div>
                 <h2 className="mt-2 text-2xl font-semibold text-ink-800">Have us call you.</h2>
-                <p className="mt-1 text-sm text-ink-500">Four fields. A coordinator does the rest.</p>
+                <p className="mt-1 text-sm text-ink-500">Under a minute. A coordinator does the rest.</p>
               </div>
               <div className="grid md:grid-cols-2 gap-4">
                 <Field label="Name" name="name" required />
                 <Field label="Phone" name="phone" type="tel" required />
               </div>
               <Field label="Email (optional)" name="email" type="email" />
+              <div className="grid md:grid-cols-2 gap-4">
+                <Select label="I am a" name="role" options={CONTACT_OPTIONS.role} required />
+                <Select label="Type of request" name="request" options={CONTACT_OPTIONS.request} required />
+              </div>
+              <Select label="What do you need" name="service" options={CONTACT_OPTIONS.service} required />
+              <Field label="Building address (optional)" name="building" />
               <div>
                 <label className="block text-sm font-medium text-ink-700 mb-2">
                   What's going on?<span className="text-brand-500"> *</span>
@@ -199,6 +206,37 @@ function Field({
         {required && <span className="text-brand-500"> *</span>}
       </label>
       <input className="field" name={name} type={type} required={required} />
+    </div>
+  );
+}
+
+function Select({
+  label,
+  name,
+  options,
+  required = false,
+}: {
+  label: string;
+  name: string;
+  options: readonly string[];
+  required?: boolean;
+}) {
+  return (
+    <div>
+      <label className="block text-sm font-medium text-ink-700 mb-2">
+        {label}
+        {required && <span className="text-brand-500"> *</span>}
+      </label>
+      <select className="field" name={name} required={required} defaultValue="">
+        <option value="" disabled>
+          Select…
+        </option>
+        {options.map((o) => (
+          <option key={o} value={o}>
+            {o}
+          </option>
+        ))}
+      </select>
     </div>
   );
 }

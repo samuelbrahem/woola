@@ -11,6 +11,10 @@ export async function POST(req: NextRequest) {
   const phone = String(form.get("phone") || "").trim();
   const email = String(form.get("email") || "").trim();
   const notes = String(form.get("notes") || "").trim();
+  const role = String(form.get("role") || "").trim();
+  const request = String(form.get("request") || "").trim();
+  const service = String(form.get("service") || "").trim();
+  const building = String(form.get("building") || "").trim();
   // Honeypot: real visitors never see or fill this field.
   if (String(form.get("company") || "").trim()) return NextResponse.json({ ok: true });
 
@@ -23,7 +27,7 @@ export async function POST(req: NextRequest) {
   if (!apiKey) {
     // No Resend yet: deliver through Netlify Forms (notification email set in Netlify).
     if (netlifyFormsAvailable()) {
-      const ok = await submitNetlifyForm("contact", { name, phone, email, notes, page: "woola.ca/contact" });
+      const ok = await submitNetlifyForm("contact", { name, phone, email, role, request, service, building, notes, page: "woola.ca/contact" });
       if (ok) return NextResponse.json({ ok: true });
     }
     return NextResponse.json(
@@ -39,8 +43,20 @@ export async function POST(req: NextRequest) {
       from: "Woola Website <no-reply@woola.ca>",
       to: [to],
       ...(email ? { reply_to: email } : {}),
-      subject: `Callback request: ${name}`,
-      text: [`Name: ${name}`, `Phone: ${phone}`, `Email: ${email || "(not given)"}`, "", notes, "", `Sent from woola.ca/contact`].join("\n"),
+      subject: subjectFor({ name, request, service }),
+      text: [
+        `Name: ${name}`,
+        `Phone: ${phone}`,
+        `Email: ${email || "(not given)"}`,
+        `Role: ${role || "(not given)"}`,
+        `Request: ${request || "(not given)"}`,
+        `Needs: ${service || "(not given)"}`,
+        `Building: ${building || "(not given)"}`,
+        "",
+        notes,
+        "",
+        `Sent from woola.ca/contact`,
+      ].join("\n"),
     }),
   });
 
@@ -48,4 +64,10 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ message: `Could not send right now. Please call ${site.phone}.` }, { status: 502 });
   }
   return NextResponse.json({ ok: true });
+}
+
+/** e.g. "Service call · Mechanical: HVAC, boilers, refrigeration · Jane Doe" */
+function subjectFor({ name, request, service }: { name: string; request: string; service: string }) {
+  const kind = request.replace(/\s*\(.*\)$/, "") || "Callback request";
+  return [kind, service, name].filter(Boolean).join(" · ");
 }

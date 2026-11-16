@@ -17,7 +17,7 @@
  * Place IDs: set GOOGLE_PLACE_ID_<DIVISION> to pin a listing. Otherwise the
  * listing is found once by name (Text Search, biased to Coquitlam) and the ID
  * is cached for 30 days. Place IDs are the one thing Google allows storing;
- * review content itself is re-fetched hourly.
+ * review content itself is re-fetched every six hours.
  */
 
 export type LiveReview = {
@@ -135,7 +135,7 @@ export async function fetchListing(division = "mechanical"): Promise<LiveListing
         "X-Goog-Api-Key": key,
         "X-Goog-FieldMask": "id,displayName,rating,userRatingCount,googleMapsUri,reviews",
       },
-      next: { revalidate: HOUR },
+      next: { revalidate: 6 * HOUR },
     });
     if (!res.ok) return null;
     const data = (await res.json()) as {
