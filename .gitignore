@@ -19,3 +19,4 @@ scripts/team-photos/placeholder
 # Local Netlify folder
 .netlify
 deno.lock
+.indexnow

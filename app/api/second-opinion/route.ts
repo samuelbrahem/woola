@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { site } from "@/lib/site";
+import { netlifyFormsAvailable, submitNetlifyForm } from "@/lib/netlify-forms";
 
 const MAX_FILES = 10;
 const MAX_FILE_BYTES = 8 * 1024 * 1024;
@@ -37,6 +38,16 @@ export async function POST(req: NextRequest) {
   const to = process.env.ESTIMATING_EMAIL || "services@woola.ca";
 
   if (!apiKey) {
+    // No Resend yet: deliver through Netlify Forms. Netlify accepts up to three
+    // 8MB files per submission here; the rest are listed by name in the message.
+    if (netlifyFormsAvailable()) {
+      const ok = await submitNetlifyForm(
+        "second-opinion",
+        { name, email, phone, propertyType, message, attachments: files.map((f) => `${f.name} (${Math.round(f.size / 1024)} KB)`).join(", ") || "none" },
+        files.slice(0, 3).map((f, i) => ({ name: `file${i + 1}`, file: f }))
+      );
+      if (ok) return NextResponse.json({ ok: true });
+    }
     return NextResponse.json(
       { message: `Uploads aren't live yet. Please call ${site.phone} or email ${site.email}.` },
       { status: 503 }

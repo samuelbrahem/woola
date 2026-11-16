@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Woola forms</title><meta name="robots" content="noindex"></head>
+<body>
+<!-- Static form definitions so Netlify Forms can detect them at deploy time.
+     The real forms live in the Next.js app; the API routes forward submissions here. -->
+<form name="contact" method="POST" data-netlify="true" netlify-honeypot="company" hidden>
+  <input type="text" name="name" /><input type="tel" name="phone" /><input type="email" name="email" />
+  <textarea name="notes"></textarea><input type="text" name="company" /><input type="text" name="page" />
+</form>
+<form name="second-opinion" method="POST" data-netlify="true" enctype="multipart/form-data" hidden>
+  <input type="text" name="name" /><input type="email" name="email" /><input type="tel" name="phone" />
+  <input type="text" name="propertyType" /><textarea name="message"></textarea><input type="file" name="file1" />
+  <input type="file" name="file2" /><input type="file" name="file3" /><input type="text" name="attachments" />
+</form>
+</body></html>

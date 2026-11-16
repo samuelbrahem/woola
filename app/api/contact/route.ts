@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { site } from "@/lib/site";
+import { netlifyFormsAvailable, submitNetlifyForm } from "@/lib/netlify-forms";
 
 /** Callback requests from /contact. Delivered by Resend to ESTIMATING_EMAIL
  *  (services@woola.ca by default). Without RESEND_API_KEY the form tells the
@@ -20,6 +21,11 @@ export async function POST(req: NextRequest) {
   const apiKey = process.env.RESEND_API_KEY;
   const to = process.env.ESTIMATING_EMAIL || "services@woola.ca";
   if (!apiKey) {
+    // No Resend yet: deliver through Netlify Forms (notification email set in Netlify).
+    if (netlifyFormsAvailable()) {
+      const ok = await submitNetlifyForm("contact", { name, phone, email, notes, page: "woola.ca/contact" });
+      if (ok) return NextResponse.json({ ok: true });
+    }
     return NextResponse.json(
       { message: `The callback form isn't connected yet. Please call ${site.phone} or email ${site.email}.` },
       { status: 503 }
