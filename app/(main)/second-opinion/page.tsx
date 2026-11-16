@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/seo";
 import { Section } from "@/components/Section";
 import { SecondOpinionForm } from "./SecondOpinionForm";
 import { FileSearch, Scale, Clock } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Get a Second Opinion",
-  description:
-    "Upload your existing quote, inspection report, photos, or plans. Woola's estimating team reviews everything and comes back with an honest second opinion, no obligation.",
+  description: metaDescription("Upload your existing quote, inspection report, photos, or plans. Woola's estimating team reviews everything and comes back with an honest second opinion, no obligation."),
   alternates: { canonical: "https://woola.ca/second-opinion" },
 };
 

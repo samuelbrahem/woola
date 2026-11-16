@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/seo";
 import Link from "next/link";
 import { Section, SectionHead } from "@/components/Section";
 import { CTABanner } from "@/components/CTABanner";
@@ -18,8 +19,7 @@ import {
 
 export const metadata: Metadata = {
   title: "For Property Managers",
-  description:
-    "Fewer service providers. Better visibility. One-source accountability for the mission-critical systems across your portfolio: mechanical, plumbing, electrical, standby power, and build services.",
+  description: metaDescription("Fewer service providers. Better visibility. One-source accountability for the mission-critical systems across your portfolio: mechanical, plumbing, electrical, standby power, and build services."),
   alternates: { canonical: "https://woola.ca/property-managers" },
 };
 

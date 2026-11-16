@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/seo";
 import Link from "next/link";
 import Image from "next/image";
 import { Section, SectionHead } from "@/components/Section";
@@ -9,8 +10,7 @@ import { ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Equipment Library",
-  description:
-    "Plain-English guides to the equipment that runs your building: rooftop units, boilers, heat pumps, generators, switchgear, and more. What it does, how it fails, and how to maintain it.",
+  description: metaDescription("Plain-English guides to the equipment that runs your building: rooftop units, boilers, heat pumps, generators, switchgear, and more. What it does, how it fails, and how to maintain it."),
   alternates: { canonical: "https://woola.ca/equipment" },
 };
 

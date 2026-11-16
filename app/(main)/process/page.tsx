@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/seo";
 import Link from "next/link";
 import { Section, SectionHead } from "@/components/Section";
 import { CTABanner } from "@/components/CTABanner";
@@ -17,8 +18,7 @@ import {
 
 export const metadata: Metadata = {
   title: "Our Process",
-  description:
-    "How Woola runs every job: walk-through and condition report, scoped fixed-price proposal, coordinated scheduling, and photo-documented closeout. One dispatcher, one PO.",
+  description: metaDescription("How Woola runs every job: walk-through and condition report, scoped fixed-price proposal, coordinated scheduling, and photo-documented closeout. One dispatcher, one PO."),
   alternates: { canonical: "https://woola.ca/process" },
 };
 

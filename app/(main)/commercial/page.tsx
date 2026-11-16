@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/seo";
 import Link from "next/link";
 import { Section, SectionHead } from "@/components/Section";
 import { CTABanner } from "@/components/CTABanner";
@@ -16,8 +17,7 @@ import {
 
 export const metadata: Metadata = {
   title: "Commercial Services",
-  description:
-    "Woola serves strata, office, industrial, retail, healthcare, and hospitality properties across Metro Vancouver: maintenance contracts, capital projects, compliance, and 24/7 emergency response.",
+  description: metaDescription("Woola serves strata, office, industrial, retail, healthcare, and hospitality properties across Metro Vancouver: maintenance contracts, capital projects, compliance, and 24/7 emergency response."),
   alternates: { canonical: "https://woola.ca/commercial" },
 };
 

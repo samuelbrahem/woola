@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/seo";
 import Link from "next/link";
 import { SectionHead } from "@/components/Section";
 import { CTABanner } from "@/components/CTABanner";
@@ -10,8 +11,7 @@ import { ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Case Studies",
-  description:
-    "Woola project case studies across Mechanical, Electrical, Power and Build: occupied-building repiping, chiller and boiler plant replacements, electrification, vault maintenance, standby generators, and strata exterior renewals.",
+  description: metaDescription("Woola project case studies across Mechanical, Electrical, Power and Build: occupied-building repiping, chiller and boiler plant replacements, electrification, vault maintenance, standby generators, and strata exterior renewals."),
   alternates: { canonical: "https://woola.ca/work" },
 };
 

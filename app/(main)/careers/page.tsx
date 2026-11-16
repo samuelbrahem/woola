@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { metaDescription } from "@/lib/seo";
 import Link from "next/link";
 import Image from "next/image";
 import { Section, SectionHead } from "@/components/Section";
@@ -13,8 +14,7 @@ import { ArrowRight, MapPin, Clock, Users, GraduationCap, HeartHandshake, Trendi
 
 export const metadata: Metadata = {
   title: { absolute: "Careers at Woola | Trades Jobs in Coquitlam, BC" },
-  description:
-    "Join Woola Services Group. Open positions across Mechanical, Power, Electrical, and Build: Red Seal trades, apprenticeships, coordinators, and PMs in Metro Vancouver.",
+  description: metaDescription("Join Woola Services Group. Open positions across Mechanical, Power, Electrical, and Build: Red Seal trades, apprenticeships, coordinators, and PMs in Metro Vancouver."),
   alternates: { canonical: "https://woola.ca/careers" },
 };
 

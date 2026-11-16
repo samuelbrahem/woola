@@ -20,7 +20,7 @@ export function generateMetadata({ params }: { params: Params }): Metadata {
   if (!p) return {};
   return {
     title: { absolute: `${p.title} | Woola` },
-    description: p.excerpt,
+    description: metaDescription(p.excerpt),
     alternates: { canonical: `https://woola.ca/blog/${p.slug}` },
     openGraph: {
       title: p.title,
