@@ -113,7 +113,7 @@ const orgJsonLd = {
     closes: "17:00",
   },
   hasMap: googleListingUrl,
-  sameAs: [googleListingUrl, "https://www.instagram.com/woola.ca/"],
+  sameAs: [googleListingUrl, "https://www.instagram.com/woola.ca/", "https://www.facebook.com/woolaca/", "https://www.linkedin.com/company/woolacanada/"],
   geo: { "@type": "GeoCoordinates", latitude: 49.2245, longitude: -122.8341 },
   subOrganization: divisions.map((d) => ({
     "@type": "LocalBusiness",

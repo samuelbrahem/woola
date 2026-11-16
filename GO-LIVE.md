@@ -42,7 +42,7 @@ Every domain below uses GoDaddy nameservers (domaincontrol.com). All of them poi
 | woolamech.com | 301 → woolamech.ca, path kept | 3.33.152.147 (GoDaddy forwarding) |
 | woolapower.com | 301 → woolapower.ca, path kept | 15.197.225.128 (GoDaddy forwarding) |
 | woolabuild.com | 301 → woolabuild.ca, path kept | 3.33.251.168 (GoDaddy forwarding) |
-| woolafire.ca | 301 → woola.ca home (no Fire division yet) | 76.223.67.189 (GoDaddy parking) |
+| woolafire.ca | 301 → woola.ca home (no Fire division yet). NOTE: removed from the Netlify aliases on 2026-11-16 because its DNS still pointed at parking and blocked certificate issuance for every other domain; re-add it in Netlify → Domain management once its A/CNAME are changed. | 76.223.67.189 (GoDaddy parking) |
 
 Notes:
 - If a domain currently uses GoDaddy "Domain forwarding" (the .com ones do), turn forwarding OFF for that domain first, then set the A and CNAME records. Forwarding and an A record fight each other.

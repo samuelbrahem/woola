@@ -44,8 +44,8 @@ export function Footer() {
             <div className="mt-5 flex items-center gap-3">
               {[
                 { icon: Instagram, href: "https://www.instagram.com/woola.ca/", label: "Instagram" },
-                { icon: Facebook, href: "https://facebook.com/woolaservices", label: "Facebook" },
-                { icon: Linkedin, href: "https://linkedin.com/company/woola-services-group", label: "LinkedIn" },
+                { icon: Facebook, href: "https://www.facebook.com/woolaca/", label: "Facebook" },
+                { icon: Linkedin, href: "https://www.linkedin.com/company/woolacanada/", label: "LinkedIn" },
               ].map((s) => (
                 <a
                   key={s.label}
