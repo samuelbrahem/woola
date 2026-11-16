@@ -10,6 +10,8 @@ import { repairs } from "./repairs";
 import { installations } from "./installations";
 import { maintenancePlans } from "./maintenance-plans";
 import { emergency } from "./emergency";
+import { electrical } from "./electrical";
+import { generators } from "./generators";
 
 export const residentialContent: Record<string, ServiceContent> = {
   heating,
@@ -23,4 +25,6 @@ export const residentialContent: Record<string, ServiceContent> = {
   installations,
   "maintenance-plans": maintenancePlans,
   emergency,
+  electrical,
+  generators,
 };

@@ -99,11 +99,11 @@ export default function HomePage() {
             <div className="lg:col-span-6">
               <div className="eyebrow">Who we are</div>
               <h2 className="mt-3 text-3xl md:text-4xl lg:text-5xl font-semibold text-ink-800 leading-tight">
-                Four divisions, working as one team.
+                Every trade, working as one team.
               </h2>
               <p className="mt-5 text-lg text-ink-700 leading-relaxed">
-                Woola is a Coquitlam-based building services group with four divisions under one
-                roof: Mechanical, Power, Electrical, and Build. Your property manager calls one
+                Woola is a Coquitlam-based building services group with multiple divisions under one
+                roof, Mechanical, Power, Electrical, and Build among them. Your property manager calls one
                 dispatcher, the work goes on one PO, and the same team is answerable for all of it.
               </p>
               <ul className="mt-7 grid sm:grid-cols-3 gap-5">
@@ -188,7 +188,7 @@ export default function HomePage() {
               <SectionHead
                 eyebrow="The Woola model"
                 title="Every trade. One team. One call."
-                description="Four divisions. One dispatcher. One accountable PO across every job."
+                description="Multiple divisions. One dispatcher. One accountable PO across every job."
                 dark
               />
             </div>
@@ -301,7 +301,7 @@ export default function HomePage() {
               <GoogleG className="w-5 h-5" /> See our Google reviews →
             </a>
           </div>
-          <GoogleReviews division="mechanical" />
+          <GoogleReviews divisions={["mechanical", "power", "electrical", "build"]} />
         </div>
       </section>
 

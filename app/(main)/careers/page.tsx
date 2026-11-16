@@ -51,7 +51,7 @@ export default async function CareersPage() {
               <span className="script text-brand-500 text-5xl md:text-6xl leading-[1.1]">Out play.</span>
             </h1>
             <p className="mt-5 text-lg text-cream-100/80 max-w-2xl">
-              Four business units, one roster. We hire trades who take pride in the work,
+              Multiple business units, one roster. We hire trades who take pride in the work,
               sponsor apprenticeships seriously, and promote from within first.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
@@ -63,35 +63,6 @@ export default async function CareersPage() {
         </div>
       </section>
       <AboutSubnav active="/careers" />
-
-      <Section>
-        <SectionHead
-          eyebrow="Why Woola"
-          title="A trades career that compounds."
-        />
-        <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {perks.map((p) => (
-            <div key={p.title} className="card p-7">
-              <div className="w-10 h-10 rounded-full bg-brand-500 text-cream-50 flex items-center justify-center">
-                <p.icon className="w-5 h-5" strokeWidth={1.5} />
-              </div>
-              <h3 className="mt-4 text-lg font-semibold text-ink-800">{p.title}</h3>
-              <p className="mt-2 text-sm text-ink-500 leading-relaxed">{p.body}</p>
-            </div>
-          ))}
-        </div>
-
-        <div className="mt-12 grid grid-cols-2 md:grid-cols-3 grid-flow-dense gap-4">
-          {photos.map((p) => (
-            <div
-              key={p.src}
-              className={`relative rounded-2xl overflow-hidden bg-ink-100 aspect-[4/3] ${p.wide ? "col-span-2 md:aspect-auto md:min-h-[260px]" : ""}`}
-            >
-              <Image src={p.src} alt={p.alt} fill sizes="(min-width: 768px) 33vw, 50vw" className="object-cover" />
-            </div>
-          ))}
-        </div>
-      </Section>
 
       <section id="openings" className="bg-cream-100 border-y hairline">
         <div className="container-x section">
@@ -111,7 +82,7 @@ export default async function CareersPage() {
               <p className="mt-2 text-sm text-ink-600">
                 New roles are posted here when they open in BambooHR.{" "}
                 In the meantime, send a resume to{" "}
-                <a href="mailto:careers@woola.ca" className="font-medium text-brand-500 hover:underline">careers@woola.ca</a>.
+                <a href="mailto:hr@woola.ca" className="font-medium text-brand-500 hover:underline">hr@woola.ca</a>.
               </p>
             </div>
           )}
@@ -151,13 +122,43 @@ export default async function CareersPage() {
           </div>
           <p className="mt-8 text-sm text-ink-500">
             Don&apos;t see your trade? Send a resume to{" "}
-            <a href="mailto:careers@woola.ca" className="font-medium text-brand-500 hover:underline">
-              careers@woola.ca
+            <a href="mailto:hr@woola.ca" className="font-medium text-brand-500 hover:underline">
+              hr@woola.ca
             </a>{" "}
             and tell us what you&apos;re great at. Good people get roles made for them here.
           </p>
         </div>
       </section>
+
+      <Section>
+        <SectionHead
+          eyebrow="Why Woola"
+          title="A trades career that compounds."
+        />
+        <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {perks.map((p) => (
+            <div key={p.title} className="card p-7">
+              <div className="w-10 h-10 rounded-full bg-brand-500 text-cream-50 flex items-center justify-center">
+                <p.icon className="w-5 h-5" strokeWidth={1.5} />
+              </div>
+              <h3 className="mt-4 text-lg font-semibold text-ink-800">{p.title}</h3>
+              <p className="mt-2 text-sm text-ink-500 leading-relaxed">{p.body}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-12 grid grid-cols-2 md:grid-cols-3 grid-flow-dense gap-4">
+          {photos.map((p) => (
+            <div
+              key={p.src}
+              className={`relative rounded-2xl overflow-hidden bg-ink-100 aspect-[4/3] ${p.wide ? "col-span-2 md:aspect-auto md:min-h-[260px]" : ""}`}
+            >
+              <Image src={p.src} alt={p.alt} fill sizes="(min-width: 768px) 33vw, 50vw" className="object-cover" />
+            </div>
+          ))}
+        </div>
+      </Section>
+
 
       <CTABanner
         title="Interested in working at Woola?"

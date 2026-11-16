@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { site } from "@/lib/site";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { divisions, getDivision, topLevelServices } from "@/lib/divisions";
@@ -250,10 +251,10 @@ export default function DivisionPage({ params }: { params: Params }) {
                   Book a property assessment <ArrowRight className="w-4 h-4" />
                 </Link>
                 <a
-                  href={`tel:${division.contactPhone}`}
+                  href={`tel:${site.phone}`}
                   className="btn text-base border border-cream-50/40 text-cream-50 hover:bg-cream-50 hover:text-ink-800"
                 >
-                  <Phone className="w-4 h-4" /> {division.contactPhone}
+                  <Phone className="w-4 h-4" /> {site.phone}
                 </a>
               </div>
               <div className="mt-4 text-sm text-cream-100/70">
@@ -445,13 +446,13 @@ export default function DivisionPage({ params }: { params: Params }) {
         <SectionHead
           eyebrow="Frequently asked"
           title="Common questions."
-          description="Not covered here? Email the division directly."
+          description="Not covered here? Email dispatch directly."
         />
         <a
-          href={`mailto:${division.contactEmail}`}
+          href="mailto:dispatch@woola.ca"
           className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-brand-500 hover:underline"
         >
-          <Mail className="w-4 h-4" /> {division.contactEmail}
+          <Mail className="w-4 h-4" /> dispatch@woola.ca
         </a>
         <div className="mt-10">
           <DivisionFAQ items={division.faqs} />

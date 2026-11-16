@@ -10,6 +10,8 @@ import {
   Hammer,
   CalendarCheck,
   Siren,
+  Zap,
+  BatteryCharging,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -157,6 +159,42 @@ export const residentialServices: ResidentialService[] = [
       "High-efficiency filtration and purification",
       "Whole-home humidifiers",
       "IAQ assessments",
+    ],
+  },
+  {
+    slug: "electrical",
+    image: "/field/07-28-2026-electrical-9.jpg",
+    imageAlt: "Woola electrician working at an electrical panel",
+    name: "Electrical",
+    navName: "Electrical",
+    pageTitle: "Residential Electrical Services",
+    short: "Panels, EV chargers, lighting",
+    description:
+      "Panel upgrades, home EV charger installs, lighting, and electrical repairs by Woola Electrical's licensed electricians, permitted and inspected.",
+    icon: Zap,
+    highlights: [
+      "Panel and service upgrades",
+      "Home EV charger installation",
+      "Lighting, outlets, and new circuits",
+      "Permits and inspections handled",
+    ],
+  },
+  {
+    slug: "generators",
+    image: "/field/07-28-2026-power-1.jpg",
+    imageAlt: "Standby generator installed and serviced by Woola Power",
+    name: "Standby Generators",
+    navName: "Generators",
+    pageTitle: "Home Standby Generators",
+    short: "Backup power for outages",
+    description:
+      "Standby generator sizing, installation, and annual service from Woola Power, so a storm outage doesn't take out your heat, fridge, or sump pump.",
+    icon: BatteryCharging,
+    highlights: [
+      "Generator sizing and installation",
+      "Automatic transfer switch",
+      "Annual service and load testing",
+      "Gas connection by our own gas fitters",
     ],
   },
   {

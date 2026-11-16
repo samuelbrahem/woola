@@ -122,24 +122,6 @@ export const news: NewsItem[] = [
     source: { label: "Sterling Fleet Outfitters case study", href: "https://sterlingfleetoutfitters.com/case-studies/woola-mechanical-case-study/" },
   },
   {
-    slug: "dylan-roper-partner-hvacr-manager",
-    title: "Dylan Roper named partner and HVACR manager at Woola Mechanical",
-    excerpt:
-      "Mechanical Business reports that Dylan Roper has joined Woola Mechanical as a partner and manager of the HVAC and refrigeration side of the company.",
-    date: "2024-02-02",
-    cover: "/field/07-28-2026-mech-4.jpg",
-    coverAlt: "High-pressure steam piping in a commercial mechanical room",
-    body: [
-      {
-        paragraphs: [
-          "Mechanical Business, the Canadian trade publication for the HVAC and plumbing industry, reported on February 2, 2024 that Dylan Roper has been named partner and HVACR manager at Woola Mechanical in Coquitlam.",
-          "Roper leads the heating, ventilation, air conditioning, and refrigeration work across the strata, commercial, and residential buildings Woola services in the Lower Mainland. The partnership adds HVACR leadership alongside the plumbing and gas side the company opened with in fall 2023.",
-        ],
-      },
-    ],
-    source: { label: "Mechanical Business, February 2, 2024", href: "https://mechanicalbusiness.com/2024/02/02/dylan-roper-now-a-partner-at-woola-mechanical/" },
-  },
-  {
     slug: "woola-mechanical-opens-coquitlam",
     title: "Woola Mechanical opens in Coquitlam",
     excerpt:

@@ -42,10 +42,10 @@ export function AudienceSplit() {
           <div className="absolute inset-0 bg-gradient-to-r from-ink-900/95 via-ink-900/70 to-ink-900/30" />
           <div className="absolute inset-y-0 left-0 flex flex-col justify-center px-10 lg:px-16 max-w-xl text-cream-50">
             <div className="eyebrow !text-[color:var(--brand-on-dark)]">
-              Commercial · PMs, strata & owners
+              Property Managers, Strata & Owners
             </div>
             <h3 className="mt-3 text-3xl lg:text-4xl font-semibold leading-tight">
-              One accountable partner for the whole building.
+              One accountable team for the whole building.
             </h3>
             <p className="mt-3 text-sm lg:text-base text-cream-100/85 leading-relaxed">
               Mechanical, power, electrical, and build under one PO, documented
@@ -96,8 +96,8 @@ export function AudienceSplit() {
             img: "/field/07-28-2026-mech-3.jpg",
             alt: "Insulated piping and ductwork overhead in a commercial mechanical room",
             overlay: "bg-gradient-to-t from-ink-900/95 via-ink-900/70 to-ink-900/40",
-            eyebrow: "Commercial · PMs, strata & owners",
-            title: "One accountable partner for the whole building.",
+            eyebrow: "Property Managers, Strata & Owners",
+            title: "One accountable team for the whole building.",
             cta: "Explore commercial",
             btn: "btn btn-brand",
           },

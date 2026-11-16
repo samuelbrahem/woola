@@ -23,7 +23,7 @@ export function GET() {
     "",
     `Head office: ${site.hq.line1}, ${site.hq.line2}. Phone ${site.phone}. Email ${site.email}. Hours ${site.hours}; ${site.emergency}.`,
     "",
-    "Four divisions share one dispatch desk: Woola Mechanical (HVAC, plumbing, gas, refrigeration), Woola Power (standby generators, CSA C282 testing, UPS), Woola Electrical (commercial electrical, EV charging, lighting) and Woola Build (repairs, building maintenance, envelope, renovations). Clients are mostly strata corporations, property managers and commercial building owners in Metro Vancouver, the Fraser Valley and the Sea-to-Sky corridor.",
+    "Multiple divisions share one dispatch desk: Woola Mechanical (HVAC, plumbing, gas, refrigeration), Woola Power (standby generators, CSA C282 testing, UPS), Woola Electrical (commercial electrical, EV charging, lighting) and Woola Build (repairs, building maintenance, envelope, renovations). Clients are mostly strata corporations, property managers and commercial building owners in Metro Vancouver, the Fraser Valley and the Sea-to-Sky corridor.",
     "",
     "## Divisions and services",
     "",

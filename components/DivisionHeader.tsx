@@ -1,5 +1,6 @@
 "use client";
 
+import { site } from "@/lib/site";
 import Link from "next/link";
 import { useState } from "react";
 import { Menu, X, Phone, ArrowUpRight } from "lucide-react";
@@ -46,7 +47,10 @@ export function DivisionHeader({ divisionSlug }: { divisionSlug: string }) {
             />
 
             <div className="hidden lg:flex items-center gap-3">
-              <a href={`tel:${division.contactPhone}`} className="btn btn-ghost">
+              <a href={MAIN_URL} className="text-sm font-medium text-ink-500 hover:text-ink-800 inline-flex items-center gap-1 mr-1">
+                Woola Group <ArrowUpRight className="w-3.5 h-3.5" />
+              </a>
+              <a href={`tel:${site.phone}`} className="btn btn-ghost">
                 <Phone className="w-4 h-4" /> Call Now
               </a>
               <Link href="/contact" className="btn btn-brand">
@@ -124,7 +128,7 @@ export function DivisionHeader({ divisionSlug }: { divisionSlug: string }) {
                 </a>
               </div>
               <div className="grid grid-cols-2 gap-3">
-                <a href={`tel:${division.contactPhone}`} className="btn btn-ghost justify-center border hairline">
+                <a href={`tel:${site.phone}`} className="btn btn-ghost justify-center border hairline">
                   <Phone className="w-4 h-4" /> Call Now
                 </a>
                 <Link href="/contact" onClick={() => setMobileOpen(false)} className="btn btn-brand justify-center">

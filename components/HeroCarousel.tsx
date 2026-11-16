@@ -23,7 +23,7 @@ const SLIDES: Slide[] = [
   {
     id: "main",
     title: "We keep your building running.",
-    script: "One partner.",
+    script: "One call.",
     sub: "Mechanical, power, electrical and building trades for commercial and strata properties, booked through one dispatch desk.",
     cta: { label: "Request Service", href: "/contact" },
     cta2: { label: "Call Now", href: "tel:604-800-3617" },

@@ -357,7 +357,7 @@ export const divisions: Division[] = [
         highlights: [
           "Program built from an equipment baseline",
           "Digital reports with prioritized deficiencies",
-          "One partner across HVAC, plumbing, gas, refrigeration",
+          "One team across HVAC, plumbing, gas, refrigeration",
           "Feeds capital planning and budgeting",
         ],
       },
@@ -694,16 +694,16 @@ export const divisions: Division[] = [
     ],
     tagline: "Commercial electrical service, upgrades and EV charging.",
     description:
-      "Full-service commercial and strata electrical: service upgrades, panel work, EV charger installations, LED lighting retrofits, and low-voltage data and security cabling.",
+      "Full-service commercial and strata electrical: service upgrades, panel work, EV charger installations, LED lighting retrofits, high-voltage service and distribution work, and low-voltage data and security cabling.",
     contactPhone: "604-829-9160",
     contactEmail: "service@woolaelectrical.ca",
     intro:
-      "Electrical service, panel and service upgrades, EV charging, lighting, and low voltage for buildings across Metro Vancouver.",
+      "Electrical service, panel and service upgrades, EV charging, lighting, and high- and low-voltage work for buildings across Metro Vancouver.",
     heroImage: "/field/07-23-2026-electrical-4.jpg",
     heroImageAlt: "Woola electrician working in a multi-unit meter bank room",
     video: "/videos/electrical.mp4",
     accent: "from-brand-400/15 via-brand-500/5 to-transparent",
-    heroKeywords: ["Electrical", "EV Charging", "LED Retrofit", "Low Voltage", "Power Smart", "FSR"],
+    heroKeywords: ["Electrical", "EV Charging", "LED Retrofit", "High Voltage", "Low Voltage", "Power Smart", "FSR"],
     stats: [
       { value: "FSR", label: "Field Safety Representatives on staff", sub: "Permit sign-off in house" },
       { value: "EV Ready", label: "CleanBC planner", sub: "Strata charging rollouts" },

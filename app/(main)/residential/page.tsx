@@ -21,7 +21,7 @@ import {
 export const metadata: Metadata = {
   title: "Residential Services",
   description:
-    "Residential heating, cooling, plumbing, hot water, drains, gas fitting, and indoor air quality services from Woola across Metro Vancouver.",
+    "Residential heating, cooling, plumbing, hot water, drains, gas fitting, electrical, standby generator, and indoor air quality services from Woola across Metro Vancouver.",
   alternates: { canonical: "https://woola.ca/residential" },
 };
 
@@ -75,13 +75,13 @@ export default function ResidentialPage() {
           <div className="max-w-3xl">
             <div className="eyebrow !text-brand-400">Woola Residential</div>
             <h1 className="mt-3 text-5xl md:text-6xl font-semibold text-cream-50 leading-[0.98]">
-              Residential Mechanical Services
+              Residential Services
             </h1>
             <p className="mt-5 text-2xl text-cream-50 font-medium">
               Commercial expertise. Residential service.
             </p>
             <p className="mt-4 text-lg text-cream-100/80 max-w-2xl">
-              Quality heating, cooling, plumbing, hot water, drain, and gas work for
+              Quality heating, cooling, plumbing, hot water, drain, gas, electrical, and standby generator work for
               homeowners who value clear advice, careful installation, and dependable
               performance over quick fixes.
             </p>

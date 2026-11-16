@@ -39,7 +39,7 @@ export function ServiceMap({ height = 360 }: { height?: number }) {
         </span>
         {!GOOGLE_KEY && (
           <span className="ml-auto text-ink-400">
-            Map data © OpenStreetMap · © CARTO
+            Map tiles © Esri
           </span>
         )}
       </div>

@@ -25,7 +25,7 @@ export default function WorkPage() {
             Projects we have delivered.
           </h1>
           <p className="mt-5 text-lg text-cream-100/80 max-w-2xl leading-relaxed">
-            {caseStudies.length} project stories from our four divisions, written for the councils, operators and
+            {caseStudies.length} project stories from across our divisions, written for the councils, operators and
             property managers who have to approve this kind of work. Locations are kept to the city to protect
             client confidentiality.
           </p>

@@ -17,11 +17,11 @@ import { industries } from "@/lib/industries";
  * Know Your Building, and in-page CTAs.
  */
 export const companyLinks: [string, string, string][] = [
-  ["About Woola", "/about", "The model behind the four divisions"],
+  ["About Woola", "/about", "The model behind the divisions"],
   ["Our Process", "/process", "Four steps, every job"],
   ["Credentials", "/about/credentials", "Associations and certifications we hold"],
   ["Why Woola", "/competitors", "How we compare"],
-  ["Case Studies", "/work", "Project stories from all four divisions"],
+  ["Case Studies", "/work", "Project stories from every division"],
   ["News", "/news", "Company news and milestones"],
   ["Know Your Building", "/know-your-building", "Asset inventory & capital planning"],
   ["Field Notes", "/blog", "Rebates, compliance, and stories from the field"],

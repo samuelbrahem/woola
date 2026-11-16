@@ -11,7 +11,7 @@ import { Award, Users, Activity } from "lucide-react";
 
 export const metadata: Metadata = {
   title: { absolute: "About Woola | Mechanical, Electrical, Power & Build" },
-  description: "Four divisions. One operations spine. Built for property managers, owners, and developers across BC.",
+  description: "Multiple divisions. One operations spine. Built for property managers, owners, and developers across BC.",
   alternates: { canonical: "https://woola.ca/about" },
 };
 
@@ -35,7 +35,7 @@ export default function AboutPage() {
                 needs sit under one roof.
               </p>
               <p className="mt-4 text-lg text-ink-500 leading-relaxed">
-                Today that is four divisions, Mechanical, Power, Electrical, and Build, sharing one
+                Today that means multiple divisions, Mechanical, Power, Electrical, and Build, sharing one
                 dispatch desk, one service history, and one PO per job.
               </p>
             </div>
