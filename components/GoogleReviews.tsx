@@ -1,5 +1,6 @@
 import { fetchListing, REVIEW_FILTER_NOTICE } from "@/lib/google-reviews";
 import { ReviewRotator, type RotatorReview } from "@/components/ReviewRotator";
+import { divisions } from "@/lib/divisions";
 
 /**
  * Live Google reviews, rotating: five-star, with written detail, newest first
@@ -22,14 +23,16 @@ export async function GoogleReviews({
   const listings = await Promise.all(slugs.map((s) => fetchListing(s)));
   const seen = new Set<string>();
   const reviews: RotatorReview[] = [];
-  for (const l of listings) {
-    if (!l) continue;
+  listings.forEach((l, i) => {
+    if (!l) return;
+    // Short division name ("Woola Power") rather than the full listing title.
+    const label = divisions.find((d) => d.slug === slugs[i])?.name ?? l.name;
     for (const r of l.reviews) {
       if (seen.has(r.id)) continue;
       seen.add(r.id);
-      reviews.push(slugs.length > 1 ? { ...r, listing: l.name } : r);
+      reviews.push(slugs.length > 1 ? { ...r, listing: label } : r);
     }
-  }
+  });
   reviews.sort((a, b) => (a.publishTime < b.publishTime ? 1 : -1));
   const shown = reviews.slice(0, limit);
   if (shown.length === 0) return null;

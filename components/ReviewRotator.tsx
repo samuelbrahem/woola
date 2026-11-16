@@ -42,6 +42,11 @@ function Avatar({ src, name }: { src?: string; name: string }) {
 
 export type RotatorReview = LiveReview & { listing?: string };
 
+/** Reviewers sometimes wrap their own text in quotes; we add the typographic pair ourselves. */
+function clean(text: string) {
+  return text.trim().replace(/^["\u201C\u201D']+\s*/, "").replace(/\s*["\u201C\u201D']+$/, "");
+}
+
 function Card({ r }: { r: RotatorReview }) {
   return (
     <li className="card p-6 flex flex-col h-full">
@@ -49,7 +54,7 @@ function Card({ r }: { r: RotatorReview }) {
         <Stars rating={r.rating} />
         <GoogleG className="w-5 h-5" />
       </div>
-      <p className="mt-4 text-ink-700 leading-relaxed flex-1 text-[15px]">&ldquo;{r.text}&rdquo;</p>
+      <p className="mt-4 text-ink-700 leading-relaxed flex-1 text-[15px]">&ldquo;{clean(r.text)}&rdquo;</p>
       <div className="mt-6 pt-5 border-t hairline flex items-center gap-3">
         <Avatar src={r.photo} name={r.author} />
         <div className="min-w-0 flex-1">
