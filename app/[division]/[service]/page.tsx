@@ -79,8 +79,12 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   const found = getService(params.division, params.service);
   if (!found) return {};
   const canonical = divisionUrl(found.division.slug, `/${found.service.slug}`);
-  const title = `${found.service.name} | ${found.division.name}`;
-  const description = metaDescription(found.service.description);
+  // Geography in the title: the body already names the cities, the title is what
+  // Google weighs for "<service> metro vancouver" and "<service> coquitlam".
+  const title = `${found.service.name} in Metro Vancouver | ${found.division.name}`;
+  const description = metaDescription(
+    `${found.service.description} Serving strata and commercial buildings in Coquitlam, Vancouver, Burnaby, Surrey and across Metro Vancouver.`
+  );
   return {
     title: { absolute: title },
     description,

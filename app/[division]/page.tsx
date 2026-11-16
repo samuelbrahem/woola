@@ -171,7 +171,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   const d = getDivision(params.division);
   if (!d) return {};
   const canonical = divisionUrl(d.slug);
-  const title = `${d.name} | ${d.subtitle}`;
+  const title = `${d.name} | ${d.subtitle} in Metro Vancouver`;
   const description = metaDescription(d.description);
   return {
     title: { absolute: title },
