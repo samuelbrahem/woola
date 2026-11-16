@@ -15,7 +15,7 @@ const divisionIcons: Record<string, LucideIcon> = {
 const quickLinks = [
   { label: "About", href: "/about" },
   { label: "Property Managers", href: "/property-managers" },
-  { label: "Projects", href: "/work" },
+  { label: "Case Studies", href: "/work" },
   { label: "Equipment Library", href: "/equipment" },
   { label: "Second Opinion", href: "/second-opinion" },
   { label: "News", href: "/news" },

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { ScrollReveal } from "@/components/ScrollReveal";
+import { Analytics } from "@/components/Analytics";
 import { site } from "@/lib/site";
 import { googleListingUrl } from "@/lib/reviews";
 
@@ -130,6 +131,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         {children}
         <ScrollReveal />
+        <Analytics />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}

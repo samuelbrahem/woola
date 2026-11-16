@@ -142,6 +142,8 @@ import { GoogleReviews } from "@/components/GoogleReviews";
 import { googleListingFor } from "@/lib/reviews";
 import { ServiceMap } from "@/components/ServiceMap";
 import { CityChips } from "@/components/CityChips";
+import { CaseStudyCard } from "@/components/CaseStudyCard";
+import { caseStudiesFor } from "@/lib/case-studies";
 import { ScrollyServices } from "@/components/ScrollyServices";
 import {
   ArrowRight,
@@ -338,49 +340,18 @@ export default function DivisionPage({ params }: { params: Params }) {
             <SectionHead
               eyebrow="Recent work"
               title="Recent projects."
-              description={`${division.name.split(" ").slice(1).join(" ")} work completed in the past 18 months.`}
+              description={`Project case studies delivered by ${division.name}, often with another Woola trade on the same schedule.`}
             />
             <Link
-              href="/contact"
+              href={`/work#${division.slug}`}
               className="text-sm font-medium text-ink-800 hover:text-brand-500"
             >
-              Request a full portfolio →
+              All {division.name} case studies →
             </Link>
           </div>
           <div className="mt-12 grid md:grid-cols-3 gap-6">
-            {division.featured.map((p) => (
-              <article
-                key={p.title}
-                className="card flex flex-col h-full bg-white overflow-hidden group"
-              >
-                <div className="aspect-[16/10] relative overflow-hidden bg-ink-100">
-                  <Image
-                    src={p.image}
-                    alt={p.alt}
-                    fill
-                    sizes="(min-width: 1024px) 30vw, (min-width: 768px) 45vw, 100vw"
-                    className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                  />
-                  <div
-                    aria-hidden
-                    className="absolute inset-0 bg-gradient-to-t from-ink-800/40 via-transparent to-transparent"
-                  />
-                  <div className="absolute top-4 right-4">
-                    <span className="text-[10px] font-semibold tracking-widest uppercase bg-ink-800/80 text-cream-50 px-2 py-1 rounded backdrop-blur">
-                      Case study
-                    </span>
-                  </div>
-                </div>
-                <div className="p-7 flex flex-col flex-1">
-                  <div className="eyebrow">{p.tag}</div>
-                  <h3 className="text-xl font-bold text-ink-800 mt-3 tracking-tight">
-                    {p.title}
-                  </h3>
-                  <p className="mt-3 text-sm text-ink-500 leading-relaxed flex-1">
-                    {p.summary}
-                  </p>
-                </div>
-              </article>
+            {caseStudiesFor(division.slug).slice(0, 3).map((c) => (
+              <CaseStudyCard key={c.slug} c={c} />
             ))}
           </div>
         </div>

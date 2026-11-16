@@ -4,6 +4,7 @@ import { cities } from "@/lib/cities";
 import { industries } from "@/lib/industries";
 import { posts } from "@/lib/posts";
 import { newsSorted } from "@/lib/news";
+import { caseStudies, divisionLabel } from "@/lib/case-studies";
 import { site } from "@/lib/site";
 
 const BASE = "https://woola.ca";
@@ -48,6 +49,8 @@ export function GET() {
 
   lines.push("", "## Field Notes (articles)", "");
   for (const p of posts) lines.push(`- [${p.title}](${BASE}/blog/${p.slug}): ${p.excerpt}`);
+  lines.push("", "## Case studies (project stories)", "");
+  for (const c of caseStudies) lines.push(`- [${c.title}](${BASE}/work/${c.slug}) (${divisionLabel[c.division]}, ${c.location}): ${c.highlights.join("; ")}`);
   lines.push("", "## Company news", "");
   for (const n of newsSorted) lines.push(`- [${n.title}](${BASE}/news/${n.slug}) (${n.date.slice(0, 7)}): ${n.excerpt}`);
 

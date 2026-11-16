@@ -7,6 +7,8 @@ import { CTABanner } from "@/components/CTABanner";
 import { SecondOpinionCTA } from "@/components/SecondOpinionCTA";
 import { ArrowRight, Check, Phone } from "lucide-react";
 import type { Metadata } from "next";
+import { CaseStudyCard } from "@/components/CaseStudyCard";
+import { caseStudiesFor } from "@/lib/case-studies";
 import { cities } from "@/lib/cities";
 import { equipmentLibrary } from "@/lib/equipment-library";
 import { EquipmentSlider } from "@/components/EquipmentSlider";
@@ -448,28 +450,12 @@ export default function ServicePage({ params }: { params: Params }) {
               href="/work"
               className="text-sm font-medium text-ink-800 hover:text-brand-500 inline-flex items-center gap-1.5"
             >
-              All projects <ArrowRight className="w-4 h-4" />
+              All case studies <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
           <div className="mt-10 grid md:grid-cols-3 gap-6">
-            {division.featured.slice(0, 3).map((p) => (
-              <article key={p.title} className="card bg-white overflow-hidden group">
-                <div className="relative aspect-[16/10] bg-ink-100 overflow-hidden">
-                  <Image
-                    src={p.image}
-                    alt={p.alt}
-                    fill
-                    sizes="(min-width: 768px) 30vw, 100vw"
-                    className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                  />
-                  <span className="absolute top-3 right-3 text-[10px] font-semibold tracking-widest uppercase bg-ink-800/80 text-cream-50 px-2 py-1 rounded backdrop-blur">
-                    {p.tag}
-                  </span>
-                </div>
-                <div className="p-5">
-                  <h3 className="font-semibold text-ink-800">{p.title}</h3>
-                </div>
-              </article>
+            {caseStudiesFor(division.slug).slice(0, 3).map((c) => (
+              <CaseStudyCard key={c.slug} c={c} compact />
             ))}
           </div>
           <div className="mt-12 pt-10 border-t hairline">

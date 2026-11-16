@@ -10,6 +10,7 @@ import { GoogleReviews } from "@/components/GoogleReviews";
 import { googleListingUrl } from "@/lib/reviews";
 import { CTABanner } from "@/components/CTABanner";
 import { NewsStrip } from "@/components/NewsStrip";
+import { WorkStrip } from "@/components/WorkStrip";
 import { BuildingXray } from "@/components/BuildingXray";
 import { cities } from "@/lib/cities";
 import { site } from "@/lib/site";
@@ -277,6 +278,8 @@ export default function HomePage() {
         </div>
         </div>
       </section>
+
+      <WorkStrip />
 
       <NewsStrip />
 

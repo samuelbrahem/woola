@@ -63,7 +63,6 @@ export type Service = {
 export type DivisionStat = { value: string; label: string; sub?: string };
 export type DivisionFAQ = { q: string; a: string };
 export type Testimonial = { quote: string; author: string; role: string; org: string };
-export type FeaturedProject = { title: string; tag: string; summary: string; image: string; alt: string };
 
 export type Division = {
   slug: "mechanical" | "power" | "electrical" | "build";
@@ -86,7 +85,6 @@ export type Division = {
   brands: { name: string; domain?: string; src?: string }[];
   certLogos: string[];
   testimonial: Testimonial;
-  featured: FeaturedProject[];
   faqs: DivisionFAQ[];
   services: Service[];
 };
@@ -268,32 +266,6 @@ export const divisions: Division[] = [
       role: "Senior Property Manager",
       org: "Pacific Coast Strata Group",
     },
-    featured: [
-      {
-        title: "32-storey Coal Harbour boiler swap",
-        tag: "Hydronics retrofit",
-        summary:
-          "Replaced two atmospheric boilers with high-efficiency condensing units over a single weekend with zero hot-water downtime. CleanBC rebate captured in-house.",
-        image: "/field/01-08-2025-surrey-mech-10.jpg",
-        alt: "Woola technician working at a commercial boiler's copper piping",
-      },
-      {
-        title: "Surrey strata heat-pump conversion",
-        tag: "Decarbonization",
-        summary:
-          "184 ductless heat-pump heads across 92 suites, coordinated with the strata, two electrical sub-trades, and FortisBC. Completed three weeks ahead of schedule.",
-        image: "/field/02-26-2025-dan-and-jaydon-14.jpg",
-        alt: "Woola technician brazing at a heat pump condenser",
-      },
-      {
-        title: "Richmond cold-storage refrigeration",
-        tag: "Industrial refrigeration",
-        summary:
-          "Glycol-loop conversion off R-22 to a natural refrigerant solution. EPA-compliant recovery, leak detection, and 24/7 SLA monitoring after commissioning.",
-        image: "/field/02-24-2025-dan-new-west-9.jpg",
-        alt: "Overhead grooved glycol piping in an industrial facility",
-      },
-    ],
     faqs: [
       {
         q: "Do you service residential or only commercial mechanical systems?",
@@ -598,32 +570,6 @@ export const divisions: Division[] = [
       role: "Director of Facilities",
       org: "Cascade Healthcare Properties",
     },
-    featured: [
-      {
-        title: "Downtown Vancouver tower standby",
-        tag: "Generator program",
-        summary:
-          "Three 750 kW Generac units, CSA C282 annual load-bank testing, ATS overhauls, and a fuel-polishing rotation that's caught two contaminated batches in 18 months.",
-        image: "/field/07-28-2026-power-3.jpg",
-        alt: "Woola Power technicians reviewing a generator inspection checklist at the control panel",
-      },
-      {
-        title: "Fraser Valley hospital drill",
-        tag: "Load bank testing",
-        summary:
-          "Full 850 kW resistive load bank test on a Kohler standby with parallel gear. Complete written report to satisfy CSA Z32 and health authority audit within 5 business days.",
-        image: "/field/07-28-2026-power-2.jpg",
-        alt: "Woola Power technician servicing a Kohler standby generator engine",
-      },
-      {
-        title: "Data centre transfer switch",
-        tag: "ATS overhaul",
-        summary:
-          "In-place refurbishment of a 2500A ASCO ATS during a scheduled 4-hour window. New contacts, control board, and a fully documented commissioning packet handed back.",
-        image: "/field/07-28-2026-power-4.jpg",
-        alt: "Technician opening a transfer switch enclosure beside the generator",
-      },
-    ],
     faqs: [
       {
         q: "Which generator brands do you service?",
@@ -939,33 +885,6 @@ export const divisions: Division[] = [
       role: "Strata Council President",
       org: "Elmbridge Park Strata",
     },
-    featured: [
-      {
-        title: "Surrey strata EV-Ready rollout",
-        tag: "EV charging",
-        summary:
-          "EV-Ready master plan for a 240-stall strata: load management design, FLO and Wallbox installs, BC Hydro rebate paperwork, and a billing platform handover to the council.",
-        image:
-          "https://images.unsplash.com/photo-1593941707874-ef25b8b4a92b?w=1200&q=80&auto=format&fit=crop",
-        alt: "Electric vehicle charging at a Level 2 station",
-      },
-      {
-        title: "Fraser Valley logistics campus",
-        tag: "Commercial electrical",
-        summary:
-          "1,200-amp service upgrade, arc-flash and coordination study, infrared thermography baseline, and a roll-forward maintenance plan executed during planned downtime windows.",
-        image: "/field/07-23-2026-electrical-3.jpg",
-        alt: "Woola electrician running a thermal imaging camera during an infrared scan",
-      },
-      {
-        title: "Downtown office LED retrofit",
-        tag: "Lighting",
-        summary:
-          "12,000 sq ft LED troffer swap across four floors with Lutron dimming controls. BC Hydro Power Smart rebate captured, 63% reduction in lighting energy, 18-month payback.",
-        image: "/field/08-05-2026-build-4.jpg",
-        alt: "Office ceiling opened up during an LED troffer retrofit",
-      },
-    ],
     faqs: [
       {
         q: "Are your electricians FSR-certified?",
@@ -1271,32 +1190,6 @@ export const divisions: Division[] = [
       role: "Portfolio Manager",
       org: "Westcoast Real Estate Council",
     },
-    featured: [
-      {
-        title: "West End strata parkade rehab",
-        tag: "Building envelope",
-        summary:
-          "Full waterproofing membrane replacement on a two-level parkade (22,000 sq ft), completed in occupied condition over six weekend phases. Zero vehicle relocation required.",
-        image: "/field/08-12-2026-build-5.jpg",
-        alt: "Woola crew member rigging a crane pick on a strata roof",
-      },
-      {
-        title: "Yaletown amenity rebuild",
-        tag: "Construction",
-        summary:
-          "Lobby, gym and party room reno for a 180-unit tower. Gold Seal PM, in-house mechanical and electrical coordination, fixed-price proposal honored within 1.8% variance.",
-        image: "/field/08-10-2026-build-1.jpg",
-        alt: "Occupied corridor opened up mid-renovation with ceiling access",
-      },
-      {
-        title: "Coquitlam HQ campus maintenance",
-        tag: "Recurring program",
-        summary:
-          "Quarterly maintenance contract across six buildings: roof, drainage, parkade, life-safety, exterior cleaning, and small carpentry. Single PO, single invoice, single dispatcher.",
-        image: "/field/08-12-2026-build-8.jpg",
-        alt: "Woola Build crew staging material at a strata building",
-      },
-    ],
     faqs: [
       {
         q: "What size project does Woola Build handle?",

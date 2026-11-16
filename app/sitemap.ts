@@ -4,6 +4,7 @@ import { cities } from "@/lib/cities";
 import { residentialServices } from "@/lib/residential";
 import { posts } from "@/lib/posts";
 import { news } from "@/lib/news";
+import { caseStudies } from "@/lib/case-studies";
 import { industries } from "@/lib/industries";
 import { equipmentLibrary } from "@/lib/equipment-library";
 
@@ -44,6 +45,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const cityPaths = cities.map((c) => `/service-areas/${c.slug}`);
   const postPaths = posts.map((p) => `/blog/${p.slug}`);
   const newsPaths = news.map((n) => `/news/${n.slug}`);
+  const workPaths = caseStudies.map((c) => `/work/${c.slug}`);
   const equipmentPaths = equipmentLibrary.map((e) => `/equipment/${e.slug}`);
   const industryPaths = industries.map((i) => `/industries/${i.slug}`);
 
@@ -55,6 +57,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...cityPaths,
     ...postPaths,
     ...newsPaths,
+    ...workPaths,
     ...equipmentPaths,
     ...industryPaths,
   ];

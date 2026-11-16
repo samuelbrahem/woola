@@ -21,7 +21,7 @@ export const companyLinks: [string, string, string][] = [
   ["Our Process", "/process", "Four steps, every job"],
   ["Credentials", "/about/credentials", "Associations and certifications we hold"],
   ["Why Woola", "/competitors", "How we compare"],
-  ["Featured Work", "/work", "Recent projects across BC"],
+  ["Case Studies", "/work", "Project stories from all four divisions"],
   ["News", "/news", "Company news and milestones"],
   ["Know Your Building", "/know-your-building", "Asset inventory & capital planning"],
   ["Field Notes", "/blog", "Rebates, compliance, and stories from the field"],
@@ -255,7 +255,13 @@ export function DivisionServicesPanel({
   );
 }
 
-/** The four dropdown tabs plus Careers, shared by the main and division headers. */
+/** The four dropdown tabs plus Careers, shared by the main and division headers.
+ *
+ * Hover intent: a tab opens after a short rest (60ms cold, 200ms when another
+ * menu is already open) so cutting diagonally across the tab row towards a wide
+ * panel does not flip menus. One shared close timer (500ms) covers the whole
+ * row, so moving between tabs, through the gap, or down into a panel never
+ * closes anything; only leaving the row and its panels does. */
 export function DesktopNav({
   open,
   setOpen,
@@ -265,20 +271,56 @@ export function DesktopNav({
   setOpen: (v: string | null) => void;
   servicesPanel: React.ReactNode;
 }) {
-  const close = () => setOpen(null);
-  const toggle = (key: string) => () => setOpen(open === key ? null : key);
-  const show = (key: string) => () => setOpen(key);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const openTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const clear = (t: typeof closeTimer) => {
+    if (t.current) clearTimeout(t.current);
+    t.current = null;
+  };
+  const cancelClose = () => clear(closeTimer);
+  const scheduleClose = () => {
+    clear(closeTimer);
+    closeTimer.current = setTimeout(() => setOpen(null), 500);
+  };
+  const hoverTab = (key: string) => () => {
+    cancelClose();
+    clear(openTimer);
+    if (open === key) return;
+    openTimer.current = setTimeout(() => setOpen(key), open ? 200 : 60);
+  };
+  const leaveTab = () => clear(openTimer);
+  const toggle = (key: string) => () => {
+    clear(openTimer);
+    cancelClose();
+    setOpen(open === key ? null : key);
+  };
+  const close = () => {
+    clear(openTimer);
+    cancelClose();
+    setOpen(null);
+  };
+  useEffect(() => () => { clear(openTimer); clear(closeTimer); }, []);
+
+  const item = (key: string, label: string, panel: React.ReactNode) => (
+    <MegaItem
+      label={label}
+      open={open === key}
+      onHoverTab={hoverTab(key)}
+      onLeaveTab={leaveTab}
+      onEnterArea={cancelClose}
+      onLeaveArea={scheduleClose}
+      onToggle={toggle(key)}
+      onClose={close}
+    >
+      {panel}
+    </MegaItem>
+  );
+
   return (
-    <nav className="hidden lg:flex items-center gap-1">
-      <MegaItem label="Services" open={open === "services"} onOpen={show("services")} onToggle={toggle("services")} onClose={close}>
-        {servicesPanel}
-      </MegaItem>
-      <MegaItem label="Who We Serve" open={open === "serve"} onOpen={show("serve")} onToggle={toggle("serve")} onClose={close}>
-        <WhoWeServePanel onNavigate={close} />
-      </MegaItem>
-      <MegaItem label="About Us" open={open === "company"} onOpen={show("company")} onToggle={toggle("company")} onClose={close}>
-        <CompanyPanel onNavigate={close} />
-      </MegaItem>
+    <nav className="hidden lg:flex items-center gap-1" onMouseEnter={cancelClose} onMouseLeave={scheduleClose}>
+      {item("services", "Services", servicesPanel)}
+      {item("serve", "Who We Serve", <WhoWeServePanel onNavigate={close} />)}
+      {item("company", "About Us", <CompanyPanel onNavigate={close} />)}
       <Link href="/careers" className="px-4 py-2 text-sm font-medium text-ink-800 rounded-full hover:bg-ink-50">
         Careers
       </Link>
@@ -372,7 +414,7 @@ export function Header() {
               <Link href="/know-your-building" onClick={() => setMobileOpen(false)} className="block font-medium">Know Your Building</Link>
               <Link href="/equipment" onClick={() => setMobileOpen(false)} className="block font-medium">Equipment Library</Link>
               <Link href="/blog" onClick={() => setMobileOpen(false)} className="block font-medium">Field Notes</Link>
-              <Link href="/work" onClick={() => setMobileOpen(false)} className="block font-medium">Featured Work</Link>
+              <Link href="/work" onClick={() => setMobileOpen(false)} className="block font-medium">Case Studies</Link>
               <Link href="/process" onClick={() => setMobileOpen(false)} className="block font-medium">Our Process</Link>
               <Link href="/careers" onClick={() => setMobileOpen(false)} className="block font-medium">Careers</Link>
               <Link href="/book" onClick={() => setMobileOpen(false)} className="block font-medium">Book a meeting</Link>
@@ -409,28 +451,24 @@ export function Header() {
 export function MegaItem({
   label,
   open,
-  onOpen,
+  onHoverTab,
+  onLeaveTab,
+  onEnterArea,
+  onLeaveArea,
   onToggle,
   onClose,
   children,
 }: {
   label: string;
   open: boolean;
-  onOpen: () => void;
+  onHoverTab: () => void;
+  onLeaveTab: () => void;
+  onEnterArea: () => void;
+  onLeaveArea: () => void;
   onToggle: () => void;
   onClose: () => void;
   children: React.ReactNode;
 }) {
-  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const cancelClose = () => {
-    if (closeTimer.current) clearTimeout(closeTimer.current);
-    closeTimer.current = null;
-  };
-  const scheduleClose = () => {
-    cancelClose();
-    closeTimer.current = setTimeout(onClose, 350);
-  };
-
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
@@ -438,17 +476,16 @@ export function MegaItem({
     return () => window.removeEventListener("keydown", onKey);
   }, [open, onClose]);
 
-  useEffect(() => cancelClose, []);
-
   return (
-    <div onMouseEnter={cancelClose} onMouseLeave={scheduleClose}>
+    <div onMouseEnter={onEnterArea} onMouseLeave={onLeaveArea}>
       <button
         onClick={onToggle}
-        onMouseEnter={onOpen}
+        onMouseEnter={onHoverTab}
+        onMouseLeave={onLeaveTab}
         aria-expanded={open}
         aria-haspopup="true"
         className={`relative flex items-center gap-1 px-4 py-2 text-sm font-medium text-ink-800 rounded-full whitespace-nowrap transition ${
-          open ? "bg-ink-50 after:absolute after:inset-x-0 after:top-full after:h-8 after:content-['']" : "hover:bg-ink-50"
+          open ? "bg-ink-50 after:absolute after:inset-x-0 after:top-full after:h-10 after:content-['']" : "hover:bg-ink-50"
         }`}
       >
         {label}

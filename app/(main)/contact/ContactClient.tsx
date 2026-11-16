@@ -8,6 +8,29 @@ import Link from "next/link";
 
 export default function ContactClient() {
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  async function submit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const form = e.currentTarget;
+    setSending(true);
+    setError(null);
+    try {
+      const res = await fetch("/api/contact", { method: "POST", body: new FormData(form) });
+      if (res.ok) {
+        setSubmitted(true);
+        form.reset();
+      } else {
+        const data = (await res.json().catch(() => ({}))) as { message?: string };
+        setError(data.message || `Could not send right now. Please call ${site.phone}.`);
+      }
+    } catch {
+      setError(`Could not send right now. Please call ${site.phone}.`);
+    } finally {
+      setSending(false);
+    }
+  }
 
   return (
     <>
@@ -113,10 +136,7 @@ export default function ContactClient() {
             </div>
           ) : (
             <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                setSubmitted(true);
-              }}
+              onSubmit={submit}
               className="space-y-5 max-w-xl"
             >
               <div>
@@ -141,9 +161,15 @@ export default function ContactClient() {
                   placeholder="A sentence or two is plenty."
                 />
               </div>
-              <button type="submit" className="btn btn-primary w-full justify-center">
-                Request a callback
+              <input type="text" name="company" tabIndex={-1} autoComplete="off" aria-hidden className="hidden" />
+              <button type="submit" disabled={sending} className="btn btn-primary w-full justify-center disabled:opacity-60">
+                {sending ? "Sending…" : "Request a callback"}
               </button>
+              {error && (
+                <p role="alert" className="text-sm text-red-700 bg-red-50 border border-red-200 rounded-md px-4 py-3">
+                  {error}
+                </p>
+              )}
               <p className="text-xs text-ink-400 text-center">
                 We never share contact details. Replies come from a human coordinator, not a chatbot.
               </p>

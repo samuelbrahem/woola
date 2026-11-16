@@ -5,7 +5,7 @@ const links = [
   { label: "Credentials", href: "/about/credentials" },
   { label: "Fleet & Branding", href: "/about/fleet" },
   { label: "Our Process", href: "/process" },
-  { label: "Featured Work", href: "/work" },
+  { label: "Case Studies", href: "/work" },
   { label: "News", href: "/news" },
   { label: "Careers", href: "/careers" },
 ];
