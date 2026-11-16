@@ -1,5 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { CORPORATE_ROUTES, DIVISION_HOSTS, SELF_NAMED_SERVICE, aliasTarget, divisionForHost, isDivisionSlug, isProductionHost } from "@/lib/domains";
+import { CORPORATE_ROUTES, DIVISION_HOSTS, LEGACY_PATHS, LEGACY_PREFIXES, SELF_NAMED_SERVICE, aliasTarget, divisionForHost, isDivisionSlug, isProductionHost } from "@/lib/domains";
 
 /**
  * Hostname routing for the division domains (see lib/domains.ts for the map).
@@ -39,6 +39,13 @@ export function middleware(req: NextRequest) {
 
   // www.woolamech.ca -> woolamech.ca (netlify.toml does this first in production)
   if (host !== bareHost) return redirect(`https://${bareHost}${pathname}${search}`);
+
+  // Old WordPress URLs (netlify.toml redirects do not run under the Next runtime).
+  const clean = pathname.length > 1 ? pathname.replace(/\/+$/, "") : pathname;
+  const legacy = LEGACY_PATHS[division][clean];
+  if (legacy) return redirect(`https://${bareHost}${legacy}${search}`);
+  if (LEGACY_PREFIXES.some((p) => clean.startsWith(p) || clean === p.replace(/\/$/, ""))) return redirect(`https://${bareHost}/`);
+  if (clean !== pathname) return redirect(`https://${bareHost}${clean}${search}`); // trailing slash
 
   if (pathname === "/sitemap.xml") return rewrite(`/division-sitemap/${division}`);
   if (pathname === "/robots.txt") return rewrite(`/division-robots/${division}`);

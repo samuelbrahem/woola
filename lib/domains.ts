@@ -60,6 +60,31 @@ export const CORPORATE_ROUTES = new Set([
  *  woolaelectrical.ca/electrical is a page, not the home. */
 export const SELF_NAMED_SERVICE = new Set<DivisionSlug>(["electrical"]);
 
+/** Old WordPress URLs on the division domains -> the page that replaced them
+ *  (same domain). Paths are matched without a trailing slash. */
+export const LEGACY_PATHS: Record<DivisionSlug, Record<string, string>> = {
+  mechanical: {
+    "/about-woola": "/about",
+    "/contact-us": "/contact",
+    "/services": "/",
+    "/services/gas": "/gas",
+    "/services/hvac-and-refrigeration": "/hvac",
+    "/services/plumbing": "/plumbing",
+    "/installations": "/retrofits",
+  },
+  power: {
+    "/about-woola": "/about",
+    "/contact-us": "/contact",
+    "/services": "/",
+    "/installations": "/generators",
+  },
+  electrical: { "/about-woola": "/about", "/contact-us": "/contact" },
+  build: { "/about-woola": "/about", "/contact-us": "/contact" },
+};
+
+/** WordPress leftovers with no equivalent: send to the division home. */
+export const LEGACY_PREFIXES = ["/author/", "/tag/", "/category/", "/feed", "/wp-", "/alpha_template/", "/page/"];
+
 export function isDivisionSlug(s: string): s is DivisionSlug {
   return (DIVISION_SLUGS as string[]).includes(s);
 }
