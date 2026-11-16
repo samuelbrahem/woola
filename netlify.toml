@@ -1,0 +1,278 @@
+# Netlify build + hosting for the Woola Next.js site (site "woolaservices", auto-deploys from GitHub main).
+# Next.js is served by the Netlify Next Runtime (route handlers, ISR for Google reviews).
+
+[build]
+  command = "npm run build"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+# The division domains fold into woola.ca. Specific old pages first, then everything
+# else to the division page. next.config.js carries the same map as a fallback.
+
+[[redirects]]
+  from = "https://woolamech.ca/about-woola"
+  to = "https://woola.ca/about"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://woolamech.ca/careers"
+  to = "https://woola.ca/careers"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://woolamech.ca/contact-us"
+  to = "https://woola.ca/contact"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://woolamech.ca/services"
+  to = "https://woola.ca/mechanical"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://woolamech.ca/services/gas"
+  to = "https://woola.ca/mechanical/gas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://woolamech.ca/services/hvac-and-refrigeration"
+  to = "https://woola.ca/mechanical/hvac"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://woolamech.ca/services/plumbing"
+  to = "https://woola.ca/mechanical/plumbing"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://woolamech.ca/preventative-maintenance"
+  to = "https://woola.ca/mechanical/preventative-maintenance"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://woolamech.ca/installations"
+  to = "https://woola.ca/mechanical/retrofits"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://woolamech.ca/*"
+  to = "https://woola.ca/mechanical"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.woolamech.ca/about-woola"
+  to = "https://woola.ca/about"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.woolamech.ca/careers"
+  to = "https://woola.ca/careers"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.woolamech.ca/contact-us"
+  to = "https://woola.ca/contact"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.woolamech.ca/services"
+  to = "https://woola.ca/mechanical"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.woolamech.ca/services/gas"
+  to = "https://woola.ca/mechanical/gas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.woolamech.ca/services/hvac-and-refrigeration"
+  to = "https://woola.ca/mechanical/hvac"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.woolamech.ca/services/plumbing"
+  to = "https://woola.ca/mechanical/plumbing"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.woolamech.ca/preventative-maintenance"
+  to = "https://woola.ca/mechanical/preventative-maintenance"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.woolamech.ca/installations"
+  to = "https://woola.ca/mechanical/retrofits"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.woolamech.ca/*"
+  to = "https://woola.ca/mechanical"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://woolapower.ca/about-woola"
+  to = "https://woola.ca/about"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://woolapower.ca/careers"
+  to = "https://woola.ca/careers"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://woolapower.ca/contact-us"
+  to = "https://woola.ca/contact"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://woolapower.ca/services"
+  to = "https://woola.ca/power"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://woolapower.ca/preventative-maintenance"
+  to = "https://woola.ca/power/maintenance-inspections"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://woolapower.ca/installations"
+  to = "https://woola.ca/power/generators"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://woolapower.ca/*"
+  to = "https://woola.ca/power"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.woolapower.ca/about-woola"
+  to = "https://woola.ca/about"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.woolapower.ca/careers"
+  to = "https://woola.ca/careers"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.woolapower.ca/contact-us"
+  to = "https://woola.ca/contact"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.woolapower.ca/services"
+  to = "https://woola.ca/power"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.woolapower.ca/preventative-maintenance"
+  to = "https://woola.ca/power/maintenance-inspections"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.woolapower.ca/installations"
+  to = "https://woola.ca/power/generators"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.woolapower.ca/*"
+  to = "https://woola.ca/power"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://woolabuild.ca/about-woola"
+  to = "https://woola.ca/about"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://woolabuild.ca/careers"
+  to = "https://woola.ca/careers"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://woolabuild.ca/contact-us"
+  to = "https://woola.ca/contact"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://woolabuild.ca/*"
+  to = "https://woola.ca/build"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.woolabuild.ca/about-woola"
+  to = "https://woola.ca/about"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.woolabuild.ca/careers"
+  to = "https://woola.ca/careers"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.woolabuild.ca/contact-us"
+  to = "https://woola.ca/contact"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.woolabuild.ca/*"
+  to = "https://woola.ca/build"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://woolaelectrical.ca/*"
+  to = "https://woola.ca/electrical"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.woolaelectrical.ca/*"
+  to = "https://woola.ca/electrical"
+  status = 301
+  force = true

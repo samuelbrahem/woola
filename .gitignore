@@ -15,3 +15,6 @@ __pycache__/
 scripts/team-photos/cutout
 scripts/team-photos/placeholder
 .env*
+
+# Local Netlify folder
+.netlify

@@ -35,6 +35,7 @@ const nextConfig = {
         "/installations": "/power/generators",
       }),
       ...legacy("woolabuild.ca", "build", shared),
+      ...legacy("woolaelectrical.ca", "electrical", {}),
       // Old woola.ca WordPress slugs
       { source: "/about-woola", destination: "/about", permanent: true },
       { source: "/contact-us", destination: "/contact", permanent: true },
