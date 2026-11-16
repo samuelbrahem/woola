@@ -8,6 +8,7 @@ import type { Division, Service, DivisionFAQ } from "./divisions";
 import type { City } from "./cities";
 import type { Post } from "./posts";
 import type { Opening } from "./bamboo";
+import { divisionUrl } from "./domains";
 
 const BASE = "https://woola.ca";
 
@@ -30,9 +31,9 @@ export function serviceSchema(division: Division, service: Service) {
     "@type": "Service",
     name: service.name,
     description: service.description,
-    url: `${BASE}/${division.slug}/${service.slug}`,
+    url: divisionUrl(division.slug, `/${service.slug}`),
     serviceType: service.name,
-    provider: { "@type": "LocalBusiness", name: division.name, url: `${BASE}/${division.slug}`, telephone: division.contactPhone },
+    provider: { "@type": "LocalBusiness", name: division.name, url: divisionUrl(division.slug), telephone: division.contactPhone },
     areaServed: { "@type": "AdministrativeArea", name: "Metro Vancouver, Fraser Valley and Sea-to-Sky, BC" },
   };
 }

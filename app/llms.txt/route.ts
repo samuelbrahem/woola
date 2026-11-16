@@ -5,6 +5,7 @@ import { industries } from "@/lib/industries";
 import { posts } from "@/lib/posts";
 import { newsSorted } from "@/lib/news";
 import { caseStudies, divisionLabel } from "@/lib/case-studies";
+import { divisionUrl } from "@/lib/domains";
 import { site } from "@/lib/site";
 
 const BASE = "https://woola.ca";
@@ -28,9 +29,9 @@ export function GET() {
     "",
   ];
   for (const d of divisions) {
-    lines.push(`- [${d.name}](${BASE}/${d.slug}): ${d.tagline}`);
+    lines.push(`- [${d.name}](${divisionUrl(d.slug)}): ${d.tagline}`);
     for (const s of d.services.filter((x) => !x.parent)) {
-      lines.push(`  - [${s.name}](${BASE}/${d.slug}/${s.slug}): ${s.short}`);
+      lines.push(`  - [${s.name}](${divisionUrl(d.slug, `/${s.slug}`)}): ${s.short}`);
     }
   }
   lines.push("", "## Residential", "", `- [Woola Residential](${BASE}/residential): home mechanical services`);

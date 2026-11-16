@@ -7,6 +7,7 @@ import { divisions, topLevelServices } from "@/lib/divisions";
 import { residentialServices } from "@/lib/residential";
 import { DivisionHeaderLogo } from "./DivisionHeaderLogo";
 import { DesktopNav, DivisionServicesPanel, companyLinks } from "./Header";
+import { MAIN_URL } from "@/lib/domains";
 
 export function DivisionHeader({ divisionSlug }: { divisionSlug: string }) {
   const [open, setOpen] = useState<string | null>(null);
@@ -20,9 +21,9 @@ export function DivisionHeader({ divisionSlug }: { divisionSlug: string }) {
       {/* Group strip: the way back to the parent brand */}
       <div className="bg-ink-800 text-cream-100">
         <div className="container-x flex items-center justify-between h-9 text-xs">
-          <Link href="/" className="flex items-center gap-1.5 hover:text-cream-50 transition uppercase tracking-wider">
+          <a href={MAIN_URL} className="flex items-center gap-1.5 hover:text-cream-50 transition uppercase tracking-wider">
             Part of Woola Services Group <ArrowUpRight className="w-3 h-3" />
-          </Link>
+          </a>
           <div className="hidden md:flex items-center gap-4">
             {siblings.map((d) => (
               <Link key={d.slug} href={`/${d.slug}`} className="hover:text-cream-50 transition">
@@ -118,9 +119,9 @@ export function DivisionHeader({ divisionSlug }: { divisionSlug: string }) {
                 ))}
                 <Link href="/careers" onClick={() => setMobileOpen(false)} className="block font-medium">Careers</Link>
                 <Link href="/contact" onClick={() => setMobileOpen(false)} className="block font-medium">Contact</Link>
-                <Link href="/" onClick={() => setMobileOpen(false)} className="block text-sm text-ink-500">
+                <a href={MAIN_URL} onClick={() => setMobileOpen(false)} className="block text-sm text-ink-500">
                   Woola Services Group →
-                </Link>
+                </a>
               </div>
               <div className="grid grid-cols-2 gap-3">
                 <a href={`tel:${division.contactPhone}`} className="btn btn-ghost justify-center border hairline">

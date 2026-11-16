@@ -7,6 +7,7 @@ import { CTABanner } from "@/components/CTABanner";
 import { SecondOpinionCTA } from "@/components/SecondOpinionCTA";
 import { ArrowRight, Check, Phone } from "lucide-react";
 import type { Metadata } from "next";
+import { divisionUrl } from "@/lib/domains";
 import { CaseStudyCard } from "@/components/CaseStudyCard";
 import { caseStudiesFor } from "@/lib/case-studies";
 import { cities } from "@/lib/cities";
@@ -69,7 +70,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const found = getService(params.division, params.service);
   if (!found) return {};
-  const canonical = `https://woola.ca/${found.division.slug}/${found.service.slug}`;
+  const canonical = divisionUrl(found.division.slug, `/${found.service.slug}`);
   const title = `${found.service.name} | ${found.division.name}`;
   return {
     title,

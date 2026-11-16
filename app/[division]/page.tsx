@@ -158,6 +158,7 @@ import { cities } from "@/lib/cities";
 import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbs, faqPage } from "@/lib/schema";
+import { divisionUrl } from "@/lib/domains";
 
 type Params = { division: string };
 
@@ -168,7 +169,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const d = getDivision(params.division);
   if (!d) return {};
-  const canonical = `https://woola.ca/${d.slug}`;
+  const canonical = divisionUrl(d.slug);
   const title = `${d.name} | ${d.subtitle}`;
   return {
     title,

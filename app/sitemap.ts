@@ -5,6 +5,7 @@ import { residentialServices } from "@/lib/residential";
 import { posts } from "@/lib/posts";
 import { news } from "@/lib/news";
 import { caseStudies } from "@/lib/case-studies";
+import { DIVISIONS_CANONICAL_ON_OWN_DOMAIN } from "@/lib/domains";
 import { industries } from "@/lib/industries";
 import { equipmentLibrary } from "@/lib/equipment-library";
 
@@ -37,10 +38,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/work",
   ];
 
-  const divisionPaths = divisions.map((d) => `/${d.slug}`);
-  const servicePaths = divisions.flatMap((d) =>
-    d.services.map((s) => `/${d.slug}/${s.slug}`)
-  );
+  // Division pages are canonical on their own domains (lib/domains.ts), where
+  // each domain's /sitemap.xml lists them; listing them here would advertise
+  // non-canonical URLs.
+  const divisionPaths = DIVISIONS_CANONICAL_ON_OWN_DOMAIN ? [] : divisions.map((d) => `/${d.slug}`);
+  const servicePaths = DIVISIONS_CANONICAL_ON_OWN_DOMAIN
+    ? []
+    : divisions.flatMap((d) => d.services.map((s) => `/${d.slug}/${s.slug}`));
   const residentialPaths = residentialServices.map((s) => `/residential/${s.slug}`);
   const cityPaths = cities.map((c) => `/service-areas/${c.slug}`);
   const postPaths = posts.map((p) => `/blog/${p.slug}`);

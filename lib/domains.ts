@@ -1,0 +1,78 @@
+/**
+ * Domain strategy.
+ *
+ * woola.ca is the corporate site. Each division also has its own domain, and
+ * that domain shows the division's section with the domain left visible
+ * (middleware.ts rewrites by hostname; nothing redirects to woola.ca):
+ *
+ *   woolamech.ca/            -> /mechanical
+ *   woolamech.ca/plumbing    -> /mechanical/plumbing
+ *   woolamech.ca/about       -> /about          (corporate pages stay on the host)
+ *   woolamech.ca/mechanical  -> 301 woolamech.ca/  (one clean URL per page)
+ *   woolamech.ca/power/...   -> 301 woolapower.ca/... (each division on its own domain)
+ *
+ * Canonicals: DIVISIONS_CANONICAL_ON_OWN_DOMAIN decides which URL search
+ * engines should index for division content. true (current) makes the
+ * division domain canonical (woolamech.ca/plumbing) and woola.ca/mechanical/*
+ * points at it, so the divisions build their own search presence and the old
+ * woolamech.ca / woolapower.ca equity carries over. false consolidates
+ * everything under woola.ca. Corporate pages are always canonical on woola.ca.
+ *
+ * Keep this file free of heavy imports: middleware runs it at the edge.
+ */
+
+export type DivisionSlug = "mechanical" | "power" | "electrical" | "build";
+
+export const MAIN_HOST = "woola.ca";
+export const MAIN_URL = `https://${MAIN_HOST}`;
+
+export const DIVISION_HOSTS: Record<DivisionSlug, string> = {
+  mechanical: "woolamech.ca",
+  power: "woolapower.ca",
+  electrical: "woolaelectrical.ca",
+  build: "woolabuild.ca",
+};
+
+export const DIVISIONS_CANONICAL_ON_OWN_DOMAIN = true;
+
+export const DIVISION_SLUGS = Object.keys(DIVISION_HOSTS) as DivisionSlug[];
+
+/** Top-level routes of the corporate site. On a division host these are served
+ *  as-is (woolamech.ca/contact); anything else single-segment is treated as a
+ *  service slug of that division. Keep in sync with app/(main). */
+export const CORPORATE_ROUTES = new Set([
+  "about", "blog", "book", "calculator", "careers", "commercial", "competitors", "contact",
+  "equipment", "industries", "know-your-building", "news", "portal", "process",
+  "property-managers", "residential", "second-opinion", "service-areas", "work",
+  "division-sitemap", "division-robots", "llms.txt",
+]);
+
+export function isDivisionSlug(s: string): s is DivisionSlug {
+  return (DIVISION_SLUGS as string[]).includes(s);
+}
+
+/** Division owning a hostname, ignoring www. and port. */
+export function divisionForHost(host: string | null | undefined): DivisionSlug | null {
+  if (!host) return null;
+  const h = host.toLowerCase().split(":")[0].replace(/^www\./, "");
+  for (const slug of DIVISION_SLUGS) if (DIVISION_HOSTS[slug] === h) return slug;
+  return null;
+}
+
+export function isProductionHost(host: string) {
+  const h = host.toLowerCase().split(":")[0].replace(/^www\./, "");
+  return h === MAIN_HOST || divisionForHost(h) !== null;
+}
+
+/** The division's own site root, e.g. https://woolamech.ca */
+export function divisionSiteUrl(slug: DivisionSlug) {
+  return `https://${DIVISION_HOSTS[slug]}`;
+}
+
+/** Canonical absolute URL for division content. `path` is relative to the
+ *  division ("" for its home, "/plumbing" for a service). */
+export function divisionUrl(slug: DivisionSlug, path = "") {
+  return DIVISIONS_CANONICAL_ON_OWN_DOMAIN
+    ? `${divisionSiteUrl(slug)}${path}`
+    : `${MAIN_URL}/${slug}${path}`;
+}
