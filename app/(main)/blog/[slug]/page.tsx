@@ -8,7 +8,7 @@ import { Section } from "@/components/Section";
 import { CTABanner } from "@/components/CTABanner";
 import { getPost, posts } from "@/lib/posts";
 import { JsonLd } from "@/components/JsonLd";
-import { article, breadcrumbs } from "@/lib/schema";
+import { article, breadcrumbs, faqPage } from "@/lib/schema";
 
 type Params = { slug: string };
 
@@ -43,6 +43,7 @@ export default function BlogPost({ params }: { params: Params }) {
       <JsonLd
         data={[
           article(post),
+          ...(post.faqs?.length ? [faqPage(post.faqs)] : []),
           breadcrumbs([
             { name: "Woola", path: "" },
             { name: "Field Notes", path: "/blog" },
@@ -82,7 +83,7 @@ export default function BlogPost({ params }: { params: Params }) {
             fill
             sizes="(min-width: 1024px) 900px, 100vw"
             priority
-            className="object-contain p-8"
+            className={post.coverCredit ? "object-cover" : "object-contain p-8"}
           />
         </div>
       </div>
@@ -102,9 +103,52 @@ export default function BlogPost({ params }: { params: Params }) {
                     {p}
                   </p>
                 ))}
+                {section.bullets && (
+                  <ul className="mt-2 space-y-2.5">
+                    {section.bullets.map((b, j) => (
+                      <li key={j} className="flex gap-3 text-base md:text-lg text-ink-600 leading-relaxed">
+                        <span aria-hidden className="mt-[0.7em] h-1.5 w-1.5 shrink-0 rounded-full bg-brand-500" />
+                        <span>{b}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </div>
             </div>
           ))}
+
+          {post.faqs && post.faqs.length > 0 && (
+            <div className="mt-14 pt-10 border-t hairline">
+              <h2 className="text-2xl md:text-3xl font-semibold text-ink-800 tracking-tight">Common questions</h2>
+              <dl className="mt-6 divide-y hairline border-y hairline">
+                {post.faqs.map((f) => (
+                  <div key={f.q} className="py-5">
+                    <dt className="text-lg font-semibold text-ink-800">{f.q}</dt>
+                    <dd className="mt-2 text-base md:text-lg text-ink-600 leading-relaxed">{f.a}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          )}
+
+          {post.services && post.services.length > 0 && (
+            <div className="mt-12 card p-6 md:p-8 bg-cream-50">
+              <div className="eyebrow">Where Woola comes in</div>
+              <ul className="mt-4 grid sm:grid-cols-2 gap-3">
+                {post.services.map((s) => (
+                  <li key={s.href}>
+                    <a href={s.href} className="inline-flex items-center gap-1.5 font-medium text-ink-800 hover:text-brand-500">
+                      {s.label} <ArrowRight className="w-4 h-4" />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          <p className="mt-10 text-sm text-ink-400">
+            General information for BC building owners and managers, current as of {formatDate(post.date)}. Bylaws and codes change; confirm details with your municipality, insurer or lawyer before acting.
+          </p>
         </article>
       </Section>
 
@@ -126,7 +170,7 @@ export default function BlogPost({ params }: { params: Params }) {
                       alt={p.coverAlt}
                       fill
                       sizes="(min-width: 768px) 45vw, 100vw"
-                      className="object-contain p-6 transition-transform duration-500 group-hover:scale-[1.03]"
+                      className={`${p.coverCredit ? "object-cover" : "object-contain p-6"} transition-transform duration-500 group-hover:scale-[1.03]`}
                     />
                   </div>
                   <div className="p-6">

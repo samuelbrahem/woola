@@ -44,7 +44,7 @@ export default function BlogPage() {
                 alt={featured.coverAlt}
                 fill
                 sizes="(min-width: 1024px) 50vw, 100vw"
-                className="object-contain p-6 transition-transform duration-500 group-hover:scale-[1.03]"
+                className={`${fit(featured)} transition-transform duration-500 group-hover:scale-[1.03]`}
               />
             </div>
             <div className="p-8 md:p-10 flex flex-col">
@@ -91,7 +91,7 @@ export default function BlogPage() {
                     alt={p.coverAlt}
                     fill
                     sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                    className="object-contain p-6 transition-transform duration-500 group-hover:scale-[1.03]"
+                    className={`${fit(p)} transition-transform duration-500 group-hover:scale-[1.03]`}
                   />
                 </div>
                 <div className="p-6 flex flex-col flex-1">
@@ -120,4 +120,8 @@ export default function BlogPage() {
 function formatDate(iso: string) {
   const d = new Date(iso);
   return d.toLocaleDateString("en-CA", { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" });
+}
+
+function fit(p: { coverCredit?: unknown }) {
+  return p.coverCredit ? "object-cover" : "object-contain p-6";
 }

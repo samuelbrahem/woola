@@ -8,10 +8,19 @@ export type Post = {
   author: { name: string; role: string };
   cover: string;
   coverAlt: string;
-  body: { heading?: string; paragraphs: string[] }[];
+  /** Set for photographs (Unsplash). Covers without it are product renders and are letterboxed. */
+  coverCredit?: { name: string; url: string };
+  body: { heading?: string; paragraphs: string[]; bullets?: string[] }[];
+  /** Rendered as a Q&A block and FAQPage schema. */
+  faqs?: { q: string; a: string }[];
+  /** Woola service pages this piece supports. */
+  services?: { label: string; href: string }[];
 };
 
+import { fieldGuides } from "./posts-field-guides";
+
 export const posts: Post[] = [
+  ...fieldGuides,
   {
     slug: "csa-c282-what-property-managers-need-to-know",
     title: "CSA C282: what property managers actually need to know",
