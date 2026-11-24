@@ -12,8 +12,9 @@ export const fieldGuides: Post[] = [
     title: "Backflow testing in Coquitlam and Metro Vancouver: what owners have to do every year",
     excerpt:
       "Every testable backflow assembly in Coquitlam, Vancouver, Burnaby, Surrey and the rest of Metro Vancouver needs an annual test by a certified tester, with the report filed with the city. Here is where the assemblies hide in your building, what a test involves, and what happens when one fails.",
-    date: "2026-11-23",
+    date: "2026-11-20",
     readingTime: "7 min read",
+    division: "mechanical",
     category: "Rebates & Compliance",
     author: { name: "Woola Mechanical", role: "Field Notes" },
     cover: "/blog/backflow-testing.jpg",
@@ -86,6 +87,11 @@ export const fieldGuides: Post[] = [
         a: "Usually not. Most failures are fixed with a rebuild kit and a retest the same day. Replacement is only needed when the assembly is seized, damaged or no longer serviceable, and that needs a plumbing permit.",
       },
     ],
+    sources: [
+      { label: "Vancouver: Protecting water quality (cross connection control)", url: "https://vancouver.ca/home-property-development/protecting-water-quality.aspx" },
+      { label: "City of Coquitlam: Backflow Prevention Assembly Test Report", url: "https://www.coquitlam.ca/DocumentCenter/View/2094/Backflow-Prevention-Assembly-Test-Report-PDF" },
+      { label: "City of Surrey: Drinking water protection", url: "https://www.surrey.ca/city-services/4897.aspx" },
+    ],
     services: [
       { label: "Plumbing for strata and commercial buildings", href: "https://woolamech.ca/plumbing" },
       { label: "Preventative maintenance programs", href: "https://woolamech.ca/preventative-maintenance" },
@@ -97,13 +103,14 @@ export const fieldGuides: Post[] = [
     title: "Poly-B and Kitec in Metro Vancouver stratas: how to spot it and how a repipe actually runs",
     excerpt:
       "A large share of BC buildings from the late 1970s to the mid-1990s were plumbed with polybutylene, and Kitec followed in some 1990s and 2000s condos. Insurers have noticed. Here is how to tell what you have, what it means for insurance, and how a repipe works in an occupied building.",
-    date: "2026-11-23",
+    date: "2026-10-12",
     readingTime: "8 min read",
+    division: "build",
     category: "Building Ops",
     author: { name: "Woola Build", role: "Field Notes" },
     cover: "/blog/poly-b.jpg",
-    coverAlt: "Domestic water piping, valves and pumps in a building mechanical room",
-    coverCredit: { name: "Immo Wegmann", url: "https://unsplash.com/@tinkerman" },
+    coverAlt: "Plumber working on water piping inside an opened wall",
+    coverCredit: { name: "Timur Shakerzianov", url: "https://unsplash.com/@shaker_jpg" },
     body: [
       {
         paragraphs: [
@@ -175,6 +182,9 @@ export const fieldGuides: Post[] = [
         a: "Both are proven. PEX is faster to install through existing walls and usually cheaper. Copper suits exposed mechanical rooms and some high-rise risers. Many repipes use copper risers with PEX suite branches.",
       },
     ],
+    sources: [
+      { label: "BC Government: Insurance for strata owners", url: "https://www2.gov.bc.ca/gov/content/housing-tenancy/strata-housing/operating-a-strata/finances-and-insurance/strata-owner-and-tenant-insurance" },
+    ],
     services: [
       { label: "Waterline repiping", href: "https://woolabuild.ca/waterline-repiping" },
       { label: "Plumbing service and repairs", href: "https://woolamech.ca/plumbing" },
@@ -186,13 +196,14 @@ export const fieldGuides: Post[] = [
     title: "BC's new depreciation report rules: what the mechanical section should tell your council",
     excerpt:
       "Since July 1, 2024, BC stratas can no longer vote to skip a depreciation report, and Metro Vancouver stratas need one by July 1, 2026. The mechanical systems are usually the biggest line items. Here is what a useful mechanical section looks like and the questions to ask.",
-    date: "2026-11-23",
+    date: "2026-10-24",
     readingTime: "7 min read",
+    division: "mechanical",
     category: "Rebates & Compliance",
     author: { name: "Woola Mechanical", role: "Field Notes" },
     cover: "/blog/depreciation.jpg",
-    coverAlt: "Low-rise condominium building with glass balconies against a blue sky",
-    coverCredit: { name: "Khrystyna Liasota", url: "https://unsplash.com/@in_motion" },
+    coverAlt: "Building inspector holding a clipboard during a walk-through",
+    coverCredit: { name: "TruckRun", url: "https://unsplash.com/@truckrun_ebike_systems" },
     body: [
       {
         paragraphs: [
@@ -255,6 +266,10 @@ export const fieldGuides: Post[] = [
         a: "From July 1, 2025, a qualified professional from one of six designated groups: engineers, architects, applied science technologists, accredited appraisers, certified reserve planners or quantity surveyors.",
       },
     ],
+    sources: [
+      { label: "BC Government: Strata depreciation report requirements", url: "https://www2.gov.bc.ca/gov/content/housing-tenancy/strata-housing/operating-a-strata/repairs-and-maintenance/depreciation-reports/depreciation-report-requirements" },
+      { label: "BC Government news: Depreciation report changes (2024)", url: "https://news.gov.bc.ca/releases/2024HOUS0061-000605" },
+    ],
     services: [
       { label: "Preventative maintenance and asset records", href: "https://woolamech.ca/preventative-maintenance" },
       { label: "Retrofits and system replacements", href: "https://woolamech.ca/retrofits" },
@@ -266,13 +281,14 @@ export const fieldGuides: Post[] = [
     title: "Adding cooling to a BC strata after the heat dome: approvals, code and equipment",
     excerpt:
       "BC's 2021 heat dome killed 619 people, most of them indoors. New homes must now keep one living space at or below 26°C, but existing stratas are on their own. Here is how councils are approving heat pumps and air conditioning without chaos on the balconies.",
-    date: "2026-11-23",
+    date: "2026-10-06",
     readingTime: "8 min read",
+    division: "mechanical",
     category: "Building Ops",
     author: { name: "Woola Mechanical", role: "Field Notes" },
     cover: "/blog/strata-cooling.jpg",
-    coverAlt: "Heat pump condenser units on a residential rooftop terrace",
-    coverCredit: { name: "Max Smith", url: "https://unsplash.com/@maximo169" },
+    coverAlt: "Technician servicing an outdoor heat pump condenser",
+    coverCredit: { name: "Joel Muniz", url: "https://unsplash.com/@jmuniz" },
     body: [
       {
         paragraphs: [
@@ -337,6 +353,11 @@ export const fieldGuides: Post[] = [
         a: "Some bylaws do, and the Civil Resolution Tribunal has enforced them. Many councils are now amending those bylaws to allow cooling under a standard policy instead.",
       },
     ],
+    sources: [
+      { label: "BC Building Code 2024 bulletin B24-08: Overheating", url: "https://www2.gov.bc.ca/assets/gov/farming-natural-resources-and-industry/construction-industry/building-codes-and-standards/bulletins/2024-code/b24-08_overheating.pdf" },
+      { label: "BC Government: Coroners Service heat dome review", url: "https://news.gov.bc.ca/releases/2022PSSG0035-000911" },
+      { label: "UBC: Strata council heat pump checklist", url: "https://planning.ubc.ca/sites/default/files/2024-04/Strata%20Council%20Heat%20Pump%20Checklist.pdf" },
+    ],
     services: [
       { label: "Cooling systems and heat pumps", href: "https://woolamech.ca/cooling-systems" },
       { label: "Electrical panel and service upgrades", href: "https://woolaelectrical.ca/panel-upgrades" },
@@ -348,13 +369,14 @@ export const fieldGuides: Post[] = [
     title: "Vancouver's carbon limits for large buildings: where they stand and what to do about the boiler",
     excerpt:
       "Vancouver set greenhouse gas limits for large office and retail buildings starting with 2026, then paused enforcement in May 2026. Either way, the boiler you replace next will run for 25 years. Here is how to make that decision without betting on one outcome.",
-    date: "2026-11-23",
+    date: "2026-10-03",
     readingTime: "7 min read",
+    division: "mechanical",
     category: "Rebates & Compliance",
     author: { name: "Woola Mechanical", role: "Field Notes" },
     cover: "/blog/vancouver-carbon.jpg",
-    coverAlt: "Insulated heating pipes, valves and equipment in a boiler room",
-    coverCredit: { name: "Dave Meckler", url: "https://unsplash.com/@phosphorvs" },
+    coverAlt: "Downtown Vancouver towers with the North Shore mountains behind",
+    coverCredit: { name: "Alejandro Luengo", url: "https://unsplash.com/@aluengo91" },
     body: [
       {
         paragraphs: [
@@ -413,6 +435,10 @@ export const fieldGuides: Post[] = [
         a: "Often the best first step is a hybrid: a heat pump for most of the year with a gas boiler for peak days. It cuts emissions a lot without requiring the largest electrical upgrade.",
       },
     ],
+    sources: [
+      { label: "City of Vancouver: Energize Vancouver, large buildings", url: "https://vancouver.ca/green-vancouver/green-large-commercial-and-multi-family-buildings.aspx" },
+      { label: "City of Vancouver: By-law reporting and paused enforcement", url: "https://vancouver.ca/green-vancouver/report-building-and-energy-data.aspx" },
+    ],
     services: [
       { label: "Heating systems and boilers", href: "https://woolamech.ca/heating-systems" },
       { label: "Mechanical retrofits", href: "https://woolamech.ca/retrofits" },
@@ -424,13 +450,14 @@ export const fieldGuides: Post[] = [
     title: "How to choose a mechanical contractor in Coquitlam and Metro Vancouver: a property manager's checklist",
     excerpt:
       "Licences, certified trades, WorkSafeBC clearance, insurance, response times and paperwork. The ten things to check before you hand a contractor the keys to a building's heating, plumbing and gas.",
-    date: "2026-11-23",
+    date: "2026-11-08",
     readingTime: "7 min read",
+    division: "mechanical",
     category: "Building Ops",
     author: { name: "Woola Mechanical", role: "Field Notes" },
     cover: "/blog/choosing-contractor.jpg",
-    coverAlt: "Two technicians working among rooftop HVAC units and ductwork",
-    coverCredit: { name: "Singapore Stock Photos", url: "https://unsplash.com/@singaporestockphoto" },
+    coverAlt: "Two contractors in hard hats inspecting a concrete wall",
+    coverCredit: { name: "Glenov Brankovic", url: "https://unsplash.com/@glenovbrankovic" },
     body: [
       {
         paragraphs: [
@@ -516,6 +543,10 @@ export const fieldGuides: Post[] = [
         a: "A gas contractor licence, WorkSafeBC clearance letter, liability insurance certificate, references from similar buildings, written response times, and a sample service report.",
       },
     ],
+    sources: [
+      { label: "Technical Safety BC: Gas licences", url: "https://www.technicalsafetybc.ca/gas-licences" },
+      { label: "SkilledTradesBC: Skilled Trades Certification", url: "https://skilledtradesbc.ca/skilledtradescertification" },
+    ],
     services: [
       { label: "Woola Mechanical: HVAC, plumbing and gas", href: "https://woolamech.ca/" },
       { label: "HVAC service", href: "https://woolamech.ca/hvac" },
@@ -528,8 +559,9 @@ export const fieldGuides: Post[] = [
     title: "What a commercial HVAC maintenance contract should include (and what you can cut)",
     excerpt:
       "Most HVAC maintenance contracts are a filter change with a nice cover page. Here is what a real program covers, built on the ASHRAE 180 approach, and how to read a contract before you sign it.",
-    date: "2026-11-23",
+    date: "2026-09-27",
     readingTime: "7 min read",
+    division: "mechanical",
     category: "Building Ops",
     author: { name: "Woola Mechanical", role: "Field Notes" },
     cover: "/blog/pm-contract.jpg",
@@ -601,6 +633,10 @@ export const fieldGuides: Post[] = [
         a: "Usually not. Most contracts cover scheduled maintenance at a fixed price, with repairs quoted or billed separately. Read what is included before comparing prices.",
       },
     ],
+    sources: [
+      { label: "ASHRAE: Standards 180 and 211", url: "https://www.ashrae.org/technical-resources/bookstore/standards-180-and-211" },
+      { label: "US DOE Better Buildings: ANSI/ASHRAE/ACCA Standard 180", url: "https://betterbuildingssolutioncenter.energy.gov/resources/ansiashraeacca-standard-180-standard-practice-inspection-and-maintenance-commercial" },
+    ],
     services: [
       { label: "Preventative maintenance programs", href: "https://woolamech.ca/preventative-maintenance" },
       { label: "HVAC service and repair", href: "https://woolamech.ca/hvac" },
@@ -613,13 +649,14 @@ export const fieldGuides: Post[] = [
     title: "A pipe just burst in your strata: the first hour, the insurance deductible, and who pays",
     excerpt:
       "Water damage is one of the most common strata insurance claims in BC, and deductibles keep rising. Here is what to do in the first hour, how section 158 of the Strata Property Act decides who pays the deductible, and how to make the next leak smaller.",
-    date: "2026-11-23",
+    date: "2026-10-30",
     readingTime: "7 min read",
+    division: "mechanical",
     category: "Building Ops",
     author: { name: "Woola Mechanical", role: "Field Notes" },
     cover: "/blog/burst-pipe.jpg",
-    coverAlt: "Water running from a tap, representing a plumbing leak",
-    coverCredit: { name: "Ian Talmacs", url: "https://unsplash.com/@iantalmacs" },
+    coverAlt: "Ceiling torn open after water damage from a leak above",
+    coverCredit: { name: "Brett Jordan", url: "https://unsplash.com/@brett_jordan" },
     body: [
       {
         paragraphs: [
@@ -679,6 +716,10 @@ export const fieldGuides: Post[] = [
         a: "Ask your own insurer about deductible assessment coverage, keep appliance hoses and your hot water tank in good condition, and know where your shut-off valve is.",
       },
     ],
+    sources: [
+      { label: "BCREA: Liability for strata insurance deductibles", url: "https://www.bcrea.bc.ca/legally-speaking/liability-for-strata-insurance-deductibles/" },
+      { label: "BC Government: Insurance for strata corporations", url: "https://www2.gov.bc.ca/gov/content/housing-tenancy/strata-housing/operating-a-strata/finances-and-insurance/strata-corporation-insurance" },
+    ],
     services: [
       { label: "Emergency plumbing", href: "https://woolamech.ca/plumbing" },
       { label: "Waterline repiping", href: "https://woolabuild.ca/waterline-repiping" },
@@ -691,8 +732,9 @@ export const fieldGuides: Post[] = [
     title: "Hot water in multi-unit buildings: temperatures, Legionella and when to replace the plant",
     excerpt:
       "Lukewarm showers on the top floor, scalding taps on the bottom, and a storage tank set too low for safety. Here is how a building hot water system should be set up, why 60°C matters, and how to know it is time to replace it.",
-    date: "2026-11-23",
+    date: "2026-10-18",
     readingTime: "7 min read",
+    division: "mechanical",
     category: "Building Ops",
     author: { name: "Woola Mechanical", role: "Field Notes" },
     cover: "/blog/hot-water.jpg",
@@ -756,6 +798,10 @@ export const fieldGuides: Post[] = [
         a: "Around 10 to 15 years, depending on water quality, maintenance and how hard they work. Leaks at the base usually mean replacement, not repair.",
       },
     ],
+    sources: [
+      { label: "National Research Council Canada: Legionella, who is addressing the risks", url: "https://nrc.canada.ca/en/certifications-evaluations-standards/codes-canada/legionella-whos-addressing-risks-canada" },
+      { label: "Health Canada: Residential premise plumbing pathogens", url: "https://www.canada.ca/en/health-canada/services/publications/healthy-living/guidance-residential-premise-plumbing-pathogens-water-quality.html" },
+    ],
     services: [
       { label: "Plumbing and domestic hot water", href: "https://woolamech.ca/plumbing" },
       { label: "Heating systems and boilers", href: "https://woolamech.ca/heating-systems" },
@@ -767,8 +813,9 @@ export const fieldGuides: Post[] = [
     title: "Grease, drains and sewer lines: a maintenance plan for mixed-use buildings in Metro Vancouver",
     excerpt:
       "Restaurants below, condos above, and one shared drain system. Metro Vancouver's grease interceptor bylaw, kitchen stack jetting and camera inspections, explained for property managers who would rather not get the 3 a.m. backup call.",
-    date: "2026-11-23",
+    date: "2026-09-24",
     readingTime: "7 min read",
+    division: "mechanical",
     category: "Rebates & Compliance",
     author: { name: "Woola Mechanical", role: "Field Notes" },
     cover: "/blog/grease-drains.jpg",
@@ -830,6 +877,10 @@ export const fieldGuides: Post[] = [
         q: "Who pays for a sewer lateral repair?",
         a: "The private lateral from the building to the property line is typically the owner's responsibility. Municipalities often need camera evidence before accepting a blockage is on the city side.",
       },
+    ],
+    sources: [
+      { label: "Metro Vancouver: Grease interceptor requirements", url: "https://metrovancouver.org/services/environmental-regulation-enforcement/liquid-waste-regulatory-program/grease-interceptor-requirements" },
+      { label: "Metro Vancouver: Private sewer lateral programs study", url: "https://metrovancouver.org/services/liquid-waste/Documents/private-sewer-lateral-programs-study-legal-approaches-municipalities-09-07-13.pdf" },
     ],
     services: [
       { label: "Drainage, jetting and camera inspection", href: "https://woolamech.ca/drainage" },

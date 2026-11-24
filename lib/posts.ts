@@ -5,6 +5,8 @@ export type Post = {
   date: string;
   readingTime: string;
   category: "Field Notes" | "Building Ops" | "Rebates & Compliance" | "Case Studies";
+  /** Which Woola division the piece belongs to; drives the label and the division-site backlinks. */
+  division: "mechanical" | "power" | "electrical" | "build";
   author: { name: string; role: string };
   cover: string;
   coverAlt: string;
@@ -15,12 +17,18 @@ export type Post = {
   faqs?: { q: string; a: string }[];
   /** Woola service pages this piece supports. */
   services?: { label: string; href: string }[];
+  /** Primary sources the piece relies on, listed at the end. */
+  sources?: { label: string; url: string }[];
 };
 
 import { fieldGuides } from "./posts-field-guides";
+import { fieldGuides2 } from "./posts-field-guides-2";
+import { rebateStudies } from "./posts-rebates";
 
-export const posts: Post[] = [
+const allPosts: Post[] = [
+  ...rebateStudies,
   ...fieldGuides,
+  ...fieldGuides2,
   {
     slug: "csa-c282-what-property-managers-need-to-know",
     title: "CSA C282: what property managers actually need to know",
@@ -28,6 +36,7 @@ export const posts: Post[] = [
       "The annual emergency-generator inspection your insurer, AHJ, and strata council all reference. Here is what it covers, why the report matters, and the deadlines that trip most buildings up.",
     date: "2026-07-18",
     readingTime: "4 min read",
+    division: "power",
     category: "Building Ops",
     author: { name: "Woola Power", role: "Field Notes" },
     cover: "/equipment-renders/generator.webp",
@@ -67,6 +76,7 @@ export const posts: Post[] = [
       "Combined provincial, federal, and utility rebates on a residential heat pump can hit $7,500 this year, but the paperwork tripwires are real. Here is the current stack and how we file it for you.",
     date: "2026-06-24",
     readingTime: "5 min read",
+    division: "mechanical",
     category: "Rebates & Compliance",
     author: { name: "Woola Mechanical", role: "CleanBC Better Homes contractor" },
     cover: "/equipment-renders/heat-pump.webp",
@@ -100,6 +110,7 @@ export const posts: Post[] = [
       "The depreciation report tells you what the roof cost 20 years ago. The asset registry tells you what to do about it next Tuesday. Here is what we build and why councils rely on it.",
     date: "2026-05-30",
     readingTime: "6 min read",
+    division: "mechanical",
     category: "Field Notes",
     author: { name: "Woola Build", role: "Asset planning" },
     cover: "/equipment-renders/rooftop-unit.webp",
@@ -126,6 +137,15 @@ export const posts: Post[] = [
     ],
   },
 ];
+
+/** Newest first. Posts dated in the future stay hidden until their date. */
+export const posts: Post[] = allPosts
+  .filter((p) => p.date <= new Date().toISOString().slice(0, 10))
+  .sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0));
+
+export function postsForDivision(division: Post["division"]) {
+  return posts.filter((p) => p.division === division);
+}
 
 export function getPost(slug: string) {
   return posts.find((p) => p.slug === slug);

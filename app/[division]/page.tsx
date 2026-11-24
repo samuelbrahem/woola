@@ -159,7 +159,8 @@ import { cities } from "@/lib/cities";
 import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbs, faqPage } from "@/lib/schema";
-import { divisionUrl } from "@/lib/domains";
+import { divisionUrl, MAIN_URL } from "@/lib/domains";
+import { postsForDivision } from "@/lib/posts";
 import { metaDescription } from "@/lib/seo";
 
 type Params = { division: string };
@@ -439,6 +440,50 @@ export default function DivisionPage({ params }: { params: Params }) {
           <GoogleReviews division={division.slug} />
         </div>
       </section>
+
+      {/* Field notes: this division's articles on woola.ca/blog */}
+      {postsForDivision(division.slug).length > 0 && (
+        <section className="bg-cream-100 border-y hairline">
+          <div className="container-x section">
+            <div className="flex items-end justify-between flex-wrap gap-4">
+              <SectionHead
+                eyebrow="Field notes"
+                title={`From the ${division.name} team.`}
+                description="Plain-English guides for property managers, strata councils and building owners."
+              />
+              <a href={`${MAIN_URL}/blog`} className="text-sm font-medium text-ink-800 hover:text-brand-500">
+                All field notes →
+              </a>
+            </div>
+            <div className="mt-10 grid md:grid-cols-3 gap-6">
+              {postsForDivision(division.slug).slice(0, 3).map((p) => (
+                <a
+                  key={p.slug}
+                  href={`${MAIN_URL}/blog/${p.slug}`}
+                  className="group card overflow-hidden bg-white flex flex-col hover:border-brand-500/40 transition-all"
+                >
+                  <div className="relative aspect-[16/10] bg-cream-50 overflow-hidden border-b hairline">
+                    <Image
+                      src={p.cover}
+                      alt={p.coverAlt}
+                      fill
+                      sizes="(min-width: 768px) 33vw, 100vw"
+                      className={`${p.coverCredit ? "object-cover" : "object-contain p-6"} transition-transform duration-500 group-hover:scale-[1.03]`}
+                    />
+                  </div>
+                  <div className="p-6 flex-1 flex flex-col">
+                    <div className="text-[11px] uppercase tracking-widest text-ink-500">{p.category}</div>
+                    <h3 className="mt-2 text-lg font-semibold text-ink-800 leading-snug group-hover:text-brand-500 transition">{p.title}</h3>
+                    <span className="mt-auto pt-4 inline-flex items-center gap-1.5 text-sm font-medium text-brand-500">
+                      Read the guide <ArrowRight className="w-4 h-4" />
+                    </span>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* FAQ */}
       <Section>

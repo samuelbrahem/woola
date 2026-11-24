@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Section, SectionHead } from "@/components/Section";
 import { ArrowRight, Clock } from "lucide-react";
 import { posts } from "@/lib/posts";
+import { divisions } from "@/lib/divisions";
 
 export const metadata: Metadata = {
   title: "Field Notes",
@@ -51,7 +52,7 @@ export default function BlogPage() {
               <div className="flex items-center gap-3 flex-wrap text-xs">
                 <span className="eyebrow !text-brand-500">Featured</span>
                 <span className="text-ink-400">·</span>
-                <span className="text-ink-500">{featured.category}</span>
+                <span className="text-ink-500">{divisionName(featured.division)}</span>
                 <span className="text-ink-400">·</span>
                 <span className="text-ink-500 inline-flex items-center gap-1"><Clock className="w-3.5 h-3.5" /> {featured.readingTime}</span>
               </div>
@@ -96,6 +97,8 @@ export default function BlogPage() {
                 </div>
                 <div className="p-6 flex flex-col flex-1">
                   <div className="flex items-center gap-2 text-[11px] uppercase tracking-widest text-ink-500">
+                    <span className="text-brand-500 font-semibold">{divisionName(p.division)}</span>
+                    <span className="text-ink-400">·</span>
                     <span>{p.category}</span>
                     <span className="text-ink-400">·</span>
                     <span>{p.readingTime}</span>
@@ -105,7 +108,7 @@ export default function BlogPage() {
                   </h3>
                   <p className="mt-2 text-sm text-ink-500 leading-relaxed flex-1">{p.excerpt}</p>
                   <div className="mt-4 pt-4 border-t hairline text-xs text-ink-500">
-                    {p.author.name} · {formatDate(p.date)}
+                    {formatDate(p.date)}
                   </div>
                 </div>
               </Link>
@@ -124,4 +127,8 @@ function formatDate(iso: string) {
 
 function fit(p: { coverCredit?: unknown }) {
   return p.coverCredit ? "object-cover" : "object-contain p-6";
+}
+
+function divisionName(slug: string) {
+  return divisions.find((d) => d.slug === slug)?.name ?? "Woola";
 }

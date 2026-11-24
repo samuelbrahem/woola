@@ -9,6 +9,8 @@ import { CTABanner } from "@/components/CTABanner";
 import { getPost, posts } from "@/lib/posts";
 import { JsonLd } from "@/components/JsonLd";
 import { article, breadcrumbs, faqPage } from "@/lib/schema";
+import { divisions } from "@/lib/divisions";
+import { divisionUrl } from "@/lib/domains";
 
 type Params = { slug: string };
 
@@ -36,7 +38,10 @@ export function generateMetadata({ params }: { params: Params }): Metadata {
 export default function BlogPost({ params }: { params: Params }) {
   const post = getPost(params.slug);
   if (!post) return notFound();
-  const related = posts.filter((p) => p.slug !== post.slug).slice(0, 2);
+  const related = [
+    ...posts.filter((p) => p.slug !== post.slug && p.division === post.division),
+    ...posts.filter((p) => p.slug !== post.slug && p.division !== post.division),
+  ].slice(0, 2);
 
   return (
     <>
@@ -58,7 +63,9 @@ export default function BlogPost({ params }: { params: Params }) {
           </Link>
           <div className="mt-8 max-w-3xl">
             <div className="flex items-center gap-3 flex-wrap text-xs uppercase tracking-widest text-ink-500">
-              <span className="text-brand-500 font-semibold">{post.category}</span>
+              <a href={divisionUrl(post.division)} className="text-brand-500 font-semibold hover:underline">{divisionName(post.division)}</a>
+              <span className="text-ink-400">·</span>
+              <span>{post.category}</span>
               <span className="text-ink-400">·</span>
               <span className="inline-flex items-center gap-1"><Clock className="w-3.5 h-3.5" /> {post.readingTime}</span>
               <span className="text-ink-400">·</span>
@@ -69,7 +76,10 @@ export default function BlogPost({ params }: { params: Params }) {
             </h1>
             <p className="rise rise-2 mt-5 text-lg text-ink-500 leading-relaxed">{post.excerpt}</p>
             <div className="mt-6 text-sm text-ink-500">
-              {post.author.name} · {post.author.role}
+              <a href={divisionUrl(post.division)} className="font-medium text-ink-700 hover:text-brand-500">
+                {divisionName(post.division)}
+              </a>{" "}
+              · Field Notes
             </div>
           </div>
         </div>
@@ -133,7 +143,7 @@ export default function BlogPost({ params }: { params: Params }) {
 
           {post.services && post.services.length > 0 && (
             <div className="mt-12 card p-6 md:p-8 bg-cream-50">
-              <div className="eyebrow">Where Woola comes in</div>
+              <div className="eyebrow">Where {divisionName(post.division)} comes in</div>
               <ul className="mt-4 grid sm:grid-cols-2 gap-3">
                 {post.services.map((s) => (
                   <li key={s.href}>
@@ -143,6 +153,21 @@ export default function BlogPost({ params }: { params: Params }) {
                   </li>
                 ))}
               </ul>
+            </div>
+          )}
+
+          {post.sources && post.sources.length > 0 && (
+            <div className="mt-12">
+              <h2 className="text-lg font-semibold text-ink-800">Sources</h2>
+              <ol className="mt-3 space-y-1.5 list-decimal pl-5 text-sm text-ink-600">
+                {post.sources.map((s) => (
+                  <li key={s.url}>
+                    <a href={s.url} target="_blank" rel="noopener" className="hover:text-brand-500 underline underline-offset-2 decoration-ink-200">
+                      {s.label}
+                    </a>
+                  </li>
+                ))}
+              </ol>
             </div>
           )}
 
@@ -199,4 +224,8 @@ export default function BlogPost({ params }: { params: Params }) {
 function formatDate(iso: string) {
   const d = new Date(iso);
   return d.toLocaleDateString("en-CA", { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" });
+}
+
+function divisionName(slug: string) {
+  return divisions.find((d) => d.slug === slug)?.name ?? "Woola";
 }
