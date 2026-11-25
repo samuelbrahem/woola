@@ -26,6 +26,12 @@ export function middleware(req: NextRequest) {
   const alias = aliasTarget(host);
   if (alias) return NextResponse.redirect(`https://${alias}${alias === "woola.ca" ? "/" : pathname + search}`, 301);
 
+  // WordPress-only URLs still in search indexes: 410 Gone on every production host.
+  const cleanPath = pathname.length > 1 ? pathname.replace(/\/+$/, "") : pathname;
+  if (LEGACY_PREFIXES.some((p) => cleanPath.startsWith(p) || cleanPath === p.replace(/\/$/, ""))) {
+    return new NextResponse("Gone", { status: 410, headers: { "content-type": "text/plain", "x-robots-tag": "noindex" } });
+  }
+
   const division = divisionForHost(host);
   if (!division) return NextResponse.next();
 
@@ -44,7 +50,6 @@ export function middleware(req: NextRequest) {
   const clean = pathname.length > 1 ? pathname.replace(/\/+$/, "") : pathname;
   const legacy = LEGACY_PATHS[division][clean];
   if (legacy) return redirect(`https://${bareHost}${legacy}${search}`);
-  if (LEGACY_PREFIXES.some((p) => clean.startsWith(p) || clean === p.replace(/\/$/, ""))) return redirect(`https://${bareHost}/`);
   if (clean !== pathname) return redirect(`https://${bareHost}${clean}${search}`); // trailing slash
 
   if (pathname === "/sitemap.xml") return rewrite(`/division-sitemap/${division}`);

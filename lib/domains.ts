@@ -83,7 +83,8 @@ export const LEGACY_PATHS: Record<DivisionSlug, Record<string, string>> = {
 };
 
 /** WordPress leftovers with no equivalent: send to the division home. */
-export const LEGACY_PREFIXES = ["/author/", "/tag/", "/category/", "/feed", "/wp-", "/alpha_template/", "/page/"];
+/** WordPress-only paths with no equivalent on the new site: answered 410 Gone so search engines drop them. */
+export const LEGACY_PREFIXES = ["/author/", "/tag/", "/category/", "/feed", "/wp-", "/alpha_template/", "/page/", "/member_cat/", "/members/", "/portfolio/", "/elementor"];
 
 export function isDivisionSlug(s: string): s is DivisionSlug {
   return (DIVISION_SLUGS as string[]).includes(s);
