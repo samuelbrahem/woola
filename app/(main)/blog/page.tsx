@@ -125,8 +125,8 @@ function formatDate(iso: string) {
   return d.toLocaleDateString("en-CA", { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" });
 }
 
-function fit(p: { coverCredit?: unknown }) {
-  return p.coverCredit ? "object-cover" : "object-contain p-6";
+function fit(p: { coverCredit?: unknown; coverPhoto?: boolean }) {
+  return p.coverCredit || p.coverPhoto ? "object-cover" : "object-contain p-6";
 }
 
 function divisionName(slug: string) {

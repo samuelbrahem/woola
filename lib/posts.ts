@@ -12,7 +12,17 @@ export type Post = {
   coverAlt: string;
   /** Set for photographs (Unsplash). Covers without it are product renders and are letterboxed. */
   coverCredit?: { name: string; url: string };
-  body: { heading?: string; paragraphs: string[]; bullets?: string[] }[];
+  /** Set for Woola's own field photos, so the cover fills the frame like a credited photograph. */
+  coverPhoto?: boolean;
+  body: {
+    heading?: string;
+    paragraphs: string[];
+    bullets?: string[];
+    /** Optional table, rendered after the first paragraph of the section. */
+    table?: { head: string[]; rows: string[][] };
+  }[];
+  /** A named Woola person to contact about the piece; rendered as a card with their headshot. */
+  contact?: { name: string; role: string; email: string; photo: string; note: string };
   /** Rendered as a Q&A block and FAQPage schema. */
   faqs?: { q: string; a: string }[];
   /** Woola service pages this piece supports. */

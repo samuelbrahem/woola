@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowRight, Clock } from "lucide-react";
+import { ArrowLeft, ArrowRight, Clock, Mail } from "lucide-react";
 import { Section } from "@/components/Section";
 import { CTABanner } from "@/components/CTABanner";
 import { getPost, posts } from "@/lib/posts";
@@ -93,7 +93,7 @@ export default function BlogPost({ params }: { params: Params }) {
             fill
             sizes="(min-width: 1024px) 900px, 100vw"
             priority
-            className={post.coverCredit ? "object-cover" : "object-contain p-8"}
+            className={post.coverCredit || post.coverPhoto ? "object-cover" : "object-contain p-8"}
           />
         </div>
       </div>
@@ -108,11 +108,43 @@ export default function BlogPost({ params }: { params: Params }) {
                 </h2>
               )}
               <div className={section.heading ? "mt-4 space-y-4" : "space-y-4"}>
-                {section.paragraphs.map((p, j) => (
+                {section.paragraphs.slice(0, section.table ? 1 : undefined).map((p, j) => (
                   <p key={j} className="text-base md:text-lg text-ink-600 leading-relaxed">
                     {p}
                   </p>
                 ))}
+                {section.table && (
+                  <div className="card overflow-x-auto bg-white">
+                    <table className="w-full text-left text-base">
+                      <thead>
+                        <tr className="bg-cream-50 border-b hairline">
+                          {section.table.head.map((h) => (
+                            <th key={h} scope="col" className="px-5 py-3 text-xs uppercase tracking-widest font-semibold text-ink-500">
+                              {h}
+                            </th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y hairline">
+                        {section.table.rows.map((row) => (
+                          <tr key={row[0]}>
+                            {row.map((cell, k) => (
+                              <td key={k} className={`px-5 py-3.5 align-top ${k === 0 ? "text-ink-800 font-medium" : "text-ink-600"}`}>
+                                {cell}
+                              </td>
+                            ))}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                )}
+                {section.table &&
+                  section.paragraphs.slice(1).map((p, j) => (
+                    <p key={j} className="text-base md:text-lg text-ink-600 leading-relaxed">
+                      {p}
+                    </p>
+                  ))}
                 {section.bullets && (
                   <ul className="mt-2 space-y-2.5">
                     {section.bullets.map((b, j) => (
@@ -126,6 +158,34 @@ export default function BlogPost({ params }: { params: Params }) {
               </div>
             </div>
           ))}
+
+          {post.contact && (
+            <div className="mt-12 card bg-cream-50 p-6 md:p-8 flex flex-col sm:flex-row sm:items-center gap-6">
+              <Image
+                src={post.contact.photo}
+                alt={`${post.contact.name}, ${post.contact.role} at Woola`}
+                width={112}
+                height={112}
+                className="h-28 w-28 shrink-0 rounded-full object-cover"
+              />
+              <div className="min-w-0">
+                <div className="text-xl font-semibold text-ink-800">{post.contact.name}</div>
+                <div className="text-sm text-ink-500">{post.contact.role}, Woola</div>
+                <p className="mt-3 text-base text-ink-600 leading-relaxed">{post.contact.note}</p>
+                <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-3">
+                  <a
+                    href={`mailto:${post.contact.email}?subject=${encodeURIComponent(post.title)}`}
+                    className="btn btn-brand"
+                  >
+                    <Mail className="w-4 h-4" /> Contact {post.contact.name.split(" ")[0]}
+                  </a>
+                  <a href={`mailto:${post.contact.email}`} className="text-sm text-ink-600 hover:text-brand-500 break-all">
+                    {post.contact.email}
+                  </a>
+                </div>
+              </div>
+            </div>
+          )}
 
           {post.faqs && post.faqs.length > 0 && (
             <div className="mt-14 pt-10 border-t hairline">
@@ -195,7 +255,7 @@ export default function BlogPost({ params }: { params: Params }) {
                       alt={p.coverAlt}
                       fill
                       sizes="(min-width: 768px) 45vw, 100vw"
-                      className={`${p.coverCredit ? "object-cover" : "object-contain p-6"} transition-transform duration-500 group-hover:scale-[1.03]`}
+                      className={`${p.coverCredit || p.coverPhoto ? "object-cover" : "object-contain p-6"} transition-transform duration-500 group-hover:scale-[1.03]`}
                     />
                   </div>
                   <div className="p-6">

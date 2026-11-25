@@ -468,7 +468,7 @@ export default function DivisionPage({ params }: { params: Params }) {
                       alt={p.coverAlt}
                       fill
                       sizes="(min-width: 768px) 33vw, 100vw"
-                      className={`${p.coverCredit ? "object-cover" : "object-contain p-6"} transition-transform duration-500 group-hover:scale-[1.03]`}
+                      className={`${p.coverCredit || p.coverPhoto ? "object-cover" : "object-contain p-6"} transition-transform duration-500 group-hover:scale-[1.03]`}
                     />
                   </div>
                   <div className="p-6 flex-1 flex flex-col">
