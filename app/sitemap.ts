@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { divisions } from "@/lib/divisions";
 import { cities } from "@/lib/cities";
+import { cityLocal } from "@/lib/city-local";
 import { residentialServices } from "@/lib/residential";
 import { posts } from "@/lib/posts";
 import { news } from "@/lib/news";
@@ -46,9 +47,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ? []
     : divisions.flatMap((d) => d.services.map((s) => `/${d.slug}/${s.slug}`));
   const residentialPaths = residentialServices.map((s) => `/residential/${s.slug}`);
-  // City, industry and equipment detail pages are noindex (templated or thin) and
-  // therefore not advertised here; their hubs (/service-areas, /equipment) are.
-  const cityPaths: string[] = [];
+  // Industry and equipment detail pages are noindex (templated or thin) and
+  // therefore not advertised here; their hubs are. A city page is listed only
+  // once it has its own local content in lib/city-local.ts (it is noindex
+  // until then).
+  const cityPaths = cities.filter((c) => cityLocal[c.slug]).map((c) => `/service-areas/${c.slug}`);
   const postPaths = posts.map((p) => `/blog/${p.slug}`);
   const newsPaths = news.map((n) => `/news/${n.slug}`);
   const workPaths = caseStudies.map((c) => `/work/${c.slug}`);
@@ -74,7 +77,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
       ? new Date(posts.find((p) => `/blog/${p.slug}` === path)?.date ?? lastModified)
       : path.startsWith("/news/")
         ? new Date(news.find((n) => `/news/${n.slug}` === path)?.date ?? lastModified)
-        : lastModified,
+        : path.startsWith("/service-areas/")
+          ? new Date("2026-11-25")
+          : lastModified,
     changeFrequency: path === "" ? "weekly" : "monthly",
     priority: path === "" ? 1 : path.includes("/") ? 0.7 : 0.9,
   }));

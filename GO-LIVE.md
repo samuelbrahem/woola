@@ -63,3 +63,11 @@ Notes:
 
 ## Index policy (2026-11-16)
 Measured on the launch build: the 18 city pages share 86% of their text (worst pairs 96%), the 9 industry pages ~70% at ~275 words, and the 19 equipment definitions average ~200 words. Templated or thin pages are what Google's helpful-content system demotes a whole domain for, so these 46 pages are `noindex, follow`, out of the sitemaps and llms.txt, but still live for visitors and linked from menus. Hubs (/service-areas, /equipment) stay indexed. To bring a page back: give it distinct content (local projects, local permit/utility facts, its own FAQs, case-study links), remove the `robots` line in its page.tsx, and restore it in app/sitemap.ts. Indexed set after this: home, 4 division homes + 44 services (on the division domains), 14 case studies, residential, blog, news, corporate pages.
+
+
+## City pages (2026-11-25)
+The 18 city pages were rebuilt with their own local content and are now indexable. Each city has an entry in `lib/city-local.ts`: an overview from 2021 Census dwelling counts, named areas, who issues which permit, local bylaw rules (work hours, backflow testing, flood levels, rental heat, EV-ready parking), city FAQs with FAQPage schema, and a sources list. The page lists six relevant services instead of all 44. Measured on the local build: median 1,572 words, average text similarity between city pages 14% (worst pair 22%), down from 86% (worst 96%).
+
+How the index switch works: a city with an entry in `lib/city-local.ts` is `index, follow` and appears in woola.ca/sitemap.xml. A city without one falls back to the shared template and stays `noindex`. Industry and equipment detail pages are unchanged (still noindex).
+
+Maintenance: the facts are bylaw and permit details checked in November 2026 against the sources listed on each page. Recheck them yearly, and update `CHECKED` in the file when you do. Vancouver's own website blocks automated access, so its noise hours, rental heat rule and carbon by-law status were written from the existing carbon-limits blog post and general knowledge and should be confirmed by hand against vancouver.ca.
